@@ -6,8 +6,10 @@ import { BiometricSetupScreen } from '../../screens/auth/biometric/BiometricSetu
 import { DrawerNavigator } from '../drawer/DrawerNavigator';
 // import  MFLoginScreen  from "";
 import MFLoginScreen from '../../screens/prelogin/LoginScreen';
+import PreLoginFlow from '../../screens/prelogin/PreLoginFlow';
 
 export type AuthStackParamList = {
+  PreLogin: undefined;
   Login: undefined;
   MFLogin: undefined;
   Dashboard: undefined;
@@ -19,8 +21,9 @@ const Stack = createNativeStackNavigator<AuthStackParamList>();
 
 export function AuthStack() {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {/* <Stack.Screen name="Login" component={LoginScreen} /> */}
+    <Stack.Navigator initialRouteName="PreLogin" screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="PreLogin" component={PreLoginFlow} />
+      <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="MFLogin" component={MFLoginScreen} />
       <Stack.Screen name="OTP" component={OTPScreen} />
       <Stack.Screen name="Dashboard" component={DrawerNavigator} />

@@ -1,0 +1,2392 @@
+{
+  "common": {
+    "enter": "Enter",
+    "secure": "Secure",
+    "howItWorks": "How It Works",
+    "home": "Home",
+    "settings": "Settings",
+    "selectAccount": "Select Account",
+    "logout": "Logout",
+    "profile": "Profile",
+    "internetBanking": "Mobile Banking",
+    "today": "Today",
+    "submit": "Submit",
+    "clear": "Clear",
+    "success": "Success",
+    "error": "Error",
+    "ok": "OK",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "confirm": "Confirm",
+    "back": "Back",
+    "next": "Next",
+    "close": "Close",
+    "save": "Save",
+    "edit": "Edit",
+    "done": "Done",
+    "loading": "Loading...",
+    "processing": "Processing...",
+    "noData": "No data available",
+    "connectionError": "Unable to connect to server. Please try again.",
+    "tryAgain": "Please try again.",
+    "invalid": "Invalid",
+    "enterValid": "Please enter a valid",
+    "all": "All",
+    "to": "to",
+   
+    "mobileNumber": "Mobile Number",
+    "amount": "Amount",
+    "enterAmount": "Enter Amount",
+    "note": "Note",
+    "optional": "Optional",
+    "enterNote": "Enter Note",
+    "© 2026 Miracle Banking":"© 2026 Miracle Banking",
+      "Last Login at":"Last Login at",
+       "enterYour":"Enter Your",
+      "toConfirm":"to confirm this transaction",
+    "buttons": {
+      "continue": "Continue",
+      "confirm": "Confirm",
+      "confirmTransfer": "Confirm Transfer",
+      "confirmPay": "Confirm & Pay",
+      "proceedToMpin": "Proceed to M-PIN",
+      "proceedToOtp": "Proceed to OTP",
+      "backToEdit": "Back to Edit",
+      "verify": "Verify",
+      "newTransfer": "New Transfer",
+      "goToHome": "Go to Home",
+      "mobile": "Mobile",
+      "goBack": "Go Back",
+      "verifying": "Verifying..."
+    }
+  },
+  "login": {
+    "title": "Login",
+    "customerIdLabel": "User ID",
+    "customerIdPlaceholder": "Enter User ID",
+    "passwordLabel": "Password",
+    "passwordPlaceholder": "Enter Password",
+    "loginButton": "Login",
+    "selfonboarding": "Don't have Account? Open Now",
+    "forgotPassword": "Forgot MPIN",
+    "newUser": "New User ?",
+    "register": "Register",
+    "notYou": "Not You ?",
+    "clearConfirmation": "Are you sure it's not you? This will clear your saved login details.",
+    "MpinLabel": "MPIN",
+    "MPIN": "MPIN",
+    "MPINPlaceholder": "Enter MPIN",
+    "OR": "OR",
+    "bankingTitle": "Miracle Mobile Banking",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "openKeyboard": "Open virtual keyboard",
+    "closeKeyboard": "Close keyboard",
+    "validation": {
+      "required": "is required",
+      "validNumber": "Enter a valid number",
+      "validEmail": "Enter a valid email address",
+      "validPhone": "Enter a valid phone number",
+      "amountPositive": "Amount must be greater than 0",
+      "exceedsBalance": "Amount exceeds available balance",
+      "minValue": "Minimum value is",
+      "maxValue": "Maximum value is",
+      "minLength": "must be at least",
+      "maxLength": "must not exceed",
+      "digits": "digits",
+      "characters": "characters",
+      "invalidFormat": "Invalid format",
+      "invalidValue": "Invalid value",
+      "mustBeChecked": "must be checked",
+      "loginIdRequired": "User ID is required",
+      "loginIdMinLength": "User ID must be at least 10 digits",
+      "loginIdMaxLength": "User ID must not exceed 20 digits",
+      "passwordRequired": "Password is required",
+      "passwordMinLength": "Password must be at least 5 characters",
+      "passwordMaxLength": "Password must not exceed 20 characters",
+      "MPINRequired": "MPIN is required",
+      "MPINlenRequired": "MPIN must be exactly 5 digits",
+      "MPINmaxLength": "MPIN must not exceed 20 characters",
+      "mobileNumberMinLength": "Mobile Number must be at least 7 digits",
+      "mobileNumberMaxLength": "Mobile Number must not exceed 15 digits",
+      "loginCountryRequired": "Country Code is required"
+    },
+    "messages": {
+      "loginFailed": "Login failed.",
+      "loginFailedTitle": "Login Failed",
+      "connectionError": "Unable to connect to the server. Please try again.",
+      "connectionErrorTitle": "Connection Error"
+    },
+    "keyboard": {
+      "caps": "Caps",
+      "space": "Space",
+      "delete": "Delete",
+      "close": "Close"
+    }
+  },
+  "profile": {
+    "profileTitle": "Profile",
+    "changePassword": "Change Password",
+    "updatePassword": "Update Password",
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "failure": "Failure",
+    "somethingWrong": "Something went wrong. Please try again.",
+    "failedChangePassword": "Failed to change password.",
+    "logoutTitle": "Close Session",
+    "logoutMessage": "Thank you for using Miracle Banking. You have successfully logged out.",
+    "logout": "Logout"
+  },
+  "register": {
+    "title": "Account Registration",
+    "subTitle": "Basic Details",
+    "create": "Create",
+    "cancel": "Cancel",
+    "back": "Back",
+    "selectCountryCode": "Select Country Code",
+    "createPassword": "Create Password",
+    "passwordSuccess": "Your account has been created and password set successfully.",
+    "stepDetails": "Fill Details",
+    "stepReview": "Review & Submit",
+    "stepPassword": "Create Password",
+    "stepDesc1": "Enter your personal and contact information",
+    "stepDesc2": "Review your information and submit",
+    "stepDesc3": "Create a secure password for your account",
+    "fields": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "countryCode": "Country Code",
+      "mobileNumber": "Mobile Number",
+      "physicalAddress": "Physical Address",
+      "emailAddress": "Email Address"
+    },
+    "placeHolder": {
+      "firstName": "Enter your first name",
+      "lastName": "Enter your last name",
+      "mobileNumber": "Enter Mobile Number",
+      "physicalAddress": "Enter your complete address",
+      "emailAddress": "Enter your email address",
+      "SearchCountryCode": "Search Country Code"
+    }
+  },
+  "forgotPassword": {
+    "title": "Forgot MPIN?",
+    "accountDetails": "Account Details",
+    "otp": "OTP",
+    "setPin": "Set PIN",
+    "setPassword": "Set Password",
+    "setMpin": "Set MPIN",
+    "securityQuestions": "Security Questions",
+    "next": "Next",
+    "processing": "Processing...",
+    "digitText": "Enter the 5-digit OTP sent to your registered email or mobile number.",
+    "newPassword": "New Password",
+    "confirmNewPassword": "Confirm New Password",
+    "enterPassword": "Enter Password",
+    "enterNewPassword": "Confirm Password",
+    "passwordLabel": "Must be exactly 5 digits",
+    "newPasswordLabel": "Confirm must be exactly 5 digits",
+    "passwordFive": "Enter 5-digit Password",
+    "confirmPasswordFive": "Confirm 5-digit Password",
+    "transactionPassword": "Transaction Password",
+    "confirmTransactionPassword": "Confirm Transaction Password",
+    "passwordHint": "Password must be exactly 5 numeric digits.",
+    "goToLogin": "Go To Login",
+    "fillDetails": "Fill Details",
+    "reviewSubmit": "Review & Submit",
+    "createPassword": "Create Password",
+    "MpinFive": "Enter 5-digit MPIN",
+    "confirmMpinFive": "Confirm 5-digit MPIN",
+    "enterNewMpin": "Confirm MPIN",
+    "newMpin": "New MPIN",
+    "enterMpin": "Enter MPIN",
+    "MpinLabel": "MPIN must be exactly 5 digits",
+    "confirmNewMpin": "Confirm New MPIN",
+    "newMpinLabel": "Confirm MPIN must be exactly 5 digits"
+  },
+  "loginOTP": {
+    "title": "OTP Verification",
+    "desc": "Enter the 5-digit OTP sent to your registered email or mobile number.",
+    "btnText": "Verify OTP",
+    "verify": "Verifying..."
+  },
+  "otp": {
+    "invalid": "Invalid MPIN",
+    "errMessage": "Please enter a valid 5-digit MPIN.",
+    "valid": "OTP Verified",
+    "failed": "Verification Failed",
+    "reqErr": "Request Error",
+    "reqMessage": "Failed to verify OTP. Please try again.",
+    "statusCodeOne": "Dear customer, your One Time Password (OTP) is invalid. Please try again.",
+    "statusOk": "Your OTP has been validated successfully.",
+    "ok": "OK",
+    "yes": "Yes"
+  },
+  "validation": {
+    "required": "is required",
+    "atleast": "must be at least",
+    "exactly": "must be",
+    "char": "characters",
+    "digits": "digits",
+    "notExceed": "must not exceed",
+    "onlySpace": "cannot be only spaces",
+    "invalid": "format is invalid",
+    "invalidFormat": "Invalid format",
+    "validEmail": "Enter a valid email address",
+    "onlyNum": "Only numbers are allowed",
+    "validUrl": "Enter a valid URL",
+    "OtpErr": "OTP must be exactly 5 digits",
+    "mblNum": "Mobile number must be 7 or 15 digits",
+    "mblReq": "Mobile number is required",
+    "selectCountry": "Please select a country code",
+    "passwordErr": "Password must contain uppercase, lowercase, number and special character",
+    "passwordReq": "Password is required",
+    "passwordMin": "Password must be at least 8 characters",
+    "passwordMax": "Password must not exceed 20 characters",
+    "passwordMatch": "Passwords must match",
+    "passwordsMatched": "Passwords Matched",
+    "confirmPassword": "Please confirm your password",
+    "mobileNotZero": "Mobile Number should not be 0",
+    "mpinNotZero": "MPIN should not be 0"
+  },
+    "footer": {
+      "copyright": "Copyright © 2026 Modefin",
+      "disclaimer": "Disclaimer",
+      "terms": "Terms & Conditions",
+      "privacy": "Privacy Policy"
+    },
+    "landingPage": {
+      "signIn": "Sign In",
+      "register": "Register",
+      "bankingMade": "Banking made",
+      "simple": "simple",
+      "and": "and",
+      "secure": "secure",
+      "experience": "Experience the future of digital banking with our secure,",
+      "fast": "fast, and user-friendly digital platform.",
+      "why": "Why choose Modefin?",
+      "secureAuth": "Secure Authentication",
+      "stateOfArt": "State-of-art security protocols to keep your financial data safe.",
+      "easy": "Easy Transfers",
+      "sendMoney": "Send money to friends and family with just a few taps.",
+      "support": "24/7 Support",
+      "ourCust": "Our customer service team is always ready to help."
+    },
+    "sidebar": {
+      "Locate Us": "Locate Us",
+      "Contact Us": "Contact Us",
+      "Offers": "Offers",
+      "Refer a Friend": "Refer a Friend",
+      "Rate Us": "Rate Us",
+      "Help": "Help",
+      "FAQ": "FAQ",
+      "Appearance": "Appearance",
+      "Self Registration": "Self Registration",
+      "appcode": "App Code",
+      "locateDesc": "Find branches & ATMs nearby",
+      "offersDesc": "Exclusive deals & promotions",
+      "contactDesc": "Get in touch with us",
+      "helpDesc": "Guides & troubleshooting",
+      "faqDesc": "Frequently asked questions",
+      "appearanceDesc": "Theme & language settings",
+      "appcodedes": "Tap here to generate your secure App Code for activating the application",
+      "referDesc": "Share & earn rewards",
+      "rateDesc": "Love the app? Leave a review.",
+      "registerDesc": "Open a new account.",
+      "groupExplore": "Explore",
+      "groupSupport": "Support",
+      "groupMore": "More",
+      "groupSettings": "Settings",
+      "appversion": "App Version",
+      "groups": {
+        "dashboard": "Dashboard",
+        "airtimetopup": "Airtime Topup",
+        "accounts": "Accounts",
+        "msavings": "MSavings",
+        "loans": "Loans",
+        "debitcards": "Debit Cards",
+        "cardless": "Cardless Withdrawal",
+        "bulkpayments": "Bulk Payments",
+        "requestmoney": "Request Money",
+        "recenttransactions": "Recent Transactions",
+        "treasury": "Treasury",
+        "tradefinance": "Trade Finance",
+        "loyalty": "Loyalty Points",
+        "settings": "Settings",
+        "help": "Help",
+        "feedback": "Feedback",
+        "rateus": "Rate Us",
+        "contactus": "Contact Us",
+        "ProofOfPayment": "Proof Of Payment",
+        "ProductServices": "Products & Services",
+        "UserProfile": "User Profile",
+        "QRCode": "QR Code",
+        "qrscanner":"QR Scanner",
+        "cards": "Cards",
+        "payments": "Payments",
+        "reports": "Reports",
+        "services": "Services",
+        "offers": "Offers",
+        "rewards": "Rewards",
+        "Pictograph":"Pictograph",
+        "notifications":"Notifications"
+      },
+      "items": {
+        "dashboard": "Dashboard",
+        "accounts": "Accounts",
+        "deposits": "Deposits",
+        "loans": "Loans",
+        "savings": "MSavings",
+        "creditCards": "Credit Cards",
+        "debitCards": "Debit Cards",
+        "cardlessWithdrawal": "Cardless Withdrawal",
+        "payments": "Payments",
+        "bulkPayments": "Bulk Payments",
+        "requestMoney": "Request Money",
+        "airtimeTopup": "Airtime Topup",
+        "serviceRequests": "Service Requests",
+        "transactions": "Transactions/Statement",
+        "treasury": "Treasury",
+        "tradeFinance": "Trade Finance",
+        "loyalty": "Loyalty",
+        "rewards": "Rewards",
+        "proofOfPayment": "Proof of Payment",
+        "letterOfCredit": "Letter Of Credit",
+        "bulkPaymentsFileUpload": "File Upload",
+        "bulkPaymentsViewStatus": "View Status",
+        "pendingApprovals": "Pending Approvals",
+        "downloadStatement": "Download Statement",
+        "Download": "Download"
+      },
+    
+     "bulkPayments": {
+    "file": "File Upload",
+    "view": "View Status",
+    "pending": "Pending Approvals",
+    "title": "Bulk Payments",
+    "subtitle": "Process multiple payments in one go",
+    "badge": "Corporate Payments",
+    "deny":"Deny",
+    "approve": "Approve",
+    "download": "Download",
+    "fields": {
+      "paymentFrom": "Payment From",
+      "bulkPaymentType": "Bulk Payment Type",
+      "placeholder": "Select Payment Type",
+      "bulkPayment": "Bulk Payment",
+      "batchCode": "Batch Code",
+      "bathPlaceholder": "Select Batch Code",
+      "placePayment": "Select Payment Type",
+      "placeBatchCode": "Select Batch Code",
+      "toMiracle": "To Miracle",
+      "toOtherBank": "To Other Bank",
+      "uploadFile": "Upload Payment File",
+      "drag": "Drag & Drop File",
+      "browseFile": "Drop your file here, or click to browse",
+      "browse": "Browse Files",
+      "selected": "Selected",
+      "triggerDate": "Trigger Date",
+      "datePlaceholders": "Select Trigger Date",
+      "uploadError": "Please upload a valid XLSX file"
+    },
+    "table": {
+      "id": "Id",
+      "from": "From",
+      "to": "To",
+      "benName": "Ben Name",
+      "scheduleTimeStamp": "Schedule TimeStamp"
+    },
+    "fileUpload": {
+      "title": "Upload Payment File",
+      "subtitle": "Upload a xlsx file containing your bulk payment details",
+      "searchPayment": "Search Payments...",
+      "noRec": "No Records Found",
+      "desc": "You don’t have any Payments",
+      "fileFormat": "File Format",
+      "fileDesc": "Required xlsx format for bulk payments",
+      "liOne": "xlsx file allowed - First Row as Header",
+      "liTwo": "One line per record",
+      "bankPay": "Click Here To Other Bank Account file Sample",
+      "sameBankPay": "Click Here To Same Bank Account file Sample",
+      "bpProcess": "Bulk Payment Process",
+      "liThree": "Upload Records as per given format",
+      "liFour": "Check Status through Bulk Payment - View Status page",
+      "liFive": "Once uploaded, Bulk Payment processor will process the records",
+      "liSix": "Status can be checked by the requestor anytime"
+    }
+  },
+ 
+    "dashboard": {
+      "title": "Miracle Banking",
+      "recentTransactions": "Recent Transactions",
+      "accountOverview": "Account Overview",
+      "quickLinks": "Quick Links",
+      "notes": "Notes",
+      "offers": "Offers"
+    },
+    "quickLinks": {
+      "title": "Quick Links",
+      "transferMoney": "Transfer Money",
+      "payBills": "Pay Bills",
+      "addBeneficiary": "Add Beneficiary",
+      "downloadStatement": "Download Statement",
+      "serviceRequest": "Service Request"
+    },
+    "carousel": {
+      "importantNotes": "Important Notes"
+    },
+    "notes": {
+      "savingsAccount": "Open Savings account with Zero account opening charges",
+      "clickHere": "Click here",
+      "updateKYC": "Update your KYC to avoid service interruption",
+      "knowMore": "Know more"
+    },
+   "transactions": {
+  "recentTransactions":        "Recent Transactions",
+  "date":                      "Date",
+  "transactionId":             "Transaction ID",
+  "description":               "Description",
+  "category":                  "Category",
+  "amount":                    "Amount",
+  "noDescription":             "No description",
+  "transfer":                  "Transfer",
+  "all":                       "All",
+  "income":                    "Income",
+  "expense":                   "Expense",
+  "transaction":               "transaction",
+  "transactionsPlural":        "transactions",
+  "noTransactions":            "No Recent Transactions",
+  "noTransactionsDescription": "Your recent transactions will appear here once you make a transfer or payment.",
+  "noMatchingTransactions":    "No Matching Transactions",
+  "noMatchingDescription":     "Try adjusting your search criteria.",
+  "showingOf":                 "{{shown}} of {{total}} transactions",
+  "refreshing":                "Refreshing...",
+  "pullToRefresh":             "Pull to refresh",
+  "releaseToRefresh":          "Release to refresh",
+  "credit":                    "Credit",
+  "debit":                     "Debit",
+  "type":                      "Type",
+  "reference":                 "Reference",
+  "closingBalance":            "Closing Balance",
+  "toAccount":                 "To Account",
+  "loadingMore":               "Loading more...",
+  "allLoaded":                 "All {{count}} transactions loaded"
+
+},
+    "transactionsTab": {
+      "accountDetailsOf": "Account Details of",
+      "print": "Print",
+      "download": "Download",
+      "share": "Share",
+      "note": "Note:",
+      "copyShareInfo": "Clicking the copy or share button will share the account details in the following format:",
+      "accountFormat": "Account Holder Name, Account Number, Branch Name",
+      "accountInfo": "Account Info",
+      "copyAccountDetails": "Copy Account Details",
+      "shareAccountDetails": "Share Account Details"
+    }
+  },
+  "popup": {
+    "title": "Registration Failed",
+    "error": "Registration Error",
+    "errorDesc": "Something went wrong. Please try again later.",
+    "success": "Success"
+  },
+  "table": {
+    "noData": "No data available.",
+    "of": "of",
+    "items": "items",
+    "showing": "Showing",
+    "to": "to",
+    "entries": "entries"
+  },
+  "accounts": {
+    "accountNo": "Account No.",
+    "branch": "Branch",
+    "accountType": "Account Type",
+    "availableBalance": "Available Balance",
+    "notAvailable": "N/A",
+    "addMoney":"Add Money"
+  },
+  "tabs": {
+    "accounts": "Accounts",
+    "loans": "Loans",
+    "deposit": "Deposit"
+  },
+  "menu": {
+    "user": "User",
+    "lastLoggedIn": "Last Logged in:",
+    "myProfile": "My Profile",
+    "settings": "Settings",
+    "logout": "Logout",
+    "loggingOut": "Logging out...",
+    "logoutConfirmation": "Are you sure you want to logout from Miracle Mobile Banking?",
+    "userMenuFor": "User menu for",
+    "notAvailable": "Not available",
+    "invalidFormat": "Invalid format",
+    "invalidDate": "Invalid date",
+    "dateUnavailable": "Date unavailable",
+    "payments": "Payments",
+    "topUp": "Top up",
+    "productsServices": "Product & Services",
+    "rewards": "Rewards",
+    "quickServices": "Quick Services",
+    "services": "Services",
+    "treasury": "Treasury",
+    "tradeFinance": "Trade Finance",
+    "loyalty": "Loyalty",
+    "helpSupport": "Help & Support",
+    "help": "Help",
+    "feedback": "Feedback",
+    "rateUs": "Rate Us",
+    "contactUs": "Contact Us"
+  },
+  "offers": {
+    "title": "Features/Offers",
+    "instantCredit": "Get instant credit of funds Anytime, Anywhere.",
+    "sendMoney": "Send money in seconds anytime, anywhere."
+  },
+  "miniStatement": {
+    "title": "Mini Statement",
+    "date": "Date",
+    "transactionId": "Transaction ID",
+    "description": "Description",
+    "amount": "Amount",
+    "all": "All",
+    "income": "Income",
+    "expenses": "Expenses",
+    "notAvailable": "N/A",
+    "other": "Other",
+    "noDataToDownload": "No data available to download",
+    "accountNo": "Account No.",
+    "generatedOn": "Generated on",
+    "totalIncome": "Total Income",
+    "totalExpenses": "Total Expenses",
+    "netAmount": "Net Amount",
+    "pdfSuccess": "PDF downloaded successfully",
+    "noAccounts": "No accounts available",
+    "noTransactions": "No transactions found for the selected criteria",
+    "share":"Share",
+    "shareFailed":"Unable to share transaction details",
+    "transactionReceipt":"Transaction Receipt"
+  },
+  "statements": {
+    "miniStatement": "Mini Statement",
+    "fullStatement": "Full Statement",
+    "accountDetails": "Account Details"
+  },
+  "fullStatement": {
+    "title": "Full Statement",
+    "all": "All",
+    "income": "Income",
+    "expenses": "Expenses",
+    "15Days": "15 Days",
+    "30Days": "30 Days",
+    "45Days": "45 Days",
+    "60Days": "60 Days",
+    "selectStatementType": "Please select the statement type:",
+    "period": "Period",
+    "dateRange": "Date Range",
+    "date": "Date",
+    "id": "ID",
+    "transactionId": "Transaction ID",
+    "description": "Description",
+    "category": "Category",
+    "amount": "Amount",
+    "account": "Account",
+    "generatedOn": "Generated on",
+    "noAccounts": "No accounts available",
+    "noTransactions": "No Transactions Found",
+    "selectPeriodHint": "Select a period or date range and click \"View\" to see your transactions",
+    "downloadSuccess": "Statement downloaded successfully.",
+    "downloadFailed": "Failed to download statement.",
+    "emailFailed": "Email request failed.",
+    "view": "View",
+    "download": "Download",
+    "email": "Email",
+    "emailSuccess":"Statement sent to email successfully."
+  
+
+  },
+  "accountDetails": {
+    "title": "Account Details",
+    "accountHolder": "ACCOUNT HOLDER",
+    "accountNumber": "ACCOUNT NUMBER",
+    "accountType": "ACCOUNT TYPE",
+    "customerId": "CUSTOMER/USER ID",
+    "currency": "CURRENCY",
+    "status": "STATUS",
+    "branch": "BRANCH",
+    "communicationAddress": "COMMUNICATION ADDRESS",
+    "active": "Active",
+    "branchName": "Branch Name",
+    "notAvailable": "N/A",
+    "apiError": "API Error"
+  },
+  "accountSummary": {
+    "accountNo": "Account No.",
+    "branch": "Branch",
+    "accountType": "Account Type",
+    "availableBalance": "Available Balance",
+    "notAvailable": "N/A",
+    "branchName": "Branch Name",
+    "offersImage": "Offers Image",
+    "subtitle": "View your accounts and statements"
+  },
+  "statementFilter": {
+    "statementPeriod": "Statement Period",
+    "select": "Select",
+    "fromDate": "From Date",
+    "toDate": "To Date",
+    "datePlaceholder": "DD/MM/YYYY",
+    "email": "Email",
+    "view": "View",
+    "download": "Download"
+  },
+  "datePicker": {
+    "selectDate": "Select Date"
+  },
+  "loyalty": {
+    "title": "My Loyalty Points",
+    "subtitle": "Earn points with every transaction",
+    "badge": "Rewards",
+    "total": "Total",
+    "points": "Points",
+    "days": "days",
+    "expiresIn": "Expires in",
+    "amount": "Amount",
+    "expired": "Expired",
+    "searchPlaceholder": "Search by type or date...",
+    "columns": {
+      "type": "Loyalty Type",
+      "points": "Loyalty Points",
+      "amount": "Amount",
+      "createdDate": "Created Date",
+      "expiryDate": "Expiry Date",
+      "remainingDays": "Remaining Days"
+    },
+    "stats": {
+      "totalPoints": "Total Points"
+    },
+    "table": {
+      "totalRewards": "Total Rewards"
+    },
+    "empty": {
+      "title": "No Loyalty Points",
+      "description": "Complete transactions to earn loyalty points!",
+      "searchTitle": "No Results",
+      "searchDescription": "Try a different search"
+    }
+  },
+  "loans": {
+    "title": "Loans",
+    "subtitle": "View and manage your loan accounts",
+    "loanAccountNo": "Loan Account No",
+    "loanType": "Loan Type",
+    "sanctionedAmount": "Sanctioned Amount",
+    "outstandingAmount": "Outstanding Amount",
+    "emiAmount": "EMI Amount",
+    "interestRate": "Interest Rate",
+    "tenure": "Tenure",
+    "nextDueDate": "Next Due Date",
+    "status": "Status",
+    "active": "Active",
+    "closed": "Closed",
+    "overdue": "Overdue",
+    "noLoans": "No loan accounts available",
+    "noData": "No loan data found",
+    "generatedOn": "Generated on",
+    "download": "Download",
+    "viewDetails": "View Details",
+    "loanDetails": {
+      "title": "Loan Details",
+      "loanAccountNo": "Loan Account No",
+      "loanType": "Loan Type",
+      "sanctionedAmount": "Sanctioned Amount",
+      "disbursedAmount": "Disbursed Amount",
+      "outstandingAmount": "Outstanding Amount",
+      "interestRate": "Interest Rate",
+      "tenure": "Tenure",
+      "emiAmount": "EMI Amount",
+      "emiStartDate": "EMI Start Date",
+      "nextDueDate": "Next Due Date",
+      "maturityDate": "Maturity Date",
+      "status": "Status",
+      "branch": "Branch",
+      "notAvailable": "N/A"
+    }
+  },
+  "rewards": {
+    "title": "My Rewards",
+    "subtitle": "Scratch and win exciting rewards!",
+    "badge": "Win Prizes",
+    "scratchToReveal": "Scratch to reveal!",
+    "scratchAndWin": "Scratch & Win!",
+    "scratchHere": "Scratch Here!",
+    "revealing": "Revealing...",
+    "revealNow": "Reveal Now",
+    "retry": "Try Again",
+    "noDescription": "Reward",
+    "transaction": "Transaction",
+    "special": "Special",
+    "errorTitle": "Something went wrong",
+    "scratchProgress": "Progress",
+    "stats": {
+      "totalEarned": "Total Earned",
+      "totalRewards": "Total Rewards"
+    },
+    "filters": {
+      "all": "All",
+      "unscratched": "Unscratched",
+      "scratched": "Scratched",
+      "winners": "Winners",
+      "special": "Special"
+    },
+    "empty": {
+      "noUnscratched": "No unscratched rewards",
+      "allScratched": "You've scratched all your rewards!",
+      "noScratched": "No scratched rewards",
+      "scratchSome": "Scratch some rewards to see them here",
+      "noWinners": "No winning rewards yet",
+      "keepPlaying": "Keep scratching to win rewards!",
+      "noSpecial": "No special rewards",
+      "specialDesc": "Special rewards will appear here",
+      "noRewards": "No rewards found",
+      "earnRewards": "Complete transactions to earn rewards!"
+    }
+  },
+  "cards": {
+    "title": "Debit Cards",
+    "subtitle": "Manage your debit card settings",
+    "badge": "Card Services",
+    "noCard": "No card available",
+    "selectAccount": "Select Account",
+    "cardDetailsOf": "Card Details of",
+    "tabs": {
+      "summary": "Card Summary",
+      "manage": "Manage Card",
+      "pinServices": "Card PIN Services",
+      "detailsTitle": "Card Details"
+    },
+    "saveSuccess": {
+      "title": "Card Updated",
+      "detailsTitle": "Card Details"
+    },
+    "details": {
+      "holderName": "Card Holder Name",
+      "cardNumber": "Card Number",
+      "accountNumber": "Account Number",
+      "atmDailyLimit": "ATM Daily Limit",
+      "atmAvailable": "ATM Available Limit",
+      "posDailyLimit": "POS Daily Limit",
+      "posAvailable": "POS Available Limit",
+      "cardStatus": "Card Status",
+      "tapPay": "Tap & Pay"
+    },
+    "status": {
+      "active": "Active",
+      "blocked": "Blocked",
+      "enabled": "Enabled",
+      "disabled": "Disabled"
+    },
+    "manage": {
+      "atmOnline": "ATM Online Transaction",
+      "posOnline": "POS Online Transaction",
+      "blockCard": "Block / Unblock Card",
+      "tapPay": "Tap and Pay",
+      "atmLimit": "ATM Withdrawal Limit",
+      "posLimit": "POS Transaction Limit",
+      "save": "SAVE CHANGES"
+    },
+    "services": {
+      "title": "Card PIN Services",
+      "desc": "Reset your debit card PIN securely",
+      "resetPin": "Reset Card PIN"
+    },
+    "promo": {
+      "justForYou": "Just for you!",
+      "eligible": "You are now",
+      "eligibleSub": "eligible to",
+      "upgrade": "Upgrade Your Card!",
+      "avail": "Avail Now"
+    },
+    "pin": {
+      "title": "Reset Card PIN",
+      "subtitle": "Secure your card with a new PIN",
+      "oldPin": "Old Card PIN",
+      "newPin": "New Card PIN",
+      "confirmPin": "Confirm New PIN",
+      "enterOld": "Enter old 4-digit PIN",
+      "enterNew": "Enter new 4-digit PIN",
+      "reenter": "Re-enter new PIN",
+      "continue": "Continue",
+      "enterOtp": "Enter OTP",
+      "verify": "Verify & Reset",
+      "backToPin": "Back to PIN entry",
+      "otpSent": "An OTP has been sent to your registered mobile number. Enter it below to complete PIN reset.",
+      "successTitle": "PIN Reset Successful!",
+      "successMsg": "Your card PIN has been updated successfully.",
+      "required": "PIN is required",
+      "fourDigits": "PIN must be 4 digits",
+      "numbersOnly": "PIN must contain only numbers",
+      "mismatch": "New PIN and Confirm PIN do not match",
+      "samePins": "New PIN must be different from old PIN",
+      "otpFailed": "Failed to generate OTP",
+      "otpError": "Failed to generate OTP. Please try again.",
+      "invalidOtp": "Invalid OTP. Please try again.",
+      "verifyError": "Failed to verify OTP. Please try again.",
+      "resendFailed": "Failed to resend OTP",
+      "resendError": "Failed to resend OTP"
+    }
+  },
+  "payments": {
+    "title": "Payments",
+    "subtitle": "Transfer funds & pay bills securely",
+    "badge": "Secure",
+    "tabs": {
+      "fund": "Fund Transfer",
+      "bill": "Bill Payment",
+      "bulk": "Bulk Payment"
+    }
+  },
+  "fundTransfer": {
+    "sections": {
+      "quickTransfer": "Fund Transfer",
+      "sameBank": "Manage Beneficiary"
+    },
+    "badges": {
+      "instant": "Instant"
+    },
+    "tiles": {
+      "onceOff": "Once-Off Transfer",
+      "onceOffDesc": "Send money to any account",
+      "manageBeneficiary": "Add & Manage Beneficiary",
+      "manageBeneficiaryDesc": "Save frequent recipients",
+      "savedTransactions": "Saved Transactions",
+      "savedTransactionsDesc": "Resume drafts & templates",
+      "fundTransfer": "Fund Transfer",
+      "fundTransferDesc": "Transfer within same bank — no fees"
+    }
+  },
+  "billPayment": {
+    "sections": {
+      "billActions": "Bill Payments"
+    },
+    "tiles": {
+      "payBillers": "Pay Billers",
+      "payBillersDesc": "Pay utilities, rent & more",
+      "manageBillers": "Add & Manage Billers",
+      "manageBillersDesc": "Configure auto-pay & billers",
+      "onceOffBillPayment": "Once-Off Bill Payment",
+      "onceOffBillPaymentDesc": "Pay any Bill Instantly"
+    }
+  },
+  "onceOffTransfer": {
+    "title": "Once-Off Transfer",
+    "subtitle": "Send money to any account quickly and securely",
+    "formTitle": "Once-Off Transfer Details",
+    "step": "Step",
+    "backToPayments": "Back to Payments",
+    "detailsTitle": "Once-Off Transfer Details",
+    "steps": {
+      "details": "Details",
+      "confirm": "Confirm",
+      "verify": "Result"
+    },
+    "fields": {
+      "fromAccount": "Source Account",
+      "amount": "Transfer Amount",
+      "payeeName": "Payee Name",
+      "payeeAccount": "Payee Account Number",
+      "recipientRemarks": "Remarks"
+    },
+    "placeholders": {
+      "selectAccount": "Source Account",
+      "enterAmount": "Enter Transfer Amount",
+      "enterPayeeName": "Enter Payee Name",
+      "enterPayeeAccount": "Enter Payee Account Number",
+      "enterRemarks": "Enter Remarks"
+    },
+    "transferTypes": {
+      "oneTime": "One-time Transfer",
+      "immediate": "Immediate Transfer"
+    },
+    "buttons": {
+      "continue": "Continue",
+      "confirm": "Confirm Transfer",
+      "backToEdit": "Back to Edit"
+    },
+    "success": {
+      "title": "Transfer Successful!",
+      "message": "Your transfer has been processed successfully.",
+      "transactionId": "Transaction ID",
+      "newTransfer": "New Transfer"
+    },
+    "errors": {
+      "processFailed": "Failed to process transfer."
+    }
+  },
+  "onceOffOverview": {
+    "title": "Once-Off Transfer",
+    "subtitle": "Send a one-time payment to any account without saving recipient details",
+    "backToPayments": "Back to Payments",
+    "miracleBank": "Miracle Bank",
+    "miracleBankDesc": "Instant transfers within Miracle Bank — zero fees",
+    "otherBanks": "Other Banks",
+    "otherBanksDesc": "Transfer to any bank account nationwide",
+    "instant": "Instant",
+    "comingSoon": "Coming Soon",
+    "howItWorks": "How It Works",
+    "step1Title": "Choose Destination",
+    "step1Desc": "Select the bank type for your transfer",
+    "step2Title": "Enter Details",
+    "step2Desc": "Fill in recipient account, amount, and reference",
+    "step3Title": "Confirm & Send",
+    "step3Desc": "Review and authorize with OTP/M-PIN"
+  },
+  "ownTransfer": {
+    "title": "Miracle Account Transfer",
+    "subtitle": "Transfer funds securely between your own wallets",
+    "formTitle": "Fund Transfer",
+    "detailsTitle": "Fund Transfer Details",
+    "usingSaved": "Using saved transaction",
+    "sendingTo": "Sending to",
+    "step": "Step",
+    "steps": {
+      "details": "Details",
+      "confirm": "Confirm",
+      "verify": "Verify"
+    },
+    "fields": {
+      "fromAccount": "Source Account",
+      "toAccount": "Beneficiary Account",
+      "amount": "Transfer Amount",
+      "remarks": "Remarks",
+      "beneficiaryName": "Beneficiary Name"
+    },
+    "placeholders": {
+      "selectAccount": "Select Source Account",
+      "enterToAccount": "Recipient account number",
+      "enterAmount": "Enter Transfer Amount",
+      "enterRemarks": "Enter Remarks"
+    },
+    "buttons": {
+      "continue": "Continue to Review",
+      "confirm": "Confirm Transfer",
+      "backToEdit": "Back to Edit"
+    },
+    "save": {
+      "success": "Transaction Saved Successfully",
+      "failed": "Failed to save transaction",
+      "error": "An error occurred while saving the transaction"
+    },
+    "success": {
+      "title": "Transfer Successful!",
+      "message": "Your transfer has been processed successfully.",
+      "transactionId": "Transaction ID",
+      "newTransfer": "New Transfer"
+    },
+    "errors": {
+      "processFailed": "Failed to process transfer."
+    }
+  },
+  "beneficiaries": {
+    "manageTitle": "Miracle Bank Beneficiary",
+    "selectTitle": "Miracle Bank Beneficiary",
+    "selectSubtitle": "Choose A Beneficiary To Send Money",
+    "transferBadge": "Transfer",
+    "manageBadge": "Manage",
+    "backToFundTransfer": "Back",
+    "backToOverview": "Back",
+    "addNew": "Add New Beneficiary",
+    "searchPlaceholder": "Search Beneficiary...",
+    "single": "Beneficiary",
+    "plural": "Beneficiary",
+    "found": "Found",
+    "beneficiary": "Beneficiary",
+    "noResults": "No Beneficiary Found",
+    "empty": "No Beneficiary Available",
+    "deleteTitle": "Delete Beneficiary",
+    "deleteConfirm": "Are you sure you want to delete",
+    "deleteWarning": "This action cannot be undone.",
+    "deleteFailedMsg": "Failed to delete beneficiary.",
+    "beneficiaryName": "Beneficiary Name",
+    "accountNumber": "Account Number",
+    "bank": "Bank",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "Inactive",
+    "selectFirst": "Select Beneficiary First",
+    "send": "Send",
+    "sendMoney": "Send Money"
+  },
+  "addBeneficiary": {
+    "title": "Add Beneficiary",
+    "subtitle": "Register A Beneficiary Securely",
+    "formTitle": "Add Beneficiary Details",
+    "steps": {
+      "details": "Beneficiary Details",
+      "detailsDesc": "Enter Beneficiary Information",
+      "confirm": "Confirm Details",
+      "confirmDesc": "Review Beneficiary Details",
+      "verify": "Verify",
+      "verifyDesc": "OTP Verification"
+    },
+    "fields": {
+      "name": "Beneficiary Name",
+      "nickname": "Beneficiary Nickname",
+      "account": "Beneficiary Account Number",
+      "mobile": "Beneficiary Mobile Number",
+      "amount": "Transfer Amount"
+    },
+    "placeholders": {
+      "name": "Enter Beneficiary Name",
+      "nickname": "Enter Beneficiary Nickname",
+      "account": "Enter Beneficiary Account Number",
+      "mobile": "Enter Beneficiary Mobile Number",
+      "amount": "Enter Transfer Amount"
+    }
+  },
+  "addBiller": {
+    "title": "Add New Biller",
+    "subtitle": "Add a biller to pay bills quickly and securely",
+    "backToBillers": "Back to Billers",
+    "viewBillers": "View Billers",
+    "loadingBillers": "Loading billers...",
+    "noBillersAvailable": "No billers available",
+    "badge": "Quick Setup",
+    "steps": {
+      "details": "Details",
+      "review": "Review",
+      "complete": "Complete"
+    },
+    "stepTitles": {
+      "billerDetails": "Biller Details",
+      "reviewConfirm": "Review & Confirm",
+      "complete": "Complete"
+    },
+    "fields": {
+      "category": "Category",
+      "biller": "Biller",
+      "billerNickname": "Biller Nickname",
+      "nickname": "Nickname",
+      "currency": "Currency",
+      "billerName": "Biller Name",
+      "customerName": "Customer Name",
+      "saveAs": "Save As"
+    },
+    "placeholders": {
+      "selectCategory": "Select a Category",
+      "selectBiller": "Select a Biller",
+      "enterNickname": "Enter a Nickname",
+      "enterSaveAs": "Enter Save As Name (10-15 characters)",
+      "enterCustomerName": "Enter Customer Name",
+      "enter": "Enter",
+      "select": "Select"
+    },
+    "validation": {
+      "selectCategory": "Please Select a Category",
+      "selectBiller": "Please Select a Biller",
+      "enterNickname": "Please enter a nickname for this biller",
+      "enterSaveAs": "Please enter a save as name",
+      "saveAsMin": "Save As must be at least 10 characters",
+      "saveAsMax": "Save As must not exceed 15 characters",
+      "enterCustomerName": "Please enter customer name",
+      "isRequired": "is required",
+      "minimum": "Minimum",
+      "maximum": "Maximum",
+      "charactersRequired": "characters required",
+      "charactersAllowed": "characters allowed",
+      "mustBeNumber": "must be a number"
+    },
+    "errors": {
+      "loadFailed": "Failed to load biller data. Please try again.",
+      "processFailed": "Failed to process request. Please try again.",
+      "resendFailed": "Failed to resend. Please try again.",
+      "connectionError": "Unable to connect to server. Please try again."
+    },
+    "buttons": {
+      "continue": "Continue",
+      "confirmAdd": "Confirm & Add",
+      "backToEdit": "Back to Edit"
+    },
+    "pinModal": {
+      "enter": "Enter",
+      "confirmMessage": "Enter your",
+      "toConfirm": "to confirm adding this biller",
+      "enterMPIN": "Enter M-PIN",
+      "enterOTP": "Enter OTP",
+      "resendOTP": "Resend OTP",
+      "resendIn": "Resend in",
+      "sending": "Sending...",
+      "verifying": "Verifying..."
+    },
+    "review": {
+      "pleaseReview": "Please review the details",
+      "clickConfirm": "Click \"Confirm & Add\" to proceed. You will need to enter your",
+      "toComplete": "to complete."
+    },
+    "success": {
+      "title": "Biller Added Successfully!",
+      "hasBeenAdded": "has been added to your billers list.",
+      "addAnother": "Add Another Biller",
+      "viewBillers": "View My Billers"
+    }
+  },
+  "manageBeneficiary": {
+    "title": "Manage Beneficiaries",
+    "subtitle": "View And Manage Your Beneficiaries",
+    "miracleBank": "Miracle Bank",
+    "miracleBankDesc": "Manage beneficiaries within Miracle Bank network",
+    "clickToManage": "Click here to manage beneficiaries",
+    "howToStart": "How to Get Started",
+    "step1Title": "Select Bank Type",
+    "step1Desc": "Choose Miracle Bank or Other Banks based on your recipient",
+    "step2Title": "Add Beneficiary",
+    "step2Desc": "Enter recipient details and verify account information",
+    "step3Title": "Start Transferring",
+    "step3Desc": "Begin making secure transfers to your verified beneficiaries"
+  },
+  "manageBillers": {
+    "title": "Manage Billers",
+    "selectBiller": "Select Biller",
+    "chooseBillerToPay": "Choose a biller to pay",
+    "backToBillPayments": "Back to Bill Payments",
+    "billerSingular": "biller",
+    "billersPlural": "billers",
+    "found": "found",
+    "categorySingular": "category",
+    "categoriesPlural": "categories",
+    "category": "Category",
+    "currency": "Currency",
+    "status": "Status",
+    "account": "Account",
+    "field": "Field",
+    "biller": "Biller",
+    "general": "General",
+    "other": "Other",
+    "minPaymentLimit": "Min Payment Limit",
+    "maxPaymentLimit": "Max Payment Limit",
+    "addNewBiller": "Add New Biller",
+    "addFirstBiller": "Add Your First Biller",
+    "deleteBillerBtn": "Delete Biller",
+    "payBiller": "Pay Biller",
+    "payBill": "Pay Bill",
+    "deleteBiller": "Delete Biller",
+    "deleteConfirmMessage": "Are you sure you want to delete",
+    "searchPlaceholder": "Search Billers...",
+    "noResultsFound": "No Results Found",
+    "noBillersYet": "No Billers Yet",
+    "noMatchingBillers": "No billers found matching your search",
+    "noBillersAvailable": "No billers available. Add your first biller to get started.",
+    "noBillersFound": "No billers found",
+    "deleteWarning": "This action cannot be undone. The biller will be permanently removed from your saved billers list.",
+    "deleting": "Deleting",
+    "enter": "Enter",
+    "enterToConfirmDeletion": "Enter your",
+    "toConfirmDeletion": "to confirm deletion",
+    "deletedSuccessfully": "Deleted Successfully",
+    "billerDeletedSuccess": "Biller deleted successfully",
+    "deleteInitiateFailed": "Failed to initiate delete. Please try again.",
+    "manageBadge": "Manage",
+    "payBadge": "Quick Pay",
+    "connectionError": "Unable to connect to server. Please try again.",
+    "resendFailed": "Failed to resend. Please try again.",
+    "enterValid": "Please enter a valid",
+    "invalid": "Invalid"
+  },
+  "payBillers": {
+    "title": "Pay Bill",
+    "subtitle": "Pay your bill quickly and securely",
+    "backToBillers": "Back to Billers",
+    "badge": "Quick Pay",
+    "steps": {
+      "details": "Details",
+      "review": "Review",
+      "complete": "Complete"
+    },
+    "billerDetails": "Biller Details",
+    "paymentDetails": "Payment Details",
+    "additionalDetails": "Additional Details",
+    "totalAmount": "Total Amount to Pay",
+    "noAccountsAvailable": "No accounts available",
+    "fields": {
+      "billerCategory": "Biller Category",
+      "biller": "Biller",
+      "saveAs": "Save As",
+      "convenienceFee": "Convenience Fee",
+      "totalAmount": "Total Amount",
+      "debitAccount": "Debit Account",
+      "availableBalance": "Available Balance",
+      "date": "Date",
+      "amount": "Amount",
+      "limit": "Limit",
+      "remarks": "Remarks",
+      "fromAccount": "From Account",
+      "paymentDate": "Payment Date"
+    },
+    "placeholders": {
+      "selectAccount": "Select Account",
+      "enterAmount": "Enter Amount",
+      "enterRemarks": "Enter Remarks"
+    },
+    "validation": {
+      "selectAccount": "Please select an account",
+      "enterAmount": "Please enter an amount",
+      "invalidAmount": "Please enter a valid amount",
+      "minAmount": "Minimum amount is",
+      "maxAmount": "Maximum amount is",
+      "insufficientBalance": "Insufficient balance",
+      "selectDate": "Please select a date",
+      "enterRemarks": "Please enter remarks"
+    },
+    "buttons": {
+      "continue": "Continue",
+      "backToEdit": "Back to Edit",
+      "confirmPay": "Confirm & Pay"
+    },
+    "errors": {
+      "processFailed": "Failed to process request.",
+      "connectionError": "Unable to connect to server."
+    },
+    "success": {
+      "title": "Payment Successful!",
+      "youPaid": "You have successfully paid",
+      "transactionId": "Transaction ID",
+      "transactionDetails": "Transaction Details",
+      "payAnother": "Pay Another Bill",
+      "done": "OK",
+      "billPaymentDetailsTitle": "Bill Payment Details"
+    },
+    "pinModal": {
+      "message": "Enter your",
+      "toConfirm": "to confirm this payment"
+    },
+    "review": {
+      "pleaseReview": "Please review the details",
+      "clickConfirm": "Click \"Proceed to M-PIN \" to proceed. You will need to enter your",
+      "toComplete": "to complete the payment."
+    }
+  },
+  "miracleDataTable": {
+    "title": "Data",
+    "subtitle": "View and manage your data",
+    "searchPlaceholder": "Search...",
+    "refresh": "Refresh",
+    "use": "Use",
+    "useTransaction": "Use this transaction",
+    "items": "items",
+    "tapToAction": "Tap to select",
+    "from": "From",
+    "to": "To",
+    "note": "Note",
+    "noData": "No Data",
+    "noDataDescription": "No data available to display.",
+    "noMatchingData": "No Matching Data",
+    "noMatchingDescription": "No data matches your search criteria. Try different keywords.",
+    "pullToRefresh": "Pull down to refresh",
+    "releaseToRefresh": "Release to refresh",
+    "refreshing": "Refreshing...",
+    "loadingMore": "Loading more...",
+    "allLoaded": "All {count} items loaded",
+    "columns": {
+      "payeeName": "Payee Name",
+      "fromAccount": "From Account",
+      "toAccount": "To Account",
+      "amount": "Amount",
+      "remarks": "Remarks",
+      "status": "Status",
+      "source": "Source",
+      "actions": "Actions",
+      "name": "Name",
+      "date": "Date"
+    },
+    "status": {
+      "pending": "Pending",
+      "completed": "Completed",
+      "failed": "Failed"
+    },
+    "pagination": {
+      "total": "Total",
+      "records": "records",
+      "rowsPerPage": "Rows per page",
+      "showing": "Showing",
+      "of": "of",
+      "items": "items",
+      "page": "page"
+    },
+    "errors": {
+      "loadFailed": "Failed to load data"
+    }
+  },
+  "savedTransactions": {
+    "title": "Saved Transactions",
+    "subtitle": "Quick access to your frequently used transfers",
+    "searchPlaceholder": "Search by name, account, or remarks...",
+    "usePayment": "Use Payment",
+    "noTransactions": "No saved transactions found",
+    "noTransactionsDescription": "Your saved transactions will appear here.",
+    "noMatchingTransactions": "No Matching Transactions",
+    "noMatchingDescription": "Try different keywords.",
+    "errors": {
+      "fetchFailed": "Failed to fetch saved transactions",
+      "invalidResponse": "Invalid response from server"
+    }
+  },
+  "airtime": {
+    "selectService": "Select Service",
+    "airtimeLabel": "Airtime",
+    "airtimeTopUp": "Airtime TopUp",
+    "instantRecharge": "Instant Recharge",
+    "selfRecharge": "Self Recharge",
+    "ownRecharge": "Own",
+    "otherRecharge": "Other",
+    "sections": {
+      "etl": "ETL Airtime",
+      "vcl": "VCL Airtime",
+      "history": "History"
+    },
+    "tiles": {
+      "etlAirtime": "ETL Airtime",
+      "etlAirtimeDesc": "Recharge Your ETL Mobile Number",
+      "vclAirtime": "VCL Airtime",
+      "vclAirtimeDesc": "Recharge Your VCL Mobile Number",
+      "history": "Top-Up History",
+      "historyDesc": "View Your Past Top-Up Transactions"
+    },
+    "tabs": {
+      "own": "Own",
+      "other": "Other",
+      "etlOwn": "ETL Own",
+      "etlOther": "ETL Other",
+      "vclOwn": "VCL Own",
+      "vclOther": "VCL Other",
+      "ariaLabel": "Airtime type"
+    },
+    "steps": {
+      "details": "Details",
+      "confirm": "Confirm",
+      "verify": "Verify",
+      "success": "Success"
+    },
+    "headers": {
+      "confirm": "Confirm Details",
+      "verify": "Verify M-PIN",
+      "complete": "Complete"
+    },
+    "form": {
+      "fromAccount": "Source Account",
+      "selectAccount": "Please Select An Account",
+      "selectAccountPlaceholder": "Select Account",
+      "mobileNumber": "Mobile Number",
+      "enterMobile": "Please Enter Mobile Number",
+      "enterMobilePlaceholder": "Enter Mobile Number",
+      "mobileMinLength": "Mobile Number Must Be At Least 10 digits",
+      "amount": "Amount",
+      "enterAmount": "Please Enter An Amount",
+      "amountPositive": "Amount Must Be Greater Than 0",
+      "submit": "Submit"
+    },
+    "details": {
+      "fromAccount": "From Account",
+      "mobileNumber": "Mobile Number",
+      "provider": "Provider",
+      "transactionType": "Transaction Type",
+      "amount": "Amount"
+    },
+    "confirmation": {
+      "confirmPay": "Confirm & Pay",
+      "cancel": "Cancel",
+      "processing": "Processing..."
+    },
+    "mpin": {
+      "title": "Enter M-PIN",
+      "instruction": "Enter your M-PIN to confirm this payment",
+      "instructionTre":"Enter your M-PIN to confirm",
+      "resend": "Resend M-PIN",
+      "resendIn": "Resend M-PIN in",
+      "verify": "Verify M-PIN"
+    },
+    "otp": {
+      "title": "Enter OTP",
+       "yes": "Yes"
+    },
+    "history": {
+      "title": "TopUp History",
+      "subtitle": "View your recent airtime top-ups",
+      "loading": "Loading history...",
+      "recharge": "TopUp",
+      "showing": "Showing",
+      "transactions": "transactions",
+      "noRecords": "No top-up history found",
+      "noRecordsDesc": "Your top-up history will appear here",
+      "type": "Type",
+      "description": "Description",
+      "mobile": "Mobile No.",
+      "amount": "Amount",
+      "allaccounts": "All Accounts",
+      "records": "Records",
+      "searchtransactions": "Search Transactions...",
+      "filter": {
+        "all": "All",
+        "own": "Own",
+        "other": "Other"
+      },
+      "filterAll": "All",
+      "filterOwn": "Own",
+      "filterOther": "Other"
+    },
+    "success": {
+      "title": "TopUp Successful!",
+      "message": "Your airtime top-up has been processed.",
+      "status": "Success",
+      "transactionId": "Transaction ID",
+      "newTopUp": "New TopUp",
+      "done": "Done",
+      "copied": "Copied!"
+    },
+    "errors": {
+      "errorTitle": "Error",
+      "ok": "OK",
+      "confirmationFailed": "Confirmation failed",
+      "processingFailed": "Failed to process request",
+      "verificationFailed": "Verification failed"
+    }
+  },
+  "proofOfPayment": {
+    "title": "Proof Of Payment",
+    "subtitle": "Search and download your transaction proofs",
+    "quickSecure": "Quick & Secure",
+    "searchTransactions": "Search Transactions",
+    "searchSubtitle": "Enter details to find your transaction proof",
+    "accountNumber": "Account Number",
+    "selectAccount": "Please select an account",
+    "selectAccountPlaceholder": "Select account",
+    "paymentType": "Payment Type",
+    "selectPaymentType": "Please select payment type",
+    "selectTypePlaceholder": "Select type",
+    "startDate": "Start Date",
+    "selectStartDate": "Please select start date",
+    "endDate": "End Date",
+    "selectEndDate": "Please select end date",
+    "proceed": "Search",
+    "account": "Account",
+    "type": "Type",
+    "from": "From",
+    "to": "To",
+    "period": "Period",
+    "searchResults": "Search Results",
+    "found": "found",
+    "noTransactions": "No transactions found",
+    "tryDifferent": "Try a different date range or payment type",
+    "searchAgain": "Search Again",
+    "toLabel": "To:",
+    "ref": "Ref:",
+    "backToSearch": "Back to Search",
+    "backToList": "Back to List",
+    "transactionDetails": "Transaction Details",
+    "transactionAmount": "Transaction Amount",
+    "payerAccount": "Payer Account",
+    "payerName": "Payer Name",
+    "beneficiaryAccount": "Beneficiary Account",
+    "beneficiaryName": "Beneficiary Name",
+    "reference": "Reference",
+    "txnRefNumber": "Txn Ref Number",
+    "searchCriteria": "Search Criteria",
+    "shareProof": "Share Proof",
+    "sendViaSMS": "Send via SMS",
+    "receiveOnPhone": "Receive on your phone",
+    "sendViaEmail": "Send via Email",
+    "receiveInInbox": "Receive in your inbox",
+    "downloadPDF": "Download PDF",
+    "saveLocally": "Save to your device",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "sendViaNotification": "Send via Notification",
+    "enterPhoneNumber": "Enter your phone number",
+    "enterEmailAddress": "Enter your email address",
+    "send": "Send",
+    "sendProof": "Proceed",
+    "cancel": "Cancel",
+    "mobilePlaceholder": "+91 9876543210",
+    "emailPlaceholder": "email@example.com",
+    "sentSuccess": "Sent Successfully!",
+    "phoneHint": "Please enter at least 10 digits",
+    "emailInvalid": "Please enter a valid email",
+    "emailTooShort": "Email address is too short",
+    "clear": "Clear"
+  },
+  "tradeFinance": {
+    "title": "Trade Finance",
+    "creditTitle": "Letter Of Credit",
+    "guaranteeTitle": "Letter Of Guarantee",
+    "creditSubtitle": "Request and manage your letter of credit",
+    "guaranteeSubtitle": "Request and manage your letter of guarantee",
+    "badge": "Trade Finance",
+    "requestButton": "Request LC",
+    "success": "Success",
+    "enterBeneName": "Enter Beneficiary Name",
+    "enterBeneNameAndAdd": "Enter Beneficiary Name & Address",
+    "error": "Error",
+    "beneficiarySection": "Beneficiary Details",
+    "otherSection": "Other Details",
+    "helpText": "All Fields Marked With",
+    "helpTextEnd": "Are Required. Please Ensure All Information Is Accurate Before Submitting.",
+    "fixErrors": "Please Fix Errors In The Highlighted Section(s).",
+    "successMessage": "Letter Of Credit Saved Successfully!",
+    "failedMessage": "Failed To Save Letter Of Credit",
+    "errorMessage": "An Error Occurred While Submitting The Form. Please Try Again.",
+    "beneficiaryName": "Beneficiary Name",
+    "beneNameAndAdd": "Beneficiary Name & Address",
+    "amount": "Amount",
+    "enterAmount": "Enter Amount",
+    "tolerance": "Tolerance (If Any)",
+    "date": "Date",
+    "beneficiaryAddress": "Beneficiary Address",
+    "shipmentDate": "Latest Shipment Date",
+    "expiryOrValidityDate": "Expiry Or Validity Date",
+    "availableAt": "Available At",
+    "tenorAt": "Tenor At",
+    "mixedPaymentTerms": "Mixed Payment Terms",
+    "toRecordOf": "To Record Of",
+    "notifyParty": "Notify Party",
+    "commercialInvoiceType": "Commercial Invoice Type",
+    "proformaInvoiceNo": "As Per Proforma Invoice No",
+    "goodsAreOfOrigin": "Goods Are Of Origin",
+    "portOfDispatch": "Port Of Dispatch/Shipment",
+    "portOfDestination": "Port Of Destination",
+    "importDeclarationFormNumber": "Import Declaration Form Number (IDF)",
+    "shipmentAllowedType": "Shipment Allowed Type",
+    "advisedThroughBank": "Advised Through Bank",
+    "chargesOutsideIndia": "Charges Outside India For",
+    "chargesOutsideGhana": "Charges Outside Ghana For",
+    "debitAccountNumber": "Debit / My Account Number",
+    "confirmationChargesFor": "Confirmation Charges For",
+    "lcToBe": "L/C To Be",
+    "invoiceDate": "Invoice Date",
+    "descriptionOfGoods": "Description Of Goods",
+    "otherConditions": "Other Conditions (Please Specify)",
+    "tolerancePlaceholder": "Enter Tolerance E.g. 5%",
+    "tenorAtPlaceholder": "Enter tenor period E.g. 90",
+    "proformaPlaceholder": "Enter proforma invoice no E.g. PI-2024-001",
+    "goodsOriginPlaceholder": "Enter country of origin",
+    "portOfDispatchPlaceholder": "Enter port of shipment E.g. Mumbai Port",
+    "portOfDestinationPlaceholder": "Enter port of destination E.g. Dubai Port",
+    "descriptionPlaceholder": "Describe the goods in detail",
+    "otherConditionsPlaceholder": "Specify any additional conditions",
+    "beneficiaryAddressPlaceholder": "Enter Full Address",
+    "mixedPaymentTermsPlaceholder": "Enter Payment Terms",
+    "toOrderOfPlaceholder": "Enter Name",
+    "notifyPartyPlaceholder": "Enter Notify Party Name",
+    "idfPlaceholder": "Enter IDF Number",
+    "advisedBankPlaceholder": "Enter Bank Name",
+    "debitAccountPlaceholder": "Enter Account Number (Digits Only)",
+    "placeholder": "Select Available At",
+    "commercialPlaceholder": "Select Commercial Invoice Type",
+    "shipmentPlaceholder": "Select Shipment Allowed Type",
+    "chargesPlaceholder": "Select Charges Outside India For",
+    "confirmPlaceholder": "Select Confirmation Charges For",
+    "ghanaChargesPlaceholder": "Select Charges Outside Ghana For",
+    "lcToBePlaceholder": "Select L/C To Be",
+    "validation": {
+      "required": "This Field Is Required",
+      "namePattern": "Only Letters And Spaces Are Allowed",
+      "nameMinLength": "Name Must Be At Least 2 Characters",
+      "nameMaxLength": "Name Cannot Exceed 100 Characters",
+      "amountMin": "Amount Must Be At Least 1",
+      "amountMax": "Amount Cannot Exceed 999,999,999,999.99",
+      "amountInvalid": "Please Enter A Valid Amount",
+      "amountMaxDigits": "Amount Cannot Exceed 15 Digits (Including Decimals)",
+      "tolerancePattern": "Only Alphanumeric Characters, %, Dot And Spaces Are Allowed",
+      "toleranceMaxLength": "Tolerance Cannot Exceed 20 Characters",
+      "addressMinLength": "Address Must Be At Least 5 Characters",
+      "addressMaxLength": "Address Cannot Exceed 300 Characters",
+      "dateFuture": "Date Must Be Today Or A Future Date",
+      "lettersOnly": "Only Letters And Spaces Are Allowed",
+      "minLength2": "Must Be At Least 2 Characters",
+      "maxLength100": "Cannot Exceed 100 Characters",
+      "tenorPattern": "Only Letters, Numbers And Spaces Are Allowed",
+      "tenorMaxLength": "Tenor Cannot Exceed 50 Characters",
+      "paymentTermsMaxLength": "Payment Terms Cannot Exceed 100 Characters",
+      "alphaNumericDash": "Only Letters, Numbers, - And / Are Allowed",
+      "proformaMaxLength": "Proforma Invoice Number Cannot Exceed 30 Characters",
+      "idfMaxLength": "IDF Number Cannot Exceed 30 Characters",
+      "portPattern": "Only Letters, Numbers, Spaces And Basic Punctuation Are Allowed",
+      "portMaxLength": "Port Name Cannot Exceed 100 Characters",
+      "accountPattern": "Account Number Must Contain Digits Only",
+      "accountMinLength": "Account Number Must Be At Least 8 Digits",
+      "accountMaxLength": "Account Number Cannot Exceed 20 Digits",
+      "invoiceDateMax": "Invoice Date Cannot Be A Future Date",
+      "descriptionMinLength": "Description Must Be At Least 5 Characters",
+      "descriptionMaxLength": "Description Cannot Exceed 500 Characters",
+      "conditionsMinLength": "Conditions Must Be At Least 5 Characters",
+      "conditionsMaxLength": "Conditions Cannot Exceed 500 Characters"
+    }
+  },
+  "treasury": {
+    "title": "Treasury",
+    "subtitle": "Manage inter-account transfers securely",
+    "quickSecure": "Quick & Secure",
+    "badge": "Secure",
+    "tabs": {
+      "own": "To Own Modefin A/c",
+      "other": "To Other Modefin A/c"
+    },
+    "searchTransactions": "Treasury Transfer",
+    "searchSubtitle": "Enter details to initiate your treasury transfer",
+    "fields": {
+      "fromAccount": "Source Account",
+      "toAccount": "Destination Account",
+      "amount": "Amount",
+      "currency": "Currency",
+      "reason": "Reason",
+      "negotiatedRate": "Negotiated Rate",
+      "rateGivenBy": "Rate Given By"
+    },
+    "placeholders": {
+      "selectFromAccount": "Select Source Account",
+      "enterToAccount": "Enter Destination Account",
+      "enterAmount": "Enter Amount",
+      "selectCurrency": "Select Currency",
+      "enterReason": "Purpose of Transfer",
+      "enterNegotiatedRate": "Enter Negotiated Rate",
+      "enterRateGivenBy": "Enter Rate Given By"
+    },
+    "validation": {
+      "selectFromAccount": "Please select a source account",
+      "enterToAccount": "Please enter destination account",
+      "enterAmount": "Please enter an amount",
+      "amountPositive": "Amount must be greater than 0",
+      "selectCurrency": "Please select a currency",
+      "enterReason": "Please enter reason for transfer",
+      "enterNegotiatedRate": "Please enter negotiated rate",
+      "ratePositive": "Rate must be greater than 0",
+      "enterRateGivenBy": "Please enter rate given by",
+      "rateGivenByMax": "Rate Given By must not exceed 50 characters"
+    },
+    "buttons": {
+      "submit": "Submit",
+      "clear": "Clear",
+      "confirm": "Confirm Transfer",
+      "backToEdit": "Back to Edit",
+      "proceed": "Proceed",
+      "newTransfer": "New Transfer",
+      "goToHome": "Go to Home"
+    },
+    "confirm": {
+      "title": "Confirm Transfer",
+      "subtitle": "Please review the transfer details before proceeding",
+      "fromAccount": "Source Account",
+      "toAccount": "Destination Account",
+      "amount": "Amount",
+      "currency": "Currency",
+      "reason": "Reason",
+      "negotiatedRate": "Negotiated Rate",
+      "rateGivenBy": "Rate Given By"
+    },
+    "success": {
+      "title": "Success",
+      "message": "Your treasury transfer has been processed successfully.",
+      "transactionId": "Transaction ID",
+      "newTransfer": "New Transfer"
+    },
+    "errors": {
+      "processFailed": "Failed to process treasury transfer. Please try again.",
+      "connectionError": "Unable to connect to server. Please try again.",
+      "loadFailed": "Failed to load account details."
+    },
+    "steps": {
+      "details": "Details",
+      "confirm": "Confirm",
+      "verify": "Verify"
+    }
+  },
+  "widgets": {
+    "activeWidgets": "Active Widgets",
+    "availableWidgets": "Available Widgets",
+    "unsavedChanges": "Unsaved changes",
+    "noActive": "No active widgets. Add widgets from the available section below.",
+    "allActive": "All widgets are currently active. Remove widgets from the active section to see them here.",
+    "resetChanges": "Reset Changes",
+    "saveChanges": "Save Changes",
+    "saving": "Saving...",
+    "add": "Add",
+    "accountTags": "Account Tags",
+    "quickLinkTags": "Quick Links Tags",
+    "noConfig": "No widget configuration found. Please contact administrator to set up your dashboard widgets.",
+    "noConfigAvailable": "No widget configuration available.",
+    "successTitle": "Success",
+    "failureTitle": "Failure",
+    "unexpectedTitle": "Unexpected Response",
+    "unexpectedMsg": "Received unknown status code from server.",
+    "saveErrorTitle": "Save Error",
+    "saveErrorMsg": "Something went wrong while saving widget settings. Please try again.",
+    "empty": {
+      "title": "No Widgets Available",
+      "description": "Please contact your administrator to set up dashboard widgets."
+    }
+  },
+  "settings": {
+    "tabs": {
+      "widgets": "Widgets",
+      "themes": "Themes & Language",
+      "accounts": "Accounts"
+    }
+  },
+  "themes": {
+  "appearance": "Appearance",
+  "description": "Choose how the app looks to you",
+  "light": "Light",
+  "lightDesc": "Clean & bright",
+  "dark": "Dark",
+  "darkDesc": "Easy on the eyes",
+  "blue": "Blue",
+  "blueDesc": "Professional & calm",
+  "yellow": "Yellow",
+  "yellowDesc": "Warm & energetic",
+  "activeStatus": "theme is currently active",
+  "language": "Language",
+  "languageDesc": "Select your preferred language",
+  "languageActive": "is currently active",
+  "customColor": "Custom Color",
+  "selectedColor": "Selected",
+  "tapApply": "Tap apply to activate",
+  "applyColor": "Apply this color",
+  "custom": "Custom",
+  "autoDarkens":"auto-darkens",
+  "quickPresets":"Quick presets",
+    "appLogo": "App Logo",
+    "logoDesc": "Shown across the entire app",
+    "currentLogo": "Current Logo",
+    "logoHint": "PNG, JPG or SVG · Max 2MB",
+    "resetLogo": "Reset",
+    "uploadLogo": "Upload New Logo"
+  
+},
+  "mSavings": {
+    "open": "Open Account",
+    "view": "View Account",
+    "early": "Early Breaking",
+    "title": "Savings",
+    "subtitle": "Manage your savings accounts",
+    "badge": "Deposits",
+    "openAcc": {
+      "regular": "Regular FD",
+      "cumulative": "Cumulative FD",
+      "nonCumulative": "Non-Cumulative FD",
+      "regularDesc": "Standard fixed deposit",
+      "cumulativeDesc": "Interest compounded",
+      "nonCumulativeDesc": "Periodic payouts",
+      "fdPlan": "FD Plan",
+      "fdType": "FD Type",
+      "interestRate": "Interest Rate",
+      "tenureType": "Tenure Type",
+      "tenurePeriod": "Tenure Period",
+      "compoundingValue": "Compounding Frequency Value",
+      "payoutPeriod": "Payout Period",
+      "compoundingType": "Compounding Frequency Type",
+      "payoutType": "Payout Type",
+      "principalAmount": "Principal Amount",
+      "principalAmountPlace": "Enter Principal Amount",
+      "fdMsgOne": "You are about to open a",
+      "fdMsgTwo": "Fixed Deposit with a principal amount of",
+      "fdMsgThree": "at an interest rate of",
+      "fdMsgFour": "resulting in a maturity amount of",
+      "fdMsgFive": "Please confirm to proceed",
+      "cnfrmFd": "Confirm Fixed Deposit",
+      "openFD": "Open FD Account",
+      "fdSuccess": "Fixed Deposit Created Successfully",
+      "proceed": "Proceed",
+      "enterTenure": "Enter tenure",
+      "withaninterest": "with an interest rate of",
+      "openCnfrm": "Confirm FD Open",
+      "maturityAmount": "Maturity Amount",
+      "open": "Open FD"
+    },
+    "viewAcc": {
+      "regular": "Regular",
+      "cumulative": "Cumulative",
+      "nonCumulative": "Non-Cumulative",
+      "noFdAcc": "No FD accounts found",
+      "SelectPlace": "Select By FD Type"
+    },
+    "earlyBrk": {
+      "fdFailed": "FD Closure Failed",
+      "accNotFound": "Account not Found",
+      "unableProcess": "Unable to fetch FD details. Please try again.",
+      "fdCloseSuc": "FD Closed Successfully",
+      "fdCloseMsg": "Your Fixed Deposit has been successfully closed and the amount will be credited shortly.",
+      "unableToProcess": "Unable to close the Fixed Deposit. Please try again later.",
+      "title": "Fixed Deposit Accounts",
+      "closeFD": "Close FD",
+      "depositAmount": "Deposit Amount",
+      "applyDate": "Apply Date",
+      "fdClosingDate": "FD Closing Date",
+      "closingAmount": "Closing Amount",
+      "youareabout": "You are about to close the",
+      "fixedDeposit.": "Fixed Deposit.",
+      "cnfmClose": "Confirm FD Closure"
+    }
+  },
+  "requestMoney": {
+    "title": "Request Money",
+    "viewReq": "View Requests",
+    "subTitle": "Requests sent to you",
+    "headerTitle": "Send and manage money requests",
+    "badge": "Payments",
+    "reqView": {
+      "MPIN": "Enter M-PIN",
+      "OTP": "Enter OTP",
+      "mpin": "Enter your M-PIN to confirm this request",
+      "otp": "Enter the OTP sent to your registered number to confirm this request",
+      "noMoney": "No money requests",
+      "desc": "You don’t have any money requests.",
+      "searchText": "Search requests...",
+      "confirm": "Confirm Request",
+      "successful": "Money Request Successful",
+      "failed": "Requesting Sending Failed",
+      "transactionStatus": "Transaction Status"
+    },
+    "table": {
+      "name": "Name",
+      "referenceId": "Ref ID",
+      "amount": "Amount",
+      "requestStatus": "Request Status",
+      "date": "Date",
+      "status": "Status",
+      "requestTo": "Request To",
+      "requestFrom": "Request From"
+    }
+  },
+  "cardless": {
+    "own": "Cardless Withdrawal Own",
+    "other": "Cardless Withdrawal Other",
+    "sourceAccount": "Source Account",
+    "withdrawLocation": "Withdraw Location",
+    "atm": "ATM",
+    "agent": "Agent",
+    "badge": "Cash Services",
+    "title": "Cardless Withdrawal",
+    "subtitle": "Withdraw cash without your debit card",
+    "withdrwal": "Withdrawal Successful",
+    "withdrawFailed": "Withdrawal Failed",
+    "withdrawError": "Unable to process withdrawal. Please try again."
+  },
+  "dashboardLoan": {
+    "title": "Loans",
+    "columns": {
+      "loanNumber": "Loan Number",
+      "type": "Loan Type",
+      "loanAmount": "Loan Amount"
+    },
+    "noData": "No loan accounts available"
+  },
+  "confirmStep": {
+    "title": "Confirm Details",
+    "description": "Please Review the Details Before Proceeding",
+    "transfer": "Transfer",
+    "from": "From",
+    "onceOffTransfer": "Once-Off Transfer"
+  },
+  "session": {
+    "expired": "Session Expired",
+    "description": "Manage your session settings",
+    "timeout": "Session Timeout",
+    "keepAlive": "Keep Session Alive",
+    "redirecting": "Redirecting to login in {{seconds}} second",
+    "redirectingPlural": "Redirecting to login in {{seconds}} seconds",
+    "loginNow": "Login Again"
+  },
+  "contactus": {
+    "email": "Email Us",
+    "call": "Call Us",
+    "errorTitle": "Contact Us Error",
+    "errorMessage": "An error occurred while fetching contact information."
+  },
+  "map": {
+    "loadingMap": "Loading map...",
+    "search": "Search",
+    "nearbyPlaces": "Nearby places",
+    "noPlaces": "No places found",
+    "address": "Address",
+    "type": "Type",
+    "workingHours": "Working Hours",
+    "km": "KM"
+  },
+  "offers": {
+    "loading": "Loading offers...",
+    "noOffers": "No offers available",
+    "expired": "Expired",
+    "title": "Features/Offers"
+  },
+  "security": {
+    "title": "Add Security Question",
+    "answerPlaceholder": "Enter your answer",
+    "answerRequired": "Answer is required",
+    "successTitle": "Success",
+    "successMessage": "Security questions saved successfully.",
+    "failureMessage": "Unable to save security questions."
+  },
+  "screen": {
+    "contactUs": "Contact Us",
+    "help": "Help",
+    "offers": "Offers",
+    "locateUs": "Locate Us",
+    "feedback": "Feedback",
+    "faq": "FAQ"
+  },
+  "QR": {
+    "download": "QR code Downloaded successfully",
+    "title": "QR Downloaded",
+    "error": "Failed to download QR code image"
+  },
+  "offerBanner": {
+    "instantCredit": "Get instant credit anytime, anywhere.",
+    "sendMoney": "Send money within seconds, anytime, anywhere.",
+    "zeroFees": "No transfer fees for the first 5 transactions this month.",
+    "intlTransfer": "International transfers now at reduced fees.",
+    "featured": "✨ Featured",
+    "new": "🚀 New",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More"
+  },
+  "BottomNav": {
+    "home": "Home",
+    "accounts": "Accounts",
+    "scan": "Scan",
+    "history": "History",
+    "profile": "Profile"
+  },
+  "ProductsServices": {
+    "ourProducts": "Our Products",
+    "paymentServices": "Payment Services",
+    "mLoans": "M-Loans",
+    "mSavings": "M-Savings",
+    "cards": "Cards",
+    "cardless": "Cardless",
+    "proofOfPayments": "Proof of Payments",
+    "requestMoney": "Request Money",
+    "loyaltyPoints": "Loyalty Points",
+    "Scan": "Miracle IB"
+  },
+  "editProfile": {
+    "editProfile": "Edit Profile",
+    "securityQuestions": "Security Questions",
+    "changeMpin": "Change M-PIN",
+    "welcome": "Welcome to Miracle Banking",
+    "holdBalance": "Hold Balance",
+    "loyaltyPoints": "Loyalty Points",
+    "userName": "User Name",
+    "mobileNumber": "Mobile Number",
+    "emailId": "Email ID",
+    "update": "UPDATE",
+    "updateMpin": "UPDATE M-PIN",
+    "currentMpin": "Current M-PIN",
+    "newMpin": "New M-PIN",
+    "confirmMpin": "Confirm M-PIN",
+    "selectQuestion": "Select {{order}} Security Question",
+    "enterAnswer": "Enter your answer",
+    "proceed": "PROCEED",
+    "selectQuestionError": "Please select a question",
+    "answerRequired": "Answer is required",
+    "validationError": "Please answer all security questions before proceeding.",
+    "profilePhoto": "Profile Photo",
+    "chooseGallery": "Choose from Gallery",
+    "galleryDesc": "Select a photo from your library",
+    "takePhoto": "Take a Photo",
+    "cameraDesc": "Use your camera to capture",
+    "removePhoto": "Remove Photo",
+    "removePhotoDesc": "Delete your profile picture",
+    "success": "Success",
+    "failure": "Failure",
+    "profileUpdated": "Profile Updated Successfully.",
+    "mpinChanged": "M-PIN changed.",
+    "closeSession": "Close Session",
+    "logoutMessage": "Thank you for Using Miracle Banking. You have successfully Logged out.",
+    "logout": "Logout",
+    "ok": "OK",
+    "permissionDenied": "Permission Denied",
+    "galleryError": "Unable to select photo. Please try again.",
+    "somethingWrong": "Something went wrong. Please try again.",
+    "error": "Error"
+  },
+  "accountSettings": {
+    "title": "Accounts Settings",
+    "ib": {
+      "title": "Internet Banking (IB)",
+      "description": "Enable or disable Internet Banking access",
+      "success": "Internet Banking updated successfully.",
+      "failure": "Unable to update IB settings."
+    },
+    "biometric": {
+      "title": "Biometric Login",
+      "description": "By enabling Fingerprint Login, your device's biometric data will be used to sign in to the Miracle app. Your phone must support fingerprint authentication.",
+      "terms": "I agree to above Terms & Conditions",
+      "unavailable": "Face ID / Fingerprint is not available on this device.",
+      "authReason": "Authenticate to update biometric settings",
+      "cancel": "Cancel",
+      "fallback": "Use Passcode",
+      "failure": "Biometric authentication failed or was cancelled.",
+      "enableSuccess": "Fingerprint Authentication enabled successfully",
+      "updateSuccess": "Fingerprint Authentication updated successfully",
+      "termsError": "Please accept the terms and conditions to enable fingerprint authentication."
+    },
+    "notification": {
+      "title": "Enable/Disable Audio Notifications",
+      "description": "By enabling, you will receive voice alert in your phone after the receipt of QR Payment. The receipt of voice alert will depend on your device's internet connection and the notification volume.",
+      "success": "Audio Notifications updated successfully.",
+      "failure": "Unable to update Audio Notifications."
+    },
+    "common": {
+      "success": "Success",
+      "failure": "Failure",
+      "error": "Error",
+      "save": "Save",
+      "ok": "OK",
+      "somethingWrong": "Something went wrong. Please try again."
+    }
+  },
+  "onceOffBillPayment": {
+    "title": "Once-Off Bill Payment",
+    "subtitle": "Pay any bill instantly without saving biller details",
+    "badge": "Quick Pay",
+    "noBillersAvailable": "No billers available",
+    "noAccountsAvailable": "No accounts available",
+    "steps": {
+      "details": "Details",
+      "review": "Review",
+      "complete": "Complete"
+    },
+    "stepTitles": {
+      "paymentDetails": "Once-Off Payment Details",
+      "reviewConfirm": "Review & Confirm",
+      "complete": "Complete"
+
+    },
+    "fields": {
+      "sourceAccount": "Source Account",
+      "availableBalance": "Available Balance",
+      "category": "Category",
+      "biller": "Biller",
+      "customerName": "Customer Name",
+      "amount": "Amount",
+      "paymentLimit": "Payment Limit",
+      "remarks": "Remarks",
+      "name":"Name"
+    },
+    "placeholders": {
+      "selectAccount": "Select source account",
+      "selectCategory": "Select a Category",
+      "selectBiller": "Select a Biller",
+      "enterCustomerName": "Enter Customer Name",
+      "enterAmount": "Enter Amount",
+      "enterRemarks": "Enter Remarks",
+      "enter": "Enter",
+      "select": "Select"
+    },
+    "validation": {
+      "selectAccount": "Please select a source account",
+      "selectCategory": "Please select a Category",
+      "selectBiller": "Please select a Biller",
+      "enterAmount": "Please enter an amount",
+      "invalidAmount": "Please enter a valid Amount",
+      "minAmount": "Minimum amount is",
+      "maxAmount": "Maximum amount is",
+      "insufficientBalance": "Insufficient Balance",
+      "enterCustomerName": "Please enter customer name",
+      "isRequired": "is required",
+      "minimum": "Minimum",
+      "maximum": "Maximum",
+      "charactersRequired": "characters required",
+      "charactersAllowed": "characters allowed",
+      "mustBeNumber": "must be a number"
+    },
+    "errors": {
+      "loadFailed": "Failed to load biller data. Please try again.",
+      "processFailed": "Failed to process request. Please try again.",
+      "resendFailed": "Failed to resend. Please try again.",
+      "connectionError": "Unable to connect to server. Please try again."
+    },
+    "buttons": {
+      "continue": "Continue",
+      "backToEdit": "Back to Edit",
+      "confirmPay": "Confirm & Pay"
+    },
+    "pinModal": {
+      "confirmMessage": "Enter your",
+      "toConfirm": "to confirm this payment"
+    },
+    "review": {
+      "pleaseReview": "Please review the details",
+      "clickConfirm": "Click \"Confirm & Pay\" to proceed. You will need to enter your",
+      "toComplete": "to complete the payment."
+    },
+    "success": {
+      "title": "Payment Successful!",
+      "message": "Your bill payment has been processed successfully.",
+      "payAnother": "Pay Another Bill",
+      "done": "OK",
+      "detailsTitle": "Bill Payment Details"
+ 
+    }
+  },
+   "qrPayment": {
+      "form": {
+        "title": "Payment Form",
+        "name": "Name",
+        "email": "Email",
+        "mobile": "Mobile number",
+        "amount": "Amount",
+        "remarks": "Remarks",
+        "processing": "Processing...",
+        "pay": "Pay"
+      },
+      "validation": {
+        "name": "Please enter your name (min 2 characters).",
+        "emailRequired": "Email is required.",
+        "emailInvalid": "Enter valid email.",
+        "mobileRequired": "Mobile required.",
+        "mobileInvalid": "Enter valid mobile number.",
+        "amountRequired": "Amount required.",
+        "amountInvalid": "Enter valid amount.",
+        "remarksRequired": "Remarks is required."
+      },
+      "mpin": {
+        "defaultMessage": "Enter your MPIN and confirm the QR payment",
+        "verifyTitle": "Verify",
+        "verifyButton": "Verify M-PIN",
+        "invalidTitle": "Invalid MPIN",
+        "invalidMessage": "Please enter a valid 5-digit MPIN.",
+        "lengthError": "Mpin Length must be exactly 5 digits"
+      },
+      "camera": {
+        "permissionTitle": "Camera Permission Required",
+        "permissionMessage": "Kindly approve Camera Permissions to do QR Payment",
+        "readyMessage": "Ready to scan QR — point camera to QR code",
+        "noQRFound": "No QR found",
+        "parseError": "Unable to parse QR content",
+        "deniedLabel": "User denied camera access",
+        "deniedInstructions": "Please enable camera permission to scan QR codes in app settings.",
+         "invalidQrTitle": "Invalid QR Code",
+         "invalidQrMessage": "This QR code isn't a valid payment QR. Please scan a valid QR code and try again."
+      },
+      "success": {
+        "title": "QR Payment is Successful",
+        "loginTitle": "QR Code Activated",
+        "message": "Your QR payment has been completed successfully."
+      },
+      "errors": {
+        "transactionFailed": "Transaction failed",
+        "transactionFailedTitle": "Transaction Failed",
+        "failureTitle": "Failure"
+      },
+      "actions": {
+        "retry": "Retry",
+        "ok": "OK",
+        "goToDashboard": "Go To Dashboard"
+      },
+      "appLoader": {
+      "loading": "Loading...",
+      "loadingAlt": "Loading..."
+    }
+   
+    },
+    "otpModal": {
+    "oneTimePassword": "ONE-TIME PASSWORD",
+    "expiresIn": "Expires in",
+    "expired": "Expired",
+    "active": "Active"
+  },
+  "appcode": {
+    "modalTitle": "Validate Your Access",
+    "modalSubtitle": "Enter your 5 digit M-Pin"
+  },
+
+  "notifications": {
+  "inbox": "Inbox",
+  "rewards": "Rewards",
+  "emptyInbox": "No messages yet",
+  "emptyRewards": "No Rewards Yet",
+  "emptyDefault": "No notifications found",
+  "refLabel": "Ref:",
+  "services": {
+    "chequeBook": "Cheque Book",
+    "cardReissue": "Card Reissue",
+    "cardBlocked": "Card Blocked"
+  },
+  "time": {
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "daysAgo": "{days}d ago",
+    "monthsAgo": "{months}mo ago"
+  },
+  "errors": {
+    "unrecognizedShape": "Unrecognized notifications response shape",
+    "statusCode": "Notifications API returned statusCode {code}",
+    "missingMessage": "Missing or unparsable Message payload",
+    "loadFailed": "Failed to load notifications"
+  }
+},
+"feedback": {
+  "imageAlt": "Feedback",
+  "selectService": "Select Service",
+  "enterFeedback": "Enter Feedback / Complaint",
+  "proceed": "PROCEED",
+  "errors": {
+    "selectionRequired": "Selection Required",
+    "selectService": "Please select a service",
+    "enterFeedback": "Please enter feedback",
+    "submissionFailed": "Submission Failed",
+    "submitDefault": "Unable to submit feedback. Please try again.",
+    "generic": "Error",
+    "genericMessage": "Something went wrong. Please try again later.",
+    "fetchFailed": "Failed",
+    "fetchDefault": "An error occurred."
+  },
+  "success": {
+    "title": "Thank You",
+    "message": "Your feedback has been submitted successfully."
+  }
+
+},
+
+  "pictograph": {
+    "loading": "Loading chart data...",
+    "errorLoad": "Unable to load chart data. Please try again.",
+    "errorFailed": "Failed to load chart data.",
+    "noData": "No data available",
+
+    "tabBar": "Bar Chart",
+    "tabPie": "Pie Chart",
+
+    "debitTransactions": "Debit Transactions",
+    "creditTransactions": "Credit Transactions",
+
+    "amount": "Amount",
+    "count": "Count",
+    "date":"Date",
+    "pinchToZoom":"Pinch To Zoom",
+
+    "categoryNoOfTxns": "Category : No. Of Transactions",
+    "sumOfTxns": "Sum Of Transactions"
+  },
+
+  "serviceRequests": {
+    "title": "Service Requests",
+    "subtitle": "Manage Banking Service Requests Securely",
+    "sections": {
+      "requests": "Service Requests"
+    },
+    "tiles": {
+      "chequeBookRequest": "Cheque Book Request",
+      "chequeBookRequestDesc": "Request a New Cheque Book",
+
+      "blockAtmCard": "Block ATM Card",
+      "blockAtmCardDesc": "Block Lost or Stolen ATM Card",
+
+      "reissueAtmCard": "Reissue ATM Card",
+      "reissueAtmCardDesc": "Replace Existing ATM Card"
+    },
+    "chequeBook": {
+      "title": "Cheque Book Request",
+      "subtitle": "Request A New Cheque Book Securely",
+      "detailsTitle": "Cheque Book Request Details"
+    },
+    "blockATMCard": {
+      "title": "Block ATM Card",
+      "subtitle": "Block Your ATM Card Securely",
+      "detailsTitle": "Block ATM Card Details",
+      "step1": "Details",
+      "step2": "Confirm",
+      "step3": "Result"
+    },
+    "reissueATMCard": {
+      "title": "Reissue ATM Card",
+      "subtitle": "Request A Replacement ATM Card",
+      "detailsTitle": "Reissue ATM Card Details",
+      "step1": "Details",
+      "step2": "Confirm",
+      "step3": "Result"
+    },
+    "cardTypes": {
+      "visaDomestic": "Visa Domestic Debit Card",
+      "visaInternational": "Visa International Debit Card"
+    },
+
+    "form": {
+      "sourceAccount": "Source Account",
+      "cardName": "Debit Card Name",
+      "cardType": "Card Type",
+      "addressType": "Address Type",
+      "debitCardNumber": "Debit Card Number",
+      "blockReason": "Reason For Blocking Card",
+      "presentAddress": "Present Address",
+      "addAddress": "Add New Address",
+      "addressDetails": "Enter Address Details"
+    },
+
+    "reasons": {
+      "damage": "Damage",
+      "lost": "Lost",
+      "stolen": "Stolen",
+      "stolenAtBankATM": "Stolen At Bank ATM"
+    },
+    "placeholder": {
+      "sourceAccount": "Select Source Account",
+      "debitcardNumber": "Enter Your Debit Card Number",
+      "debitcardName": "Enter Your Debit Card Name",
+      "cardType": "Select Card Type",
+      "blockReason": "Select Reason For Blocking Card",
+      "presentAddress": "Present Address",
+      "addAddress": "Add New Address",
+      "addressDetails": "Enter Address Details",
+      "addressType": "Select Address Type"
+    },
+    "validation": {
+      "addressMinLength": "Address Details must be at least 10 characters.",
+      "addressMaxLength": "Address Cannot Exceed 50 Characters",
+      "addressReq": "Address is required",
+      "cardNameValidation": "Debit Card Name must only contain letters and spaces, and cannot exceed 30 characters.",
+      "cardNumberValidation": "Debit Card Number must be 16 digits.",
+      "debitCardNumberReq": "Debit Card Number is required"
+    }
+  },
+ 
+  "addMoney": {
+    "title": "Add Money",
+    "proceed": "Proceed",
+    "amountToAdd": "Amount To Add",
+    "amountPlaceholder": "Enter Amount",
+    "amountInvalid": "Enter A Valid Amount",
+    "nameOnCard": "Name On Card",
+    "namePlaceholder": "As Printed On Card",
+    "cardNumber": "Card Number",
+    "cardInvalid": "Enter A Valid 16-Digit Card Number",
+    "expiryMonth": "Expiry Month",
+    "monthInvalid": "MM",
+    "expiryYear": "Expiry Year",
+    "yearInvalid": "YYYY",
+    "enterCvv": "Enter CVV",
+    "cvvInvalid": "Enter A Valid 3-Digit CVV",
+    "cvvNote": "We Never Store Your CVV.",
+    "detailsFailed": "Couldn't Verify Card Details. Please Try Again.",
+    "cvvFailed": "Incorrect CVV. Please Try Again.",
+    "otpFailed": "Incorrect OTP. Please Try Again.",
+    "requestFailed": "Something Went Wrong. Please Try Again.",
+    "successTitle": "Money Added Successfully",
+    "successMsg": "Has Been Added To Your Wallet.",
+    "verifyTitle": "Verify OTP",
+    "verifySub": "Enter The OTP Sent To Your Registered Email To Confirm This Transaction.",
+    "adding": "Adding To Wallet",
+    "stageAmount": "Amount",
+    "stageVerify": "Verify Card",
+    "stageConfirm": "Confirm",
+    "card": "CARD",
+    "yourName": "YOUR NAME",
+    "expMonthShort": "MM",
+    "expYearShort": "YYYY"
+  }
+
+
+}

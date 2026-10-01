@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  SafeAreaView,
   View,
   ScrollView,
   KeyboardAvoidingView,
@@ -9,6 +8,7 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTheme } from '../theme/ThemeProvider';
 
 interface MFScreenWrapperProps {

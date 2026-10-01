@@ -1,74 +1,111 @@
-import axios, { AxiosInstance } from 'axios';
-import { authManager } from '../core/auth/AuthManager'
-import { logger } from '../core/logging/MFLogger';
-
-const TAG = 'ApiClient';
-
-interface ApiClientConfig {
-  baseURL:    string;
-  apiVersion: string;
-  bankCode:   string;
-}
-
-let _client: AxiosInstance;
-
-export function createApiClient(config: ApiClientConfig): AxiosInstance {
-  _client = axios.create({
-    baseURL:  `${config.baseURL}/${config.apiVersion}`,
-    timeout:  30_000,
-    headers: {
-      'Content-Type':  'application/json',
-      'Accept':        'application/json',
-      'X-Platform':    'mobile',
-      'X-Bank-Code':   config.bankCode,
-    },
-  });
-
-  // ── Request — inject JWT + request ID ────────────────────────────────────
-  _client.interceptors.request.use(async (req) => {
-    const tokens = await authManager.getTokens();
-    if (tokens?.accessToken) {
-      req.headers.Authorization = `Bearer ${tokens.accessToken}`;
+import axios from 'axios';
+import { store } from '../store/store';
+import { hideLoader, showLoader } from '../slices/LoaderSlice';
+import {
+  showMiracleError,
+  showMiracleSession,
+  triggerCloseAllModals,
+} from '../slices/MiracleGlobalModalSlice';
+import Config from 'react-native-config';
+ 
+const BASE_URL = Config.BASE_URL;
+ 
+export const axiosInstance = axios.create({
+  baseURL: "https://miraclebanking.com:9087/mfmbs/mbintf/ina/processapirequest.jsp",
+  headers: { 'Content-Type': 'application/json' },
+  responseType: 'text',
+});
+// const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+const delay = '';
+const HIDE_DELAY = 800;
+ 
+axiosInstance.interceptors.request.use((config) => {
+  store.dispatch(showLoader());
+     const sessionId = ""
+  // const sessionId = store.getState().session.sessionId;
+ 
+  if (config.data && typeof config.data === 'object' && sessionId) {
+    if (!config.data.ReqSessionID) {
+      config.data = { ...config.data, ReqSessionID: sessionId };
     }
-    req.headers['X-Request-ID'] = Math.random().toString(36).slice(2, 10);
-    req.headers['X-Timestamp']  = Date.now().toString();
-    logger.debug(TAG, `→ ${req.method?.toUpperCase()} ${req.url}`);
-    return req;
-  });
-
-  // ── Response — auto token refresh on 401 ─────────────────────────────────
-  _client.interceptors.response.use(
-    (res) => {
-      logger.debug(TAG, `← ${res.status} ${res.config.url}`);
-      return res;
-    },
-    async (error) => {
-      const original = error.config;
-      logger.error(TAG, `← ${error.response?.status} ${original?.url}`, { msg: error.message });
-
-      if (error.response?.status === 401 && !original._retry) {
-        original._retry = true;
-        try {
-          const tokens = await authManager.getTokens();
-          if (tokens?.refreshToken) {
-            // TODO: call your refresh endpoint
-            // const fresh = await refreshTokens(tokens.refreshToken);
-            // await authManager.saveTokens(fresh);
-            // original.headers.Authorization = `Bearer ${fresh.accessToken}`;
-            // return _client(original);
-          }
-        } catch {
-          await authManager.clearTokens();
-        }
+  }
+ 
+  return config;
+});
+ axiosInstance.interceptors.response.use(
+  async (response) => {
+    // await delay(HIDE_DELAY);
+    store.dispatch(hideLoader());
+ 
+    let parsedData: any;
+    try { 
+      parsedData =
+        typeof response.data === 'string'
+          ? JSON.parse(response.data)
+          : response.data;
+    } catch (e) {
+      store.dispatch(
+        showMiracleError({
+          title: 'Response Error',
+          message: 'Invalid response format from server.',
+        })
+      );
+      return Promise.reject(e);
+    }
+ 
+    if (
+      parsedData?.statuscodep === '98' ||
+      parsedData?.statusCode === '98'
+    ) {
+      const resultMessage = (parsedData?.ResultMessage ?? '').trim();
+ 
+      if (resultMessage === 'Session Timed Out') {
+        store.dispatch(triggerCloseAllModals());
+        store.dispatch(showMiracleSession({ message: resultMessage }));
+        return Promise.reject({ __handled: true });
       }
-      return Promise.reject(error);
-    },
-  );
-
-  return _client;
-}
-
-export function getApiClient(): AxiosInstance {
-  if (!_client) throw new Error('API client not initialized. Call createApiClient() in bootstrap.');
-  return _client;
-}
+ 
+      return parsedData;
+    }
+ 
+    
+    const rm = parsedData?.ResultMessage;
+    if (rm && typeof rm === 'string') {
+      const trimmed = rm.trim();
+ 
+      if (!trimmed.startsWith('{') && !trimmed.startsWith('[')) {
+        parsedData = {
+          ...parsedData,
+          ResultMessage: JSON.stringify({
+            Status: '01',
+            Message: trimmed,
+          }),
+        };
+      }
+    }
+ 
+    return parsedData;
+  },
+   async (error) => {
+    // await delay(HIDE_DELAY);
+    store.dispatch(hideLoader());
+ 
+    const isNetworkError =
+      error?.message === 'Failed to fetch' ||
+      error?.code === 'ECONNABORTED' ||
+      error?.name === 'TypeError'
+ 
+    store.dispatch(
+      showMiracleError({
+        title: isNetworkError ? 'Network Error' : 'Error',
+        message: isNetworkError
+          ? 'Please check your internet connection and try again.'
+          : 'Something went wrong. Please try again later.',
+      })
+    );
+ 
+    return Promise.reject({ __handled: true });
+  }
+);
+ 
+export default axiosInstance;

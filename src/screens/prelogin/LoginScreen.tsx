@@ -1,10 +1,10 @@
-import React, { useMemo, useState } from 'react';
+import React, { useState } from 'react';
+
 import {
   KeyboardAvoidingView,
   Modal,
   Platform,
   Pressable,
-  SafeAreaView,
   ScrollView,
   StyleSheet,
   Text,
@@ -12,334 +12,566 @@ import {
   View,
 } from 'react-native';
 
-import {
-  Building2,
-  ChevronDown,
-  ChevronRight,
-  Eye,
-  EyeOff,
-  Globe,
-  Keyboard,
-  Lock,
-  Menu,
-  Phone,
-} from '../../ui-kit/components/icons/MFIcons';
-// ../ui-kit/components/icons/MFIcons';
+import Svg, {
+  Circle,
+  Path,
+  Rect,
+} from 'react-native-svg';
+import { SafeAreaView } from 'react-native-safe-area-context';
+/* =========================================================
+   TYPES
+========================================================= */
 
-interface Country {
-  code: string;
+type Country = {
   name: string;
-}
+  code: string;
+};
 
-interface MFLoginScreenProps {
-  onLogin?: (countryCode: string, mobileNumber: string, mpin: string) => void;
-  onNotYou?: () => void;
-  onForgotMPIN?: () => void;
-  onOpenAccount?: () => void;
-  onMenuPress?: () => void;
-}
+type MenuItemProps = {
+  icon: React.ReactNode;
+  iconBackground: string;
+  title: string;
+  description: string;
+  onPress?: () => void;
+};
 
-const COUNTRY_CODES: Country[] = [
-  { code: '+91', name: 'India' },
-  { code: '+971', name: 'United Arab Emirates' },
-  { code: '+966', name: 'Saudi Arabia' },
-  { code: '+974', name: 'Qatar' },
-  { code: '+968', name: 'Oman' },
-  { code: '+965', name: 'Kuwait' },
-  { code: '+973', name: 'Bahrain' },
-];
+/* =========================================================
+   MAIN LOGIN SCREEN
+========================================================= */
 
-const MAX_MPIN_LENGTH = 5;
+const MFLoginScreen = () => {
+  /* -----------------------------
+     Login State
+  ----------------------------- */
 
-const MFLoginScreen = ({
-  onLogin,
-  onNotYou,
-  onForgotMPIN,
-  onOpenAccount,
-  onMenuPress,
-}: MFLoginScreenProps) => {
   const [countryCode, setCountryCode] = useState('');
-  const [mobileNumber, setMobileNumber] = useState('');
+  const [countryName, setCountryName] = useState('');
+
+  const [mobileNumber, setMobileNumber] =
+    useState('');
+
   const [mpin, setMpin] = useState('');
 
-  const [showMPIN, setShowMPIN] = useState(false);
-  const [showCountryPicker, setShowCountryPicker] = useState(false);
-  const [showLanguagePicker, setShowLanguagePicker] = useState(false);
+  const [showPassword, setShowPassword] =
+    useState(false);
 
-  const [language, setLanguage] = useState('English');
+  /* -----------------------------
+     Dropdowns
+  ----------------------------- */
 
-  const isLoginEnabled = useMemo(() => {
-    return (
-      countryCode.trim().length > 0 &&
-      mobileNumber.trim().length >= 10 &&
-      mpin.trim().length === MAX_MPIN_LENGTH
-    );
-  }, [countryCode, mobileNumber, mpin]);
+  const [showCountryMenu, setShowCountryMenu] =
+    useState(false);
 
-  const handleMobileChange = (value: string) => {
-    const numericValue = value.replace(/\D/g, '');
-    setMobileNumber(numericValue);
+  const [showLanguageMenu, setShowLanguageMenu] =
+    useState(false);
+
+  /* -----------------------------
+     Bottom Sheet
+  ----------------------------- */
+
+  const [showMenuSheet, setShowMenuSheet] =
+    useState(false);
+
+  /* -----------------------------
+     Language
+  ----------------------------- */
+
+  const [language, setLanguage] =
+    useState<'en' | 'ar'>('en');
+
+  /* -----------------------------
+     Countries
+  ----------------------------- */
+
+  const countries: Country[] = [
+    {
+      name: 'India',
+      code: '+91',
+    },
+    {
+      name: 'UAE',
+      code: '+971',
+    },
+    {
+      name: 'Saudi Arabia',
+      code: '+966',
+    },
+    {
+      name: 'Qatar',
+      code: '+974',
+    },
+  ];
+
+  /* -----------------------------
+     Select Country
+  ----------------------------- */
+
+  const selectCountry = (
+    country: Country,
+  ) => {
+    setCountryCode(country.code);
+    setCountryName(country.name);
+    setShowCountryMenu(false);
   };
 
-  const handleMPINChange = (value: string) => {
-    const numericValue = value
-      .replace(/\D/g, '')
-      .slice(0, MAX_MPIN_LENGTH);
+  /* -----------------------------
+     Clear / Cancel
+  ----------------------------- */
 
-    setMpin(numericValue);
+  const handleCancel = () => {
+    setCountryCode('');
+    setCountryName('');
+    setMobileNumber('');
+    setMpin('');
   };
+
+  /* -----------------------------
+     Login
+  ----------------------------- */
 
   const handleLogin = () => {
-    if (!isLoginEnabled) {
-      return;
-    }
+    console.log('Login');
 
-    onLogin?.(countryCode, mobileNumber, mpin);
+    console.log({
+      countryCode,
+      countryName,
+      mobileNumber,
+      mpin,
+    });
   };
 
-  const selectCountry = (country: Country) => {
-    setCountryCode(country.code);
-    setShowCountryPicker(false);
+  /* -----------------------------
+     Language
+  ----------------------------- */
+
+  const changeLanguage = (
+    value: 'en' | 'ar',
+  ) => {
+    setLanguage(value);
+    setShowLanguageMenu(false);
   };
 
   return (
-    <View style={styles.safeArea}>
+    <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
-        style={styles.container}
-        behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+        style={styles.flex}
+        behavior={
+          Platform.OS === 'ios'
+            ? 'padding'
+            : undefined
+        }
       >
-        {/* =========================================================
+        {/* =================================================
             HEADER
-        ========================================================= */}
+        ================================================= */}
+
         <View style={styles.header}>
-          <Pressable
-            style={styles.menuButton}
-            onPress={onMenuPress}
-            hitSlop={8}
-          >
-            <Menu size={21} color="#FFFFFF" strokeWidth={2} />
-          </Pressable>
+          {/* LEFT */}
 
-          <Text style={styles.headerTitle}>Miracle Banking</Text>
+          <View style={styles.headerLeft}>
+            <Pressable
+              style={styles.menuButton}
+              onPress={() =>
+                setShowMenuSheet(true)
+              }
+            >
+              <MenuIcon
+                width={22}
+                height={22}
+                color="#FFFFFF"
+              />
+            </Pressable>
 
-          <Pressable
-            style={styles.languageButton}
-            onPress={() => setShowLanguagePicker(true)}
-          >
-            <Globe size={14} color="#555555" strokeWidth={2} />
-
-            <Text style={styles.languageText}>
-              {language}
+            <Text style={styles.headerTitle}>
+              Miracle Banking
             </Text>
-
-            <ChevronDown
-              size={14}
-              color="#555555"
-              strokeWidth={2}
-            />
-          </Pressable>
-        </View>
-
-        {/* =========================================================
-            BACKGROUND
-        ========================================================= */}
-        <View style={styles.background}>
-          {/* Decorative banking pattern */}
-          <View pointerEvents="none" style={styles.pattern}>
-            {Array.from({ length: 30 }).map((_, index) => (
-              <View
-                key={index}
-                style={styles.patternItem}
-              >
-                <Building2
-                  size={30}
-                  color="#B9DCDD"
-                  strokeWidth={1.2}
-                />
-              </View>
-            ))}
           </View>
 
-          <ScrollView
-            keyboardShouldPersistTaps="handled"
-            contentContainerStyle={styles.scrollContent}
-            showsVerticalScrollIndicator={false}
-          >
-            {/* =====================================================
-                LOGIN CARD
-            ===================================================== */}
-            <View style={styles.loginCard}>
+          {/* LANGUAGE */}
 
-              {/* Title */}
-              <Text style={styles.loginTitle}>
-                Login
+          <View>
+            <Pressable
+              style={styles.languagePill}
+              onPress={() =>
+                setShowLanguageMenu(
+                  !showLanguageMenu,
+                )
+              }
+            >
+              <GlobeIcon
+                width={14}
+                height={14}
+                color="#374151"
+              />
+
+              <Text
+                style={styles.languageText}
+              >
+                {language === 'ar'
+                  ? 'العربية'
+                  : 'English'}
               </Text>
 
-              {/* ===================================================
+              <ChevronDownIcon
+                width={13}
+                height={13}
+                color="#6B7280"
+              />
+            </Pressable>
+
+            {showLanguageMenu && (
+              <View
+                style={
+                  styles.languageDropdown
+                }
+              >
+                <Pressable
+                  style={
+                    styles.languageOption
+                  }
+                  onPress={() =>
+                    changeLanguage('en')
+                  }
+                >
+                  <Text
+                    style={
+                      styles.languageOptionText
+                    }
+                  >
+                    English
+                  </Text>
+                </Pressable>
+
+                <Pressable
+                  style={
+                    styles.languageOption
+                  }
+                  onPress={() =>
+                    changeLanguage('ar')
+                  }
+                >
+                  <Text
+                    style={
+                      styles.languageOptionText
+                    }
+                  >
+                    العربية
+                  </Text>
+                </Pressable>
+              </View>
+            )}
+          </View>
+        </View>
+
+        {/* =================================================
+            LOGIN BACKGROUND
+        ================================================= */}
+
+        <View style={styles.patternBackground}>
+          <BankPattern />
+
+          <ScrollView
+            contentContainerStyle={
+              styles.loginContent
+            }
+            keyboardShouldPersistTaps="handled"
+            showsVerticalScrollIndicator={
+              false
+            }
+          >
+            {/* =================================================
+                LOGIN CARD
+            ================================================= */}
+
+            <View style={styles.loginCard}>
+              {/* TITLE */}
+
+              <Text style={styles.loginTitle}>
+                Login123
+              </Text>
+
+              {/* =================================================
                   COUNTRY CODE
-              =================================================== */}
-              <View style={styles.fieldContainer}>
+              ================================================= */}
+
+              <View style={styles.field}>
                 <Text style={styles.label}>
                   Country Code
-                  <Text style={styles.required}>*</Text>
+                  <Text
+                    style={styles.required}
+                  >
+                    *
+                  </Text>
                 </Text>
 
                 <Pressable
-                  style={styles.selectInput}
-                  onPress={() => setShowCountryPicker(true)}
+                  onPress={() =>
+                    setShowCountryMenu(
+                      !showCountryMenu,
+                    )
+                  }
+                  style={
+                    styles.inputContainer
+                  }
                 >
                   <Text
                     style={[
                       styles.selectText,
-                      !countryCode && styles.placeholder,
+                      {
+                        color:
+                          countryCode
+                            ? '#374151'
+                            : '#8B95A5',
+                      },
                     ]}
                   >
                     {countryCode
-                      ? COUNTRY_CODES.find(
-                          item => item.code === countryCode,
-                        )?.name || countryCode
+                      ? `${countryCode} ${countryName}`
                       : 'Select Country Code'}
                   </Text>
 
-                  <ChevronDown
-                    size={16}
-                    color="#8C969E"
-                    strokeWidth={1.8}
+                  <ChevronDownIcon
+                    width={14}
+                    height={14}
+                    color="#8B95A5"
                   />
                 </Pressable>
+
+                {showCountryMenu && (
+                  <View
+                    style={
+                      styles.countryDropdown
+                    }
+                  >
+                    {countries.map(
+                      country => (
+                        <Pressable
+                          key={
+                            country.code
+                          }
+                          style={
+                            styles.countryItem
+                          }
+                          onPress={() =>
+                            selectCountry(
+                              country,
+                            )
+                          }
+                        >
+                          <Text
+                            style={
+                              styles.countryName
+                            }
+                          >
+                            {country.name}
+                          </Text>
+
+                          <Text
+                            style={
+                              styles.countryCode
+                            }
+                          >
+                            {country.code}
+                          </Text>
+                        </Pressable>
+                      ),
+                    )}
+                  </View>
+                )}
               </View>
 
-              {/* ===================================================
+              {/* =================================================
                   MOBILE NUMBER
-              =================================================== */}
-              <View style={styles.fieldContainer}>
+              ================================================= */}
+
+              <View style={styles.field}>
                 <Text style={styles.label}>
                   Mobile Number
-                  <Text style={styles.required}>*</Text>
+                  <Text
+                    style={styles.required}
+                  >
+                    *
+                  </Text>
                 </Text>
 
-                <View style={styles.inputWrapper}>
-                  <Phone
-                    size={15}
-                    color="#8D969E"
-                    strokeWidth={1.7}
+                <View
+                  style={
+                    styles.inputContainer
+                  }
+                >
+                  <PhoneIcon
+                    width={15}
+                    height={15}
+                    color="#8B95A5"
                   />
 
                   <TextInput
                     value={mobileNumber}
-                    onChangeText={handleMobileChange}
+                    onChangeText={value =>
+                      setMobileNumber(
+                        value.replace(
+                          /[^0-9]/g,
+                          '',
+                        ),
+                      )
+                    }
                     placeholder="Enter Mobile Number"
-                    placeholderTextColor="#A3ACB5"
-                    keyboardType="phone-pad"
+                    placeholderTextColor="#9AA4B2"
+                    keyboardType="number-pad"
                     maxLength={15}
                     style={styles.textInput}
                   />
                 </View>
               </View>
 
-              {/* ===================================================
+              {/* =================================================
                   MPIN
-              =================================================== */}
-              <View style={styles.fieldContainer}>
+              ================================================= */}
+
+              <View style={styles.field}>
                 <Text style={styles.label}>
                   MPIN
-                  <Text style={styles.required}>*</Text>
+                  <Text
+                    style={styles.required}
+                  >
+                    *
+                  </Text>
                 </Text>
 
-                <View style={styles.inputWrapper}>
-                  <Lock
-                    size={15}
-                    color="#8D969E"
-                    strokeWidth={1.7}
+                <View
+                  style={
+                    styles.inputContainer
+                  }
+                >
+                  <LockIcon
+                    width={15}
+                    height={15}
+                    color="#8B95A5"
                   />
 
                   <TextInput
                     value={mpin}
-                    onChangeText={handleMPINChange}
+                    onChangeText={value =>
+                      setMpin(
+                        value.replace(
+                          /[^0-9]/g,
+                          '',
+                        ),
+                      )
+                    }
                     placeholder="Enter MPIN"
-                    placeholderTextColor="#A3ACB5"
-                    secureTextEntry={!showMPIN}
+                    placeholderTextColor="#9AA4B2"
+                    secureTextEntry={
+                      !showPassword
+                    }
                     keyboardType="number-pad"
-                    maxLength={MAX_MPIN_LENGTH}
+                    maxLength={6}
                     style={styles.textInput}
                   />
 
+                  {/* EYE */}
+
                   <Pressable
-                    onPress={() => setShowMPIN(prev => !prev)}
-                    hitSlop={8}
-                    style={styles.iconButton}
+                    style={
+                      styles.iconButton
+                    }
+                    onPress={() =>
+                      setShowPassword(
+                        !showPassword,
+                      )
+                    }
                   >
-                    {showMPIN ? (
-                      <EyeOff
-                        size={17}
-                        color="#63717A"
+                    {showPassword ? (
+                      <EyeOffIcon
+                        width={16}
+                        height={16}
+                        color="#526174"
                       />
                     ) : (
-                      <Eye
-                        size={17}
-                        color="#63717A"
+                      <EyeIcon
+                        width={16}
+                        height={16}
+                        color="#526174"
                       />
                     )}
                   </Pressable>
 
+                  {/* KEYBOARD */}
+
                   <Pressable
-                    onPress={() => {
-                      // Native keyboard will open when input is focused.
-                    }}
-                    hitSlop={8}
-                    style={styles.iconButton}
+                    style={
+                      styles.iconButton
+                    }
                   >
-                    <Keyboard
-                      size={16}
-                      color="#12B8B0"
+                    <KeyboardIcon
+                      width={16}
+                      height={16}
+                      color="#12B8AF"
                     />
                   </Pressable>
                 </View>
               </View>
 
-              {/* ===================================================
+              {/* =================================================
                   LINKS
-              =================================================== */}
-              <View style={styles.linkRow}>
-                <Pressable onPress={onNotYou}>
-                  <Text style={styles.link}>
+              ================================================= */}
+
+              <View
+                style={styles.loginLinks}
+              >
+                <Pressable>
+                  <Text
+                    style={styles.linkText}
+                  >
                     Not You?
                   </Text>
                 </Pressable>
 
-                <Pressable onPress={onForgotMPIN}>
-                  <Text style={styles.link}>
+                <Pressable>
+                  <Text
+                    style={styles.linkText}
+                  >
                     Forgot MPIN
                   </Text>
                 </Pressable>
               </View>
 
-              {/* ===================================================
+              {/* =================================================
                   LOGIN BUTTON
-              =================================================== */}
+              ================================================= */}
+
               <Pressable
+                style={styles.loginButton}
                 onPress={handleLogin}
-                disabled={!isLoginEnabled}
-                style={[
-                  styles.loginButton,
-                  isLoginEnabled
-                    ? styles.loginButtonEnabled
-                    : styles.loginButtonDisabled,
-                ]}
               >
-                <Text style={styles.loginButtonText}>
+                <Text
+                  style={
+                    styles.loginButtonText
+                  }
+                >
                   Login
                 </Text>
               </Pressable>
 
-              {/* ===================================================
+              {/* =================================================
                   OPEN ACCOUNT
-              =================================================== */}
+              ================================================= */}
+
               <Pressable
-                onPress={onOpenAccount}
-                style={styles.openAccountButton}
+                style={
+                  styles.openAccountButton
+                }
+                onPress={() =>
+                  console.log(
+                    'Open Account',
+                  )
+                }
               >
-                <Text style={styles.openAccountText}>
+                <Text
+                  style={
+                    styles.openAccountText
+                  }
+                >
                   Don't have Account? Open Now
                 </Text>
               </Pressable>
@@ -347,170 +579,1235 @@ const MFLoginScreen = ({
           </ScrollView>
         </View>
 
-        {/* =========================================================
-            COUNTRY CODE MODAL
-        ========================================================= */}
+        {/* =====================================================
+            BOTTOM SHEET
+        ===================================================== */}
+
         <Modal
-          visible={showCountryPicker}
+          visible={showMenuSheet}
           transparent
-          animationType="fade"
-          onRequestClose={() => setShowCountryPicker(false)}
+          animationType="slide"
+          onRequestClose={() =>
+            setShowMenuSheet(false)
+          }
         >
-          <Pressable
-            style={styles.modalOverlay}
-            onPress={() => setShowCountryPicker(false)}
+          <View
+            style={
+              styles.bottomSheetRoot
+            }
           >
+            {/* OVERLAY */}
+
             <Pressable
-              style={styles.countryModal}
-              onPress={event => event.stopPropagation()}
+              style={
+                styles.bottomSheetOverlay
+              }
+              onPress={() =>
+                setShowMenuSheet(false)
+              }
+            />
+
+            {/* SHEET */}
+
+            <View
+              style={styles.bottomSheet}
             >
-              <View style={styles.modalHeader}>
-                <Text style={styles.modalTitle}>
-                  Select Country Code
-                </Text>
+              {/* HANDLE */}
+
+              <View
+                style={styles.sheetHandle}
+              />
+
+              {/* =================================================
+                  SHEET HEADER
+              ================================================= */}
+
+              <View
+                style={styles.sheetHeader}
+              >
+                <View
+                  style={styles.sheetBrand}
+                >
+                  <View
+                    style={styles.sheetLogo}
+                  >
+                    <BankBuildingIcon
+                      width={27}
+                      height={27}
+                      color="#12B8AF"
+                    />
+                  </View>
+
+                  <View>
+                    <Text
+                      style={
+                        styles.sheetTitle
+                      }
+                    >
+                      Miracle Banking
+                    </Text>
+
+                    <Text
+                      style={
+                        styles.sheetVersion
+                      }
+                    >
+                      App Version 1.0.034567
+                    </Text>
+                  </View>
+                </View>
 
                 <Pressable
-                  onPress={() => setShowCountryPicker(false)}
+                  style={
+                    styles.sheetCloseButton
+                  }
+                  onPress={() =>
+                    setShowMenuSheet(false)
+                  }
                 >
-                  <Text style={styles.closeText}>
-                    ×
-                  </Text>
+                  <CloseIcon
+                    width={15}
+                    height={15}
+                    color="#7C8795"
+                  />
                 </Pressable>
               </View>
 
-              {COUNTRY_CODES.map(country => (
-                <Pressable
-                  key={country.code}
-                  style={styles.countryItem}
-                  onPress={() => selectCountry(country)}
+              {/* =================================================
+                  SHEET CONTENT
+              ================================================= */}
+
+              <ScrollView
+                showsVerticalScrollIndicator={
+                  false
+                }
+                contentContainerStyle={
+                  styles.sheetScrollContent
+                }
+              >
+                {/* EXPLORE */}
+
+                <Text
+                  style={
+                    styles.sheetSectionTitle
+                  }
                 >
-                  <Text style={styles.countryCode}>
-                    {country.code}
-                  </Text>
+                  EXPLORE
+                </Text>
 
-                  <Text style={styles.countryName}>
-                    {country.name}
-                  </Text>
-
-                  <ChevronRight
-                    size={16}
-                    color="#A0A8AE"
+                <View
+                  style={
+                    styles.sheetMenuCard
+                  }
+                >
+                  <BottomSheetItem
+                    icon={
+                      <MapPinIcon
+                        width={19}
+                        height={19}
+                        color="#12B8AF"
+                      />
+                    }
+                    iconBackground="#E8F8F7"
+                    title="Locate Us"
+                    description="Find branches & ATMs nearby"
+                    onPress={() =>
+                      console.log(
+                        'Locate Us',
+                      )
+                    }
                   />
-                </Pressable>
-              ))}
-            </Pressable>
-          </Pressable>
-        </Modal>
 
-        {/* =========================================================
-            LANGUAGE MODAL
-        ========================================================= */}
-        <Modal
-          visible={showLanguagePicker}
-          transparent
-          animationType="fade"
-          onRequestClose={() => setShowLanguagePicker(false)}
-        >
-          <Pressable
-            style={styles.modalOverlay}
-            onPress={() => setShowLanguagePicker(false)}
-          >
-            <Pressable
-              style={styles.languageModal}
-              onPress={event => event.stopPropagation()}
-            >
-              <Text style={styles.modalTitle}>
-                Select Language
-              </Text>
+                  <BottomSheetItem
+                    icon={
+                      <GiftIcon
+                        width={19}
+                        height={19}
+                        color="#F59E0B"
+                      />
+                    }
+                    iconBackground="#FFF5E6"
+                    title="Offers"
+                    description="Exclusive deals & promotions"
+                    onPress={() =>
+                      console.log(
+                        'Offers',
+                      )
+                    }
+                  />
 
-              <Pressable
-                style={styles.languageOption}
-                onPress={() => {
-                  setLanguage('English');
-                  setShowLanguagePicker(false);
-                }}
-              >
-                <Text style={styles.languageOptionText}>
-                  English
+                  <BottomSheetItem
+                    icon={
+                      <UserPlusIcon
+                        width={19}
+                        height={19}
+                        color="#EC4899"
+                      />
+                    }
+                    iconBackground="#FCECF5"
+                    title="App Code"
+                    description="Tap here to generate your secure App Code for activating the application"
+                    onPress={() =>
+                      console.log(
+                        'App Code',
+                      )
+                    }
+                  />
+                </View>
+
+                {/* SUPPORT */}
+
+                <Text
+                  style={
+                    styles.sheetSectionTitle
+                  }
+                >
+                  SUPPORT
                 </Text>
-              </Pressable>
 
-              <Pressable
-                style={styles.languageOption}
-                onPress={() => {
-                  setLanguage('العربية');
-                  setShowLanguagePicker(false);
-                }}
-              >
-                <Text style={styles.languageOptionText}>
-                  العربية
+                <View
+                  style={
+                    styles.sheetMenuCard
+                  }
+                >
+                  <BottomSheetItem
+                    icon={
+                      <PhoneCallIcon
+                        width={19}
+                        height={19}
+                        color="#3B82F6"
+                      />
+                    }
+                    iconBackground="#EAF2FF"
+                    title="Contact Us"
+                    description="Get in touch with us"
+                    onPress={() =>
+                      console.log(
+                        'Contact Us',
+                      )
+                    }
+                  />
+
+                  <BottomSheetItem
+                    icon={
+                      <HelpIcon
+                        width={19}
+                        height={19}
+                        color="#8B5CF6"
+                      />
+                    }
+                    iconBackground="#F1ECFF"
+                    title="Help"
+                    description="Guides & troubleshooting"
+                    onPress={() =>
+                      console.log(
+                        'Help',
+                      )
+                    }
+                  />
+
+                  <BottomSheetItem
+                    icon={
+                      <QuestionIcon
+                        width={19}
+                        height={19}
+                        color="#6366F1"
+                      />
+                    }
+                    iconBackground="#EEF0FF"
+                    title="FAQ"
+                    description="Frequently asked questions"
+                    onPress={() =>
+                      console.log(
+                        'FAQ',
+                      )
+                    }
+                  />
+                </View>
+
+                {/* MORE */}
+
+                <Text
+                  style={
+                    styles.sheetSectionTitle
+                  }
+                >
+                  MORE
                 </Text>
-              </Pressable>
-            </Pressable>
-          </Pressable>
+
+                <View
+                  style={
+                    styles.sheetMenuCard
+                  }
+                >
+                  <BottomSheetItem
+                    icon={
+                      <ShareIcon
+                        width={19}
+                        height={19}
+                        color="#10B981"
+                      />
+                    }
+                    iconBackground="#EAFBF5"
+                    title="Refer a Friend"
+                    description="Share & earn rewards"
+                    onPress={() =>
+                      console.log(
+                        'Refer a Friend',
+                      )
+                    }
+                  />
+
+                  <BottomSheetItem
+                    icon={
+                      <StarIcon
+                        width={19}
+                        height={19}
+                        color="#F59E0B"
+                      />
+                    }
+                    iconBackground="#FFF7E7"
+                    title="Rate Us"
+                    description="Leave a review"
+                    onPress={() =>
+                      console.log(
+                        'Rate Us',
+                      )
+                    }
+                  />
+                </View>
+
+                <View
+                  style={
+                    styles.sheetBottomSpace
+                  }
+                />
+              </ScrollView>
+            </View>
+          </View>
         </Modal>
       </KeyboardAvoidingView>
+    </SafeAreaView>
+  );
+};
+
+/* =========================================================
+   BOTTOM SHEET ITEM
+========================================================= */
+
+const BottomSheetItem = ({
+  icon,
+  iconBackground,
+  title,
+  description,
+  onPress,
+}: MenuItemProps) => {
+  return (
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => [
+        styles.bottomSheetItem,
+        pressed && {
+          opacity: 0.65,
+        },
+      ]}
+    >
+      <View
+        style={[
+          styles.bottomSheetIcon,
+          {
+            backgroundColor:
+              iconBackground,
+          },
+        ]}
+      >
+        {icon}
+      </View>
+
+      <View
+        style={
+          styles.bottomSheetItemContent
+        }
+      >
+        <Text
+          style={
+            styles.bottomSheetItemTitle
+          }
+        >
+          {title}
+        </Text>
+
+        <Text
+          style={
+            styles.bottomSheetItemDescription
+          }
+          numberOfLines={2}
+        >
+          {description}
+        </Text>
+      </View>
+
+      <ChevronRightIcon
+        width={14}
+        height={14}
+        color="#B7C0CA"
+      />
+    </Pressable>
+  );
+};
+
+/* =========================================================
+   BANKING BACKGROUND PATTERN
+========================================================= */
+
+const BankPattern = () => {
+  const rows = 9;
+  const columns = 5;
+
+  return (
+    <View
+      pointerEvents="none"
+      style={StyleSheet.absoluteFill}
+    >
+      {Array.from({
+        length: rows,
+      }).map((_, row) =>
+        Array.from({
+          length: columns,
+        }).map((_, column) => (
+          <View
+            key={`${row}-${column}`}
+            style={{
+              position: 'absolute',
+              left:
+                15 + column * 75,
+              top:
+                15 + row * 72,
+              opacity: 0.07,
+            }}
+          >
+            <BankBuildingIcon
+              width={45}
+              height={45}
+              color="#55BFC0"
+            />
+          </View>
+        )),
+      )}
     </View>
   );
 };
 
-export default MFLoginScreen;
+/* =========================================================
+   SVG ICONS
+========================================================= */
 
-/* ================================================================
+/* ---------------- MENU ---------------- */
+
+const MenuIcon = ({
+  width = 24,
+  height = 24,
+  color = '#000',
+}: {
+  width?: number;
+  height?: number;
+  color?: string;
+}) => (
+  <Svg
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <Path
+      d="M4 7H20"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+
+    <Path
+      d="M4 12H20"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+
+    <Path
+      d="M4 17H20"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+  </Svg>
+);
+
+/* ---------------- GLOBE ---------------- */
+
+const GlobeIcon = ({
+  width = 24,
+  height = 24,
+  color = '#000',
+}: {
+  width?: number;
+  height?: number;
+  color?: string;
+}) => (
+  <Svg
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <Circle
+      cx="12"
+      cy="12"
+      r="9"
+      stroke={color}
+      strokeWidth="1.6"
+    />
+
+    <Path
+      d="M3 12H21"
+      stroke={color}
+      strokeWidth="1.5"
+    />
+
+    <Path
+      d="M12 3C14.2 5.4 15.3 8.4 15.3 12C15.3 15.6 14.2 18.6 12 21"
+      stroke={color}
+      strokeWidth="1.4"
+    />
+
+    <Path
+      d="M12 3C9.8 5.4 8.7 8.4 8.7 12C8.7 15.6 9.8 18.6 12 21"
+      stroke={color}
+      strokeWidth="1.4"
+    />
+  </Svg>
+);
+
+/* ---------------- CHEVRON DOWN ---------------- */
+
+const ChevronDownIcon = ({
+  width = 24,
+  height = 24,
+  color = '#000',
+}: {
+  width?: number;
+  height?: number;
+  color?: string;
+}) => (
+  <Svg
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <Path
+      d="M6 9L12 15L18 9"
+      stroke={color}
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Svg>
+);
+
+/* ---------------- CHEVRON RIGHT ---------------- */
+
+const ChevronRightIcon = ({
+  width = 24,
+  height = 24,
+  color = '#000',
+}: {
+  width?: number;
+  height?: number;
+  color?: string;
+}) => (
+  <Svg
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <Path
+      d="M9 6L15 12L9 18"
+      stroke={color}
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Svg>
+);
+
+/* ---------------- PHONE ---------------- */
+
+const PhoneIcon = ({
+  width = 24,
+  height = 24,
+  color = '#000',
+}: {
+  width?: number;
+  height?: number;
+  color?: string;
+}) => (
+  <Svg
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <Path
+      d="M6.5 3.5L9 3L11 8L8.5 9.5C9.5 12 12 14.5 14.5 15.5L16 13L21 15L20.5 17.5C20.2 19 19 20 17.5 20C9.5 19.5 4.5 14.5 4 6.5C4 5 5 3.8 6.5 3.5Z"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </Svg>
+);
+
+/* ---------------- LOCK ---------------- */
+
+const LockIcon = ({
+  width = 24,
+  height = 24,
+  color = '#000',
+}: {
+  width?: number;
+  height?: number;
+  color?: string;
+}) => (
+  <Svg
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <Rect
+      x="5"
+      y="10"
+      width="14"
+      height="10"
+      rx="2"
+      stroke={color}
+      strokeWidth="1.6"
+    />
+
+    <Path
+      d="M8 10V7C8 4.8 9.8 3 12 3C14.2 3 16 4.8 16 7V10"
+      stroke={color}
+      strokeWidth="1.6"
+      strokeLinecap="round"
+    />
+  </Svg>
+);
+
+/* ---------------- EYE ---------------- */
+
+const EyeIcon = ({
+  width = 24,
+  height = 24,
+  color = '#000',
+}: {
+  width?: number;
+  height?: number;
+  color?: string;
+}) => (
+  <Svg
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <Path
+      d="M2.5 12C4.7 7.8 8 5.5 12 5.5C16 5.5 19.3 7.8 21.5 12C19.3 16.2 16 18.5 12 18.5C8 18.5 4.7 16.2 2.5 12Z"
+      stroke={color}
+      strokeWidth="1.5"
+    />
+
+    <Circle
+      cx="12"
+      cy="12"
+      r="2.5"
+      stroke={color}
+      strokeWidth="1.5"
+    />
+  </Svg>
+);
+
+/* ---------------- EYE OFF ---------------- */
+
+const EyeOffIcon = ({
+  width = 24,
+  height = 24,
+  color = '#000',
+}: {
+  width?: number;
+  height?: number;
+  color?: string;
+}) => (
+  <Svg
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <Path
+      d="M3 3L21 21"
+      stroke={color}
+      strokeWidth="1.6"
+      strokeLinecap="round"
+    />
+
+    <Path
+      d="M10 5.8C10.65 5.6 11.3 5.5 12 5.5C16 5.5 19.3 7.8 21.5 12C20.8 13.4 19.9 14.6 18.8 15.6"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
+
+    <Path
+      d="M6.1 7.2C4.6 8.3 3.4 9.9 2.5 12C4.7 16.2 8 18.5 12 18.5C13.3 18.5 14.5 18.2 15.6 17.7"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
+  </Svg>
+);
+
+/* ---------------- KEYBOARD ---------------- */
+
+const KeyboardIcon = ({
+  width = 24,
+  height = 24,
+  color = '#000',
+}: {
+  width?: number;
+  height?: number;
+  color?: string;
+}) => (
+  <Svg
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <Rect
+      x="3"
+      y="6"
+      width="18"
+      height="12"
+      rx="2"
+      stroke={color}
+      strokeWidth="1.5"
+    />
+
+    <Path
+      d="M6 10H6.01M9 10H9.01M12 10H12.01M15 10H15.01M18 10H18.01"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+    />
+
+    <Path
+      d="M7 14H17"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
+  </Svg>
+);
+
+/* ---------------- CLOSE ---------------- */
+
+const CloseIcon = ({
+  width = 24,
+  height = 24,
+  color = '#000',
+}: {
+  width?: number;
+  height?: number;
+  color?: string;
+}) => (
+  <Svg
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <Path
+      d="M6 6L18 18"
+      stroke={color}
+      strokeWidth="1.8"
+      strokeLinecap="round"
+    />
+
+    <Path
+      d="M18 6L6 18"
+      stroke={color}
+      strokeWidth="1.8"
+      strokeLinecap="round"
+    />
+  </Svg>
+);
+
+/* ---------------- BANK BUILDING ---------------- */
+
+const BankBuildingIcon = ({
+  width = 42,
+  height = 42,
+  color = '#55BFC0',
+}: {
+  width?: number;
+  height?: number;
+  color?: string;
+}) => (
+  <Svg
+    width={width}
+    height={height}
+    viewBox="0 0 42 42"
+    fill="none"
+  >
+    <Path
+      d="M5 15L21 7L37 15"
+      stroke={color}
+      strokeWidth="1.4"
+    />
+
+    <Path
+      d="M8 16H34"
+      stroke={color}
+      strokeWidth="1.4"
+    />
+
+    <Path
+      d="M11 17V29"
+      stroke={color}
+      strokeWidth="1.4"
+    />
+
+    <Path
+      d="M17 17V29"
+      stroke={color}
+      strokeWidth="1.4"
+    />
+
+    <Path
+      d="M25 17V29"
+      stroke={color}
+      strokeWidth="1.4"
+    />
+
+    <Path
+      d="M31 17V29"
+      stroke={color}
+      strokeWidth="1.4"
+    />
+
+    <Path
+      d="M7 30H35"
+      stroke={color}
+      strokeWidth="1.4"
+    />
+
+    <Path
+      d="M5 34H37"
+      stroke={color}
+      strokeWidth="1.4"
+    />
+  </Svg>
+);
+
+/* ---------------- MAP PIN ---------------- */
+
+const MapPinIcon = ({
+  width = 24,
+  height = 24,
+  color = '#000',
+}: {
+  width?: number;
+  height?: number;
+  color?: string;
+}) => (
+  <Svg
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <Path
+      d="M20 10C20 15.5 12 21 12 21C12 21 4 15.5 4 10C4 5.6 7.6 3 12 3C16.4 3 20 5.6 20 10Z"
+      stroke={color}
+      strokeWidth="1.5"
+    />
+
+    <Circle
+      cx="12"
+      cy="10"
+      r="2.5"
+      stroke={color}
+      strokeWidth="1.5"
+    />
+  </Svg>
+);
+
+/* ---------------- GIFT ---------------- */
+
+const GiftIcon = ({
+  width = 24,
+  height = 24,
+  color = '#000',
+}: {
+  width?: number;
+  height?: number;
+  color?: string;
+}) => (
+  <Svg
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <Rect
+      x="4"
+      y="9"
+      width="16"
+      height="11"
+      rx="1.5"
+      stroke={color}
+      strokeWidth="1.5"
+    />
+
+    <Path
+      d="M3 9H21V6.5H3V9Z"
+      stroke={color}
+      strokeWidth="1.5"
+    />
+
+    <Path
+      d="M12 6.5V20"
+      stroke={color}
+      strokeWidth="1.5"
+    />
+
+    <Path
+      d="M12 6.5C12 4.5 10.7 3 9 3C7.5 3 6.5 4 6.5 5.1C6.5 6.1 7.5 6.5 9 6.5H12Z"
+      stroke={color}
+      strokeWidth="1.3"
+    />
+
+    <Path
+      d="M12 6.5C12 4.5 13.3 3 15 3C16.5 3 17.5 4 17.5 5.1C17.5 6.1 16.5 6.5 15 6.5H12Z"
+      stroke={color}
+      strokeWidth="1.3"
+    />
+  </Svg>
+);
+
+/* ---------------- USER PLUS ---------------- */
+
+const UserPlusIcon = ({
+  width = 24,
+  height = 24,
+  color = '#000',
+}: {
+  width?: number;
+  height?: number;
+  color?: string;
+}) => (
+  <Svg
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <Circle
+      cx="9"
+      cy="8"
+      r="3"
+      stroke={color}
+      strokeWidth="1.5"
+    />
+
+    <Path
+      d="M3.5 19C4 15.8 6 14 9 14C12 14 14 15.8 14.5 19"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
+
+    <Path
+      d="M18 9V15"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
+
+    <Path
+      d="M15 12H21"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
+  </Svg>
+);
+
+/* ---------------- PHONE CALL ---------------- */
+
+const PhoneCallIcon = ({
+  width = 24,
+  height = 24,
+  color = '#000',
+}: {
+  width?: number;
+  height?: number;
+  color?: string;
+}) => (
+  <Svg
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <Path
+      d="M6.5 3.5L9 3L11 8L8.5 9.5C9.5 12 12 14.5 14.5 15.5L16 13L21 15L20.5 17.5C20.2 19 19 20 17.5 20C9.5 19.5 4.5 14.5 4 6.5C4 5 5 3.8 6.5 3.5Z"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+
+    <Path
+      d="M15 4C17.2 4.5 19 6.2 19.5 8.5"
+      stroke={color}
+      strokeWidth="1.3"
+      strokeLinecap="round"
+    />
+  </Svg>
+);
+
+/* ---------------- HELP ---------------- */
+
+const HelpIcon = ({
+  width = 24,
+  height = 24,
+  color = '#000',
+}: {
+  width?: number;
+  height?: number;
+  color?: string;
+}) => (
+  <Svg
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <Circle
+      cx="12"
+      cy="12"
+      r="9"
+      stroke={color}
+      strokeWidth="1.5"
+    />
+
+    <Path
+      d="M9.5 9C9.7 7.6 10.6 7 12 7C13.4 7 14.5 7.8 14.5 9C14.5 10.5 13.2 11.1 12.5 11.7C12 12.1 12 12.5 12 13"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
+
+    <Circle
+      cx="12"
+      cy="16.5"
+      r="0.8"
+      fill={color}
+    />
+  </Svg>
+);
+
+/* ---------------- QUESTION ---------------- */
+
+const QuestionIcon = ({
+  width = 24,
+  height = 24,
+  color = '#000',
+}: {
+  width?: number;
+  height?: number;
+  color?: string;
+}) => (
+  <Svg
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <Circle
+      cx="12"
+      cy="12"
+      r="9"
+      stroke={color}
+      strokeWidth="1.5"
+    />
+
+    <Path
+      d="M9.5 9C9.7 7.6 10.7 7 12 7C13.5 7 14.5 7.8 14.5 9C14.5 10.5 13.2 11.2 12.5 11.8C12 12.2 12 12.7 12 13"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeLinecap="round"
+    />
+
+    <Circle
+      cx="12"
+      cy="16.5"
+      r="0.8"
+      fill={color}
+    />
+  </Svg>
+);
+
+/* ---------------- SHARE ---------------- */
+
+const ShareIcon = ({
+  width = 24,
+  height = 24,
+  color = '#000',
+}: {
+  width?: number;
+  height?: number;
+  color?: string;
+}) => (
+  <Svg
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <Circle
+      cx="18"
+      cy="5"
+      r="2.5"
+      stroke={color}
+      strokeWidth="1.5"
+    />
+
+    <Circle
+      cx="6"
+      cy="12"
+      r="2.5"
+      stroke={color}
+      strokeWidth="1.5"
+    />
+
+    <Circle
+      cx="18"
+      cy="19"
+      r="2.5"
+      stroke={color}
+      strokeWidth="1.5"
+    />
+
+    <Path
+      d="M8.2 10.8L15.8 6.2"
+      stroke={color}
+      strokeWidth="1.5"
+    />
+
+    <Path
+      d="M8.2 13.2L15.8 17.8"
+      stroke={color}
+      strokeWidth="1.5"
+    />
+  </Svg>
+);
+
+/* ---------------- STAR ---------------- */
+
+const StarIcon = ({
+  width = 24,
+  height = 24,
+  color = '#000',
+}: {
+  width?: number;
+  height?: number;
+  color?: string;
+}) => (
+  <Svg
+    width={width}
+    height={height}
+    viewBox="0 0 24 24"
+    fill="none"
+  >
+    <Path
+      d="M12 3L14.8 8.7L21 9.6L16.5 14L17.6 20.2L12 17.3L6.4 20.2L7.5 14L3 9.6L9.2 8.7L12 3Z"
+      stroke={color}
+      strokeWidth="1.5"
+      strokeLinejoin="round"
+    />
+  </Svg>
+);
+
+/* =========================================================
    STYLES
-================================================================ */
+========================================================= */
 
 const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-    backgroundColor: '#EAF7F7',
-  },
-
   container: {
     flex: 1,
+    backgroundColor: '#EAF7F8',
   },
 
-  /* ---------------------------------------------------------------
+  flex: {
+    flex: 1,
+  },
+
+  /* =====================================================
      HEADER
-  --------------------------------------------------------------- */
+  ===================================================== */
 
   header: {
-    height: 50,
-    backgroundColor: '#12B8B0',
+    height: 58,
+    backgroundColor: '#12B8AF',
     flexDirection: 'row',
     alignItems: 'center',
-    paddingHorizontal: 15,
-    elevation: 3,
-    shadowColor: '#000',
-    shadowOpacity: 0.08,
-    shadowRadius: 3,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    zIndex: 10,
+    justifyContent: 'space-between',
+    paddingHorizontal: 9,
+    zIndex: 50,
+  },
+
+  headerLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
 
   menuButton: {
-    width: 30,
-    alignItems: 'flex-start',
+    width: 38,
+    height: 38,
+    alignItems: 'center',
     justifyContent: 'center',
   },
 
   headerTitle: {
-    flex: 1,
     color: '#FFFFFF',
-    fontSize: 14,
-    fontWeight: '700',
+    fontSize: 13,
+    fontWeight: '800',
     marginLeft: 2,
   },
 
-  languageButton: {
-    height: 32,
-    minWidth: 94,
+  /* =====================================================
+     LANGUAGE
+  ===================================================== */
+
+  languagePill: {
+    height: 36,
+    minWidth: 95,
+    paddingHorizontal: 9,
+    borderRadius: 18,
     backgroundColor: '#FFFFFF',
-    borderRadius: 16,
-    paddingHorizontal: 11,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -518,290 +1815,380 @@ const styles = StyleSheet.create({
   },
 
   languageText: {
-    color: '#4E565B',
-    fontSize: 11,
-    fontWeight: '500',
+    color: '#374151',
+    fontSize: 12,
+    fontWeight: '600',
   },
 
-  /* ---------------------------------------------------------------
-     BACKGROUND
-  --------------------------------------------------------------- */
-
-  background: {
-    flex: 1,
-    backgroundColor: '#EAF7F7',
+  languageDropdown: {
+    position: 'absolute',
+    right: 0,
+    top: 42,
+    width: 140,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 10,
+    paddingVertical: 5,
+    elevation: 8,
+    shadowColor: '#000',
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    zIndex: 100,
   },
 
-  pattern: {
-     ...StyleSheet.absoluteFill,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    opacity: 0.42,
-    paddingTop: 10,
-    paddingHorizontal: 4,
-  },
-
-  patternItem: {
-    width: '25%',
-    height: 72,
-    alignItems: 'center',
+  languageOption: {
+    height: 42,
+    paddingHorizontal: 12,
     justifyContent: 'center',
   },
 
-  scrollContent: {
+  languageOptionText: {
+    fontSize: 13,
+    color: '#374151',
+  },
+
+  /* =====================================================
+     BACKGROUND
+  ===================================================== */
+
+  patternBackground: {
+    flex: 1,
+    backgroundColor: '#EAF7F8',
+    position: 'relative',
+    overflow: 'hidden',
+  },
+
+  loginContent: {
     flexGrow: 1,
-    paddingHorizontal: 16,
+    alignItems: 'center',
     paddingTop: 91,
+    paddingHorizontal: 18,
     paddingBottom: 30,
   },
 
-  /* ---------------------------------------------------------------
+  /* =====================================================
      LOGIN CARD
-  --------------------------------------------------------------- */
+  ===================================================== */
 
   loginCard: {
     width: '100%',
-    maxWidth: 390,
-    alignSelf: 'center',
+    maxWidth: 350,
     backgroundColor: '#FFFFFF',
-    borderRadius: 12,
+    borderRadius: 15,
     paddingHorizontal: 18,
     paddingTop: 18,
-    paddingBottom: 17,
+    paddingBottom: 18,
 
     shadowColor: '#000',
-    shadowOpacity: 0.12,
+    shadowOpacity: 0.13,
     shadowRadius: 12,
     shadowOffset: {
       width: 0,
       height: 5,
     },
 
-    elevation: 5,
+    elevation: 7,
   },
 
   loginTitle: {
+    fontSize: 20,
+    fontWeight: '800',
+    color: '#20242A',
     textAlign: 'center',
-    color: '#222222',
-    fontSize: 19,
-    fontWeight: '700',
-    marginBottom: 11,
+    marginBottom: 10,
   },
 
-  /* ---------------------------------------------------------------
-     FORM
-  --------------------------------------------------------------- */
-
-  fieldContainer: {
-    marginBottom: 15,
+  field: {
+    marginBottom: 8,
   },
 
   label: {
-    color: '#222222',
-    fontSize: 11.5,
+    fontSize: 12,
     fontWeight: '500',
-    marginBottom: 5,
+    color: '#20242A',
+    marginBottom: 4,
   },
 
   required: {
-    color: '#E63946',
+    color: '#EF4444',
   },
 
-  selectInput: {
+  inputContainer: {
     height: 31,
     borderWidth: 1,
-    borderColor: '#DCE1E5',
     borderRadius: 6,
+    borderColor: '#D9DEE5',
     paddingHorizontal: 10,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
     backgroundColor: '#FFFFFF',
   },
 
   selectText: {
-    color: '#4C565D',
-    fontSize: 11,
     flex: 1,
-  },
-
-  placeholder: {
-    color: '#8E979F',
-  },
-
-  inputWrapper: {
-    height: 31,
-    borderWidth: 1,
-    borderColor: '#DCE1E5',
-    borderRadius: 6,
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 9,
-    backgroundColor: '#FFFFFF',
+    fontSize: 11,
   },
 
   textInput: {
     flex: 1,
-    height: '100%',
-    paddingHorizontal: 7,
+    height: 31,
+    marginLeft: 6,
     paddingVertical: 0,
-    color: '#30383D',
     fontSize: 11,
+    color: '#374151',
   },
 
   iconButton: {
-    marginLeft: 3,
-    justifyContent: 'center',
+    width: 24,
+    height: 28,
     alignItems: 'center',
+    justifyContent: 'center',
   },
 
-  /* ---------------------------------------------------------------
-     LINKS
-  --------------------------------------------------------------- */
+  /* =====================================================
+     COUNTRY DROPDOWN
+  ===================================================== */
 
-  linkRow: {
+  countryDropdown: {
+    marginTop: 3,
+    borderRadius: 6,
+    backgroundColor: '#FFFFFF',
+    borderWidth: 1,
+    borderColor: '#D9DEE5',
+    overflow: 'hidden',
+    elevation: 6,
+    zIndex: 20,
+  },
+
+  countryItem: {
+    height: 38,
+    paddingHorizontal: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderBottomWidth: 1,
+    borderBottomColor: '#F0F2F4',
+  },
+
+  countryName: {
+    fontSize: 11,
+    color: '#374151',
+  },
+
+  countryCode: {
+    fontSize: 11,
+    color: '#12B8AF',
+    fontWeight: '700',
+  },
+
+  /* =====================================================
+     LINKS
+  ===================================================== */
+
+  loginLinks: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     marginTop: -1,
-    marginBottom: 9,
+    marginBottom: 8,
   },
 
-  link: {
-    color: '#12AFA8',
-    fontSize: 9.5,
+  linkText: {
+    color: '#12B8AF',
+    fontSize: 10,
     fontWeight: '500',
   },
 
-  /* ---------------------------------------------------------------
-     LOGIN BUTTON
-  --------------------------------------------------------------- */
+  /* =====================================================
+     LOGIN
+  ===================================================== */
 
   loginButton: {
     height: 29,
     borderRadius: 6,
+    backgroundColor: '#9CA8B2',
     alignItems: 'center',
     justifyContent: 'center',
   },
 
-  loginButtonEnabled: {
-    backgroundColor: '#12B8B0',
-  },
-
-  loginButtonDisabled: {
-    backgroundColor: '#9AA5AD',
-  },
-
   loginButtonText: {
     color: '#FFFFFF',
-    fontSize: 11.5,
-    fontWeight: '700',
+    fontSize: 12,
+    fontWeight: '800',
   },
 
-  /* ---------------------------------------------------------------
+  /* =====================================================
      OPEN ACCOUNT
-  --------------------------------------------------------------- */
+  ===================================================== */
 
   openAccountButton: {
-    height: 31,
+    height: 29,
     borderRadius: 6,
-    marginTop: 12,
-    backgroundColor: '#12B8B0',
+    marginTop: 10,
+    backgroundColor: '#12B8AF',
     alignItems: 'center',
     justifyContent: 'center',
   },
 
   openAccountText: {
     color: '#FFFFFF',
-    fontSize: 10.5,
-    fontWeight: '700',
+    fontSize: 11,
+    fontWeight: '800',
   },
 
-  /* ---------------------------------------------------------------
-     MODALS
-  --------------------------------------------------------------- */
+  /* =====================================================
+     BOTTOM SHEET
+  ===================================================== */
 
-  modalOverlay: {
+  bottomSheetRoot: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.35)',
-    justifyContent: 'center',
-    paddingHorizontal: 25,
+    justifyContent: 'flex-end',
   },
 
-  countryModal: {
+  bottomSheetOverlay: {
+    ...StyleSheet.absoluteFill,
+    backgroundColor:
+      'rgba(0,0,0,0.40)',
+  },
+
+  bottomSheet: {
+    height: '84%',
     backgroundColor: '#FFFFFF',
-    borderRadius: 14,
+    borderTopLeftRadius: 27,
+    borderTopRightRadius: 27,
     overflow: 'hidden',
-    elevation: 8,
-    shadowColor: '#000',
-    shadowOpacity: 0.2,
-    shadowRadius: 15,
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
+    elevation: 20,
   },
 
-  languageModal: {
-    backgroundColor: '#FFFFFF',
-    borderRadius: 14,
-    padding: 18,
-    elevation: 8,
+  sheetHandle: {
+    width: 38,
+    height: 4,
+    borderRadius: 4,
+    backgroundColor: '#D9DEE5',
+    alignSelf: 'center',
+    marginTop: 7,
+    marginBottom: 6,
   },
 
-  modalHeader: {
-    height: 52,
-    paddingHorizontal: 18,
-    borderBottomWidth: 1,
-    borderBottomColor: '#EEEEEE',
+  /* =====================================================
+     SHEET HEADER
+  ===================================================== */
+
+  sheetHeader: {
+    minHeight: 67,
+    paddingHorizontal: 20,
+    paddingTop: 4,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-  },
-
-  modalTitle: {
-    color: '#222222',
-    fontSize: 15,
-    fontWeight: '700',
-  },
-
-  closeText: {
-    color: '#777777',
-    fontSize: 27,
-    lineHeight: 27,
-  },
-
-  countryItem: {
-    minHeight: 48,
-    paddingHorizontal: 18,
     borderBottomWidth: 1,
-    borderBottomColor: '#F1F1F1',
+    borderBottomColor: '#EEF0F2',
+  },
+
+  sheetBrand: {
     flexDirection: 'row',
     alignItems: 'center',
   },
 
-  countryCode: {
-    width: 55,
-    color: '#12AFA8',
-    fontSize: 13,
-    fontWeight: '700',
-  },
-
-  countryName: {
-    flex: 1,
-    color: '#333333',
-    fontSize: 13,
-  },
-
-  languageOption: {
-    height: 48,
-    borderBottomWidth: 1,
-    borderBottomColor: '#EEEEEE',
+  sheetLogo: {
+    width: 34,
+    height: 34,
+    marginRight: 9,
+    alignItems: 'center',
     justifyContent: 'center',
   },
 
-  languageOptionText: {
-    color: '#333333',
-    fontSize: 14,
+  sheetTitle: {
+    color: '#20242A',
+    fontSize: 12,
+    fontWeight: '800',
+  },
+
+  sheetVersion: {
+    color: '#8993A0',
+    fontSize: 9,
+    marginTop: 4,
+  },
+
+  sheetCloseButton: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    backgroundColor: '#F1F3F5',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  /* =====================================================
+     SHEET CONTENT
+  ===================================================== */
+
+  sheetScrollContent: {
+    paddingHorizontal: 19,
+    paddingTop: 9,
+    paddingBottom: 25,
+  },
+
+  sheetSectionTitle: {
+    color: '#929CAA',
+    fontSize: 9,
+    fontWeight: '800',
+    letterSpacing: 0.6,
+    marginTop: 4,
+    marginBottom: 6,
+  },
+
+  sheetMenuCard: {
+    borderRadius: 13,
+    borderWidth: 1,
+    borderColor: '#EEF0F2',
+    backgroundColor: '#FFFFFF',
+    overflow: 'hidden',
+    marginBottom: 12,
+  },
+
+  bottomSheetItem: {
+    minHeight: 67,
+    paddingHorizontal: 11,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#F0F2F4',
+  },
+
+  bottomSheetIcon: {
+    width: 32,
+    height: 32,
+    borderRadius: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 10,
+  },
+
+  bottomSheetItemContent: {
+    flex: 1,
+    paddingRight: 5,
+  },
+
+  bottomSheetItemTitle: {
+    color: '#20242A',
+    fontSize: 12,
+    fontWeight: '700',
+    marginBottom: 4,
+  },
+
+  bottomSheetItemDescription: {
+    color: '#7E8895',
+    fontSize: 9,
+    lineHeight: 12,
+  },
+
+  sheetBottomSpace: {
+    height: 15,
   },
 });
+
+export default MFLoginScreen;

@@ -1,7 +1,6 @@
-
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { i18n }from '../core/localization/i18n';
-import {triggerAppRefresh,triggerRTL,} from '../localization/LanguageContext';
+// import {triggerAppRefresh,triggerRTL,} from '../localization/LanguageContext';
 import { appStorage} from '../core/storage/AppStorage';
 
 const LANG_KEY ='selected_language';
@@ -17,7 +16,7 @@ export async function changeLanguage(language: | 'en' | 'ar') {
     await i18n.changeLanguage(
       language
     );
-    triggerRTL(rtl);
+    // triggerRTL(rtl);
     // triggerAppRefresh();
     console.log( '[LANG]', language,rtl );
   } catch (e) {

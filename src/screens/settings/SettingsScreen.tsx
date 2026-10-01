@@ -142,7 +142,7 @@ const toggleBiometric = (val: boolean) => {
         onConfirm={async () => {
           setLogoutDialog(false);
           await logout();
-          navigation.reset({ index: 0, routes: [{ name: 'Login' as any }] });
+          navigation.reset({ index: 0, routes: [{ name: 'MFLogin' as any }] });
         }}
         onCancel={() => setLogoutDialog(false)}
       />

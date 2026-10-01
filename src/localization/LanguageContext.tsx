@@ -1,129 +1,224 @@
-// // core/localization/LanguageContext.tsx
-// import React, { createContext, useContext, useCallback, useState, useEffect } from 'react';
-
-// type LanguageContextType = {
-//   refreshApp: () => void;
-// };
-
-// const LanguageContext = createContext<LanguageContextType>({ refreshApp: () => {} });
-// export const useLanguage = () => useContext(LanguageContext);
-
-// // ✅ Module-level ref — accessible anywhere, no React needed
-// let _refreshApp: () => void = () => {
-//   console.warn('[LanguageContext] refreshApp called before provider mounted');
-// };
-
-// /** Called by changeLanguage.ts directly — no hook needed */
-// export function triggerAppRefresh() {
-//   _refreshApp();
-// }
-
-// export function LanguageProvider({ children }: { children: React.ReactNode }) {
-//   const [appKey, setAppKey] = useState(0);
-
-//   const refreshApp = useCallback(() => {
-//     setAppKey(k => k + 1);
-//   }, []);
-
-//   // ✅ Register into the module-level ref when provider mounts
-//   useEffect(() => {
-//     _refreshApp = refreshApp;
-//     return () => { _refreshApp = () => {}; };
-//   }, [refreshApp]);
-
-//   return (
-//     <LanguageContext.Provider value={{ refreshApp }}>
-//       <React.Fragment key={appKey}>{children}</React.Fragment>
-//     </LanguageContext.Provider>
-//   );
-// }
-
 import React, {
   createContext,
-  useContext,
   useState,
-  useCallback,
   useEffect,
+  type ReactNode,
+  useContext,
+  useCallback,
 } from 'react';
 
-type LanguageContextType = {
-  refreshApp: () => void;
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+import en from './en.json';
+import ar from './ar.json';
+
+type Language = 'en' | 'ar';
+
+interface TranslationObject {
+  [key: string]: string | TranslationObject;
+}
+
+interface LanguageContextProps {
+  language: Language;
+  translations: TranslationObject;
   isRTL: boolean;
-  setRTL: (rtl: boolean) => void;
+  setLanguage: (lang: Language) => void;
+  t: (key: string, fallback?: string) => string;
+}
+
+const LanguageContext = createContext<
+  LanguageContextProps | undefined
+>(undefined);
+
+const translationsMap: Record<Language, TranslationObject> = {
+  en,
+  ar,
 };
 
-const LanguageContext =
-  createContext<LanguageContextType>({
-    refreshApp: () => {},
-    isRTL: false,
-    setRTL: () => {},
-  });
+interface LanguageProviderProps {
+  children: ReactNode;
+}
 
-export const useLanguage = () =>
-  useContext(LanguageContext);
+const LANGUAGE_STORAGE_KEY = 'app-language';
 
-let refreshRef = () => {};
-let rtlRef = (_: boolean) => {};
-
-export const triggerAppRefresh = () => {
-  refreshRef();
-};
-
-export const triggerRTL = (
-  rtl: boolean
-) => {
-  rtlRef(rtl);
-};
-
-export function LanguageProvider({
+const LanguageProvider = ({
   children,
-}: {
-  children: React.ReactNode;
-}) {
-  const [appKey, setAppKey] =
-    useState(0);
+}: LanguageProviderProps) => {
+  const [language, setLanguageState] =
+    useState<Language>('en');
 
-  const [isRTL, setRTL] =
+  const [isLanguageLoaded, setIsLanguageLoaded] =
     useState(false);
 
-  const refreshApp =
-    useCallback(() => {
-      setAppKey(
-        prev => prev + 1
-      );
-    }, []);
-
+  /**
+   * Load saved language
+   */
   useEffect(() => {
-    refreshRef =
-      refreshApp;
+    const loadLanguage = async () => {
+      try {
+        const savedLanguage =
+          await AsyncStorage.getItem(
+            LANGUAGE_STORAGE_KEY,
+          );
 
-    rtlRef =
-      setRTL;
-
-    return () => {
-      refreshRef =
-        () => {};
-
-      rtlRef =
-        () => {};
+        if (
+          savedLanguage === 'ar' ||
+          savedLanguage === 'en'
+        ) {
+          setLanguageState(savedLanguage);
+        }
+      } catch (error) {
+        console.warn(
+          'Failed to load language:',
+          error,
+        );
+      } finally {
+        setIsLanguageLoaded(true);
+      }
     };
-  }, [refreshApp]);
+
+    loadLanguage();
+  }, []);
+
+  /**
+   * Change language
+   */
+  const setLanguage = useCallback(
+    async (lang: Language) => {
+      try {
+        setLanguageState(lang);
+
+        await AsyncStorage.setItem(
+          LANGUAGE_STORAGE_KEY,
+          lang,
+        );
+      } catch (error) {
+        console.warn(
+          'Failed to save language:',
+          error,
+        );
+      }
+    },
+    [],
+  );
+
+  /**
+   * RTL state
+   *
+   * Arabic = RTL
+   * English = LTR
+   */
+  const isRTL = language === 'ar';
+
+  /**
+   * Translation helper
+   *
+   * Supports nested keys:
+   *
+   * t('sidebar.items.dashboard')
+   * t('login.title')
+   * t('intro.slide1.title')
+   */
+  const t = useCallback(
+    (
+      key: string,
+      fallback?: string,
+    ): string => {
+      const keys = key.split('.');
+
+      let result:
+        | string
+        | TranslationObject =
+        translationsMap[language];
+
+      for (const k of keys) {
+        if (
+          result &&
+          typeof result === 'object' &&
+          k in result
+        ) {
+          result = result[k];
+        } else {
+          return fallback || key;
+        }
+      }
+
+      return typeof result === 'string'
+        ? result
+        : fallback || key;
+    },
+    [language],
+  );
+
+  /**
+   * Don't render the application until
+   * the saved language has been loaded.
+   *
+   * This prevents:
+   *
+   * English -> Arabic
+   *
+   * flicker when the user previously selected Arabic.
+   */
+  if (!isLanguageLoaded) {
+    return null;
+  }
 
   return (
     <LanguageContext.Provider
       value={{
-        refreshApp,
+        language,
+        translations:
+          translationsMap[language],
+        setLanguage,
         isRTL,
-        setRTL,
+        t,
       }}
     >
-      <React.Fragment key={appKey}>
-        {children}
-      </React.Fragment>
+      {children}
     </LanguageContext.Provider>
   );
-}
+};
 
+/**
+ * Main language hook
+ */
+export const useLanguage = () => {
+  const ctx = useContext(LanguageContext);
 
+  if (!ctx) {
+    throw new Error(
+      'useLanguage must be used inside LanguageProvider',
+    );
+  }
 
+  return ctx;
+};
 
+/**
+ * Simplified translation hook
+ */
+export const useTranslation = () => {
+  const {
+    t,
+    language,
+    isRTL,
+  } = useLanguage();
+
+  return {
+    t,
+    language,
+    isRTL,
+  };
+};
+
+export {
+  LanguageProvider,
+  LanguageContext,
+};
+
+export type {
+  Language,
+  TranslationObject,
+  LanguageContextProps,
+};

@@ -1,0 +1,2734 @@
+{
+  "common": {
+     "howItWorks": "آلية العمل",
+  "enter": "أدخل",
+   "secure": "آمن",
+    "home": "الرئيسية",
+    "selectAccount": "اختر الحساب",
+    "settings": "الإعدادات",
+    "logout": "تسجيل الخروج",
+    "profile": "الملف الشخصي",
+    "internetBanking": "الخدمات المصرفية عبر الهاتف المحمول",
+    "today": "اليوم",
+    "submit": "إرسال",
+    "clear": "مسح",
+    "success": "نجاح",
+    "error": "خطأ",
+    "ok": "موافق",
+    "cancel": "إلغاء",
+    "delete": "حذف",
+    "confirm": "تأكيد",
+    "back": "رجوع",
+    "next": "التالي",
+    "close": "إغلاق",
+    "save": "حفظ",
+    "edit": "تعديل",
+    "done": "تم",
+    "loading": "جارٍ التحميل...",
+    "processing": "جارٍ المعالجة...",
+    "© 2026 Miracle Banking":"© 2026 الخدمات المصرفية ميركل",
+    "Last Login at":"آخر تسجيل دخول في",
+    "noData": "لا توجد بيانات متاحة",
+    "connectionError": "تعذر الاتصال بالخادم. يرجى المحاولة مرة أخرى.",
+    "tryAgain": "يرجى المحاولة مرة أخرى.",
+    "invalid": "غير صالح",
+    "enterValid": "يرجى إدخال قيمة صالحة",
+    "all": "الكل",
+    "to": "إلى",
+    "mobileNumber": "رقم الجوال",
+    "amount": "المبلغ",
+    "enterAmount": "أدخل المبلغ",
+    "note": "ملاحظة",
+    "optional": "اختياري",
+    "enterNote": "أدخل ملاحظة",
+    "verify": "تحقق",
+    "verifying": "جارٍ التحقق...",
+    "goBack": "العودة",
+    "proceed": "المتابعة",
+  "enterYour": "أدخل الرمز الخاص بك",
+  "toConfirm": "لتأكيد هذه العملية",
+    "buttons": {
+      "continue": "متابعة",
+      "confirm": "تأكيد",
+      "confirmTransfer": "تأكيد التحويل",
+      "confirmPay": "تأكيد والدفع",
+      "proceedToMpin": "المتابعة إلى M-PIN",
+      "proceedToOtp": "المتابعة إلى OTP",
+      "backToEdit": "العودة للتعديل",
+      "verify": "تحقق",
+      "selectAccount": "اختر الحساب",
+      "newTransfer": "تحويل جديد",
+      "goToHome": "الذهاب للرئيسية",
+      "mobile": "الجوال",
+        "goBack": "العودة"
+    }
+  },
+
+  "login": {
+    "title": "تسجيل الدخول",
+    "customerIdLabel": "رقم العميل",
+    "customerIdPlaceholder": "أدخل معرف المستخدم",
+    "passwordLabel": "كلمة المرور",
+    "passwordPlaceholder": "أدخل كلمة المرور",
+    "loginButton": "تسجيل الدخول",
+    "forgotPassword": "نسيت الرقم السري المتحرك",
+    "newUser": "مستخدم جديد؟",
+    "register": "تسجيل",
+    "selfonboarding": "ليس لديك حساب؟ افتح حسابًا الآن",
+    "notYou": "ليس أنت؟",
+    "clearConfirmation": "هل أنت متأكد من أنه ليس أنت؟ سيؤدي هذا إلى مسح تفاصيل تسجيل الدخول المحفوظة.",
+    "MPIN": "الرقم السري المتحرك",
+    "OR": "أو",
+    "MPINLabel":"الرقم السري المتحرك",
+    "MPINPlaceholder": "أدخل الرقم السري المتحرك",
+    "bankingTitle": "ميراكل للخدمات المصرفية عبر الهاتف المحمول",
+    "showPassword": "إظهار كلمة المرور",
+    "hidePassword": "إخفاء كلمة المرور",
+    "openKeyboard": "فتح لوحة المفاتيح الافتراضية",
+    "closeKeyboard": "إغلاق لوحة المفاتيح",
+
+    "validation": {
+      "required": "مطلوب",
+      "validNumber": "أدخل رقمًا صالحًا",
+      "validEmail": "أدخل عنوان بريد إلكتروني صالح",
+      "validPhone": "أدخل رقم هاتف صالح",
+      "amountPositive": "يجب أن يكون المبلغ أكبر من 0",
+      "exceedsBalance": "المبلغ يتجاوز الرصيد المتاح",
+      "minValue": "الحد الأدنى للقيمة هو",
+      "maxValue": "الحد الأقصى للقيمة هو",
+      "minLength": "يجب ألا يقل عن",
+      "maxLength": "يجب ألا يتجاوز",
+      "digits": "أرقام",
+      "characters": "أحرف",
+      "invalidFormat": "تنسيق غير صالح",
+      "invalidValue": "قيمة غير صالحة",
+      "mustBeChecked": "يجب تحديده",
+      "loginIdRequired": "مطلوب معرف المستخدم",
+      "loginIdMinLength": "يجب أن يكون معرف المستخدم على الأقل 12 رقمًا",
+      "loginIdMaxLength": "يجب ألا يتجاوز معرف المستخدم 20 رقمًا",
+      "passwordRequired": "كلمة المرور مطلوبة",
+      "passwordMinLength": "يجب أن تكون كلمة المرور 5 أحرف على الأقل",
+      "passwordMaxLength": "يجب ألا تتجاوز كلمة المرور 20 حرفًا",
+      "MPINRequired": "مطلوب الرقم السري المتحرك",
+      "MPINlenRequired": "يجب أن يكون الرقم السري المتحرك 5 أرقام بالضبط",
+      "mobileNumberMinLength": "يجب أن يكون رقم الجوال على الأقل 7 أرقام",
+      "mobileNumberMaxLength": "يجب ألا يتجاوز رقم الجوال 12 رقمًا",
+      "loginCountryRequired": "رمز الدولة مطلوب"
+    },
+
+    "messages": {
+      "loginFailed": "فشل تسجيل الدخول.",
+      "loginFailedTitle": "فشل تسجيل الدخول",
+      "connectionError": "تعذر الاتصال بالخادم. يرجى المحاولة مرة أخرى.",
+      "connectionErrorTitle": "خطأ في الاتصال"
+    },
+
+    "popup": {
+      "title": "فشل التسجيل",
+      "error": "خطأ في التسجيل",
+      "errorDesc": "حدث خطأ ما. يرجى المحاولة مرة أخرى لاحقاً.",
+      "success": "نجاح"
+    },
+
+    "keyboard": {
+      "caps": "أحرف كبيرة",
+      "space": "مسافة",
+      "delete": "حذف",
+      "close": "إغلاق"
+    }
+  },
+
+  "register": {
+    "title": "تسجيل الحساب",
+    "subTitle": "أدخل معلوماتك الشخصية ومعلومات الاتصال",
+    "create": "إنشاء",
+    "cancel": "إلغاء",
+    "back": "رجوع",
+    "selectCountryCode": "اختر رمز الدولة",
+    "createPassword": "إنشاء كلمة المرور",
+    "passwordSuccess": "تم إنشاء حسابك وتعيين كلمة المرور بنجاح.",
+    "stepDetails": "تعبئة البيانات",
+    "stepReview": "مراجعة وإرسال",
+    "stepPassword": "إنشاء كلمة المرور",
+    "stepDesc1": "أدخل معلوماتك الشخصية ومعلومات الاتصال",
+    "stepDesc2": "راجع معلوماتك وأرسلها",
+    "stepDesc3": "أنشئ كلمة مرور آمنة لحسابك",
+
+    "fields": {
+      "firstName": "الاسم الأول",
+      "lastName": "اسم العائلة",
+      "countryCode": "رمز الدولة",
+      "mobileNumber": "رقم الجوال",
+      "physicalAddress": "العنوان",
+      "emailAddress": "البريد الإلكتروني"
+    },
+
+    "placeHolder": {
+      "firstName": "أدخل الاسم الأول",
+      "lastName": "أدخل اسم العائلة",
+      "mobileNumber": "أدخل رقم الجوال",
+      "physicalAddress": "أدخل عنوانك الكامل",
+      "emailAddress": "أدخل بريدك الإلكتروني",
+      "SearchCountryCode": "ابحث عن رمز الدولة"
+    }
+  },
+
+  "forgotPassword": {
+    "title": "نسيت الرقم السري المتحرك؟",
+    "accountDetails": "تفاصيل الحساب",
+    "otp": "رمز التحقق",
+    "setPin": "تعيين الرقم السري",
+    "digitText": "أدخل رمز التحقق المكوّن من 5 أرقام.",
+    "next": "التالي",
+    "processing": "جارٍ المعالجة...",
+    "newPassword": "كلمة المرور الجديدة",
+    "confirmNewPassword": "تأكيد كلمة المرور الجديدة",
+    "enterPassword": "أدخل كلمة المرور",
+    "enterNewPassword": "أدخل كلمة المرور الجديدة",
+    "submitLabel": "إرسال",
+    "setPassword": "تعيين كلمة المرور",
+    "MpinFive": "أدخل الرقم السري المتحرك المكون من 5 أرقام.",
+    "setMpin": "تعيين الرقم السري المتحرك",
+    "securityQuestions": "أسئلة الأمان"
+  },
+
+  "profile": {
+    "profileTitle": "الملف الشخصي",
+    "changePassword": "تغيير كلمة المرور",
+    "updatePassword": "تحديث كلمة المرور",
+    "currentPassword": "كلمة المرور الحالية",
+    "newPassword": "كلمة المرور الجديدة",
+    "confirmPassword": "تأكيد كلمة المرور",
+    "failure": "فشل",
+    "somethingWrong": "حدث خطأ ما. حاول مرة أخرى.",
+    "failedChangePassword": "فشل تغيير كلمة المرور.",
+    "logoutTitle": "إغلاق الجلسة",
+    "logoutMessage": "شكراً لاستخدام Miracle Banking. لقد تم تسجيل خروجك بنجاح.",
+    "logout": "تسجيل الخروج"
+  },
+
+  "loginOTP": {
+    "title": "التحقق من رمز OTP",
+    "desc": "أدخل رمز OTP المكون من 5 أرقام.",
+    "btnText": "تأكيد الرمز",
+    "verify": "جارٍ التحقق..."
+  },
+  "otp": {
+    "invalid": "رمز التحقق غير صالح",
+    "errMessage": "يرجى إدخال MPIN صحيح مكوّن من 5 أرقام.",
+    "valid": "تم التحقق من رمز التحقق",
+    "failed": "فشل التحقق",
+    "reqErr": "خطأ في الطلب",
+    "reqMessage": "فشل التحقق من رمز التحقق. يرجى المحاولة مرة أخرى.",
+    "statusCodeOne": "رمز التحقق غير صالح.",
+    "statusOk": "تم التحقق من رمز التحقق (OTP) بنجاح.",
+    "yes": "نعم",
+    "ok": "حسنًا"
+  },
+  "validation": {
+    "required": "مطلوب",
+    "atleast": "يجب أن يكون على الأقل",
+    "exactly": "يجب أن يكون",
+    "char": "حرفًا",
+    "digits": "أرقام",
+    "notExceed": "يجب ألا يتجاوز",
+    "onlySpace": "لا يمكن أن يكون مسافات فقط",
+    "invalid": "التنسيق غير صالح",
+    "validEmail": "يرجى إدخال بريد إلكتروني صالح",
+    "onlyNum": "مسموح بالأرقام فقط",
+    "validUrl": "يرجى إدخال رابط (URL) صالح",
+    "OtpErr": "يجب أن يتكون رمز التحقق (OTP) من 5 أرقام",
+    "mblNum": "يجب أن يكون رقم الجوال 7 أو 15 رقمًا",
+    "mblReq": "رقم الجوال مطلوب",
+    "selectCountry": "يرجى اختيار رمز الدولة",
+    "passwordErr": "يجب أن تحتوي كلمة المرور على حرف كبير وصغير ورقم ورمز خاص",
+    "passwordReq": "كلمة المرور مطلوبة",
+    "passwordMin": "يجب ألا تقل كلمة المرور عن 8 أحرف",
+    "passwordMax": "يجب ألا تتجاوز كلمة المرور 20 حرفًا",
+    "passwordMatch": "يجب أن تتطابق كلمتا المرور",
+    "confirmPassword": "يرجى تأكيد كلمة المرور",
+    "mobileNotZero": "رقم الهاتف المحمول يجب ألا يكون صفر",
+    "mpinNotZero": "الرمز السري يجب ألا يكون صفر"
+  },
+
+
+  "popup": {
+    "title": "فشل التسجيل",
+    "error": "خطأ في التسجيل",
+    "errorDesc": "حدث خطأ ما. يرجى المحاولة مرة أخرى لاحقًا.",
+    "success": "نجاح"
+  },
+
+  "footer": {
+    "copyright": "حقوق النشر © 2026 موديفين",
+    "disclaimer": "إخلاء المسؤولية",
+    "terms": "الشروط والأحكام",
+    "privacy": "سياسة الخصوصية"
+  },
+
+  "landingPage": {
+    "signIn": "تسجيل الدخول",
+    "register": "تسجيل",
+    "bankingMade": "الخدمات المصرفية أصبحت",
+    "simple": "بسيطة",
+    "and": "و",
+    "secure": "آمنة",
+    "experience": "اكتشف مستقبل الخدمات المصرفية الرقمية معنا، مع منصة آمنة،",
+    "fast": "سريعة وسهلة الاستخدام.",
+    "why": "لماذا تختار موديفين؟",
+    "secureAuth": "مصادقة آمنة",
+    "stateOfArt": "أحدث بروتوكولات الأمان لحماية بياناتك المالية.",
+    "easy": "تحويلات سهلة",
+    "sendMoney": "أرسل الأموال إلى الأصدقاء والعائلة بكل سهولة.",
+    "support": "دعم على مدار الساعة",
+    "ourCust": "فريق خدمة العملاء لدينا جاهز دائمًا للمساعدة."
+  },
+
+  "sidebar": {
+    "Locate Us": "اعثر علينا",
+    "Contact Us": "اتصل بنا",
+    "Offers": "العروض",
+    "Refer a Friend": "قم بدعوة صديق",
+    "Rate Us": "قيّمنا",
+    "Help": "المساعدة",
+    "FAQ": "الأسئلة الشائعة",
+    "Appearance": "المظهر",
+    "Self Registration": "التسجيل الذاتي",
+    "appcode": "رمز التطبيق",
+    "locateDesc": "ابحث عن الفروع وأجهزة الصراف الآلي القريبة",
+  "offersDesc": "عروض وصفقات حصرية",
+  "contactDesc": "تواصل معنا",
+  "helpDesc": "إرشادات وحلول للمشكلات",
+  "faqDesc": "الأسئلة الشائعة",
+  "appearanceDesc": "إعدادات المظهر واللغة",
+  "referDesc": "شارك التطبيق واربح مكافآت",
+  "rateDesc": "هل أعجبك التطبيق؟ اترك لنا تقييماً.",
+  "registerDesc": "افتح حساباً جديداً",
+  "appcodedes": "اضغط هنا لإنشاء رمز التطبيق الآمن الخاص بك لتفعيل التطبيق.",
+  "groupExplore": "استكشاف",
+  "groupSupport": "الدعم",
+  "groupMore": "المزيد",
+  "groupSettings": "الإعدادات",
+   "appversion": "إصدار التطبيق",
+    "groups": {
+      "dashboard": "لوحة التحكم",
+      "airtimetopup": "إعادة شحن الرصيد",
+      "accounts": "الحسابات",
+      "msavings": "الادخار",
+      "loans": "القروض",
+      "debitcards": "بطاقات الخصم",
+      "cardless": "سحب بدون بطاقة",
+      "bulkpayments": "مدفوعات جماعية",
+      "requestmoney": "طلب الأموال",
+      "recenttransactions": "المعاملات الأخيرة",
+      "treasury": "الخزينة",
+      "tradefinance": "تمويل التجارة",
+      "loyalty": "نقاط الولاء",
+      "settings": "الإعدادات",
+      "help": "مساعدة",
+      "feedback": "ملاحظات",
+      "rateus": "قيمنا",
+      "contactus": "اتصل بنا",
+      "ProofOfPayment": "إثبات الدفع",
+      "productservices": "المنتجات والخدمات",
+      "userprofile": "الملف الشخصي",
+      "qrcode": "رمز QR",
+      "qrscanner":"ماسح رمز QR",
+      "cards": "البطاقات",
+      "payments": "المدفوعات",
+      "reports": "التقارير",
+      "services": "الخدمات",
+      "offers": "العروض",
+      "rewards": "المكافآت",
+      "Pictograph":"الرسم التصويري",
+      "notifications":"الإشعارات"
+    },
+
+    "items": {
+      "dashboard": "لوحة التحكم",
+      "accounts": "الحسابات",
+      "deposits": "الودائع",
+      "loans": "القروض",
+      "savings": "الادخار",
+      "creditCards": "بطاقات الائتمان",
+      "debitCards": "بطاقات الخصم",
+      "cardlessWithdrawal": "السحب بدون بطاقة",
+      "payments": "المدفوعات",
+      "bulkPayments": "المدفوعات المجمعة",
+      "bulkPaymentsFileUpload": "تحميل الملف",
+      "bulkPaymentsViewStatus": "عرض الحالة",
+      "pendingApprovals": "الموافقات المعلقة",
+      "requestMoney": "طلب أموال",
+      "airtimeTopup": "شحن رصيد الهاتف",
+      "serviceRequests": "طلبات الخدمة",
+      "transactions": "المعاملات/كشف الحساب",
+      "treasury": "الخزينة",
+       "tradeFinance": "التمويل التجاري",
+      "letterOfGuarantee": "خطاب الضمان",
+      "letterOfCredit": "خطاب الاعتماد",
+      "loyalty": "الولاء",
+      "rewards": "المكافآت",
+      "proofOfPayment": "إثبات الدفع",
+      "downloadStatement": "تحميل كشف الحساب",
+      "download": "تحميل"
+    }
+  },
+
+  "dashboard": {
+    "title": "الخدمات المصرفية عبر الهاتف المحمول",
+    "recentTransactions": "المعاملات الأخيرة",
+    "accountOverview": "نظرة عامة على الحساب",
+    "quickLinks": "روابط سريعة",
+    "notes": "ملاحظات",
+    "offers": "العروض"
+  },
+  "quickLinks": {
+    "title": "روابط سريعة",
+    "transferMoney": "تحويل أموال",
+    "payBills": "دفع الفواتير",
+    "addBeneficiary": "إضافة مستفيد",
+    "downloadStatement": "تحميل كشف الحساب",
+    "serviceRequest": "طلب خدمة"
+  },
+  "carousel": {
+    "importantNotes": "ملاحظات مهمة"
+  },
+  "notes": {
+    "savingsAccount": "افتح حساب توفير بدون رسوم فتح حساب",
+    "clickHere": "انقر هنا",
+    "updateKYC": "قم بتحديث بيانات KYC لتجنب انقطاع الخدمة",
+    "knowMore": "اعرف المزيد"
+  },
+  "transactions": {
+   "recentTransactions":        "المعاملات الأخيرة",
+  "date":                      "التاريخ",
+  "transactionId":             "رقم المعاملة",
+  "description":               "الوصف",
+  "category":                  "الفئة",
+  "amount":                    "المبلغ",
+  "noDescription":             "لا يوجد وصف",
+  "transfer":                  "تحويل",
+  "all":                       "الكل",
+  "income":                    "دخل",
+  "expense":                   "مصروف",
+  "transaction":               "معاملة",
+  "transactionsPlural":        "معاملات",
+  "noTransactions":            "لا توجد معاملات أخيرة",
+  "noTransactionsDescription": "ستظهر هنا معاملاتك الأخيرة بمجرد إجراء تحويل أو دفع.",
+  "noMatchingTransactions":    "لا توجد معاملات مطابقة",
+  "noMatchingDescription":     "حاول تعديل معايير البحث.",
+   "showingOf":                 "عرض {{shown}} من {{total}} معاملة",
+  "refreshing":                "جارٍ التحديث...",
+  "pullToRefresh":             "اسحب للتحديث",
+  "releaseToRefresh":          "أفلت للتحديث",
+  "credit":                    "إيداع",
+  "debit":                     "سحب",
+  "type":                      "النوع",
+  "reference":                 "المرجع",
+  "closingBalance":            "الرصيد الختامي",
+  "toAccount":                 "إلى الحساب",
+  "loadingMore":               "جارٍ تحميل المزيد...",
+  "allLoaded":                 "تم تحميل جميع {{count}} معاملة"
+ 
+},
+  "transactionsTab": {
+    "accountDetailsOf": "تفاصيل حساب",
+    "print": "طباعة",
+    "download": "تحميل",
+    "share": "مشاركة",
+    "note": "ملاحظة:",
+    "copyShareInfo": "سيؤدي النقر على زر النسخ أو المشاركة إلى مشاركة تفاصيل الحساب بالتنسيق التالي:",
+    "accountFormat": "اسم صاحب الحساب، رقم الحساب، اسم الفرع",
+    "accountInfo": "معلومات الحساب",
+    "copyAccountDetails": "نسخ تفاصيل الحساب",
+    "shareAccountDetails": "مشاركة تفاصيل الحساب"
+  },
+  "table": {
+    "noData": "لا توجد بيانات متاحة.",
+    "noLoans": "لم يتم العثور على قروض",
+    "of": "من",
+    "items": "عناصر",
+    "showing": "عرض",
+    "to": "إلى",
+    "entries": "سجلات"
+  },
+  "accounts": {
+    "accountNo": "رقم الحساب",
+    "branch": "الفرع",
+    "accountType": "نوع الحساب",
+    "availableBalance": "الرصيد المتاح",
+    "notAvailable": "غير متاح",
+     "addMoney":"إضافة رصيد"
+  },
+  "tabs": {
+    "accounts": "الحسابات",
+    "loans": "القروض",
+    "deposit": "الودائع"
+  },
+ "menu": {
+  "user": "المستخدم",
+  "lastLoggedIn": "آخر تسجيل دخول:",
+  "myProfile": "ملفي الشخصي",
+  "settings": "الإعدادات",
+  "logout": "تسجيل الخروج",
+  "loggingOut": "جارٍ تسجيل الخروج...",
+  "logoutConfirmation": "هل أنت متأكد أنك تريد تسجيل الخروج من الخدمات المصرفية عبر الإنترنت - ميراكل؟",
+  "userMenuFor": "قائمة المستخدم لـ",
+  "notAvailable": "غير متاح",
+  "invalidFormat": "تنسيق غير صالح",
+  "invalidDate": "تاريخ غير صالح",
+  "dateUnavailable": "التاريخ غير متاح",
+ 
+  "payments": "المدفوعات",
+  "topUp": "إعادة الشحن",
+  "productsServices": "المنتجات والخدمات",
+  "rewards": "المكافآت",
+ 
+  "quickServices": "الخدمات السريعة",
+  "services": "الخدمات",
+  "treasury": "الخزينة",
+  "tradeFinance": "تمويل التجارة",
+  "loyalty": "الولاء",
+ 
+  "helpSupport": "المساعدة والدعم",
+  "help": "مساعدة",
+  "feedback": "ملاحظات",
+  "rateUs": "قيّمنا",
+  "contactUs": "اتصل بنا"
+},
+  "offers": {
+    "title": "الميزات/العروض",
+    "instantCredit": "احصل على إيداع فوري للأموال في أي وقت ومن أي مكان.",
+    "sendMoney": "أرسل الأموال في ثوانٍ في أي وقت ومن أي مكان."
+  },
+  "miniStatement": {
+    "title": "كشف حساب مختصر",
+    "date": "التاريخ",
+    "transactionId": "رقم المعاملة",
+    "description": "الوصف",
+    "amount": "المبلغ",
+    "all": "الكل",
+    "income": "الدخل",
+    "expenses": "المصروفات",
+    "notAvailable": "غير متاح",
+    "other": "أخرى",
+    "noDataToDownload": "لا توجد بيانات متاحة للتحميل",
+    "accountNo": "رقم الحساب",
+    "generatedOn": "تم الإنشاء في",
+    "totalIncome": "إجمالي الدخل",
+    "totalExpenses": "إجمالي المصروفات",
+    "netAmount": "المبلغ الصافي",
+    "pdfSuccess": "تم تنزيل كشف الحساب بنجاح",
+    "noAccounts": "لا توجد حسابات متاحة",
+    "noTransactions": "لم يتم العثور على معاملات للمعايير المحددة",
+    "selectAccount": "اختر حسابك",
+    "share": "مشاركة",
+    "shareFailed": "تعذر مشاركة تفاصيل المعاملة",
+    "transactionReceipt": "إيصال المعاملة"
+  },
+  "statements": {
+    "miniStatement": "كشف حساب مختصر",
+    "fullStatement": "كشف حساب كامل",
+    "accountDetails": "تفاصيل الحساب",
+    "view": "منظر",
+    "download": "تحميل",
+    "email": "بريد إلكتروني"
+  },
+  "fullStatement": {
+    "title": "كشف حساب كامل",
+    "email":"البريد الإلكتروني",
+    "download":"تحميل",
+    "view":"عرض الحالة",
+    "all": "الكل",
+    "income": "الدخل",
+    "expenses": "المصروفات",
+    "15Days": "15 يومًا",
+    "30Days": "30 يومًا",
+    "45Days": "45 يومًا",
+    "60Days": "60 يومًا",
+    "selectStatementType": "يرجى اختيار نوع كشف الحساب:",
+    "period": "الفترة",
+    "dateRange": "نطاق التاريخ",
+    "date": "التاريخ",
+    "id": "المعرّف",
+    "transactionId": "رقم المعاملة",
+    "description": "الوصف",
+    "category": "الفئة",
+    "amount": "المبلغ",
+    "account": "الحساب",
+    "generatedOn": "تم الإنشاء في",
+    "noAccounts": "لا توجد حسابات متاحة",
+    "noTransactions": "لم يتم العثور على معاملات",
+    "selectPeriodHint": "اختر فترة أو نطاق تاريخ وانقر على \"عرض\" لمشاهدة معاملاتك",
+    "downloadSuccess": "تم تحميل كشف الحساب بنجاح.",
+    "downloadFailed": "فشل تحميل كشف الحساب.",
+    "emailFailed": "فشل طلب البريد الإلكتروني.",
+    "emailSuccess": "تم إرسال كشف الحساب إلى البريد الإلكتروني بنجاح."
+   
+  },
+  "accountDetails": {
+    "title": "تفاصيل الحساب",
+    "accountHolder": "صاحب الحساب",
+    "accountNumber": "رقم الحساب",
+    "accountType": "نوع الحساب",
+    "customerId": "معرّف العميل/المستخدم",
+    "currency": "العملة",
+    "status": "الحالة",
+    "branch": "الفرع",
+    "communicationAddress": "عنوان المراسلة",
+    "active": "نشط",
+    "branchName": "اسم الفرع",
+    "notAvailable": "غير متاح",
+    "apiError": "خطأ في الواجهة البرمجية",
+    "email": "بريد إلكتروني"
+  },
+  "accountSummary": {
+    "accountNo": "رقم الحساب",
+    "subtitle": "اطلع على حساباتك وكشوف حساباتك",
+    "branch": "الفرع",
+    "accountType": "نوع الحساب",
+    "availableBalance": "الرصيد المتاح",
+    "notAvailable": "غير متاح",
+    "branchName": "اسم الفرع",
+    "offersImage": "صورة العروض"
+  },
+  "statementFilter": {
+    "statementPeriod": "فترة كشف الحساب",
+    "select": "اختر",
+    "fromDate": "من تاريخ",
+    "toDate": "إلى تاريخ",
+    "datePlaceholder": "يوم/شهر/سنة",
+    "email": "البريد الإلكتروني",
+    "view": "عرض",
+    "download": "تحميل"
+  },
+  "datePicker": {
+    "selectDate": "اختر التاريخ"
+  },
+ "loyalty": {
+
+  "title": "نقاط الولاء الخاصة بي",
+
+  "subtitle": "اكسب نقاطاً مع كل معاملة",
+
+  "badge": "المكافآت",
+
+  "total": "الإجمالي",
+
+  "points": "نقاط",
+
+  "days": "أيام",
+
+  "expiresIn": "تنتهي خلال",
+
+  "amount": "المبلغ",
+
+  "expired": "منتهية الصلاحية",
+
+  "searchPlaceholder": "ابحث بالنوع أو التاريخ...",
+
+  "columns": {
+
+    "type": "نوع الولاء",
+
+    "points": "نقاط الولاء",
+
+    "amount": "المبلغ",
+
+    "createdDate": "تاريخ الإنشاء",
+
+    "expiryDate": "تاريخ الانتهاء",
+
+    "remainingDays": "الأيام المتبقية"
+
+  },
+
+  "stats": {
+
+    "totalPoints": "إجمالي النقاط"
+
+  },
+
+  "table": {
+
+    "totalRewards": "إجمالي المكافآت"
+
+  },
+
+  "empty": {
+
+    "title": "لا توجد نقاط ولاء",
+
+    "description": "أكمل المعاملات لكسب نقاط الولاء!",
+
+    "searchTitle": "لا توجد نتائج",
+
+    "searchDescription": "جرّب بحثاً مختلفاً"
+
+  }
+
+},
+ 
+"miracleDataTable": {
+
+  "title": "البيانات",
+
+  "subtitle": "عرض وإدارة بياناتك",
+
+  "searchPlaceholder": "بحث...",
+
+  "refresh": "تحديث",
+
+  "use": "استخدام",
+
+  "useTransaction": "استخدم هذه المعاملة",
+
+  "items": "عناصر",
+
+  "tapToAction": "انقر للتحديد",
+
+  "from": "من",
+
+  "to": "إلى",
+
+  "note": "ملاحظة",
+
+  "noData": "لا توجد بيانات",
+
+  "noDataDescription": "لا توجد بيانات متاحة للعرض.",
+
+  "noMatchingData": "لا توجد بيانات مطابقة",
+
+  "noMatchingDescription": "لا توجد بيانات مطابقة لمعايير البحث. جرّب كلمات مختلفة.",
+
+  "pullToRefresh": "اسحب للأسفل للتحديث",
+
+  "releaseToRefresh": "اترك للتحديث",
+
+  "refreshing": "جارٍ التحديث...",
+
+  "loadingMore": "جارٍ تحميل المزيد...",
+
+  "allLoaded": "تم تحميل جميع العناصر ({count})",
+
+  "columns": {
+
+    "payeeName": "اسم المستفيد",
+
+    "fromAccount": "من حساب",
+
+    "toAccount": "إلى حساب",
+
+    "amount": "المبلغ",
+
+    "remarks": "ملاحظات",
+
+    "status": "الحالة",
+
+    "source": "المصدر",
+
+    "actions": "الإجراءات",
+
+    "name": "الاسم",
+
+    "date": "التاريخ"
+
+  },
+
+  "status": {
+
+    "pending": "معلّق",
+
+    "completed": "مكتمل",
+
+    "failed": "فشل"
+
+  },
+
+  "pagination": {
+
+    "total": "الإجمالي",
+
+    "records": "سجلات",
+
+    "rowsPerPage": "صفوف لكل صفحة",
+
+    "showing": "عرض",
+
+    "of": "من",
+
+    "items": "عناصر",
+
+    "page": "صفحة"
+
+  },
+
+  "errors": {
+
+    "loadFailed": "فشل تحميل البيانات"
+
+  }
+
+},
+  "rewards": {
+    "title": "مكافآتي",
+    "subtitle": "اخدش واربح مكافآت رائعة!",
+    "badge": "اربح جوائز",
+    "scratchToReveal": "اخدش للكشف!",
+    "scratchAndWin": "اخدش واربح!",
+    "scratchHere": "اخدش هنا!",
+    "revealing": "جارٍ الكشف...",
+    "revealNow": "اكشف الآن",
+    "retry": "حاول مرة أخرى",
+    "noDescription": "مكافأة",
+    "transaction": "معاملة",
+    "special": "خاصة",
+    "errorTitle": "حدث خطأ ما",
+    "scratchProgress": "التقدم",
+    "stats": {
+      "totalEarned": "إجمالي المكتسب",
+      "totalRewards": "إجمالي المكافآت"
+    },
+    "filters": {
+      "all": "الكل",
+      "unscratched": "غير مخدوشة",
+      "scratched": "مخدوشة",
+      "winners": "الفائزون",
+      "special": "خاصة"
+    },
+    "empty": {
+      "noUnscratched": "لا توجد مكافآت غير مخدوشة",
+      "allScratched": "لقد خدشت جميع مكافآتك!",
+      "noScratched": "لا توجد مكافآت مخدوشة",
+      "scratchSome": "اخدش بعض المكافآت لرؤيتها هنا",
+      "noWinners": "لا توجد مكافآت فائزة بعد",
+      "keepPlaying": "استمر في الخدش للفوز بمكافآت!",
+      "noSpecial": "لا توجد مكافآت خاصة",
+      "specialDesc": "ستظهر المكافآت الخاصة هنا",
+      "noRewards": "لم يتم العثور على مكافآت",
+      "earnRewards": "أكمل المعاملات لكسب المكافآت!"
+    }
+  },
+  "cards": {
+    "title": "بطاقات الخصم",
+    "subtitle": "إدارة إعدادات بطاقة الخصم الخاصة بك",
+    "badge": "خدمة البطاقة",
+    "noCard": "لا توجد بطاقة متاحة",
+    "selectAccount": "اختر الحساب",
+    "cardDetailsOf": "تفاصيل البطاقة لـ",
+    "saveSuccess": {
+      "title": "تم تحديث البطاقة",
+      "detailsTitle": "تفاصيل البطاقة"
+    },
+    "tabs": {
+      "summary": "ملخص البطاقة",
+      "manage": "إدارة البطاقة",
+      "pinServices": "خدمات رمز PIN للبطاقة"
+    },
+    "details": {
+      "holderName": "اسم حامل البطاقة",
+      "cardNumber": "رقم البطاقة",
+      "accountNumber": "رقم الحساب",
+      "atmDailyLimit": "الحد اليومي لأجهزة الصراف الآلي",
+      "atmAvailable": "الحد المتاح لأجهزة الصراف الآلي",
+      "posDailyLimit": "الحد اليومي لنقاط البيع",
+      "posAvailable": "الحد المتاح لنقاط البيع",
+      "cardStatus": "حالة البطاقة",
+      "tapPay": "الدفع بالنقر"
+    },
+    "status": {
+      "active": "نشطة",
+      "blocked": "محظورة",
+      "enabled": "مفعّلة",
+      "disabled": "معطّلة"
+    },
+    "manage": {
+      "atmOnline": "معاملات الصراف الآلي عبر الإنترنت",
+      "posOnline": "معاملات نقاط البيع عبر الإنترنت",
+      "blockCard": "حظر / إلغاء حظر البطاقة",
+      "tapPay": "الدفع بالنقر",
+      "atmLimit": "حد السحب من الصراف الآلي",
+      "posLimit": "حد معاملات نقاط البيع",
+      "save": "حفظ التغييرات"
+    },
+    "services": {
+      "title": "خدمات رمز PIN للبطاقة",
+      "desc": "أعد تعيين رمز PIN لبطاقة الخصم بأمان",
+      "resetPin": "إعادة تعيين رمز PIN للبطاقة"
+    },
+    "promo": {
+      "justForYou": "خصيصًا لك!",
+      "eligible": "أنت الآن",
+      "eligibleSub": "مؤهل لـ",
+      "upgrade": "ترقية بطاقتك!",
+      "avail": "استفد الآن"
+    },
+    "pin": {
+      "title": "إعادة تعيين رمز PIN للبطاقة",
+      "subtitle": "أمّن بطاقتك برمز PIN جديد",
+      "oldPin": "رمز PIN القديم للبطاقة",
+      "newPin": "رمز PIN الجديد للبطاقة",
+      "confirmPin": "تأكيد رمز PIN الجديد",
+      "enterOld": "أدخل رمز PIN القديم المكون من 4 أرقام",
+      "enterNew": "أدخل رمز PIN الجديد المكون من 4 أرقام",
+      "reenter": "أعد إدخال رمز PIN الجديد",
+      "continue": "متابعة",
+      "enterOtp": "أدخل رمز OTP",
+      "verify": "تحقق وأعد التعيين",
+      "backToPin": "العودة إلى إدخال رمز PIN",
+      "otpSent": "تم إرسال رمز OTP إلى رقم هاتفك المسجل. أدخله أدناه لإكمال إعادة تعيين رمز PIN.",
+      "successTitle": "نجاح",
+      "successMsg": "تم تحديث رمز PIN لبطاقتك بنجاح.",
+      "required": "رمز PIN مطلوب",
+      "fourDigits": "يجب أن يتكون رمز PIN من 4 أرقام",
+      "numbersOnly": "يجب أن يحتوي رمز PIN على أرقام فقط",
+      "mismatch": "رمز PIN الجديد ورمز التأكيد غير متطابقين",
+      "samePins": "يجب أن يختلف رمز PIN الجديد عن القديم",
+      "otpFailed": "فشل إنشاء رمز OTP",
+      "otpError": "فشل إنشاء رمز OTP. يرجى المحاولة مرة أخرى.",
+      "invalidOtp": "رمز OTP غير صالح. يرجى المحاولة مرة أخرى.",
+      "verifyError": "فشل التحقق من رمز OTP. يرجى المحاولة مرة أخرى.",
+      "resendFailed": "فشل إعادة إرسال رمز OTP",
+      "resendError": "فشل إعادة إرسال رمز OTP"
+    }
+  },
+  "loans": {
+    "title": "إدارة القروض",
+    "subtitle": "تقدّم وتتبّع وأدر جميع حسابات القروض الخاصة بك",
+    "badge": {
+      "newApplication": "طلب جديد",
+      "myLoans": "قروضي",
+      "closure": "إغلاق"
+    },
+    "tabs": {
+      "loanRequest": "طلب قرض",
+      "loanAccountList": "قائمة حسابات القروض",
+      "loanClosure": "إغلاق القرض"
+    },
+    "stats": {
+      "totalLoans": "إجمالي القروض",
+      "activeLoans": "القروض النشطة",
+      "closedOther": "مغلقة / أخرى"
+    },
+    "status": {
+      "active": "نشط",
+      "closed": "مغلق",
+      "pending": "معلّق",
+      "overdue": "متأخر",
+      "completed": "مكتمل"
+    },
+    "card": {
+      "totalLoan": "إجمالي القرض",
+      "emiPaid": "الأقساط المدفوعة",
+      "due": "مستحق",
+      "payEmi": "دفع القسط"
+    },
+    "list": {
+      "searchPlaceholder": "ابحث بنوع القرض أو رقم الحساب...",
+      "totalLoan": "إجمالي القرض",
+      "nextDue": "الاستحقاق التالي",
+      "emiProgress": "تقدم الأقساط",
+      "noLoans": "لا توجد حسابات قروض",
+      "noLoansDesc": "ليس لديك أي حسابات قروض نشطة.",
+      "noSearchResults": "لا توجد قروض مطابقة لبحثك"
+    },
+    "details": {
+      "backToList": "العودة إلى قائمة القروض",
+      "loanDetailsOf": "تفاصيل قرض",
+      "loanDetails": "تفاصيل القرض",
+      "loanType": "نوع القرض",
+      "accountNumber": "رقم الحساب",
+      "loanAmount": "مبلغ القرض",
+      "emi": "القسط الشهري",
+      "remainingBalance": "الرصيد المتبقي",
+      "totalAmountPayable": "إجمالي المبلغ المستحق",
+      "lastPaymentDate": "تاريخ آخر دفعة",
+      "interestRate": "معدل الفائدة",
+      "moreDetails": "المزيد من التفاصيل",
+      "hideDetails": "إخفاء التفاصيل"
+    },
+    "emiSchedule": {
+      "title": "جدول الأقساط",
+      "subtitle": "انقر على أي شهر لرؤية التفاصيل الكاملة",
+      "paidTotal": "المدفوع / الإجمالي",
+      "emiAmount": "مبلغ القسط",
+      "progress": "التقدم",
+      "month": "الشهر",
+      "loadMore": "تحميل المزيد",
+      "remaining": "متبقي",
+      "paid": "مدفوع",
+      "upcoming": "قادم",
+      "due": "مستحق",
+      "overdue": "متأخر",
+      "principalOutstanding": "أصل الدين المتبقي",
+      "interestAmount": "مبلغ الفائدة",
+      "closingBalance": "الرصيد الختامي",
+      "monthlyPrincipal": "أصل الدين الشهري",
+      "emiDate": "تاريخ القسط",
+      "openingBalance": "الرصيد الافتتاحي",
+      "monthlyInterest": "الفائدة الشهرية",
+      "term": "المدة",
+      "totalEmis": "إجمالي الأقساط"
+    },
+    "closure": {
+      "title": "إغلاق القرض",
+      "warning": "اختر قرضًا لبدء الإغلاق. قد تُطبق رسوم السداد المبكر. يرجى مراجعة تفاصيل التسوية قبل التأكيد.",
+      "searchPlaceholder": "ابحث عن قروض للإغلاق...",
+      "outstanding": "المستحق",
+      "balanceDue": "الرصيد المستحق",
+      "noLoans": "لا توجد قروض للإغلاق",
+      "noLoansDesc": "ليس لديك أي قروض نشطة مؤهلة للإغلاق.",
+      "closeLoan": "إغلاق القرض"
+    },
+    "terms": {
+      "title": "الشروط والأحكام",
+      "smsConsent": "بقبولك هذه الشروط والأحكام، فإنك توافق على تلقي إشعارات عبر الرسائل القصيرة المتعلقة بطلب القرض الخاص بك.",
+      "processingFee": "سيتم خصم رسوم المعالجة مقدمًا من مبلغ القرض المعتمد.",
+      "readAccept": "للوصول إلى القرض، يرجى التأكيد بأنك قرأت وقبلت جميع الشروط والأحكام المعمول بها لهذا المنتج.",
+      "agreeLabel": "لقد قرأت وفهمت وأوافق على جميع",
+      "termsAndConditions": "الشروط والأحكام",
+      "agreeEnd": "المذكورة أعلاه.",
+      "proceed": "متابعة"
+    },
+    "application": {
+      "interestRateLabel": "معدل فائدة الخطة المحددة",
+      "selectPlanHint": "يرجى اختيار نوع القرض ونوع المدة والمدة والمبلغ لعرض معدل الفائدة",
+      "availableUpto": "مبلغ القرض المتاح حتى",
+      "selectAmount": "اختر مبلغ القرض المطلوب",
+      "interest": "الفائدة",
+      "selectedLoanAmount": "مبلغ القرض المحدد",
+      "loanConfiguration": "إعدادات القرض",
+      "loanAmount": "مبلغ القرض",
+      "loanType": "نوع القرض",
+      "compoundFrequency": "تكرار التركيب",
+      "gracePeriod": "فترة السماح (بالأشهر)",
+      "gracePeriodHint": "تأجيل سداد أصل الدين.",
+      "durationType": "نوع المدة",
+      "tenurePeriod": "فترة المدة",
+      "years": "سنوات",
+      "months": "أشهر",
+      "monthly": "شهري",
+      "enterTenure": "أدخل مدة في",
+      "quarterly": "ربع سنوي",
+      "halfYearly": "نصف سنوي",
+      "yearly": "سنوي",
+      "optional": "اختياري",
+      "max": "الحد الأقصى",
+      "loanAmountExceeded": "تم تجاوز مبلغ القرض",
+      "adjustedToMax": "تم التعديل إلى الحد الأقصى",
+      "loanAmountRequired": "مبلغ القرض مطلوب",
+      "loanTypeRequired": "نوع القرض مطلوب",
+      "compoundFreqRequired": "تكرار التركيب مطلوب",
+      "durationTypeRequired": "نوع المدة مطلوب",
+      "tenureRequired": "فترة المدة مطلوبة",
+      "noTenureOptions": "لا تتوفر خيارات للمدة"
+    },
+    "confirmation": {
+      "title": "تأكيد طلب القرض",
+      "subtitle": "يرجى مراجعة تفاصيل طلب القرض أدناه.",
+      "notFound": "لم يتم العثور على تفاصيل حساب القرض. يرجى العودة وإعادة الحساب.",
+      "applicationSummary": "ملخص الطلب",
+      "loanAmountApplied": "مبلغ القرض المطلوب",
+      "totalAmountPaid": "إجمالي المبلغ المستحق",
+      "termLabel": "المدة",
+      "gracePeriodLabel": "فترة السماح",
+      "emiGracePeriod": "القسط (فترة السماح)",
+      "emiNonGrace": "القسط (بعد فترة السماح)",
+      "interestAmountLabel": "مبلغ الفائدة",
+      "principalAmountLabel": "مبلغ أصل الدين",
+      "compoundingFrequency": "تكرار التركيب",
+      "monthlyPrincipalDeduction": "خصم أصل الدين الشهري",
+      "viewMore": "عرض المزيد",
+      "showLess": "عرض أقل",
+      "successTitle": "تم تقديم طلب القرض بنجاح",
+      "successMessage": "تم إنشاء حساب القرض الخاص بك بنجاح.",
+      "dear": "عزيزي",
+      "loanAccountNumber": "رقم حساب القرض",
+      "goToHome": "الذهاب إلى الرئيسية"
+    },
+    "common": {
+      "loanAmount": "مبلغ القرض",
+      "interestRate": "معدل الفائدة",
+      "na": "غير متاح",
+      "repaid": "مسدد",
+      "emis": "أقساط",
+      "startDate": "تاريخ البدء",
+      "sourceAccount": "الحساب المصدر"
+    }
+  },
+  "payments": {
+    "title": "المدفوعات",
+    "subtitle": "حوّل الأموال وادفع الفواتير بأمان",
+    "badge": "آمن",
+    "tabs": {
+      "fund": "تحويل الأموال",
+      "bill": "دفع الفواتير",
+      "bulk": "المدفوعات المجمعة"
+    }
+  },
+  "fundTransfer": {
+    "sections": {
+      "quickTransfer": "تحويل الأموال",
+      "sameBank": "إدارة المستفيدين"
+    },
+    "tiles": {
+      "onceOff": "تحويل لمرة واحدة",
+      "onceOffDesc": "أرسل أموالاً إلى أي حساب",
+      "manageBeneficiary": "إضافة وإدارة المستفيدين",
+      "manageBeneficiaryDesc": "احفظ المستلمين المتكررين",
+      "savedTransactions": "المعاملات المحفوظة",
+      "savedTransactionsDesc": "استئناف المسودات والقوالب",
+      "fundTransfer": "تحويل الأموال عبر المستفيد",
+      "fundTransferDesc": "تحويل داخل نفس البنك"
+    }
+  },
+  "billPayment": {
+    "sections": {
+      "billActions": "مدفوعات الفواتير"
+    },
+    "tiles": {
+      "payBillers": "دفع للمفوترين",
+      "payBillersDesc": "ادفع المرافق والإيجار والمزيد",
+      "manageBillers": "إضافة وإدارة المفوترين",
+      "manageBillersDesc": "إعداد الدفع التلقائي والمفوترين",
+      "onceOffBillPayment": "دفع فاتورة لمرة واحدة",
+      "onceOffBillPaymentDesc": "ادفع أي فاتورة على الفور"
+    }
+  },
+  "onceOffTransfer": {
+    "title": "تحويل لمرة واحدة",
+    "subtitle": "أرسل أموالاً إلى أي حساب بسرعة وأمان",
+    "formTitle": "تفاصيل التحويل لمرة واحدة",
+    "step": "الخطوة",
+    "backToPayments": "العودة إلى المدفوعات",
+     "detailsTitle": "Once-Off Transfer Details",
+    "steps": {
+      "details": "التفاصيل",
+      "confirm": "التأكيد",
+      "verify": "النتيجة"
+    },
+    "fields": {
+      "fromAccount": "من حساب",
+      "amount": "مبلغ التحويل",
+      "payeeName": "اسم المستفيد",
+      "payeeAccount": "حساب المستفيد",
+      "recipientRemarks": "ملاحظات"
+    },
+    "placeholders": {
+      "selectAccount": "اختر حسابك",
+      "enterAmount": "أدخل المبلغ",
+      "enterPayeeName": "أدخل الاسم الكامل للمستفيد",
+      "enterPayeeAccount": "أدخل رقم الحساب",
+      "enterRemarks": "أدخل المرجع"
+    },
+    "transferTypes": {
+      "oneTime": "تحويل لمرة واحدة",
+      "immediate": "تحويل فوري"
+    },
+    "buttons": {
+      "continue": "متابعة",
+      "confirm": "تأكيد التحويل",
+      "backToEdit": "العودة للتعديل"
+    },
+    "success": {
+      "title": "تم التحويل بنجاح!",
+      "message": "تمت معالجة تحويلك بنجاح.",
+      "transactionId": "رقم المعاملة",
+      "newTransfer": "تحويل جديد"
+    },
+    "errors": {
+      "processFailed": "فشل معالجة التحويل."
+    }
+  },
+  "onceOffOverview": {
+    "title": "تحويل لمرة واحدة",
+    "subtitle": "أرسل دفعة لمرة واحدة إلى أي حساب دون حفظ تفاصيل المستلم",
+    "backToPayments": "العودة إلى المدفوعات",
+    "miracleBank": "بنك ميراكل",
+    "miracleBankDesc": "تحويلات فورية داخل بنك ميراكل — بدون رسوم",
+    "otherBanks": "بنوك أخرى",
+    "otherBanksDesc": "تحويل إلى أي حساب بنكي على مستوى الدولة",
+    "instant": "فوري",
+    "comingSoon": "قريبًا",
+    "howItWorks": "كيف يعمل",
+    "step1Title": "اختر الوجهة",
+    "step1Desc": "اختر نوع البنك لتحويلك",
+    "step2Title": "أدخل التفاصيل",
+    "step2Desc": "أدخل حساب المستلم والمبلغ والمرجع",
+    "step3Title": "تأكيد وإرسال",
+    "step3Desc": "راجع وصادق باستخدام OTP/M-PIN"
+  },
+  "ownTransfer": {
+    "title": "تحويل حساب ميركل",
+    "subtitle": "حوّل الأموال بأمان بين محافظك الخاصة",
+    "formTitle": "تحويل أموال",
+    "usingSaved": "باستخدام معاملة محفوظة",
+    "detailsTitle": "تفاصيل تحويل الأموال",
+    "sendingTo": "إرسال إلى",
+    "step": "الخطوة",
+    "steps": {
+      "details": "التفاصيل",
+      "confirm": "التأكيد",
+      "verify": "التحقق"
+    },
+    "fields": {
+      "fromAccount": "من حساب",
+      "toAccount": "حساب المستفيد",
+      "amount": "مبلغ التحويل",
+      "remarks": "ملاحظات",
+      "beneficiaryName": "اسم المستفيد"
+    },
+    "placeholders": {
+      "selectAccount": "اختر حسابك",
+      "enterToAccount": "رقم حساب المستلم",
+      "enterAmount": "أدخل مبلغ التحويل",
+      "enterRemarks": "أدخل الملاحظات"
+    },
+    "buttons": {
+      "continue": "متابعة للمراجعة",
+      "confirm": "تأكيد التحويل",
+      "backToEdit": "العودة للتعديل"
+    },
+    "save": {
+      "success": "تم حفظ المعاملة بنجاح",
+      "failed": "فشل حفظ المعاملة",
+      "error": "حدث خطأ أثناء حفظ المعاملة"
+    },
+    "success": {
+      "title": "تم التحويل بنجاح!",
+      "message": "تمت معالجة تحويلك بنجاح.",
+      "transactionId": "رقم المعاملة",
+      "newTransfer": "تحويل جديد"
+    },
+    "errors": {
+      "processFailed": "فشل معالجة التحويل."
+    }
+  },
+  "beneficiaries": {
+    "manageTitle": "مستفيدو بنك ميراكل",
+    "selectTitle": "اختر مستفيداً",
+    "selectSubtitle": "اختر مستفيداً لإرسال الأموال",
+    "transferBadge": "تحويل",
+    "manageBadge": "إدارة",
+    "backToFundTransfer": "رجوع",
+    "backToOverview": "رجوع",
+    "addNew": "إضافة مستفيد جديد",
+    "searchPlaceholder": "البحث عن المستفيدين...",
+    "single": "مستفيد",
+    "plural": "مستفيدون",
+    "found": "تم العثور عليه",
+    "beneficiary": "مستفيد",
+    "noResults": "لم يتم العثور على مستفيد",
+    "empty": "لا يوجد مستفيدون",
+    "deleteTitle": "حذف المستفيد",
+    "deleteConfirm": "هل أنت متأكد أنك تريد حذف",
+    "deleteFailedMsg": "فشل حذف المستفيد.",
+    "beneficiaryName": "اسم المستفيد",
+    "accountNumber": "رقم الحساب",
+    "bank": "البنك",
+    "status": "الحالة",
+    "active": "نشط",
+    "inactive": "غير نشط",
+    "selectFirst": "حدد المستفيد أولاً",
+    "send": "إرسال",
+    "sendMoney": "إرسال الأموال"
+  },
+  "addBeneficiary": {
+    "title": "إضافة مستفيد",
+    "subtitle": "تسجيل مستفيد بشكل آمن",
+    "formTitle": "إضافة تفاصيل المستفيد",
+    "steps": {
+      "details": "تفاصيل المستفيد",
+      "detailsDesc": "أدخل معلومات المستفيد",
+      "confirm": "تأكيد التفاصيل",
+      "confirmDesc": "مراجعة تفاصيل المستفيد",
+      "verify": "التحقق",
+      "verifyDesc": "التحقق عبر OTP"
+    },
+    "fields": {
+      "name": "اسم المستفيد",
+      "nickname": "الاسم المستعار للمستفيد",
+      "account": "رقم حساب المستفيد",
+      "mobile": "رقم جوال المستفيد"
+    },
+    "placeholders": {
+      "name": "أدخل اسم المستفيد",
+      "nickname": "أدخل الاسم المستعار للمستفيد",
+      "account": "أدخل رقم حساب المستفيد",
+      "mobile": "أدخل رقم جوال المستفيد"
+    }
+  },
+  "manageBeneficiary": {
+   "title": "إدارة المستفيدين",
+  "subtitle": "عرض وإدارة المستفيدين الخاصين بك",
+  "miracleBank": "بنك ميراكل",
+  "miracleBankDesc": "إدارة المستفيدين داخل شبكة بنك ميراكل",
+  "clickToManage": "انقر هنا لإدارة المستفيدين",
+  "howToStart": "كيفية البدء",
+  "step1Title": "اختر نوع البنك",
+  "step1Desc": "اختر بنك ميراكل أو البنوك الأخرى بناءً على المستلم",
+  "step2Title": "إضافة مستفيد",
+  "step2Desc": "أدخل تفاصيل المستلم والتحقق من معلومات الحساب",
+  "step3Title": "ابدأ التحويل",
+  "step3Desc": "ابدأ في إجراء تحويلات آمنة للمستفيدين المعتمدين"
+  },
+  "addBiller": {
+    "title": "إضافة فاتورة جديدة",
+    "subtitle": "أضف فاتورة لدفع الفواتير بسرعة وأمان",
+    "backToBillers": "العودة إلى الفواتير",
+    "viewBillers": "عرض الفواتير",
+    "loadingBillers": "جارٍ تحميل الفواتير...",
+    "noBillersAvailable": "لا توجد فواتير متاحة",
+    "badge": "إعداد سريع",
+    "steps": {
+      "details": "التفاصيل",
+      "review": "المراجعة",
+      "complete": "اكتمال"
+    },
+    "stepTitles": {
+      "billerDetails": "تفاصيل الفاتورة",
+      "reviewConfirm": "المراجعة والتأكيد",
+      "complete": "اكتمال"
+    },
+    "fields": {
+      "category": "الفئة",
+      "biller": "جهة الفوترة",
+      "billerName": "اسم جهة الفوترة",
+      "customerName": "اسم العميل",
+      "saveAs": "حفظ باسم"
+    },
+    "placeholders": {
+      "selectCategory": "اختر فئة",
+      "selectBiller": "اختر جهة الفوترة",
+      "enterSaveAs": "أدخل اسم الحفظ باسم",
+      "enterCustomerName": "أدخل اسم العميل",
+      "enter": "أدخل",
+      "select": "اختر"
+    },
+    "validation": {
+      "selectCategory": "يرجى اختيار فئة",
+      "selectBiller": "يرجى اختيار جهة الفوترة",
+      "enterSaveAs": "يرجى إدخال اسم الحفظ",
+      "saveAsMin": "يجب أن يكون اسم الحفظ 10 أحرف على الأقل",
+      "saveAsMax": "يجب ألا يتجاوز اسم الحفظ 15 حرفاً",
+      "enterCustomerName": "يرجى إدخال اسم العميل",
+      "isRequired": "مطلوب",
+      "minimum": "الحد الأدنى",
+      "maximum": "الحد الأقصى",
+      "charactersRequired": "حرف مطلوب",
+      "charactersAllowed": "حرف مسموح به",
+      "mustBeNumber": "يجب أن يكون رقماً"
+    },
+    "errors": {
+      "loadFailed": "فشل تحميل بيانات الفوترة. يرجى المحاولة مجدداً.",
+      "processFailed": "فشل معالجة الطلب. يرجى المحاولة مجدداً.",
+      "resendFailed": "فشل إعادة الإرسال. يرجى المحاولة مجدداً.",
+      "connectionError": "تعذر الاتصال بالخادم. يرجى المحاولة مجدداً."
+    },
+    "buttons": {
+      "continue": "متابعة",
+      "confirmAdd": "تأكيد الإضافة",
+      "backToEdit": "العودة للتعديل"
+    },
+    "pinModal": {
+      "enter": "أدخل",
+      "confirmMessage": "أدخل",
+      "toConfirm": "لتأكيد إضافة جهة الفوترة",
+      "enterMPIN": "أدخل رمز M-PIN",
+      "enterOTP": "أدخل رمز OTP",
+      "resendOTP": "إعادة إرسال OTP",
+      "resendIn": "إعادة الإرسال خلال",
+      "sending": "جارٍ الإرسال...",
+      "verifying": "جارٍ التحقق..."
+    },
+    "review": {
+      "pleaseReview": "يرجى مراجعة التفاصيل",
+      "clickConfirm": "انقر على \"تأكيد\" للمتابعة. ستحتاج إلى إدخال",
+      "toComplete": "لإتمام العملية."
+    },
+    "success": {
+      "title": "تمت إضافة جهة الفوترة بنجاح!",
+      "hasBeenAdded": "تمت إضافتها إلى قائمة فواتيرك.",
+      "addAnother": "إضافة فاتورة أخرى",
+      "viewBillers": "عرض فواتيري"
+    }
+  },
+  "manageBillers": {
+    "title": "إدارة المفوترين",
+    "selectBiller": "اختر مفوترًا",
+    "chooseBillerToPay": "اختر مفوترًا للدفع",
+    "backToBillPayments": "العودة إلى دفع الفواتير",
+    "billerSingular": "مفوتر",
+    "billersPlural": "مفوترون",
+    "found": "تم العثور على",
+    "categorySingular": "فئة",
+    "categoriesPlural": "فئات",
+    "category": "الفئة",
+    "currency": "العملة",
+    "status": "الحالة",
+    "account": "الحساب",
+    "field": "الحقل",
+    "biller": "المفوتر",
+    "general": "عام",
+    "other": "أخرى",
+    "minPaymentLimit": "الحد الأدنى للدفع",
+    "maxPaymentLimit": "الحد الأقصى للدفع",
+    "addNewBiller": "إضافة مفوتر جديد",
+    "addFirstBiller": "أضف مفوترك الأول",
+    "deleteBillerBtn": "حذف المفوتر",
+    "deleteConfirmMessage": "هل أنت متأكد أنك تريد حذف",
+    "payBiller": "دفع للمفوتر",
+    "payBill": "دفع الفاتورة",
+    "deleteBiller": "حذف المفوتر",
+    "searchPlaceholder": "ابحث عن المفوترين...",
+    "noResultsFound": "لم يتم العثور على نتائج",
+    "noBillersYet": "لم يتم العثور على مفوترين",
+    "noMatchingBillers": "لم يتم العثور على مفوترين مطابقين لبحثك",
+    "noBillersAvailable": "لا يوجد مفوترون متاحون. أضف مفوترك الأول للبدء.",
+    "noBillersFound": "لم يتم العثور على مفوترين",
+    "deleteWarning": "لا يمكن التراجع عن هذا الإجراء. سيتم حذف المفوتر نهائيًا من قائمة المفوترين المحفوظين.",
+    "deleting": "جارٍ الحذف",
+    "enter": "أدخل",
+    "enterToConfirmDeletion": "أدخل",
+    "toConfirmDeletion": "لتأكيد الحذف",
+    "deletedSuccessfully": "تم الحذف بنجاح",
+    "billerDeletedSuccess": "تم حذف المفوتر بنجاح",
+    "deleteInitiateFailed": "فشل بدء الحذف. يرجى المحاولة مرة أخرى.",
+    "manageBadge": "إدارة",
+    "payBadge": "دفع سريع",
+    "connectionError": "تعذر الاتصال بالخادم. يرجى المحاولة مرة أخرى.",
+    "resendFailed": "فشل إعادة الإرسال. يرجى المحاولة مرة أخرى.",
+    "enterValid": "يرجى إدخال قيمة صالحة",
+    "invalid": "غير صالح"
+  },
+  "payBillers": {
+    "title": "دفع فاتورة",
+    "subtitle": "ادفع فاتورتك بسرعة وأمان",
+    "backToBillers": "العودة إلى المفوترين",
+    "badge": "دفع سريع",
+    "steps": {
+      "details": "التفاصيل",
+      "review": "المراجعة",
+      "complete": "الإكمال"
+    },
+    "billerDetails": "تفاصيل المفوتر",
+    "paymentDetails": "تفاصيل الدفع",
+    "additionalDetails": "تفاصيل إضافية",
+    "totalAmount": "إجمالي المبلغ المستحق",
+    "noAccountsAvailable": "لا توجد حسابات متاحة",
+    "fields": {
+      "billerCategory": "فئة المفوتر",
+      "biller": "المفوتر",
+      "saveAs": "حفظ باسم",
+      "convenienceFee": "رسوم الخدمة",
+      "totalAmount": "المبلغ الإجمالي",
+      "debitAccount": "حساب الخصم",
+      "availableBalance": "الرصيد المتاح",
+      "date": "التاريخ",
+      "amount": "المبلغ",
+      "limit": "الحد",
+      "remarks": "ملاحظات",
+      "fromAccount": "من حساب",
+      "paymentDate": "تاريخ الدفع"
+    },
+    "placeholders": {
+      "selectAccount": "اختر الحساب",
+      "enterAmount": "أدخل المبلغ",
+      "enterRemarks": "أدخل الملاحظات"
+    },
+    "validation": {
+      "selectAccount": "يرجى اختيار حساب",
+      "enterAmount": "يرجى إدخال مبلغ",
+      "invalidAmount": "يرجى إدخال مبلغ صالح",
+      "minAmount": "الحد الأدنى للمبلغ هو",
+      "maxAmount": "الحد الأقصى للمبلغ هو",
+      "insufficientBalance": "رصيد غير كافٍ",
+      "selectDate": "يرجى اختيار تاريخ",
+      "enterRemarks": "يرجى إدخال ملاحظات"
+    },
+    "buttons": {
+      "continue": "متابعة",
+      "backToEdit": "العودة للتعديل",
+      "confirmPay": "تأكيد ودفع"
+    },
+    "errors": {
+      "processFailed": "فشل معالجة الطلب.",
+      "connectionError": "تعذر الاتصال بالخادم."
+    },
+    "success": {
+      "title": "تم الدفع بنجاح!",
+      "youPaid": "لقد دفعت بنجاح",
+      "transactionId": "رقم المعاملة",
+      "transactionDetails": "تفاصيل المعاملة",
+      "payAnother": "دفع فاتورة أخرى",
+      "done": "حسناً",
+      "billPaymentDetailsTitle": "تفاصيل دفع الفاتورة"
+    },
+    "pinModal": {
+      "message": "أدخل",
+      "toConfirm": "لتأكيد هذا الدفع"
+    },
+    "review": {
+      "pleaseReview": "يرجى مراجعة التفاصيل",
+      "clickConfirm": "انقر على \"تأكيد ودفع\" للمتابعة. ستحتاج إلى إدخال",
+      "toComplete": "لإكمال الدفع."
+    }
+  },
+
+  "savedTransactions": {
+    "title": "المعاملات المحفوظة",
+    "subtitle": "وصول سريع إلى تحويلاتك المستخدمة بشكل متكرر",
+    "searchPlaceholder": "ابحث بالاسم أو الحساب أو الملاحظات...",
+    "usePayment": "استخدم الدفعة",
+    "noTransactions": "لم يتم العثور على معاملات محفوظة",
+    "noTransactionsDescription": "ستظهر معاملاتك المحفوظة هنا.",
+    "noMatchingTransactions": "لا توجد معاملات مطابقة",
+    "noMatchingDescription": "جرّب كلمات مفتاحية مختلفة.",
+    "errors": {
+      "fetchFailed": "فشل جلب المعاملات المحفوظة",
+      "invalidResponse": "استجابة غير صالحة من الخادم"
+    }
+  },
+  "airtime": {
+    "selectService": "اختر الخدمة",
+    "airtimeLabel": "رصيد الهاتف",
+    "airtimeTopUp": "شحن رصيد الهاتف",
+    "instantRecharge": "شحن فوري",
+    "selfRecharge": "خاص",
+    "ownRecharge": "خاص",
+    "otherRecharge": "آخر",
+    "sections": {
+      "etl": "شحن ETL",
+      "vcl": "شحن VCL",
+      "history": "السجل"
+    },
+    "tiles": {
+      "etlAirtime": "ETL رصيد الهاتف",
+      "etlAirtimeDesc": "اشحن رقم جوالك على شبكة ETL",
+      "vclAirtime": "VCL رصيد الهاتف",
+      "vclAirtimeDesc": "اشحن رقم جوالك على شبكة VCL",
+      "history": "سجل الشحن",
+      "historyDesc": "عرض سجل عمليات الشحن السابقة"
+    },
+    "tabs": {
+      "own": "خاص",
+      "other": "آخر",
+      "etlOwn": "ETL خاص",
+      "etlOther": "ETL آخر",
+      "vclOwn": "VCL خاص",
+      "vclOther": "VCL آخر",
+      "ariaLabel": "نوع الشحن"
+    },
+    "steps": {
+      "details": "التفاصيل",
+      "confirm": "تأكيد",
+      "verify": "التحقق",
+      "success": "نجاح"
+    },
+    "headers": {
+      "confirm": "تأكيد التفاصيل",
+      "verify": "التحقق من رمز M-PIN",
+      "complete": "مكتمل"
+    },
+   "form": {
+"fromAccount": "الحساب المصدر",
+"selectAccount": "يرجى اختيار حساب",
+"selectAccountPlaceholder": "اختر الحساب",
+"mobileNumber": "رقم الجوال",
+"enterMobile": "يرجى إدخال رقم الجوال",
+"enterMobilePlaceholder": "أدخل رقم الجوال",
+"mobileMinLength": "يجب أن يكون رقم الجوال 7 أرقام على الأقل",
+"amount": "المبلغ",
+"enterAmount": "يرجى إدخال المبلغ",
+"amountPositive": "يجب أن يكون المبلغ أكبر من 0",
+"submit": "إرسال"
+},
+    "details": {
+      "fromAccount": "من الحساب",
+      "mobileNumber": "رقم الجوال",
+      "provider": "مزود الخدمة",
+      "transactionType": "نوع المعاملة",
+      "amount": "المبلغ"
+    },
+    "confirmation": {
+      "confirmPay": "تأكيد والدفع",
+      "cancel": "إلغاء",
+      "processing": "جارٍ المعالجة..."
+    },
+    "mpin": {
+      "title": "أدخل رمز M-PIN",
+      "instruction": "أدخل رمز M-PIN لتأكيد هذه العملية",
+      "instructionTre":"أدخل الرقم السري (M-PIN) الخاص بك للتأكيد",
+      "resend": "إعادة إرسال M-PIN",
+      "resendIn": "إعادة الإرسال خلال",
+      "verify": "التحقق من M-PIN"
+    },
+    "otp": {
+      "title": "أدخل رمز OTP",
+       "yes": "نعم"
+    },
+    "success": {
+      "title": "تم الشحن بنجاح!",
+      "message": "تمت معالجة عملية شحن رصيد هاتفك.",
+      "status": "نجاح",
+      "transactionId": "رقم المعاملة",
+      "newTopUp": "شحن جديد",
+      "done": "تم",
+      "copied": "تم النسخ!"
+    },
+    "history": {
+      "title": "سجل الشحن",
+      "subtitle": "عرض عمليات شحن رصيد هاتفك الأخيرة",
+      "loading": "جارٍ تحميل السجل...",
+      "recharge": "شحن",
+      "showing": "عرض",
+      "transactions": "معاملات",
+      "noRecords": "لا يوجد سجل شحن",
+      "noRecordsDesc": "سيظهر سجل الشحن هنا",
+      "type": "النوع",
+      "description": "الوصف",
+      "mobile": "رقم الجوال",
+      "amount": "المبلغ",
+       "records":"السجلات",
+      "allaccounts":"جميع الحسابات",
+       "searchtransactions":"...معاملات البحث",
+      "filter": {
+        "all": "الكل",
+        "own": "خاص",
+        "other": "آخر"
+      },
+      "filterAll": "الكل",
+      "filterOwn": "خاص",
+      "filterOther": "آخر"
+    },
+    "errors": {
+      "errorTitle": "خطأ",
+      "ok": "موافق",
+      "confirmationFailed": "فشل التأكيد",
+      "processingFailed": "فشل معالجة الطلب",
+      "verificationFailed": "فشل التحقق"
+    }
+  },
+  "proofOfPayment": {
+    "title": "إثبات الدفع",
+    "subtitle": "ابحث عن معاملاتك وقم بتنزيل إثباتات الدفع",
+    "quickSecure": "سريع وآمن",
+    "searchTransactions": "البحث في المعاملات",
+    "searchSubtitle": "أدخل التفاصيل للعثور على إثبات معاملتك",
+    "accountNumber": "رقم الحساب",
+    "selectAccount": "يرجى اختيار حساب",
+    "selectAccountPlaceholder": "اختر حساباً",
+    "paymentType": "نوع الدفع",
+    "selectPaymentType": "يرجى اختيار نوع الدفع",
+    "selectTypePlaceholder": "اختر النوع",
+    "startDate": "تاريخ البداية",
+    "selectStartDate": "يرجى اختيار تاريخ البداية",
+    "endDate": "تاريخ النهاية",
+    "selectEndDate": "يرجى اختيار تاريخ النهاية",
+    "proceed": "بحث",
+    "account": "الحساب",
+    "type": "النوع",
+    "from": "من",
+    "to": "إلى",
+    "period": "الفترة",
+    "searchResults": "نتائج البحث",
+    "found": "تم العثور عليها",
+    "noTransactions": "لا توجد معاملات",
+    "tryDifferent": "جرّب نطاقاً زمنياً أو نوع دفع مختلفاً",
+    "searchAgain": "البحث مجدداً",
+    "toLabel": "إلى:",
+    "ref": "المرجع:",
+    "backToSearch": "العودة إلى البحث",
+    "backToList": "العودة إلى القائمة",
+    "transactionDetails": "تفاصيل المعاملة",
+    "transactionAmount": "مبلغ المعاملة",
+    "payerAccount": "حساب الدافع",
+    "payerName": "اسم الدافع",
+    "beneficiaryAccount": "حساب المستفيد",
+    "beneficiaryName": "اسم المستفيد",
+    "reference": "المرجع",
+    "txnRefNumber": "رقم مرجع المعاملة",
+    "searchCriteria": "معايير البحث",
+    "shareProof": "مشاركة الإثبات",
+    "sendViaSMS": "إرسال عبر الرسائل القصيرة",
+    "receiveOnPhone": "استلم على هاتفك",
+    "sendViaEmail": "إرسال عبر البريد الإلكتروني",
+    "receiveInInbox": "استلم في صندوق الوارد",
+    "downloadPDF": "تنزيل PDF",
+    "saveLocally": "حفظ على جهازك",
+    "copy": "نسخ",
+    "copied": "تم النسخ!",
+    "sendViaNotification": "إرسال عبر الإشعارات",
+    "enterPhoneNumber": "أدخل رقم هاتفك",
+    "enterEmailAddress": "أدخل بريدك الإلكتروني",
+    "send": "إرسال",
+    "enterDetails": "أدخل التفاصيل للعثور على إثبات معاملتك",
+    "sendProof": "متابعة",
+    "cancel": "إلغاء",
+    "mobilePlaceholder": "٩٨٧٦٥٤٣٢١٠",
+    "emailPlaceholder": "example@email.com",
+    "sentSuccess": "تم الإرسال بنجاح!",
+    "phoneHint": "يرجى إدخال ١٠ أرقام على الأقل",
+    "emailInvalid": "يرجى إدخال بريد إلكتروني صحيح",
+    "emailTooShort": "عنوان البريد الإلكتروني قصير جداً",
+    "clear": "مسح"
+  },
+"tradeFinance": {
+    "title": "تمويل التجارة",
+    "creditTitle":"خطاب الاعتماد",
+    "guaranteeTitle": "خطاب الضمان",
+    "creditSubtitle": "طلب وإدارة خطابات الاعتماد الخاصة بك",
+    "guaranteeSubtitle": "اطلب خطابات الضمان الخاصة بك وقم بإدارتها",
+    "enterBeneNameAndAdd": "يرجى إدخال اسم المستفيد وعنوانه",
+      "badge": "تمويل تجاري",
+      "requestButton": "طلب خطاب اعتماد",
+      "success": "نجاح",
+      "error": "خطأ",
+      "beneficiarySection": "تفاصيل المستفيد",
+      "beneNameAndAdd": "اسم المستفيد وعنوانه",
+      "shipmentDate": "أحدث تاريخ الشحن",
+      "expiryOrValidityDate": "تاريخ الانتهاء أو الصلاحية",
+      "otherSection": "تفاصيل أخرى",
+      "chargesOutsideGhana": "الرسوم خارج غانا لـ",
+      "helpText": "جميع الحقول المشار إليها بعلامة",
+      "helpTextEnd": "إلزامية. يرجى التأكد من دقة جميع المعلومات قبل الإرسال.",
+      "fixErrors": "يرجى تصحيح الأخطاء في القسم (الأقسام) المحددة.",
+      "successMessage": "تم حفظ خطاب الاعتماد بنجاح!",
+      "failedMessage": "فشل حفظ خطاب الاعتماد",
+      "errorMessage": "حدث خطأ أثناء إرسال النموذج. يرجى المحاولة مرة أخرى.",
+      "beneficiaryName": "اسم المستفيد",
+      "amount": "المبلغ",
+      "tolerance": "هامش التسامح (إن وجد)",
+      "date": "التاريخ",
+      "beneficiaryAddress": "عنوان المستفيد",
+      "availableAt": "متاح في",
+      "tenorAt": "أجل الدفع",
+      "mixedPaymentTerms": "شروط الدفع المختلطة",
+      "toOrderOf": "لأمر",
+      "notifyParty": "الجهة المُخطَرة",
+      "commercialInvoiceType": "نوع الفاتورة التجارية",
+      "proformaInvoiceNo": "وفقاً لرقم الفاتورة المبدئية",
+      "goodsAreOfOrigin": "منشأ البضائع",
+      "portOfDispatch": "ميناء الشحن/الإرسال",
+      "portOfDestination": "ميناء الوصول",
+      "importDeclarationFormNumber": "رقم نموذج إقرار الاستيراد (IDF)",
+      "shipmentAllowedType": "نوع الشحن المسموح به",
+      "advisedThroughBank": "مُبلَّغ عبر بنك",
+      "chargesOutsideIndia": "الرسوم خارج الهند لصالح",
+      "debitAccountNumber": "رقم الحساب / حسابي",
+      "confirmationChargesFor": "رسوم التأكيد لصالح",
+      "lcToBe": "خطاب الاعتماد يكون",
+      "invoiceDate": "تاريخ الفاتورة",
+      "descriptionOfGoods": "وصف البضائع",
+      "otherConditions": "شروط أخرى (يرجى التحديد)",
+      "enterAmount": "أدخل المبلغ",
+      "tolerancePlaceholder": "مثال: 5%",
+      "beneficiaryAddressPlaceholder": "أدخل العنوان الكامل",
+      "tenorAtPlaceholder": "مثال: 90 يوماً",
+      "mixedPaymentTermsPlaceholder": "أدخل شروط الدفع",
+      "toOrderOfPlaceholder": "أدخل الاسم",
+      "notifyPartyPlaceholder": "أدخل اسم الجهة المُخطَرة",
+      "proformaPlaceholder": "مثال: PI-2024-001",
+      "goodsOriginPlaceholder": "مثال: الهند",
+      "portOfDispatchPlaceholder": "مثال: ميناء مومباي",
+      "portOfDestinationPlaceholder": "مثال: ميناء دبي",
+      "idfPlaceholder": "أدخل رقم نموذج IDF",
+      "advisedBankPlaceholder": "أدخل اسم البنك",
+      "debitAccountPlaceholder": "أدخل رقم الحساب (أرقام فقط)",
+      "descriptionPlaceholder": "صف البضائع بالتفصيل",
+      "otherConditionsPlaceholder": "حدد أي شروط إضافية",
+      "placeholder": "اختر متاح في",
+      "commercialPlaceholder": "اختر نوع الفاتورة التجارية",
+      "shipmentPlaceholder": "اختر نوع الشحن المسموح به",
+      "chargesPlaceholder": "اختر الرسوم خارج الهند لصالح",
+      "ghanaChargesPlaceholder": "اختر الرسوم خارج غانا لـ",
+      "confirmPlaceholder": "اختر رسوم التأكيد لصالح",
+      "lcToBePlaceholder": "اختر نوع خطاب الاعتماد",
+      "validation": {
+        "required": "هذا الحقل مطلوب",
+        "namePattern": "يُسمح بالحروف والمسافات فقط",
+        "nameMinLength": "يجب أن يتكون الاسم من حرفين على الأقل",
+        "nameMaxLength": "لا يمكن أن يتجاوز الاسم 100 حرف",
+        "amountMin": "يجب أن يكون المبلغ 1 على الأقل",
+        "amountMax": "لا يمكن أن يتجاوز المبلغ 999,999,999,999.99",
+        "amountInvalid": "يرجى إدخال مبلغ صحيح",
+        "amountMaxDigits": "لا يمكن أن يتجاوز المبلغ 15 رقماً (بما في ذلك الكسور العشرية)",
+        "tolerancePattern": "يُسمح فقط بالحروف والأرقام وعلامة % والنقطة والمسافات",
+        "toleranceMaxLength": "لا يمكن أن يتجاوز هامش التسامح 20 حرفاً",
+        "addressMinLength": "يجب أن يتكون العنوان من 5 أحرف على الأقل",
+        "addressMaxLength": "لا يمكن أن يتجاوز العنوان 300 حرف",
+        "dateFuture": "يجب أن يكون التاريخ اليوم أو تاريخاً مستقبلياً",
+        "lettersOnly": "يُسمح بالحروف والمسافات فقط",
+        "minLength2": "يجب أن يتكون الحقل من حرفين على الأقل",
+        "maxLength100": "لا يمكن أن يتجاوز الحقل 100 حرف",
+        "tenorPattern": "يُسمح فقط بالحروف والأرقام والمسافات",
+        "tenorMaxLength": "لا يمكن أن يتجاوز أجل الدفع 50 حرفاً",
+        "paymentTermsMaxLength": "لا يمكن أن تتجاوز شروط الدفع 100 حرف",
+        "alphaNumericDash": "يُسمح فقط بالحروف والأرقام وعلامتَي - و /",
+        "proformaMaxLength": "لا يمكن أن يتجاوز رقم الفاتورة المبدئية 30 حرفاً",
+        "idfMaxLength": "لا يمكن أن يتجاوز رقم نموذج IDF 30 حرفاً",
+        "portPattern": "يُسمح فقط بالحروف والأرقام والمسافات وعلامات الترقيم الأساسية",
+        "portMaxLength": "لا يمكن أن يتجاوز اسم الميناء 100 حرف",
+        "accountPattern": "يجب أن يحتوي رقم الحساب على أرقام فقط",
+        "accountMinLength": "يجب أن يتكون رقم الحساب من 8 أرقام على الأقل",
+        "accountMaxLength": "لا يمكن أن يتجاوز رقم الحساب 20 رقماً",
+        "invoiceDateMax": "لا يمكن أن يكون تاريخ الفاتورة تاريخاً مستقبلياً",
+        "descriptionMinLength": "يجب أن يتكون الوصف من 5 أحرف على الأقل",
+        "descriptionMaxLength": "لا يمكن أن يتجاوز الوصف 500 حرف",
+        "conditionsMinLength": "يجب أن تتكون الشروط من 5 أحرف على الأقل",
+        "conditionsMaxLength": "لا يمكن أن تتجاوز الشروط 500 حرف"
+      }
+    },
+  "treasury": {
+    "title": "الخزينة",
+    "subtitle": "إدارة التحويلات بين الحسابات بأمان",
+    "quickSecure": "سريع وآمن",
+    "badge": "آمن",
+    "tabs": {
+      "own": "إلى حساب موديفين الخاص",
+      "other": "إلى حساب موديفين آخر"
+    },
+    "searchTransactions": "تحويل الخزينة",
+    "searchSubtitle": "أدخل التفاصيل لبدء تحويل الخزينة",
+    "fields": {
+      "fromAccount": "الحساب المصدر",
+      "toAccount": "الحساب الوجهة",
+      "amount": "المبلغ",
+      "currency": "العملة",
+      "reason": "السبب",
+      "negotiatedRate": "السعر المتفاوض عليه",
+      "rateGivenBy": "السعر المقدم من"
+    },
+    "placeholders": {
+      "selectFromAccount": "اختر الحساب المصدر",
+      "enterToAccount": "أدخل الحساب الوجهة",
+      "enterAmount": "أدخل المبلغ",
+      "selectCurrency": "اختر العملة",
+      "enterReason": "الغرض من التحويل",
+      "enterNegotiatedRate": "أدخل السعر المتفاوض عليه",
+      "enterRateGivenBy": "أدخل مقدم السعر"
+    },
+    "validation": {
+      "selectFromAccount": "يرجى اختيار الحساب المصدر",
+      "enterToAccount": "يرجى إدخال الحساب الوجهة",
+      "enterAmount": "يرجى إدخال المبلغ",
+      "amountPositive": "يجب أن يكون المبلغ أكبر من الصفر",
+      "selectCurrency": "يرجى اختيار العملة",
+      "enterReason": "يرجى إدخال سبب التحويل",
+      "enterNegotiatedRate": "يرجى إدخال السعر المتفاوض عليه",
+      "ratePositive": "يجب أن يكون السعر أكبر من الصفر",
+      "enterRateGivenBy": "يرجى إدخال مقدم السعر",
+      "rateGivenByMax": "يجب ألا يتجاوز حقل مقدم السعر 50 حرفاً"
+    },
+    "buttons": {
+      "submit": "إرسال",
+      "clear": "مسح",
+      "confirm": "تأكيد التحويل",
+      "backToEdit": "العودة للتعديل",
+      "proceed": "متابعة",
+      "newTransfer": "تحويل جديد",
+      "goToHome": "الذهاب إلى الرئيسية"
+    },
+    "confirm": {
+      "title": "تأكيد التحويل",
+      "subtitle": "يرجى مراجعة تفاصيل التحويل قبل المتابعة",
+      "fromAccount": "الحساب المصدر",
+      "toAccount": "الحساب الوجهة",
+      "amount": "المبلغ",
+      "currency": "العملة",
+      "reason": "السبب",
+      "negotiatedRate": "السعر المتفاوض عليه",
+      "rateGivenBy": "السعر المقدم من"
+    },
+    "success": {
+      "title": "نجاح",
+      "message": "تمت معالجة تحويل الخزينة بنجاح.",
+      "transactionId": "رقم المعاملة",
+      "newTransfer": "تحويل جديد"
+    },
+    "errors": {
+      "processFailed": "فشل في معالجة تحويل الخزينة. يرجى المحاولة مرة أخرى.",
+      "connectionError": "تعذر الاتصال بالخادم. يرجى المحاولة مرة أخرى.",
+      "loadFailed": "فشل في تحميل تفاصيل الحساب."
+    },
+    "steps": {
+      "details": "التفاصيل",
+      "confirm": "التأكيد",
+      "verify": "التحقق"
+    }
+  },
+  "widgets": {
+    "activeWidgets": "الأدوات النشطة",
+    "availableWidgets": "الأدوات المتاحة",
+    "unsavedChanges": "تغييرات غير محفوظة",
+    "noActive": "لا توجد أدوات نشطة. أضف أدوات من القسم المتاح أدناه.",
+    "allActive": "جميع الأدوات نشطة حاليًا. أزل أدوات من القسم النشط لرؤيتها هنا.",
+    "resetChanges": "إعادة تعيين التغييرات",
+    "saveChanges": "حفظ التغييرات",
+    "saving": "جارٍ الحفظ...",
+    "add": "إضافة",
+    "accountTags": "علامات الحسابات",
+    "quickLinkTags": "علامات الروابط السريعة",
+    "noConfig": "لم يتم العثور على إعدادات الأدوات. يرجى الاتصال بالمسؤول لإعداد أدوات لوحة التحكم.",
+    "noConfigAvailable": "لا تتوفر إعدادات للأدوات.",
+    "successTitle": "نجاح",
+    "failureTitle": "فشل",
+    "unexpectedTitle": "استجابة غير متوقعة",
+    "unexpectedMsg": "تم استلام رمز حالة غير معروف من الخادم.",
+    "saveErrorTitle": "خطأ في الحفظ",
+    "saveErrorMsg": "حدث خطأ أثناء حفظ إعدادات الأدوات. يرجى المحاولة مرة أخرى.",
+    "empty": {
+      "title": "لا توجد أدوات متاحة",
+      "description": "يرجى الاتصال بالمسؤول لإعداد أدوات لوحة التحكم."
+    }
+  },
+  "settings": {
+    "title": "الإعدادات",
+    "subtitle": "إدارة تفضيلاتك",
+    "badge": "التفضيلات",
+    "tabs": {
+      "widgets": "الأدوات",
+      "themes": "السمات واللغة",
+      "accounts": "الحسابات"
+    }
+  },
+ "themes": {
+  "appearance": "المظهر",
+  "description": "اختر كيف يبدو التطبيق لك",
+  "light": "فاتح",
+  "lightDesc": "نظيف ومشرق",
+  "dark": "داكن",
+  "darkDesc": "مريح للعيون",
+  "blue": "أزرق",
+  "blueDesc": "احترافي وهادئ",
+  "yellow": "أصفر",
+  "yellowDesc": "دافئ وحيوي",
+  "activeStatus": "السمة نشطة حالياً",
+  "language": "اللغة",
+  "languageDesc": "اختر لغتك المفضلة",
+  "languageActive": "نشطة حالياً",
+  "customColor": "لون مخصص",
+  "selectedColor": "المحدد",
+  "tapApply": "اضغط تطبيق للتفعيل",
+  "applyColor": "تطبيق هذا اللون",
+  "custom": "مخصص",
+  "quickPresets":"الألوان السريعة",
+  "autoDarkens":"يُعمَّق تلقائياً",
+  "appLogo": "شعار التطبيق",
+    "logoDesc": "يتم عرضه في جميع أنحاء التطبيق",
+    "currentLogo": "الشعار الحالي",
+    "logoHint": "PNG أو JPG أو SVG · الحد الأقصى 2 ميجابايت",
+    "resetLogo": "إعادة تعيين",
+    "uploadLogo": "رفع شعار جديد"
+},
+  "mSavings": {
+    "open": "فتح حساب",
+    "view": "عرض الحساب",
+    "early": "كسر مبكر",
+    "title": "المدخرات",
+    "subtitle": "إدارة حسابات الادخار الخاصة بك",
+    "badge": "الودائع",
+    "openAcc": {
+      "regular": "وديعة ثابتة عادية",
+      "cumulative": "وديعة ثابتة تراكمية",
+      "nonCumulative": "وديعة ثابتة غير تراكمية",
+      "regularDesc": "وديعة ثابتة قياسية",
+      "cumulativeDesc": "فائدة مركبة",
+      "nonCumulativeDesc": "دفعات دورية",
+      "fdPlan": "خطة الوديعة الثابتة",
+      "fdType": "نوع الوديعة الثابتة",
+      "interestRate": "معدل الفائدة",
+      "tenureType": "نوع المدة",
+      "tenurePeriod": "فترة المدة",
+      "compoundingValue": "قيمة تكرار الفائدة المركبة",
+      "payoutPeriod": "فترة الدفع",
+      "compoundingType": "نوع تكرار الفائدة المركبة",
+      "payoutType": "نوع الدفع",
+      "principalAmount": "المبلغ الأساسي",
+      "principalAmountPlace": "أدخل المبلغ الأساسي",
+      "fdMsgOne": "أنت على وشك فتح",
+      "fdMsgTwo": "وديعة ثابتة بمبلغ أساسي قدره",
+      "fdMsgThree": "بمعدل فائدة",
+      "fdMsgFour": "مما ينتج عنه مبلغ استحقاق قدره",
+      "fdMsgFive": "يرجى التأكيد للمتابعة",
+      "cnfrmFd": "تأكيد الوديعة الثابتة",
+      "openFD": "فتح حساب وديعة ثابتة",
+      "fdSuccess": "تم إنشاء الوديعة الثابتة بنجاح",
+      "proceed": "متابعة",
+      "enterTenure": "أدخل المدة",
+      "withaninterest": "بمعدل فائدة",
+      "openCnfrm": "تأكيد فتح الوديعة الثابتة",
+      "maturityAmount": "مبلغ الاستحقاق",
+      "open": "فتح الوديعة الثابتة"
+    },
+    "viewAcc": {
+      "regular": "عادية",
+      "cumulative": "تراكمية",
+      "nonCumulative": "غير تراكمية",
+      "noFdAcc": "لم يتم العثور على حسابات ودائع ثابتة",
+      "SelectPlace": "اختر حسب نوع الوديعة الثابتة"
+    },
+    "earlyBrk": {
+      "fdFailed": "فشل إغلاق الوديعة الثابتة",
+      "accNotFound": "الحساب غير موجود",
+      "unableProcess": "تعذر جلب تفاصيل الوديعة الثابتة. يرجى المحاولة مرة أخرى.",
+      "fdCloseSuc": "تم إغلاق الوديعة الثابتة بنجاح",
+      "fdCloseMsg": "تم إغلاق وديعتك الثابتة بنجاح وسيتم إضافة المبلغ قريباً.",
+      "unableToProcess": "تعذر إغلاق الوديعة الثابتة. يرجى المحاولة لاحقاً.",
+      "title": "حسابات الودائع الثابتة",
+      "closeFD": "إغلاق الوديعة الثابتة",
+      "depositAmount": "مبلغ الإيداع",
+      "applyDate": "تاريخ التقديم",
+      "fdClosingDate": "تاريخ إغلاق الوديعة الثابتة",
+      "closingAmount": "مبلغ الإغلاق",
+      "youareabout": "أنت على وشك إغلاق",
+      "fixedDeposit.": "الوديعة الثابتة.",
+      "cnfmClose": "تأكيد إغلاق الوديعة الثابتة"
+    }
+  },
+   "requestMoney": {
+    "title": "طلب أموال",
+    "viewReq": "عرض الطلبات",
+    "subTitle": "الطلبات المرسلة إليك",
+    "headerTitle": "إرسال وإدارة طلبات الأموال",
+    "badge": "المدفوعات",
+
+    "reqView": {
+      "MPIN": "أدخل الرقم السري (M-PIN)",
+      "OTP": "أدخل رمز التحقق (OTP)",
+      "mpin": "أدخل الرقم السري (M-PIN) لتأكيد هذا الطلب",
+      "otp": "أدخل رمز التحقق (OTP) المرسل إلى رقمك المسجل لتأكيد هذا الطلب",
+      "noMoney": "لا توجد طلبات أموال",
+      "desc": "ليس لديك أي طلبات أموال.",
+      "searchText": "ابحث في الطلبات...",
+      "confirm": "تأكيد الطلب",
+      "succesful": "تم طلب الأموال بنجاح",
+      "failed": "فشل إرسال الطلب",
+      "transactionStatus": "حالة المعاملة"
+    },
+
+    "table": {
+      "name": "الاسم",
+      "referenceId": "رقم المرجع",
+      "amount": "المبلغ",
+      "requestStatus": "حالة الطلب",
+      "date": "التاريخ",
+      "status": "الحالة",
+      "requestTo": "طلب إلى",
+      "requestFrom": "طلب من"
+    }
+  },
+
+  "cardless": {
+    "own": "سحب بدون بطاقة (لحسابي)",
+    "other": "سحب بدون بطاقة (لحساب آخر)",
+    "sourceAccount": "الحساب المصدر",
+    "withdrawLocation": "موقع السحب",
+    "atm": "صراف آلي",
+    "agent": "وكيل",
+    "badge": "خدمات نقدية",
+    "title": "السحب بدون بطاقة",
+    "subtitle": "اسحب النقود بدون بطاقة الخصم",
+    "withdrwal": "تم السحب بنجاح",
+    "withdrawFailed": "فشل السحب",
+    "withdrawError": "تعذر معالجة السحب. يرجى المحاولة مرة أخرى."
+  },
+  "bulkPayments":{
+
+  "file":"تحميل الملف",
+
+  "view":"عرض الحالة",
+
+  "pending":"الموافقات المعلقة",
+
+  "title":"المدفوعات الجماعية",
+
+  "subtitle":"تنفيذ عدة مدفوعات دفعة واحدة",
+
+  "badge":"مدفوعات الشركات",
+  "deny":"رفض",
+    "approve": "موافقة",
+    "download": "تحميل",
+
+  "fields":{
+
+    "paymentFrom":"الدفع من",
+
+    "bulkPaymentType":"نوع الدفع الجماعي",
+
+    "placeholder":"اختر نوع الدفع",
+
+    "bulkPayment":"الدفع الجماعي",
+
+    "batchCode":"رمز الدفعة",
+
+    "bathPlaceholder":"اختر رمز الدفعة",
+
+    "placePayment":"اختر نوع الدفع",
+
+    "placeBatchCode":"اختر رمز الدفعة",
+
+    "toMiracle":"إلى ميركل",
+
+    "toOtherBank":"إلى بنك آخر",
+
+    "uploadFile":"تحميل ملف الدفع",
+
+    "drag":"اسحب وأفلت الملف",
+
+    "browseFile":"قم بإفلات الملف هنا أو انقر للتصفح",
+
+    "browse":"تصفح الملفات",
+
+    "selected":"تم التحديد",
+
+    "triggerDate": "تاريخ التنفيذ",
+
+    "datePlaceholders": "اختر تاريخ التنفيذ"
+
+  },
+
+  "table":{
+
+    "id":"المعرف",
+
+    "from":"من",
+
+    "to":"إلى",
+
+    "benName":"اسم المستفيد",
+
+    "scheduleTimeStamp":"الوقت المجدول"
+
+  },
+
+  "fileUpload":{
+
+    "title":"تحميل ملف الدفع",
+
+    "subtitle":"قم بتحميل ملف XLSX يحتوي على تفاصيل المدفوعات الجماعية",
+
+    "searchPayment":"البحث عن المدفوعات...",
+
+    "noRec":"لم يتم العثور على سجلات",
+
+    "desc":"لا توجد لديك أي مدفوعات",
+
+    "fileFormat":"تنسيق الملف",
+
+    "fileDesc":"تنسيق XLSX المطلوب للمدفوعات الجماعية",
+
+    "liOne":"يسمح بملف XLSX - الصف الأول كعنوان",
+
+    "liTwo":"سطر واحد لكل سجل",
+
+    "bankPay":"انقر هنا لتنزيل نموذج ملف التحويل إلى بنك آخر",
+
+    "sameBankPay":"انقر هنا لتنزيل نموذج ملف التحويل داخل نفس البنك",
+
+    "bpProcess":"عملية الدفع الجماعي",
+
+    "liThree":"قم بتحميل السجلات حسب التنسيق المحدد",
+
+    "liFour":"تحقق من الحالة عبر صفحة المدفوعات الجماعية - عرض الحالة",
+
+    "liFive":"بمجرد التحميل، سيقوم معالج المدفوعات الجماعية بمعالجة السجلات",
+
+    "liSix":"يمكن لمقدم الطلب التحقق من الحالة في أي وقت"
+
+  }
+
+},
+ 
+  "dashboardLoan": {
+    "title": "القروض",
+    "columns": {
+      "loanNumber": "رقم القرض",
+      "type": "نوع القرض",
+      "loanAmount": "مبلغ القرض"
+    },
+    "noData": "لا توجد حسابات قروض متاحة"
+  },
+  "confirmStep": {
+    "title": "تأكيد التفاصيل",
+    "description": "يرجى مراجعة التفاصيل قبل المتابعة",
+    "transfer": "تحويل",
+    "from": "من",
+    "onceOffTransfer": "تحويل لمرة واحدة"
+  },
+    "session": {
+      "expired": "انتهت صلاحية الجلسة"
+    },
+    "contactus": {
+    "email": "راسلنا عبر البريد الإلكتروني",
+    "call": "اتصل بنا",
+    "errorTitle": "خطأ في الاتصال بنا",
+    "errorMessage": "حدث خطأ أثناء جلب معلومات الاتصال."
+  },
+  "map": {
+    "loadingMap": "جارٍ تحميل الخريطة...",
+    "search": "بحث",
+    "nearbyPlaces": "الأماكن القريبة",
+    "noPlaces": "لم يتم العثور على أماكن",
+    "address": "العنوان",
+    "type": "النوع",
+    "workingHours": "ساعات العمل",
+    "km": "كم"
+  },
+  "offers": {
+    "loading": "جارٍ تحميل العروض...",
+    "noOffers": "لا توجد عروض متاحة",
+    "expired": "منتهي الصلاحية",
+    "title": "الميزات / العروض"
+  },
+"security": {
+  "title": "إضافة سؤال أمني",
+  "answerPlaceholder": "أدخل إجابتك",
+  "answerRequired": "الإجابة مطلوبة",
+  "successTitle": "نجاح",
+   "successMessage": "تم حفظ أسئلة الأمان بنجاح",
+   "failureMessage": "تعذر حفظ أسئلة الأمان"
+},
+"screen": {
+    "contactUs": "اتصل بنا",
+    "help": "مساعدة",
+    "offers": "العروض",
+    "locateUs": "مواقعنا",
+    "feedback": "ملاحظات",
+    "faq": "الأسئلة الشائعة"
+  },
+  "QR": {
+    "download": "تم تنزيل رمز الاستجابة السريعة بنجاح",
+    "title": "تم تنزيل رمز الاستجابة السريعة",
+    "error": "فشل تنزيل صورة رمز الاستجابة السريعة"
+  },
+  "offerBanner": {
+    "instantCredit": "احصل على رصيد فوري في أي وقت وأي مكان.",
+    "sendMoney": "أرسل الأموال خلال ثوانٍ في أي وقت وأي مكان.",
+    "zeroFees": "لا توجد رسوم تحويل لأول 5 معاملات هذا الشهر.",
+    "intlTransfer": "التحويلات الدولية الآن برسوم مخفضة.",
+    "featured": "✨ مميز",
+    "new": "🚀 جديد",
+    "getStarted": "ابدأ الآن",
+    "learnMore": "اعرف المزيد"
+  },
+  "BottomNav": {
+      "home": "الرئيسية",
+      "accounts": "الحسابات",
+      "scan": "مسح",
+      "history": "السجل",
+      "profile": "الملف الشخصي"
+    },
+    "ProductsServices": {
+      "ourProducts": "منتجاتنا",
+      "paymentServices": "خدمات الدفع",
+      "mLoans": "القروض",
+      "mSavings": "المدخرات",
+      "cards": "البطاقات",
+      "cardless": "السحب بدون بطاقة",
+      "proofOfPayments": "إثبات الدفع",
+      "requestMoney": "طلب المال",
+      "loyaltyPoints": "نقاط الولاء",
+      "Scan": "معجزة IB"
+    },
+    "editProfile": {
+      "editProfile": "تعديل الملف الشخصي",
+      "securityQuestions": "أسئلة الأمان",
+    "changeMpin": "تغيير الرقم السري",
+ 
+    "welcome": "مرحبًا بك في بنك ميراكل",
+ 
+    "holdBalance": "الرصيد المعلق",
+    "loyaltyPoints": "نقاط الولاء",
+ 
+    "userName": "اسم المستخدم",
+    "mobileNumber": "رقم الجوال",
+    "emailId": "البريد الإلكتروني",
+ 
+    "update": "تحديث",
+    "updateMpin": "تحديث الرقم السري",
+ 
+    "currentMpin": "الرقم السري الحالي",
+    "newMpin": "الرقم السري الجديد",
+    "confirmMpin": "تأكيد الرقم السري",
+ "selectQuestion": "اختر سؤال الأمان {{order}}",
+    "enterAnswer": "أدخل إجابتك",
+    "proceed": "متابعة",
+ 
+    "selectQuestionError": "يرجى اختيار سؤال",
+    "answerRequired": "الإجابة مطلوبة",
+    "validationError": "يرجى الإجابة على جميع أسئلة الأمان قبل المتابعة.",
+ 
+    "profilePhoto": "صورة الملف الشخصي",
+    "chooseGallery": "اختر من المعرض",
+    "galleryDesc": "اختر صورة من مكتبة الصور",
+    "takePhoto": "التقاط صورة",
+    "cameraDesc": "استخدم الكاميرا لالتقاط صورة",
+    "removePhoto": "حذف الصورة",
+    "removePhotoDesc": "حذف صورة الملف الشخصي",
+ 
+    "success": "نجاح",
+    "failure": "فشل",
+ 
+    "profileUpdated": "تم تحديث الملف الشخصي بنجاح.",
+    "mpinChanged": "تم تغيير الرقم السري بنجاح.",
+ 
+    "closeSession": "إنهاء الجلسة",
+    "logoutMessage": "شكرًا لاستخدامك Miracle Banking. لقد تم تسجيل الخروج بنجاح.",
+ 
+    "logout": "تسجيل الخروج",
+    "ok": "موافق",
+ 
+    "permissionDenied": "تم رفض الإذن",
+    "galleryError": "تعذر اختيار الصورة. حاول مرة أخرى.",
+    "somethingWrong": "حدث خطأ ما. حاول مرة أخرى.",
+    "Error":"خطأ"
+  },
+  "accountSettings": {
+    "title": "إعدادات الحساب",
+
+    "ib": {
+      "title": "الخدمات المصرفية عبر الإنترنت",
+      "description": "تمكين أو تعطيل الوصول إلى الخدمات المصرفية عبر الإنترنت",
+      "success": "تم تحديث الخدمات المصرفية عبر الإنترنت بنجاح.",
+      "failure": "تعذر تحديث إعدادات الخدمات المصرفية."
+    },
+
+    "biometric": {
+      "title": "تسجيل الدخول بالبصمة",
+      "description": "عند تفعيل تسجيل الدخول بالبصمة، سيتم استخدام بيانات القياسات الحيوية الخاصة بجهازك لتسجيل الدخول إلى تطبيق Miracle. يجب أن يدعم هاتفك المصادقة بالبصمة.",
+      "terms": "أوافق على الشروط والأحكام أعلاه",
+      "unavailable": "ميزة البصمة أو التعرف على الوجه غير متوفرة على هذا الجهاز.",
+      "authReason": "المصادقة لتحديث إعدادات البصمة",
+      "cancel": "إلغاء",
+      "fallback": "استخدام رمز المرور",
+      "failure": "فشلت المصادقة أو تم إلغاؤها.",
+      "enableSuccess": "تم تفعيل المصادقة بالبصمة بنجاح",
+      "updateSuccess": "تم تحديث المصادقة بالبصمة بنجاح",
+      "termsError": "يرجى الموافقة على الشروط والأحكام لتفعيل البصمة."
+    },
+
+    "notification": {
+      "title": "تفعيل/تعطيل الإشعارات الصوتية",
+      "description": "عند التفعيل، ستتلقى تنبيهًا صوتيًا على هاتفك بعد استلام دفعة QR. يعتمد استلام التنبيه الصوتي على اتصال الإنترنت ومستوى صوت الإشعارات في جهازك.",
+      "success": "تم تحديث الإشعارات الصوتية بنجاح.",
+      "failure": "تعذر تحديث الإشعارات الصوتية."
+    },
+
+    "common": {
+      "success": "نجاح",
+      "failure": "فشل",
+      "error": "خطأ",
+      "save": "حفظ",
+      "ok": "موافق",
+      "somethingWrong": "حدث خطأ ما. يرجى المحاولة مرة أخرى."
+    }
+  },
+
+
+"onceOffBillPayment": {
+  "title": "دفع فاتورة لمرة واحدة",
+  "subtitle": "ادفع أي فاتورة فوراً دون حفظ تفاصيل المفوتر",
+  "badge": "دفع سريع",
+  "noBillersAvailable": "لا يوجد مفوترون متاحون",
+  "noAccountsAvailable": "لا توجد حسابات متاحة",
+  "steps": {
+    "details": "التفاصيل",
+    "review": "المراجعة",
+    "complete": "إكمال"
+  },
+  "stepTitles": {
+    "paymentDetails": "تفاصيل عملية الدفع لمرة واحدة",
+    "reviewConfirm": "مراجعة وتأكيد",
+
+    "complete": "إكمال"
+
+  },
+
+  "fields": {
+
+    "sourceAccount": "حساب المصدر",
+
+    "availableBalance": "الرصيد المتاح",
+
+    "category": "الفئة",
+
+    "biller": "المفوتر",
+
+    "customerName": "اسم العميل",
+
+    "amount": "المبلغ",
+
+    "paymentLimit": "حد الدفع",
+
+    "remarks": "ملاحظات",
+    "name":"الاسم"
+
+  },
+
+  "placeholders": {
+
+    "selectAccount": "اختر حساب المصدر",
+
+    "selectCategory": "اختر فئة",
+
+    "selectBiller": "اختر مفوتر",
+
+    "enterCustomerName": "أدخل اسم العميل",
+
+    "enterAmount": "أدخل المبلغ",
+
+    "enterRemarks": "أدخل الملاحظات",
+
+    "enter": "أدخل",
+
+    "select": "اختر"
+
+  },
+
+  "validation": {
+
+    "selectAccount": "يرجى اختيار حساب المصدر",
+
+    "selectCategory": "يرجى اختيار فئة",
+
+    "selectBiller": "يرجى اختيار مفوتر",
+
+    "enterAmount": "يرجى إدخال مبلغ",
+
+    "invalidAmount": "يرجى إدخال مبلغ صحيح",
+
+    "minAmount": "الحد الأدنى للمبلغ هو",
+
+    "maxAmount": "الحد الأقصى للمبلغ هو",
+
+    "insufficientBalance": "الرصيد غير كافٍ",
+
+    "enterCustomerName": "يرجى إدخال اسم العميل",
+
+    "isRequired": "مطلوب",
+
+    "minimum": "الحد الأدنى",
+
+    "maximum": "الحد الأقصى",
+
+    "charactersRequired": "أحرف مطلوبة",
+
+    "charactersAllowed": "أحرف مسموح بها",
+
+    "mustBeNumber": "يجب أن يكون رقماً"
+
+  },
+
+  "errors": {
+
+    "loadFailed": "فشل في تحميل بيانات المفوتر. يرجى المحاولة مرة أخرى.",
+
+    "processFailed": "فشل في معالجة الطلب. يرجى المحاولة مرة أخرى.",
+
+    "resendFailed": "فشل في إعادة الإرسال. يرجى المحاولة مرة أخرى.",
+
+    "connectionError": "تعذر الاتصال بالخادم. يرجى المحاولة مرة أخرى."
+
+  },
+
+  "buttons": {
+
+    "continue": "متابعة",
+
+    "backToEdit": "العودة للتعديل",
+
+    "confirmPay": "تأكيد والدفع"
+
+  },
+
+  "pinModal": {
+
+    "confirmMessage": "أدخل",
+
+    "toConfirm": "لتأكيد عملية الدفع هذه"
+
+  },
+
+  "review": {
+
+    "pleaseReview": "يرجى مراجعة التفاصيل",
+
+    "clickConfirm": "انقر على \"تأكيد والدفع\" للمتابعة. ستحتاج إلى إدخال",
+
+    "toComplete": "لإكمال عملية الدفع."
+
+  },
+
+  "success": {
+
+    "title": "تم الدفع بنجاح!",
+
+    "message": "تمت معالجة دفع الفاتورة بنجاح.",
+
+    "payAnother": "دفع فاتورة أخرى",
+
+    "done": "حسناً",
+    "detailsTitle": "تفاصيل دفع الفاتورة"
+
+  }
+
+},
+"qrPayment": {
+      "form": {
+        "title": "نموذج الدفع",
+        "name": "الاسم",
+        "email": "البريد الإلكتروني",
+        "mobile": "رقم الجوال",
+        "amount": "المبلغ",
+        "remarks": "ملاحظات",
+        "processing": "جارٍ المعالجة...",
+        "pay": "دفع"
+      },
+      "validation": {
+        "name": "يرجى إدخال اسمك (٢ أحرف على الأقل).",
+        "emailRequired": "البريد الإلكتروني مطلوب.",
+        "emailInvalid": "أدخل بريدًا إلكترونيًا صحيحًا.",
+        "mobileRequired": "رقم الجوال مطلوب.",
+        "mobileInvalid": "أدخل رقم جوال صحيحًا.",
+        "amountRequired": "المبلغ مطلوب.",
+        "amountInvalid": "أدخل مبلغًا صحيحًا.",
+        "remarksRequired": "الملاحظات مطلوبة."
+      },
+      "mpin": {
+        "defaultMessage": "أدخل رمز MPIN وأكّد دفع QR",
+        "verifyTitle": "تحقق",
+        "verifyButton": "تحقق من M-PIN",
+        "invalidTitle": "رمز MPIN غير صحيح",
+        "invalidMessage": "يرجى إدخال رمز MPIN مكوّن من ٥ أرقام.",
+        "lengthError": "يجب أن يتكوّن رمز MPIN من ٥ أرقام بالضبط"
+      },
+      "camera": {
+        "permissionTitle": "مطلوب إذن الكاميرا",
+        "permissionMessage": "يرجى الموافقة على إذن الكاميرا لإجراء دفع QR",
+        "readyMessage": "جاهز للمسح — وجّه الكاميرا نحو رمز QR",
+        "noQRFound": "لم يتم العثور على رمز QR",
+        "parseError": "تعذّر قراءة محتوى رمز QR",
+        "deniedLabel": "رفض المستخدم الوصول إلى الكاميرا",
+        "deniedInstructions": "يرجى تفعيل إذن الكاميرا لمسح رموز QR من إعدادات التطبيق.",
+         "invalidQrTitle": "رمز QR غير صالح",
+         "invalidQrMessage": "رمز QR هذا غير صالح للدفع. يرجى مسح رمز QR صحيح والمحاولة مرة أخرى."
+      },
+      "success": {
+        "title": "تم دفع QR بنجاح",
+        "loginTitle": "تم تفعيل رمز QR",
+        "message": "تمت عملية دفع QR بنجاح."
+      },
+      "errors": {
+        "transactionFailed": "فشلت المعاملة",
+        "transactionFailedTitle": "فشل المعاملة",
+        "failureTitle": "فشل"
+      },
+      "actions": {
+        "retry": "إعادة المحاولة",
+        "ok": "حسنًا",
+        "goToDashboard": "الذهاب إلى لوحة التحكم"
+      }
+    }, 
+    "appLoader": {
+      "loading": "جارٍ التحميل...",
+      "loadingAlt": "جارٍ التحميل..."
+    },
+    
+  "otpModal": {
+    "oneTimePassword": "كلمة المرور لمرة واحدة",
+    "expiresIn": "تنتهي خلال",
+    "expired": "منتهية الصلاحية",
+    "active": "نشط"
+  },
+  "appcode": {
+    "modalTitle": "التحقق من الوصول",
+    "modalSubtitle": "أدخل الرقم السري المكون من 5 أرقام"
+  },
+"notifications": {
+    "inbox": "الوارد",
+    "rewards": "المكافآت",
+    "emptyInbox": "لا توجد رسائل بعد",
+    "emptyRewards": "لا توجد مكافآت بعد",
+    "emptyDefault": "لم يتم العثور على إشعارات",
+    "refLabel": "الرقم المرجعي:",
+    "services": {
+      "chequeBook": "دفتر الشيكات",
+      "cardReissue": "إعادة إصدار البطاقة",
+      "cardBlocked": "تم حظر البطاقة"
+    },
+    "time": {
+      "today": "اليوم",
+      "yesterday": "أمس",
+      "daysAgo": "منذ {days} يوم",
+      "monthsAgo": "منذ {months} شهر"
+    },
+    "errors": {
+      "unrecognizedShape": "شكل استجابة الإشعارات غير معروف",
+      "statusCode": "أعادت واجهة برمجة تطبيقات الإشعارات رمز الحالة {code}",
+      "missingMessage": "بيانات الرسالة مفقودة أو غير قابلة للتحليل",
+      "loadFailed": "فشل تحميل الإشعارات"
+    }
+  },
+  
+  "feedback": {
+    "imageAlt": "ملاحظات",
+    "selectService": "اختر الخدمة",
+    "enterFeedback": "أدخل ملاحظاتك / شكواك",
+    "proceed": "متابعة",
+    "errors": {
+      "selectionRequired": "الاختيار مطلوب",
+      "selectService": "يرجى اختيار خدمة",
+      "enterFeedback": "يرجى إدخال الملاحظات",
+      "submissionFailed": "فشل الإرسال",
+      "submitDefault": "تعذر إرسال الملاحظات. يرجى المحاولة مرة أخرى.",
+      "generic": "خطأ",
+      "genericMessage": "حدث خطأ ما. يرجى المحاولة مرة أخرى لاحقًا.",
+      "fetchFailed": "فشل",
+      "fetchDefault": "حدث خطأ ما."
+    },
+    "success": {
+      "title": "شكرًا لك",
+      "message": "تم إرسال ملاحظاتك بنجاح."
+    }
+  },
+  
+  "pictograph": {
+    "loading": "جارٍ تحميل بيانات الرسم البياني...",
+    "errorLoad": "تعذر تحميل بيانات الرسم البياني. يرجى المحاولة مرة أخرى.",
+    "errorFailed": "فشل في تحميل بيانات الرسم البياني.",
+    "noData": "لا توجد بيانات متاحة",
+
+    "tabBar": "الرسم البياني بالأعمدة",
+    "tabPie": "الرسم البياني الدائري",
+
+    "debitTransactions": "معاملات الخصم",
+    "creditTransactions": "معاملات الإيداع",
+
+    "amount": "المبلغ",
+    "count": "العدد",
+    "date":"التاريخ",
+    "pinchToZoom": "اضغط بإصبعين للتكبير",
+    "categoryNoOfTxns": "الفئة: عدد المعاملات",
+    "sumOfTxns": "إجمالي المعاملات"
+  },
+
+  "serviceRequests": {
+    "title": "طلبات الخدمة",
+    "subtitle": "إدارة طلبات الخدمات المصرفية بأمان",
+    "sections": {
+      "requests": "طلبات الخدمة"
+    },
+    "tiles": {
+      "chequeBookRequest": "طلب دفتر شيكات",
+      "chequeBookRequestDesc": "طلب دفتر شيكات جديد",
+
+      "blockAtmCard": "حظر بطاقة الصراف الآلي",
+      "blockAtmCardDesc": "حظر بطاقة الصراف الآلي المفقودة أو المسروقة",
+
+      "reissueAtmCard": "إعادة إصدار بطاقة الصراف الآلي",
+      "reissueAtmCardDesc": "استبدال بطاقة الصراف الآلي الحالية"
+    },
+    "chequeBook": {
+      "title": "طلب دفتر شيكات",
+      "subtitle": "اطلب دفتر شيكات جديدًا بأمان",
+      "detailsTitle": "تفاصيل طلب دفتر الشيكات"
+    },
+    "blockATMCard": {
+      "title": "حظر بطاقة الصراف الآلي",
+      "subtitle": "احظر بطاقة الصراف الآلي الخاصة بك بأمان",
+      "detailsTitle": "تفاصيل حظر بطاقة الصراف الآلي",
+      "step1": "التفاصيل",
+      "step2": "التأكيد",
+      "step3": "النتيجة"
+    },
+    "reissueATMCard": {
+      "title": "إعادة إصدار بطاقة الصراف الآلي",
+      "subtitle": "طلب بطاقة صراف آلي بديلة",
+      "detailsTitle": "تفاصيل إعادة إصدار بطاقة الصراف الآلي",
+      "step1": "التفاصيل",
+      "step2": "التأكيد",
+      "step3": "النتيجة"
+    },
+    "cardTypes": {
+      "visaDomestic": "بطاقة فيزا للخصم المحلية",
+      "visaInternational": "بطاقة فيزا للخصم الدولية"
+    },
+
+    "form": {
+      "sourceAccount": "الحساب المصدر",
+      "cardName": "اسم بطاقة الخصم",
+      "cardType": "نوع البطاقة",
+      "addressType": "نوع العنوان",
+      "debitCardNumber": "رقم بطاقة الخصم",
+      "blockReason": "سبب حظر البطاقة",
+      "presentAddress": "العنوان الحالي",
+      "addAddress": "إضافة عنوان جديد",
+      "addressDetails": "أدخل تفاصيل العنوان"
+    },
+
+    "reasons": {
+      "damage": "تلف",
+      "lost": "مفقودة",
+      "stolen": "مسروقة",
+      "stolenAtBankATM": "سُرقت من جهاز الصراف الآلي التابع للبنك"
+    },
+
+    "placeholder": {
+      "sourceAccount": "اختر الحساب المصدر",
+
+      "debitcardNumber": "أدخل رقم بطاقة الخصم",
+      "debitcardName": "أدخل اسم بطاقة الخصم",
+      "cardType": "اختر نوع البطاقة",
+      "blockReason": "اختر سبب حظر البطاقة",
+      "presentAddress": "العنوان الحالي",
+      "addAddress": "إضافة عنوان جديد",
+      "addressDetails": "أدخل تفاصيل العنوان",
+      "addressType": "نوع العنوان"
+    },
+    "validation": {
+      "addressMinLength": "يجب أن تتكون تفاصيل العنوان من 10 أحرف على الأقل.",
+      "addressMaxLength": "يجب ألا تتجاوز تفاصيل العنوان 50 حرفًا.",
+      "addressReq": "العنوان مطلوب.",
+      "cardNameValidation": "يجب أن يحتوي اسم بطاقة الخصم على أحرف ومسافات فقط، وألا يتجاوز 30 حرفًا.",
+      "cardNumberValidation": "يجب أن يتكون رقم بطاقة الخصم من 16 رقمًا.",
+      "debitCardNumberReq": "رقم بطاقة الخصم مطلوب."
+    }
+  },
+ "addMoney": {
+    "title": "إضافة رصيد",
+    "proceed": "متابعة",
+    "amount": "المبلغ المراد إضافته",
+    "amountPlaceholder": "أدخل المبلغ",
+    "amountInvalid": "أدخل مبلغًا صالحًا",
+    "nameOnCard": "الاسم على البطاقة",
+    "namePlaceholder": "كما هو مطبوع على البطاقة",
+    "cardNumber": "رقم البطاقة",
+    "cardInvalid": "أدخل رقم بطاقة صالح مكون من 16 رقمًا",
+    "expMonth": "شهر الانتهاء",
+    "monthInvalid": "شهر",
+    "expYear": "سنة الانتهاء",
+    "yearInvalid": "سنة",
+    "enterCvv": "أدخل رمز التحقق (CVV)",
+    "cvvInvalid": "أدخل رمز CVV صالح مكون من 3 أرقام",
+    "cvvNote": "لا نقوم بتخزين رمز CVV الخاص بك.",
+    "detailsFailed": "تعذر التحقق من بيانات البطاقة. يرجى المحاولة مرة أخرى.",
+    "cvvFailed": "رمز CVV غير صحيح. يرجى المحاولة مرة أخرى.",
+    "otpFailed": "رمز التحقق غير صحيح. يرجى المحاولة مرة أخرى.",
+    "requestFailed": "حدث خطأ ما. يرجى المحاولة مرة أخرى.",
+    "successTitle": "تمت إضافة الرصيد",
+    "successMsg": "تمت إضافته إلى محفظتك.",
+    "verifyTitle": "التحقق من الرمز",
+    "verifySub": "أدخل رمز التحقق المرسل إلى بريدك الإلكتروني المسجل لتأكيد هذه المعاملة.",
+    "adding": "جارٍ الإضافة إلى المحفظة",
+    "stageAmount": "المبلغ",
+    "stageVerify": "التحقق من البطاقة",
+    "stageConfirm": "تأكيد",
+    "card": "بطاقة",
+    "yourName": "اسمك",
+    "expMonthShort": "شهر",
+    "expYearShort": "سنة"
+  }
+ 
+
+}
