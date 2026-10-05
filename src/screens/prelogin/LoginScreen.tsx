@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { ArrowLeft, Check, Moon, Palette, Sun } from 'lucide-react-native';
 
 import {
   KeyboardAvoidingView,
@@ -35,11 +38,16 @@ type MenuItemProps = {
   onPress?: () => void;
 };
 
+type AuthNavigation = NativeStackNavigationProp<{
+  createAccount: undefined;
+}>;
+
 /* =========================================================
    MAIN LOGIN SCREEN
 ========================================================= */
 
 const MFLoginScreen = () => {
+  const navigation = useNavigation<AuthNavigation>();
   /* -----------------------------
      Login State
   ----------------------------- */
@@ -71,6 +79,12 @@ const MFLoginScreen = () => {
 
   const [showMenuSheet, setShowMenuSheet] =
     useState(false);
+
+  const [showAppearance, setShowAppearance] =
+    useState(false);
+
+  const [appearanceTheme, setAppearanceTheme] =
+    useState<'Light' | 'Dark' | 'Blue' | 'Yellow'>('Light');
 
   /* -----------------------------
      Language
@@ -151,6 +165,30 @@ const MFLoginScreen = () => {
     setShowLanguageMenu(false);
   };
 
+  const closeMenuSheet = () => {
+    setShowMenuSheet(false);
+    setShowAppearance(false);
+  };
+
+  const openSelfRegistration = () => {
+    closeMenuSheet();
+    navigation.navigate('createAccount');
+  };
+
+  const appearanceOptions = [
+    { name: 'Light' as const, Icon: Sun, color: '#12B8AF' },
+    { name: 'Dark' as const, Icon: Moon, color: '#00B8A9' },
+    { name: 'Blue' as const, Icon: Palette, color: '#334E75' },
+    { name: 'Yellow' as const, Icon: Sun, color: '#F5A800' },
+  ];
+
+  const appearanceColors = {
+    Light: { accent: '#12B8AF', background: '#EAF7F8' },
+    Dark: { accent: '#111827', background: '#1F2937' },
+    Blue: { accent: '#2563EB', background: '#EAF2FF' },
+    Yellow: { accent: '#B77900', background: '#FFF8E1' },
+  }[appearanceTheme];
+
   return (
     <SafeAreaView style={styles.container}>
       <KeyboardAvoidingView
@@ -165,7 +203,7 @@ const MFLoginScreen = () => {
             HEADER
         ================================================= */}
 
-        <View style={styles.header}>
+        <View style={[styles.header, { backgroundColor: appearanceColors.accent }]}>
           {/* LEFT */}
 
           <View style={styles.headerLeft}>
@@ -267,7 +305,7 @@ const MFLoginScreen = () => {
             LOGIN BACKGROUND
         ================================================= */}
 
-        <View style={styles.patternBackground}>
+        <View style={[styles.patternBackground, { backgroundColor: appearanceColors.background }]}>
           <BankPattern />
 
           <ScrollView
@@ -541,7 +579,7 @@ const MFLoginScreen = () => {
               ================================================= */}
 
               <Pressable
-                style={styles.loginButton}
+                style={[styles.loginButton, { backgroundColor: appearanceColors.accent }]}
                 onPress={handleLogin}
               >
                 <Text
@@ -559,7 +597,7 @@ const MFLoginScreen = () => {
 
               <Pressable
                 style={
-                  styles.openAccountButton
+                  [styles.openAccountButton, { backgroundColor: appearanceColors.accent }]
                 }
                 onPress={() =>
                   console.log(
@@ -587,9 +625,7 @@ const MFLoginScreen = () => {
           visible={showMenuSheet}
           transparent
           animationType="slide"
-          onRequestClose={() =>
-            setShowMenuSheet(false)
-          }
+            onRequestClose={closeMenuSheet}
         >
           <View
             style={
@@ -602,9 +638,7 @@ const MFLoginScreen = () => {
               style={
                 styles.bottomSheetOverlay
               }
-              onPress={() =>
-                setShowMenuSheet(false)
-              }
+              onPress={closeMenuSheet}
             />
 
             {/* SHEET */}
@@ -622,6 +656,31 @@ const MFLoginScreen = () => {
                   SHEET HEADER
               ================================================= */}
 
+              {showAppearance ? (
+                <View style={styles.appearanceHeader}>
+                  <Pressable
+                    accessibilityLabel="Back to menu"
+                    style={styles.appearanceBackButton}
+                    onPress={() => setShowAppearance(false)}
+                  >
+                    <ArrowLeft size={19} color="#64748B" />
+                  </Pressable>
+                  <View style={styles.appearanceHeaderIcon}>
+                    <Palette size={20} color="#FFFFFF" />
+                  </View>
+                  <View style={styles.appearanceHeaderText}>
+                    <Text style={styles.appearanceTitle}>Appearance</Text>
+                    <Text style={styles.appearanceSubtitle}>Choose how the app looks to you</Text>
+                  </View>
+                  <Pressable
+                    accessibilityLabel="Close menu"
+                    style={styles.sheetCloseButton}
+                    onPress={closeMenuSheet}
+                  >
+                    <CloseIcon width={15} height={15} color="#7C8795" />
+                  </Pressable>
+                </View>
+              ) : (
               <View
                 style={styles.sheetHeader}
               >
@@ -662,7 +721,7 @@ const MFLoginScreen = () => {
                     styles.sheetCloseButton
                   }
                   onPress={() =>
-                    setShowMenuSheet(false)
+                    closeMenuSheet()
                   }
                 >
                   <CloseIcon
@@ -672,11 +731,94 @@ const MFLoginScreen = () => {
                   />
                 </Pressable>
               </View>
+              )}
 
               {/* =================================================
                   SHEET CONTENT
               ================================================= */}
 
+              {showAppearance ? (
+                <ScrollView
+                  showsVerticalScrollIndicator={false}
+                  contentContainerStyle={styles.appearanceContent}
+                >
+                  <Text style={styles.sheetSectionTitle}>APPEARANCE</Text>
+                  <View style={styles.appearanceGrid}>
+                    {appearanceOptions.map(({ name, Icon, color }) => {
+                      const isSelected = appearanceTheme === name;
+                      return (
+                        <Pressable
+                          key={name}
+                          accessibilityRole="button"
+                          accessibilityState={{ selected: isSelected }}
+                          onPress={() => setAppearanceTheme(name)}
+                          style={[
+                            styles.appearanceOption,
+                            isSelected && styles.appearanceOptionSelected,
+                          ]}
+                        >
+                          <View style={styles.appearanceOptionIcon}>
+                            <Icon size={17} color={color} />
+                          </View>
+                          <Text style={styles.appearanceOptionLabel}>{name}</Text>
+                          {isSelected && (
+                            <View style={styles.appearanceCheck}>
+                              <Check size={11} color="#FFFFFF" strokeWidth={3} />
+                            </View>
+                          )}
+                        </Pressable>
+                      );
+                    })}
+                  </View>
+
+                  <View style={styles.appearanceStatus}>
+                    <View style={styles.appearanceStatusDot} />
+                    <Text style={styles.appearanceStatusText}>
+                      {appearanceTheme} theme is currently active
+                    </Text>
+                  </View>
+
+                  <Text style={[styles.sheetSectionTitle, styles.languageSectionTitle]}>LANGUAGE</Text>
+                  <View style={styles.languageGrid}>
+                    {([
+                      { code: 'en', label: 'English', native: 'English', region: 'US' },
+                      { code: 'ar', label: 'العربية', native: 'Arabic', region: 'SA' },
+                    ] as const).map(option => {
+                      const isSelected = language === option.code;
+                      return (
+                        <Pressable
+                          key={option.code}
+                          accessibilityRole="button"
+                          accessibilityState={{ selected: isSelected }}
+                          onPress={() => changeLanguage(option.code)}
+                          style={[
+                            styles.languageCard,
+                            isSelected && styles.languageCardSelected,
+                          ]}
+                        >
+                          <Text style={styles.languageRegion}>{option.region}</Text>
+                          <View style={styles.languageCardText}>
+                            <Text style={styles.languageCardLabel}>{option.label}</Text>
+                            <Text style={styles.languageCardNative}>{option.native}</Text>
+                          </View>
+                          {isSelected && (
+                            <View style={styles.appearanceCheck}>
+                              <Check size={11} color="#FFFFFF" strokeWidth={3} />
+                            </View>
+                          )}
+                        </Pressable>
+                      );
+                    })}
+                  </View>
+
+                  <View style={styles.appearanceStatus}>
+                    <Text style={styles.languageStatusIcon}>◎</Text>
+                    <Text style={styles.appearanceStatusText}>
+                      {language === 'en' ? 'English' : 'Arabic'} is currently active
+                    </Text>
+                  </View>
+                </ScrollView>
+              ) : (
               <ScrollView
                 showsVerticalScrollIndicator={
                   false
@@ -825,6 +967,19 @@ const MFLoginScreen = () => {
                   />
                 </View>
 
+                {/* SETTINGS */}
+
+                <Text style={styles.sheetSectionTitle}>SETTINGS</Text>
+                <View style={styles.sheetMenuCard}>
+                  <BottomSheetItem
+                    icon={<Palette width={19} height={19} color="#EC4899" />}
+                    iconBackground="#FCECF5"
+                    title="Appearance"
+                    description="Theme & language settings"
+                    onPress={() => setShowAppearance(true)}
+                  />
+                </View>
+
                 {/* MORE */}
 
                 <Text
@@ -875,6 +1030,20 @@ const MFLoginScreen = () => {
                       )
                     }
                   />
+
+                  <BottomSheetItem
+                    icon={
+                      <UserPlusIcon
+                        width={19}
+                        height={19}
+                        color="#EC4899"
+                      />
+                    }
+                    iconBackground="#FCECF5"
+                    title="Self Registration"
+                    description="Open a new account"
+                    onPress={openSelfRegistration}
+                  />
                 </View>
 
                 <View
@@ -883,6 +1052,7 @@ const MFLoginScreen = () => {
                   }
                 />
               </ScrollView>
+              )}
             </View>
           </View>
         </Modal>
@@ -2088,6 +2258,52 @@ const styles = StyleSheet.create({
     borderBottomColor: '#EEF0F2',
   },
 
+  appearanceHeader: {
+    minHeight: 81,
+    paddingHorizontal: 16,
+    paddingTop: 4,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderBottomWidth: 1,
+    borderBottomColor: '#EEF0F2',
+  },
+
+  appearanceBackButton: {
+    width: 30,
+    height: 30,
+    borderRadius: 15,
+    backgroundColor: '#F1F3F5',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 8,
+  },
+
+  appearanceHeaderIcon: {
+    width: 32,
+    height: 32,
+    borderRadius: 10,
+    backgroundColor: '#EC4899',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 8,
+  },
+
+  appearanceHeaderText: {
+    flex: 1,
+  },
+
+  appearanceTitle: {
+    color: '#20242A',
+    fontSize: 13,
+    fontWeight: '800',
+  },
+
+  appearanceSubtitle: {
+    color: '#7E8895',
+    fontSize: 9,
+    marginTop: 4,
+  },
+
   sheetBrand: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -2132,6 +2348,12 @@ const styles = StyleSheet.create({
     paddingBottom: 25,
   },
 
+  appearanceContent: {
+    paddingHorizontal: 16,
+    paddingTop: 13,
+    paddingBottom: 24,
+  },
+
   sheetSectionTitle: {
     color: '#929CAA',
     fontSize: 9,
@@ -2139,6 +2361,139 @@ const styles = StyleSheet.create({
     letterSpacing: 0.6,
     marginTop: 4,
     marginBottom: 6,
+  },
+
+  appearanceGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-between',
+    rowGap: 8,
+  },
+
+  appearanceOption: {
+    width: '48.5%',
+    minHeight: 56,
+    paddingHorizontal: 11,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#E8EAED',
+    borderRadius: 12,
+    backgroundColor: '#FAFAFA',
+  },
+
+  appearanceOptionSelected: {
+    borderWidth: 1.5,
+    borderColor: '#00AFA6',
+    backgroundColor: '#F0FAF9',
+  },
+
+  appearanceOptionIcon: {
+    width: 30,
+    height: 30,
+    borderRadius: 9,
+    backgroundColor: '#E8F8F7',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 8,
+  },
+
+  appearanceOptionLabel: {
+    color: '#20242A',
+    fontSize: 11,
+    fontWeight: '700',
+  },
+
+  appearanceCheck: {
+    position: 'absolute',
+    top: 5,
+    right: 5,
+    width: 16,
+    height: 16,
+    borderRadius: 8,
+    backgroundColor: '#00AFA6',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  appearanceStatus: {
+    minHeight: 34,
+    marginTop: 11,
+    paddingHorizontal: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderRadius: 9,
+    backgroundColor: '#EFF9F8',
+  },
+
+  appearanceStatusDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: '#00AFA6',
+    marginRight: 8,
+  },
+
+  appearanceStatusText: {
+    color: '#64748B',
+    fontSize: 9,
+  },
+
+  languageSectionTitle: {
+    marginTop: 17,
+  },
+
+  languageGrid: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    columnGap: 8,
+  },
+
+  languageCard: {
+    flex: 1,
+    minHeight: 67,
+    paddingHorizontal: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#E8EAED',
+    borderRadius: 12,
+    backgroundColor: '#FAFAFA',
+  },
+
+  languageCardSelected: {
+    borderWidth: 1.5,
+    borderColor: '#00AFA6',
+    backgroundColor: '#F0FAF9',
+  },
+
+  languageRegion: {
+    color: '#20242A',
+    fontSize: 12,
+    fontWeight: '600',
+    marginRight: 9,
+  },
+
+  languageCardText: {
+    flex: 1,
+  },
+
+  languageCardLabel: {
+    color: '#20242A',
+    fontSize: 10,
+    fontWeight: '700',
+  },
+
+  languageCardNative: {
+    color: '#7E8895',
+    fontSize: 9,
+    marginTop: 4,
+  },
+
+  languageStatusIcon: {
+    color: '#00AFA6',
+    fontSize: 13,
+    marginRight: 7,
   },
 
   sheetMenuCard: {

@@ -3,10 +3,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { LoginScreen } from '../../screens/auth/login/LoginScreen';
 import { OTPScreen } from '../../screens/auth/otp/OTPScreen';
 import { BiometricSetupScreen } from '../../screens/auth/biometric/BiometricSetupScreen';
+import CreateAccount from '../../screens/account/CreateAccount';
 import { DrawerNavigator } from '../drawer/DrawerNavigator';
 // import  MFLoginScreen  from "";
 import MFLoginScreen from '../../screens/prelogin/LoginScreen';
 import PreLoginFlow from '../../screens/prelogin/PreLoginFlow';
+import ForgotPasswordFlow from '../../screens/account/ForgotPasswordFlow';
 
 export type AuthStackParamList = {
   PreLogin: undefined;
@@ -15,6 +17,8 @@ export type AuthStackParamList = {
   Dashboard: undefined;
   OTP: { phone: string; maskedPhone: string };
   BiometricSetup: undefined;
+  createAccount: undefined;
+  ForgotPassword: undefined;
 };
 
 const Stack = createNativeStackNavigator<AuthStackParamList>();
@@ -28,6 +32,8 @@ export function AuthStack() {
       <Stack.Screen name="OTP" component={OTPScreen} />
       <Stack.Screen name="Dashboard" component={DrawerNavigator} />
       <Stack.Screen name="BiometricSetup" component={BiometricSetupScreen} />
+      <Stack.Screen name="createAccount" component={CreateAccount} />
+      <Stack.Screen name="ForgotPassword" component={ForgotPasswordFlow} />
     </Stack.Navigator>
   );
 }

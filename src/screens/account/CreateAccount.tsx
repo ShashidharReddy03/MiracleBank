@@ -62,7 +62,7 @@ const CreateAccount = () => {
             </View>
 
             <Text style={styles.title}>
-              Create Account
+              Account Registration
             </Text>
 
             <Text style={styles.subtitle}>
