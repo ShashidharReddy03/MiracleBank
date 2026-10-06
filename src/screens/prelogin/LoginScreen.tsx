@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { AuthStackParamList } from '../../navigation/stacks/AuthStack';
 import { ArrowLeft, Check, Moon, Palette, Sun } from 'lucide-react-native';
 
 import {
@@ -38,9 +39,16 @@ type MenuItemProps = {
   onPress?: () => void;
 };
 
-type AuthNavigation = NativeStackNavigationProp<{
-  createAccount: undefined;
-}>;
+type AuthNavigation = NativeStackNavigationProp<AuthStackParamList>;
+type SettingsDestination =
+  | 'LocateUs'
+  | 'Offers'
+  | 'AppCode'
+  | 'Help'
+  | 'FAQ'
+  | 'ReferAFriend'
+  | 'RateUs'
+  | 'ContactUs';
 
 /* =========================================================
    MAIN LOGIN SCREEN
@@ -144,14 +152,7 @@ const MFLoginScreen = () => {
   ----------------------------- */
 
   const handleLogin = () => {
-    console.log('Login');
-
-    console.log({
-      countryCode,
-      countryName,
-      mobileNumber,
-      mpin,
-    });
+    navigation.navigate('Dashboard');
   };
 
   /* -----------------------------
@@ -173,6 +174,11 @@ const MFLoginScreen = () => {
   const openSelfRegistration = () => {
     closeMenuSheet();
     navigation.navigate('createAccount');
+  };
+
+  const openSettingsDestination = (item: SettingsDestination) => {
+    navigation.navigate(item);
+    closeMenuSheet();
   };
 
   const appearanceOptions = [
@@ -325,7 +331,7 @@ const MFLoginScreen = () => {
               {/* TITLE */}
 
               <Text style={styles.loginTitle}>
-                Login123
+                Login
               </Text>
 
               {/* =================================================
@@ -853,11 +859,7 @@ const MFLoginScreen = () => {
                     iconBackground="#E8F8F7"
                     title="Locate Us"
                     description="Find branches & ATMs nearby"
-                    onPress={() =>
-                      console.log(
-                        'Locate Us',
-                      )
-                    }
+                    onPress={() => openSettingsDestination('LocateUs')}
                   />
 
                   <BottomSheetItem
@@ -871,11 +873,7 @@ const MFLoginScreen = () => {
                     iconBackground="#FFF5E6"
                     title="Offers"
                     description="Exclusive deals & promotions"
-                    onPress={() =>
-                      console.log(
-                        'Offers',
-                      )
-                    }
+                    onPress={() => openSettingsDestination('Offers')}
                   />
 
                   <BottomSheetItem
@@ -889,11 +887,7 @@ const MFLoginScreen = () => {
                     iconBackground="#FCECF5"
                     title="App Code"
                     description="Tap here to generate your secure App Code for activating the application"
-                    onPress={() =>
-                      console.log(
-                        'App Code',
-                      )
-                    }
+                    onPress={() => openSettingsDestination('AppCode')}
                   />
                 </View>
 
@@ -923,11 +917,7 @@ const MFLoginScreen = () => {
                     iconBackground="#EAF2FF"
                     title="Contact Us"
                     description="Get in touch with us"
-                    onPress={() =>
-                      console.log(
-                        'Contact Us',
-                      )
-                    }
+                    onPress={() => openSettingsDestination('ContactUs')}
                   />
 
                   <BottomSheetItem
@@ -941,11 +931,7 @@ const MFLoginScreen = () => {
                     iconBackground="#F1ECFF"
                     title="Help"
                     description="Guides & troubleshooting"
-                    onPress={() =>
-                      console.log(
-                        'Help',
-                      )
-                    }
+                    onPress={() => openSettingsDestination('Help')}
                   />
 
                   <BottomSheetItem
@@ -959,11 +945,7 @@ const MFLoginScreen = () => {
                     iconBackground="#EEF0FF"
                     title="FAQ"
                     description="Frequently asked questions"
-                    onPress={() =>
-                      console.log(
-                        'FAQ',
-                      )
-                    }
+                    onPress={() => openSettingsDestination('FAQ')}
                   />
                 </View>
 
@@ -1006,11 +988,7 @@ const MFLoginScreen = () => {
                     iconBackground="#EAFBF5"
                     title="Refer a Friend"
                     description="Share & earn rewards"
-                    onPress={() =>
-                      console.log(
-                        'Refer a Friend',
-                      )
-                    }
+                    onPress={() => openSettingsDestination('ReferAFriend')}
                   />
 
                   <BottomSheetItem
@@ -1024,11 +1002,7 @@ const MFLoginScreen = () => {
                     iconBackground="#FFF7E7"
                     title="Rate Us"
                     description="Leave a review"
-                    onPress={() =>
-                      console.log(
-                        'Rate Us',
-                      )
-                    }
+                    onPress={() => openSettingsDestination('RateUs')}
                   />
 
                   <BottomSheetItem

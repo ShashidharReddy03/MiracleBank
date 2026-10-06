@@ -29,7 +29,7 @@ const StepOtp = ({
   const [isLoading, setIsLoading] = useState(false);
   const [clearOtp, setClearOtp] = useState(0);
 
-  const { showModal } = useAppModal();
+  // const { showModal } = useAppModal();
 
   const languageContext =
     useContext(LanguageContext);
@@ -85,19 +85,19 @@ const StepOtp = ({
     =================================================== */
 
     if (!otp || otp.length !== 5) {
-      showModal({
-        type: 'error',
-        title: t(
-          'otp.invalid',
-          'Invalid OTP',
-        ),
-        message: t(
-          'otp.errMessage',
-          'Please enter a valid 5-digit OTP.',
-        ),
-        width: 400,
-        height: 'h-32',
-      });
+      // showModal({
+      //   type: 'error',
+      //   title: t(
+      //     'otp.invalid',
+      //     'Invalid OTP',
+      //   ),
+      //   message: t(
+      //     'otp.errMessage',
+      //     'Please enter a valid 5-digit OTP.',
+      //   ),
+      //   width: 400,
+      //   height: 'h-32',
+      // });
 
       setClearOtp(
         previous => previous + 1,
@@ -189,23 +189,23 @@ const StepOtp = ({
          API WILL BE ADDED LATER
       ================================================= */
 
-      await new Promise(resolve =>
-        // setTimeout(resolve, 500),
-      );
+      // await new Promise(resolve =>
+      //   // setTimeout(resolve, 500),
+      // );
 
-      showModal({
-        type: 'success',
-        title: t(
-          'otp.valid',
-          'OTP Verified',
-        ),
-        message: t(
-          'otp.statusOk',
-          'OTP verified successfully.',
-        ),
-        width: 400,
-        height: 'h-32',
-      });
+      // showModal({
+      //   type: 'success',
+      //   title: t(
+      //     'otp.valid',
+      //     'OTP Verified',
+      //   ),
+      //   message: t(
+      //     'otp.statusOk',
+      //     'OTP verified successfully.',
+      //   ),
+      //   width: 400,
+      //   height: 'h-32',
+      // });
 
       onOtpSuccess(
         JSON.stringify({
@@ -221,19 +221,19 @@ const StepOtp = ({
         error,
       );
 
-      showModal({
-        type: 'error',
-        title: t(
-          'otp.reqErr',
-          'Request Error',
-        ),
-        message: t(
-          'otp.reqMessage',
-          'Failed to verify OTP. Please try again.',
-        ),
-        width: 400,
-        height: 'h-32',
-      });
+      // showModal({
+      //   type: 'error',
+      //   title: t(
+      //     'otp.reqErr',
+      //     'Request Error',
+      //   ),
+      //   message: t(
+      //     'otp.reqMessage',
+      //     'Failed to verify OTP. Please try again.',
+      //   ),
+      //   width: 400,
+      //   height: 'h-32',
+      // });
 
       setClearOtp(
         previous => previous + 1,

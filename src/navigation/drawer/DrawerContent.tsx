@@ -1,228 +1,272 @@
 import React from 'react';
 import {
-  View, Text, TouchableOpacity,
-  StyleSheet, ScrollView,
+  View,
+  Text,
+  TouchableOpacity,
+  StyleSheet,
+  ScrollView,
 } from 'react-native';
-import { DrawerContentScrollView, DrawerContentComponentProps } from '@react-navigation/drawer';
-import { useSelector }    from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import { useTheme }  from '../../ui-kit/theme/ThemeProvider';
-import { useAuth }   from '../../core/auth/useAuth';
+import {
+  DrawerContentScrollView,
+  DrawerContentComponentProps,
+} from '@react-navigation/drawer';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useSelector } from 'react-redux';
+import {
+  X,
+  ChevronRight,
+  User,
+  ArrowLeftRight,
+  ArrowUpCircle,
+  Briefcase,
+  Gift,
+  Star,
+  Settings,
+  CircleHelp,
+  LogOut,
+  MessageSquare,
+  Phone
+} from 'lucide-react-native';
 import { RootState } from '../../store/store';
-import { appConfig } from '../../config/appConfig';
-import { useLanguage } from '../../localization/LanguageContext';
+import { confirmLogout } from '../../utils/logout';
 
-interface MenuItem {
-  labelKey: string;
-  icon:     string;
-  screen?:  string;
-  tab?:     string;
-  onPress?: () => void;
-  danger?:  boolean;
-  divider?: boolean;
-}
+const PRIMARY = '#14B8A6';
+
+type MenuItem = {
+  label: string;
+  icon: typeof ArrowLeftRight;
+  iconBg: string;
+  iconColor: string;
+  tab?: string;
+  screen?: string;
+};
+
+type MenuSection = {
+  title: string;
+  items: MenuItem[];
+};
+
+const SECTIONS: MenuSection[] = [
+  {
+    title: 'QUICK SERVICES',
+    items: [
+      { label: 'Payments', icon: ArrowLeftRight, iconBg: '#D8F5F1', iconColor: PRIMARY, tab: 'Transfers' },
+      { label: 'Top up', icon: ArrowUpCircle, iconBg: '#FDE8C8', iconColor: '#F59E0B', tab: 'Transfers' },
+      { label: 'Product & Services', icon: Briefcase, iconBg: '#EBE4FF', iconColor: '#7C6BCF', screen: 'About' },
+      { label: 'Rewards', icon: Gift, iconBg: '#D9F5DE', iconColor: '#22A85A', tab: 'Dashboard' },
+    ],
+  },
+  {
+    title: 'SERVICES',
+    items: [
+      { label: 'Treasury', icon: Briefcase, iconBg: '#E5E7EB', iconColor: '#64748B', screen: 'About' },
+      { label: 'Loyalty', icon: Star, iconBg: '#DBEAFE', iconColor: '#3B82F6', tab: 'Profile' },
+    ],
+  },
+  {
+    title: 'HELP & SUPPORT',
+    items: [
+      { label: 'Settings', icon: Settings, iconBg: '#E5E7EB', iconColor: '#6B7280', screen: 'Settings' },
+      { label: 'Help', icon: CircleHelp, iconBg: '#DBEAFE', iconColor: '#2563EB', screen: 'Support' },
+      { label: 'Feedback', icon: MessageSquare, iconBg: '#FEF3C7', iconColor: '#D97706', screen: 'Feedback' },
+      { label: 'Contact Us', icon: Phone, iconBg: '#DCFCE7', iconColor: '#16A34A', screen: 'ContactUs' },
+    ],
+  },
+];
 
 export function DrawerContent(props: DrawerContentComponentProps) {
-  const t         = useTheme();
-  const { t: tr } = useTranslation();
-  const { logout } = useAuth();
-  const user   = useSelector((s: RootState) => s.auth.user);
-  const unread = useSelector((s: RootState) => s.notifications.unreadCount);
-  const isRTL  = useLanguage();
+  const insets = useSafeAreaInsets();
+  const user = useSelector((s: RootState) => s.auth.user);
+  const displayName = user ? `${user.firstName} ${user.lastName}` : 'Shashidhar Reddy';
 
-  const navigate    = (screen: string) => {
+  const navigateTab = (tab: string) => {
+    props.navigation.closeDrawer();
+    props.navigation.navigate('MainTabs', { screen: tab } as never);
+  };
+
+  const navigateScreen = (screen: string) => {
     props.navigation.closeDrawer();
     props.navigation.navigate(screen as never);
   };
-  const navigateTab = (tab: string) => {
-    props.navigation.closeDrawer();
-    props.navigation.navigate('MainTabs' as never);
-    setTimeout(() => props.navigation.navigate('MainTabs', { screen: tab } as never), 100);
-  };
-
-  const activeRoute = props.state.routeNames[props.state.index];
-
-  const MENU_ITEMS: MenuItem[] = [
-    { labelKey: 'drawer.home',          icon: '⊞', tab: 'Dashboard' },
-    { labelKey: 'drawer.transfer',      icon: '⇄', tab: 'Transfers' },
-    { labelKey: 'drawer.profile',       icon: '◎', tab: 'Profile'   },
-    { labelKey: 'drawer.notifications', icon: '🔔', screen: 'Notifications', divider: true },
-    { labelKey: 'drawer.support',       icon: '🎧', screen: 'Support' },
-    { labelKey: 'drawer.about',         icon: 'ℹ',  screen: 'About' },
-    {
-      labelKey: 'drawer.logout', icon: '🚪',
-      danger: true, divider: true,
-      onPress: async () => { props.navigation.closeDrawer(); await logout(); },
-    },
-  ];
 
   return (
     <DrawerContentScrollView
       {...props}
       scrollEnabled={false}
-      contentContainerStyle={{ flex: 1 }}
+      contentContainerStyle={styles.scrollContent}
+      style={styles.drawer}
     >
-      <View style={styles.container}>
+      <View style={[styles.container, { paddingBottom: insets.bottom + 8 }]}>
+        <View style={[styles.header, { paddingTop: Math.max(insets.top, 16) }]}>
+          <TouchableOpacity
+            style={styles.closeBtn}
+            onPress={() => props.navigation.closeDrawer()}
+            hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+          >
+            <X size={20} color="#ffffff" strokeWidth={2.4} />
+          </TouchableOpacity>
 
-        {/* ── Header ───────────────────────────────────────────────────── */}
-        <View style={styles.header}>
-          {/* Logo + bank name row — RTL aware */}
-          <View style={[styles.logoRow, isRTL && { flexDirection: 'row-reverse' }]}>
-            <View style={styles.logoBox}>
-              <Text style={styles.logoText}>{appConfig.bankName.charAt(0)}</Text>
+          <TouchableOpacity
+            style={styles.userRow}
+            activeOpacity={0.85}
+            onPress={() => navigateTab('Profile')}
+          >
+            <View style={styles.avatar}>
+              <User size={26} color="#ffffff" strokeWidth={1.8} />
             </View>
-          </View>
-
-          <Text style={[styles.bankName, isRTL && { textAlign: 'right' }]}>
-            {appConfig.bankName}
-          </Text>
-
-          <View style={styles.headerDivider} />
-
-          {/* User row — RTL: avatar on right */}
-          <View style={[styles.userRow, isRTL && { flexDirection: 'row-reverse' }]}>
-            <View style={[styles.avatar, isRTL ? { marginLeft: 12, marginRight: 0 } : { marginRight: 12 }]}>
-              <Text style={styles.avatarText}>{user?.firstName?.charAt(0) ?? '?'}</Text>
+            <View style={styles.userMeta}>
+              <Text style={styles.userName}>{displayName}</Text>
+              <Text style={styles.lastLogin}>Last Login at 05-10-2026 03:57</Text>
             </View>
-            <View style={{ flex: 1 }}>
-              <Text style={[styles.userName, isRTL && { textAlign: 'right' }]}>
-                {user ? `${user.firstName} ${user.lastName}` : 'Welcome'}
-              </Text>
-              <Text style={[styles.userEmail, isRTL && { textAlign: 'right' }]} numberOfLines={1}>
-                {user?.email ?? ''}
-              </Text>
-            </View>
-          </View>
+            <ChevronRight size={18} color="rgba(255,255,255,0.85)" strokeWidth={2.4} />
+          </TouchableOpacity>
         </View>
 
-        {/* ── Menu items ───────────────────────────────────────────────── */}
-        <ScrollView style={styles.menu} showsVerticalScrollIndicator={false}>
-          {MENU_ITEMS.map((item, idx) => {
-            const isActive = item.screen ? activeRoute === item.screen : false;
-            return (
-              <View key={idx}>
-                {item.divider && <View style={styles.divider} />}
-
-                <TouchableOpacity
-                  style={[
-                    styles.menuItem,
-                    isActive && styles.menuItemActive,
-                    // RTL: reverse menu item row
-                    isRTL && { flexDirection: 'row-reverse' },
-                  ]}
-                  activeOpacity={0.7}
-                  onPress={() => {
-                    if (item.onPress)     item.onPress();
-                    else if (item.screen) navigate(item.screen);
-                    else if (item.tab)    navigateTab(item.tab);
-                  }}
-                >
-                  {/* Icon */}
-                  <Text style={[
-                    styles.menuIcon,
-                    item.danger && styles.menuIconDanger,
-                    // RTL: icon on right side → flip margin
-                    isRTL
-                      ? { marginLeft: 14, marginRight: 0 }
-                      : { marginRight: 14, marginLeft: 0 },
-                  ]}>
-                    {item.icon}
-                  </Text>
-
-                  {/* Label */}
-                  <Text style={[
-                    styles.menuLabel,
-                    isActive && styles.menuLabelActive,
-                    item.danger && styles.menuLabelDanger,
-                    isRTL && { textAlign: 'right' },
-                  ]}>
-                    {tr(item.labelKey)}
-                  </Text>
-
-                  {/* Notification badge */}
-                  {item.screen === 'Notifications' && unread > 0 && (
-                    <View style={styles.badge}>
-                      <Text style={styles.badgeText}>{unread > 99 ? '99+' : unread}</Text>
+        <ScrollView
+          style={styles.menu}
+          contentContainerStyle={styles.menuContent}
+          showsVerticalScrollIndicator={false}
+        >
+          {SECTIONS.map((section) => (
+            <View key={section.title} style={styles.section}>
+              <Text style={styles.sectionTitle}>{section.title}</Text>
+              {section.items.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <TouchableOpacity
+                    key={item.label}
+                    style={styles.menuItem}
+                    activeOpacity={0.75}
+                    onPress={() => {
+                      if (item.tab) navigateTab(item.tab);
+                      else if (item.screen) navigateScreen(item.screen);
+                    }}
+                  >
+                    <View style={[styles.iconWrap, { backgroundColor: item.iconBg }]}>
+                      <Icon size={18} color={item.iconColor} strokeWidth={2.2} />
                     </View>
-                  )}
+                    <Text style={styles.menuLabel}>{item.label}</Text>
+                    <ChevronRight size={16} color="#CBD5E1" strokeWidth={2.2} />
+                  </TouchableOpacity>
+                );
+              })}
+            </View>
+          ))}
 
-                  {/* Active indicator bar — RTL: on left side, LTR: on right */}
-                  {isActive && (
-                    <View style={[
-                      styles.activeBar,
-                      isRTL ? { left: 0, right: undefined } : { right: 0, left: undefined },
-                    ]} />
-                  )}
-                </TouchableOpacity>
-              </View>
-            );
-          })}
+          <TouchableOpacity
+            style={styles.logoutBtn}
+            activeOpacity={0.85}
+            onPress={() => {
+              props.navigation.closeDrawer();
+              confirmLogout(props.navigation as never);
+            }}
+          >
+            <LogOut size={18} color="#EF4444" strokeWidth={2.2} />
+            <Text style={styles.logoutText}>Logout</Text>
+          </TouchableOpacity>
+
+          <Text style={styles.copyright}>© 2026 Miracle Banking</Text>
         </ScrollView>
-
-        {/* ── Footer ───────────────────────────────────────────────────── */}
-        <View style={[styles.footer, isRTL && { flexDirection: 'row-reverse' }]}>
-          <Text style={styles.footerText}>{appConfig.bankName} v1.0.0</Text>
-          <Text style={styles.footerText}>{appConfig.bankCode}</Text>
-        </View>
       </View>
     </DrawerContentScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  container:       { flex: 1 },
-
-  header:          { paddingTop: 48, paddingHorizontal: 24, paddingBottom: 20 },
-  logoRow:         { flexDirection: 'row', marginBottom: 12 },
-  logoBox:         {
-    width: 52, height: 52, borderRadius: 14,
-    backgroundColor: 'rgba(255,255,255,0.2)',
-    alignItems: 'center', justifyContent: 'center',
+  drawer: { backgroundColor: '#fff' },
+  scrollContent: { flex: 1 },
+  container: { flex: 1, backgroundColor: '#fff' },
+  header: {
+    backgroundColor: PRIMARY,
+    paddingHorizontal: 16,
+    paddingBottom: 18,
   },
-  logoText:        { fontSize: 26, fontWeight: '700', color: '#fff' },
-  bankName:        { fontSize: 20, fontWeight: '700', color: '#fff', marginBottom: 16 },
-  headerDivider:   { height: 1, backgroundColor: 'rgba(255,255,255,0.2)', marginBottom: 16 },
-
-  userRow:         { flexDirection: 'row', alignItems: 'center' },
-  avatar:          {
-    width: 40, height: 40, borderRadius: 20,
-    backgroundColor: 'rgba(255,255,255,0.25)',
-    alignItems: 'center', justifyContent: 'center',
+  closeBtn: {
+    alignSelf: 'flex-end',
+    width: 32,
+    height: 32,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 8,
   },
-  avatarText:      { fontSize: 18, fontWeight: '700', color: '#fff' },
-  userName:        { fontSize: 14, fontWeight: '600', color: '#fff' },
-  userEmail:       { fontSize: 12, color: 'rgba(255,255,255,0.65)', marginTop: 2 },
-
-  menu:            { flex: 1, paddingHorizontal: 12, paddingTop: 8 },
-  menuItem:        {
-    flexDirection: 'row', alignItems: 'center',
-    paddingVertical: 13, paddingHorizontal: 12,
-    borderRadius: 12, marginBottom: 2, position: 'relative',
+  userRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
-  menuItemActive:  { backgroundColor: 'rgba(255,255,255,0.15)' },
-  menuIcon:        { fontSize: 20, width: 26, textAlign: 'center' },
-  menuIconDanger:  { opacity: 0.8 },
-  menuLabel:       { flex: 1, fontSize: 15, fontWeight: '500', color: 'rgba(255,255,255,0.75)' },
-  menuLabelActive: { color: '#fff', fontWeight: '700' },
-  menuLabelDanger: { color: 'rgba(255,120,120,0.9)' },
-
-  activeBar:       {
-    position: 'absolute', top: '20%',
-    height: '60%', width: 3, borderRadius: 2,
-    backgroundColor: '#fff',
+  avatar: {
+    width: 48,
+    height: 48,
+    borderRadius: 24,
+    backgroundColor: 'rgba(255,255,255,0.22)',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 12,
   },
-  badge:           {
-    backgroundColor: '#FF3B30', borderRadius: 10,
-    minWidth: 20, height: 20,
-    alignItems: 'center', justifyContent: 'center',
-    paddingHorizontal: 5,
+  userMeta: { flex: 1 },
+  userName: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: '#fff',
+    marginBottom: 2,
   },
-  badgeText:       { fontSize: 11, fontWeight: '700', color: '#fff' },
-
-  divider:         {
-    height: 1, backgroundColor: 'rgba(255,255,255,0.15)',
-    marginVertical: 8, marginHorizontal: 12,
+  lastLogin: {
+    fontSize: 11,
+    color: 'rgba(255,255,255,0.75)',
   },
-  footer:          { padding: 24, flexDirection: 'row', justifyContent: 'space-between' },
-  footerText:      { fontSize: 11, color: 'rgba(255,255,255,0.4)' },
+  menu: { flex: 1 },
+  menuContent: {
+    paddingHorizontal: 16,
+    paddingTop: 8,
+    paddingBottom: 16,
+  },
+  section: { marginTop: 14 },
+  sectionTitle: {
+    fontSize: 11,
+    fontWeight: '700',
+    color: PRIMARY,
+    letterSpacing: 0.8,
+    marginBottom: 6,
+    marginLeft: 4,
+  },
+  menuItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingVertical: 10,
+    paddingHorizontal: 4,
+  },
+  iconWrap: {
+    width: 40,
+    height: 40,
+    borderRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginRight: 12,
+  },
+  menuLabel: {
+    flex: 1,
+    fontSize: 15,
+    fontWeight: '500',
+    color: '#111827',
+  },
+  logoutBtn: {
+    marginTop: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    backgroundColor: '#FEE2E2',
+    borderRadius: 14,
+    paddingVertical: 14,
+  },
+  logoutText: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: '#EF4444',
+  },
+  copyright: {
+    marginTop: 16,
+    textAlign: 'center',
+    fontSize: 12,
+    color: '#9CA3AF',
+  },
 });

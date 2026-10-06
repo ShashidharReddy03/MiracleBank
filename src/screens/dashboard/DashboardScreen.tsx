@@ -1,261 +1,455 @@
-import React from 'react';
-import { View, ScrollView, TouchableOpacity, RefreshControl, Alert } from 'react-native';
-import { useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
+import React, { useState } from 'react';
 import {
-  MFScreenWrapper, MFAccountCard, MFCard,
-  MFText, MFHeading, MFSkeletonCard, useTheme,
-} from '../../ui-kit/index';
-import { RootState } from '../../store/store';
-import { Transaction } from '../../types/banking';
-import { CIBSDK } from './../../sdk/CIBSDK';
+  View,
+  Text,
+  TouchableOpacity,
+  ScrollView,
+  StyleSheet,
+  StatusBar,
+} from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import {
+  Bell,
+  Eye,
+  EyeOff,
+  Download,
+  Gift,
+  Menu,
+  Send,
+  ArrowUpCircle,
+  LogOut,
+  QrCode,
+  TrendingUp,
+} from 'lucide-react-native';
+import { DrawerActions, useNavigation } from '@react-navigation/native';
+import { confirmLogout } from '../../utils/logout';
+import { SafeAreaView } from 'react-native-safe-area-context';
+
+const PRIMARY = '#14B8A6';
+const BG = '#EEF3F4';
+
+const quickLinks = [
+  { label: 'Payments', color: '#D8F5F1', icon: Send, accent: '#14B8A6' },
+  { label: 'Airtime Topup', color: '#FDE8C8', icon: ArrowUpCircle, accent: '#F59E0B' },
+  { label: 'Download Statement', color: '#E8E4FF', icon: Download, accent: '#7C6BCF' },
+  { label: 'My Rewards', color: '#D9F5DE', icon: Gift, accent: '#22A85A' },
+];
 
 export function DashboardScreen() {
-  const t          = useTheme();
-  const { t: tr }  = useTranslation();
-  const { accounts, selectedAccountId, loading } = useSelector((s: RootState) => s.accounts);
-  const { transactions } = useSelector((s: RootState) => s.transactions);
-  const selectedAccount  = accounts.find(a => a.id === selectedAccountId) ?? accounts[0];
-  const [refreshing, setRefreshing] = React.useState(false);
+  const navigation = useNavigation();
+  const insets = useSafeAreaInsets();
+  const [balanceVisible, setBalanceVisible] = useState(false);
 
-  const onRefresh = async () => { setRefreshing(true); setRefreshing(false); };
-
-  const QUICK_ACTIONS = [
-    { key: 'transfer', icon: '↗' },
-    { key: 'pay',      icon: '🧾' },
-    { key: 'topUp',    icon: '+' },
-    { key: 'more',     icon: '⋯' },
-  ] as const;
-const testCIBSDK = async () => {
-  try {
-    console.log('--- Testing buildRequest ---');
-
-    const buildResult = await CIBSDK.buildRequest(
-      '{}',
-      '{}',
-    );
-
-    console.log('buildRequest:', buildResult);
-
-    console.log('--- Testing mergeTpin ---');
-
-    const tpinResult = await CIBSDK.mergeTpin(
-      '1234',
-      '{}',
-    );
-
-    console.log('mergeTpin:', tpinResult);
-
-    console.log('--- Testing ownAccountConfirm ---');
-
-    const confirmResult = await CIBSDK.ownAccountConfirm({
-      sourceAccount: '1234567890',
-      toAccount: '9876543210',
-      amount: '500',
-      remarks: 'Test transfer',
-      exchangeAmount: '',
-      exchangeRate: '',
-      ticketNumber: '',
-      isAutoDebit: 'N',
-      debitDate: '',
-      fromCurrency: 'USD',
-      fromCurrencyCode: 'USD',
-      toCurrency: 'USD',
-      toCurrencyCode: 'USD',
-    });
-
-    console.log(
-      'ownAccountConfirm:',
-      confirmResult,
-    );
-
-  } catch (error) {
-    console.error('CIB SDK TEST ERROR:', error);
-  }
-};
-
-const onBuildRequest = async () => {
-  try {
-    const metadata = JSON.stringify({
-      requestId: 'build-request-test',
-      channel: 'MOBILE',
-      timestamp: new Date().toISOString(),
-    });
-
-    const request = JSON.stringify({
-      sourceAccount: '1234567890',
-      toAccount: '9876543210',
-      amount: '500',
-      currency: 'USD',
-      remarks: 'Build request test',
-    });
-
-    const built = await CIBSDK.buildRequest(metadata, request);
-    console.log('buildRequest payload:', built);
-    Alert.alert('buildRequest', String(built));
-  } catch (e) {
-    Alert.alert('buildRequest error', String(e));
-  }
-};
-
-const onMergeTpin = async () => {
-  try {
-    const res = await CIBSDK.mergeTpin('1234', '{}');
-    console.log('mergeTpin:', res);
-    Alert.alert('mergeTpin', String(res));
-  } catch (e) {
-    Alert.alert('mergeTpin error', String(e));
-  }
-};
-
-const onOwnAccountConfirm = async () => {
-  try {
-    const res = await CIBSDK.ownAccountConfirm({
-      sourceAccount: '1234567890',
-      toAccount: '9876543210',
-      amount: '500',
-      remarks: 'Test transfer',
-      exchangeAmount: '',
-      exchangeRate: '',
-      ticketNumber: '',
-      isAutoDebit: 'N',
-      debitDate: '',
-      fromCurrency: 'USD',
-      fromCurrencyCode: 'USD',
-      toCurrency: 'USD',
-      toCurrencyCode: 'USD',
-    });
-    console.log('ownAccountConfirm:', res);
-    Alert.alert('ownAccountConfirm', String(res));
-  } catch (e) {
-    Alert.alert('ownAccountConfirm error', String(e));
-  }
-};
-
-const checkTheCode = async () => {
-  // 1. Build the request — ReqService is baked in by the SDK
-const body = await CIBSDK.ownAccountConfirm({
-  sourceAccount: '0011223344',
-  toAccount:     '0055667788',
-  amount:        '500',
-  remarks:       'August rent',
-});
-console.log('Request body:', body);
-console.log('Request body in 144:',typeof body);
-// 2. Merge device/session metadata (your app composes metadataJson)
-const payload = await CIBSDK.buildRequest({}, body);
-console.log('Payload to send to server:', payload);
-// 3. Encrypt → POST → decrypt — your network layer
-// const confirmation = JSON.parse(await api.send(payload));
-
-// 4. If the server asks for auth, merge the T-PIN into the execute call
-// if (confirmation.isAuthentication === 'Y') {
-//   const executeBody = await CIBSDK.mergeTpin(tpin, executeRequestJson);
-//   // buildRequest → encrypt → send, as above
-// }
-}
   return (
-    <MFScreenWrapper scrollable={false} keyboardAvoiding={false} statusBarStyle="dark-content" contentStyle={{ padding: 0 }}>
-      <ScrollView showsVerticalScrollIndicator={false}
-        refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} colors={[t.colors.primary]} />}>
+    <SafeAreaView style={[styles.root, { paddingTop: insets.top }]}>
+      <StatusBar barStyle="light-content" backgroundColor={PRIMARY} />
 
-        {/* Header */}
-        <View style={{ paddingHorizontal: t.spacing.md, paddingTop: t.spacing.lg, paddingBottom: t.spacing.sm }}>
-          <MFText variant="sm" color="secondary">{tr('dashboard.greeting')}</MFText>
-          <MFHeading level={3}>{tr('dashboard.myAccounts')}</MFHeading>
+      <View style={styles.headerBar}>
+        <TouchableOpacity
+          onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+          style={styles.menuButton}
+          hitSlop={{ top: 8, bottom: 8, left: 8, right: 8 }}
+        >
+          <Menu size={24} color="#ffffff" strokeWidth={2.4} />
+        </TouchableOpacity>
+
+        <Text style={styles.appTitle}>Miracle Banking</Text>
+
+        <View style={styles.headerActions}>
+          <TouchableOpacity
+            style={styles.actionIcon}
+            onPress={() => navigation.dispatch(DrawerActions.jumpTo('Notifications' as never))}
+          >
+            <Bell size={20} color="#ffffff" strokeWidth={2.2} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.actionIcon}>
+            <QrCode size={20} color="#ffffff" strokeWidth={2.2} />
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.actionIcon} onPress={() => confirmLogout(navigation)}>
+            <LogOut size={20} color="#ffffff" strokeWidth={2.2} />
+          </TouchableOpacity>
         </View>
+      </View>
 
-        {/* Account Card */}
-        <View style={{ paddingHorizontal: t.spacing.md, marginBottom: t.spacing.lg }}>
-          {loading ? <MFSkeletonCard /> : selectedAccount ? <MFAccountCard account={selectedAccount} /> : null}
-        </View>
+      <ScrollView
+        style={styles.scroll}
+        contentContainerStyle={styles.content}
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={styles.accountCard}>
+          <View style={styles.accountTopRow}>
+            <View style={styles.accountBadge}>
+              <Text style={styles.accountBadgeText}>Savings Account</Text>
+            </View>
+            <Text style={styles.accountNumber}>**** **** 6686</Text>
+          </View>
 
-        {/* Quick Actions */}
-        <MFCard style={{ marginHorizontal: t.spacing.md, marginBottom: t.spacing.lg }}>
-          <MFText variant="xs" weight="semiBold" color="secondary"
-            style={{ marginBottom: t.spacing.md, letterSpacing: 0.8 }}>
-            {tr('dashboard.quickActions')}
-          </MFText>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-            {QUICK_ACTIONS.map(action => (
-              <TouchableOpacity key={action.key} style={{ alignItems: 'center', gap: 6 }} activeOpacity={0.7}>
-                <View style={{ width: 52, height: 52, borderRadius: t.radius.lg, backgroundColor: t.colors.primaryLight, alignItems: 'center', justifyContent: 'center' }}>
-                  <MFText variant="xl">{action.icon}</MFText>
+          <Text style={styles.branchLabel}>• Branch Name</Text>
+
+          <View style={styles.balanceRow}>
+            <View style={styles.balanceMeta}>
+              <Text style={styles.balanceCaption}>AVAILABLE BALANCE</Text>
+              {balanceVisible ? (
+                <Text style={styles.balanceAmount}>$24,580.00</Text>
+              ) : (
+                <View style={styles.balanceDots}>
+                  {Array.from({ length: 8 }).map((_, index) => (
+                    <View key={index} style={styles.dot} />
+                  ))}
                 </View>
-                <MFText variant="xs" color="secondary" weight="medium">
-                  {tr(`dashboard.actions.${action.key}`)}
-                </MFText>
+              )}
+            </View>
+            <TouchableOpacity
+              style={styles.eyeButton}
+              onPress={() => setBalanceVisible((v) => !v)}
+              activeOpacity={0.8}
+            >
+              {balanceVisible ? (
+                <EyeOff size={22} color={PRIMARY} strokeWidth={2.2} />
+              ) : (
+                <Eye size={22} color={PRIMARY} strokeWidth={2.2} />
+              )}
+            </TouchableOpacity>
+          </View>
+
+          <View style={styles.divider} />
+
+          <View style={styles.accountFooter}>
+            <Text style={styles.accountName}>Shashidhar Reddy</Text>
+            <View style={styles.trendBadge}>
+              <TrendingUp size={16} color="#ffffff" strokeWidth={2.4} />
+            </View>
+          </View>
+
+          <TouchableOpacity style={styles.addMoneyBtn} activeOpacity={0.9}>
+            <Text style={styles.addMoneyText}>+ Add Money</Text>
+          </TouchableOpacity>
+        </View>
+
+        <Text style={styles.sectionTitle}>Quick Links</Text>
+        <View style={styles.quickLinkRow}>
+          {quickLinks.map((item) => {
+            const Icon = item.icon;
+            return (
+              <TouchableOpacity
+                key={item.label}
+                style={styles.quickLinkItem}
+                activeOpacity={0.75}
+                onPress={() => {
+                  if (item.label === 'Payments' || item.label === 'Download Statement') {
+                    navigation.navigate('Transfers' as never);
+                  } else if (item.label === 'My Rewards') {
+                    navigation.navigate('Profile' as never);
+                  }
+                }}
+              >
+                <View style={[styles.quickIcon, { backgroundColor: item.color }]}>
+                  <Icon size={24} color={item.accent} strokeWidth={2.2} />
+                </View>
+                <Text style={styles.quickLabel}>{item.label}</Text>
               </TouchableOpacity>
-            ))}
-          </View>
-        </MFCard>
+            );
+          })}
+        </View>
 
-        {/* CIB SDK Test Buttons */}
-        <MFCard style={{ marginHorizontal: t.spacing.md, marginBottom: t.spacing.lg }}>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-            <TouchableOpacity onPress={onBuildRequest} style={{ padding: 12, borderRadius: t.radius.md, backgroundColor: t.colors.primaryLight }}>
-              <MFText variant="sm" weight="semiBold">Test buildRequest</MFText>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={checkTheCode} style={{ padding: 12, borderRadius: t.radius.md, backgroundColor: t.colors.primaryLight }}>
-              <MFText variant="sm" weight="semiBold">Test mergeTpin</MFText>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={onOwnAccountConfirm} style={{ padding: 12, borderRadius: t.radius.md, backgroundColor: t.colors.primaryLight }}>
-              <MFText variant="sm" weight="semiBold">Test ownConfirm</MFText>
-            </TouchableOpacity>
+        <Text style={styles.sectionTitle}>Features/Offers</Text>
+        <View style={styles.promoCard}>
+          <View style={styles.promoTag}>
+            <Text style={styles.promoTagText}>INVITEFRIENDS</Text>
           </View>
-        </MFCard>
 
-        {/* Recent Transactions */}
-        <View style={{ paddingHorizontal: t.spacing.md, marginBottom: t.spacing.xl }}>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginBottom: t.spacing.md }}>
-            <MFText variant="lg" weight="semiBold">{tr('dashboard.recentTransactions')}</MFText>
-            <TouchableOpacity>
-              <MFText variant="sm" color="primary" weight="medium">{tr('common.seeAll')}</MFText>
-            </TouchableOpacity>
+          <View style={styles.promoGraphic}>
+            <View style={styles.promoCircle}>
+              <Text style={styles.promoCoin}>$</Text>
+            </View>
           </View>
-          {loading
-            ? [1, 2, 3].map(i => <MFSkeletonCard key={i} />)
-            : transactions.length === 0
-              ? <EmptyTransactions />
-              : transactions.map(tx => <TransactionRow key={tx.id} transaction={tx} />)
-          }
+
+          <Text style={styles.promoTitle}>Invite your friends to{'\n'}Miracle Digital Bank</Text>
+          <Text style={styles.promoSubtitle}>
+            You'll get $51 when your friend send their first payment.
+          </Text>
+        </View>
+
+        <View style={styles.pagination}>
+          <View style={[styles.pageDot, styles.pageDotActive]} />
+          <View style={styles.pageDot} />
+          <View style={styles.pageDot} />
+          <View style={styles.pageDot} />
         </View>
       </ScrollView>
-    </MFScreenWrapper>
+    </SafeAreaView>
   );
 }
 
-function TransactionRow({ transaction }: { transaction: Transaction }) {
-  const t = useTheme();
-  const isCredit = transaction.type === 'CREDIT';
-  return (
-    <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: t.colors.card, borderRadius: t.radius.lg, padding: t.spacing.md, marginBottom: t.spacing.sm, ...(t.shadows.sm as any) }}>
-      <View style={{ width: 44, height: 44, borderRadius: t.radius.full, backgroundColor: isCredit ? '#E8F5E9' : '#FFEBEE', alignItems: 'center', justifyContent: 'center', marginRight: t.spacing.md }}>
-        <MFText variant="lg">{isCredit ? '↓' : '↑'}</MFText>
-      </View>
-      <View style={{ flex: 1 }}>
-        <MFText variant="md" weight="medium" numberOfLines={1}>{transaction.narration}</MFText>
-        <MFText variant="sm" color="secondary">{new Date(transaction.createdAt).toLocaleDateString()}</MFText>
-      </View>
-      <View style={{ alignItems: 'flex-end' }}>
-        <MFText variant="md" weight="semiBold" style={{ color: isCredit ? t.colors.credit : t.colors.debit }}>
-          {isCredit ? '+' : '-'}{transaction.amount.currency} {transaction.amount.amount.toLocaleString('en-US', { minimumFractionDigits: 2 })}
-        </MFText>
-        <View style={{ backgroundColor: '#eee', borderRadius: t.radius.full, paddingHorizontal: 8, paddingVertical: 2, marginTop: 2 }}>
-          <MFText variant="xs" color="secondary">{transaction.status}</MFText>
-        </View>
-      </View>
-    </View>
-  );
-}
-
-function EmptyTransactions() {
-  const t      = useTheme();
-  const { t: tr } = useTranslation();
-  return (
-    <View style={{ alignItems: 'center', paddingVertical: t.spacing.xxl }}>
-      <MFText variant="xxl" style={{ marginBottom: t.spacing.sm }}>💳</MFText>
-      <MFText variant="md" color="secondary">{tr('dashboard.noTransactions')}</MFText>
-    </View>
-  );
-}
+const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+    backgroundColor: PRIMARY,
+  },
+  headerBar: {
+    backgroundColor: PRIMARY,
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 16,
+    paddingVertical: 14,
+  },
+  menuButton: {
+    width: 36,
+    height: 36,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  appTitle: {
+    flex: 1,
+    color: '#ffffff',
+    fontSize: 20,
+    fontWeight: '700',
+    marginLeft: 8,
+  },
+  headerActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 14,
+  },
+  actionIcon: {
+    width: 28,
+    height: 28,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  scroll: {
+    flex: 1,
+    backgroundColor: BG,
+  },
+  content: {
+    paddingHorizontal: 16,
+    paddingTop: 16,
+    paddingBottom: 28,
+  },
+  accountCard: {
+    backgroundColor: '#ffffff',
+    borderRadius: 20,
+    padding: 16,
+    borderWidth: 1.5,
+    borderColor: '#A8E6DF',
+    shadowColor: '#0f172a',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.06,
+    shadowRadius: 12,
+    elevation: 3,
+    marginBottom: 22,
+  },
+  accountTopRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  accountBadge: {
+    backgroundColor: '#D8F5EC',
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    borderRadius: 20,
+  },
+  accountBadgeText: {
+    color: '#0D9488',
+    fontSize: 13,
+    fontWeight: '600',
+  },
+  accountNumber: {
+    fontSize: 14,
+    color: '#6B7280',
+    fontWeight: '500',
+    letterSpacing: 0.5,
+  },
+  branchLabel: {
+    fontSize: 13,
+    color: '#9CA3AF',
+    marginBottom: 14,
+  },
+  balanceRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 14,
+  },
+  balanceMeta: {
+    flex: 1,
+  },
+  balanceCaption: {
+    fontSize: 11,
+    color: '#9CA3AF',
+    letterSpacing: 0.8,
+    fontWeight: '600',
+    marginBottom: 8,
+  },
+  balanceAmount: {
+    fontSize: 26,
+    fontWeight: '700',
+    color: '#111827',
+  },
+  balanceDots: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    height: 28,
+  },
+  dot: {
+    width: 10,
+    height: 10,
+    borderRadius: 5,
+    backgroundColor: '#9CA3AF',
+  },
+  eyeButton: {
+    width: 44,
+    height: 44,
+    borderRadius: 12,
+    backgroundColor: '#D8F5F1',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginLeft: 12,
+  },
+  divider: {
+    height: StyleSheet.hairlineWidth,
+    backgroundColor: '#E5E7EB',
+    marginBottom: 14,
+  },
+  accountFooter: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  accountName: {
+    fontSize: 15,
+    fontWeight: '600',
+    color: '#111827',
+  },
+  trendBadge: {
+    width: 32,
+    height: 32,
+    borderRadius: 8,
+    backgroundColor: PRIMARY,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  addMoneyBtn: {
+    height: 52,
+    backgroundColor: PRIMARY,
+    borderRadius: 14,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  addMoneyText: {
+    color: '#ffffff',
+    fontSize: 17,
+    fontWeight: '700',
+  },
+  sectionTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: PRIMARY,
+    marginBottom: 14,
+  },
+  quickLinkRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 24,
+  },
+  quickLinkItem: {
+    width: '23%',
+    alignItems: 'center',
+  },
+  quickIcon: {
+    width: 58,
+    height: 58,
+    borderRadius: 16,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 8,
+  },
+  quickLabel: {
+    color: '#374151',
+    fontSize: 11,
+    fontWeight: '500',
+    textAlign: 'center',
+    lineHeight: 14,
+  },
+  promoCard: {
+    backgroundColor: '#E8D94A',
+    borderRadius: 20,
+    padding: 20,
+    paddingTop: 16,
+    overflow: 'hidden',
+    minHeight: 200,
+    justifyContent: 'flex-end',
+  },
+  promoTag: {
+    position: 'absolute',
+    top: 14,
+    right: 14,
+    backgroundColor: 'rgba(255,255,255,0.35)',
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    borderRadius: 12,
+  },
+  promoTagText: {
+    fontSize: 10,
+    fontWeight: '700',
+    color: '#ffffff',
+    letterSpacing: 0.5,
+  },
+  promoGraphic: {
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  promoCircle: {
+    width: 88,
+    height: 88,
+    borderRadius: 44,
+    backgroundColor: '#9B59C9',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  promoCoin: {
+    fontSize: 36,
+    fontWeight: '800',
+    color: '#F5D76E',
+  },
+  promoTitle: {
+    fontSize: 18,
+    fontWeight: '800',
+    color: '#ffffff',
+    textAlign: 'center',
+    lineHeight: 24,
+    marginBottom: 6,
+    textShadowColor: 'rgba(0,0,0,0.15)',
+    textShadowOffset: { width: 0, height: 1 },
+    textShadowRadius: 2,
+  },
+  promoSubtitle: {
+    fontSize: 12,
+    color: 'rgba(255,255,255,0.95)',
+    textAlign: 'center',
+    lineHeight: 17,
+    fontWeight: '500',
+  },
+  pagination: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: 6,
+    marginTop: 12,
+  },
+  pageDot: {
+    width: 7,
+    height: 7,
+    borderRadius: 4,
+    backgroundColor: '#CBD5E1',
+  },
+  pageDotActive: {
+    backgroundColor: PRIMARY,
+    width: 8,
+    height: 8,
+  },
+});

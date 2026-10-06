@@ -18,7 +18,7 @@ import Svg, {
   Polyline,
 } from 'react-native-svg';
 
-import { useAppModal } from '../../context/AppModalContext';
+// import { useAppModal } from '../../context/AppModalContext';
 // import { forgotPassword } from '../../services/ReqServiceApi/ReqServiceApi';
 import { LanguageContext } from '../../localization/LanguageContext';
 import countryList from '../../assets/country-codes.json';
@@ -61,7 +61,7 @@ const StepAccount: React.FC<StepAccountProps> = ({
 
   const countrySelectedRef = useRef(false);
 
-  const { showModal } = useAppModal();
+  // const { showModal } = useAppModal();
 
   const languageContext = useContext(LanguageContext);
   const translations = languageContext?.translations;
@@ -352,26 +352,26 @@ const StepAccount: React.FC<StepAccountProps> = ({
 
       setCif(mergeCodeWithNumber);
 
-      showModal({
-        type: 'success',
-        title: 'Account Details',
-        message: 'Account details validated successfully.',
-        width: 400,
-        height: 'h-32',
-      });
+      // showModal({
+      //   type: 'success',
+      //   title: 'Account Details',
+      //   message: 'Account details validated successfully.',
+      //   width: 400,
+      //   height: 'h-32',
+      // });
 
       onNext();
     } catch (err) {
       console.error('Forgot Password Error:', err);
 
-      showModal({
-        type: 'error',
-        title: 'Request Error',
-        message:
-          'Something went wrong while validating your account. Please try again.',
-        width: 450,
-        height: 'h-36',
-      });
+      // showModal({
+      //   type: 'error',
+      //   title: 'Request Error',
+      //   message:
+      //     'Something went wrong while validating your account. Please try again.',
+      //   width: 450,
+      //   height: 'h-36',
+      // });
 
       setUserID('');
     } finally {
