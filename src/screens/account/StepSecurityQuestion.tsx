@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import {
   ActivityIndicator,
-  Image,
   StyleSheet,
   Text,
   TextInput,
@@ -14,7 +13,13 @@ interface SecurityQA {
   answer: string;
 }
 
-const StepSecurityQuestion = () => {
+type StepSecurityQuestionProps = {
+  onNext?: () => void;
+};
+
+const StepSecurityQuestion = ({
+  onNext,
+}: StepSecurityQuestionProps) => {
   const [securityQuestions, setSecurityQuestions] = useState<
     SecurityQA[]
   >([
@@ -56,20 +61,12 @@ const StepSecurityQuestion = () => {
       return;
     }
 
-    // Business logic will be added later
+    onNext?.();
   };
 
   return (
     <View style={styles.container}>
       {/* Security Icon */}
-      <View style={styles.iconContainer}>
-        <Image
-          source={require('../../assets/icons/security.png')}
-          style={styles.securityIcon}
-          resizeMode="contain"
-        />
-      </View>
-
       {/* Loading State */}
       {isLoading && (
         <View style={styles.loadingContainer}>
@@ -137,7 +134,7 @@ const StepSecurityQuestion = () => {
           activeOpacity={0.8}
         >
           <Text style={styles.proceedText}>
-            PROCEED
+            Next
           </Text>
         </TouchableOpacity>
       )}
@@ -148,17 +145,6 @@ const StepSecurityQuestion = () => {
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-  },
-
-  iconContainer: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 12,
-  },
-
-  securityIcon: {
-    width: 100,
-    height: 120,
   },
 
   loadingContainer: {
@@ -213,10 +199,10 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 48,
     marginTop: 12,
-    borderRadius: 24,
+    borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: '#0D9488',
+    backgroundColor: '#3EC6BC',
   },
 
   proceedText: {

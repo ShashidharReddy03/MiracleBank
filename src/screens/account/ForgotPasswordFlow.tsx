@@ -26,7 +26,7 @@ import PreLoginLayout from '../prelogin/PreLoginLayout';
 import StepOtp from './StepOtp';
 import StepAccount from './StepAccount';
 import SecurityQuestions from './StepSecurityQuestion';
-// import StepReset from './StepReset';
+import SetPinScreen from './SetPin';
 
 import {
   LanguageContext,
@@ -51,12 +51,6 @@ const ForgotPasswordFlow = () => {
     useState<StepNumber>(1);
 
   const [cif, setCif] =
-    useState('');
-
-  const [rawResultMessage, setRawResultMessage] =
-    useState('');
-
-  const [mobileNumber, setMobileNumber] =
     useState('');
 
 
@@ -125,20 +119,25 @@ const ForgotPasswordFlow = () => {
     );
   };
 
+  const handleBack = () => {
+    if (step > 1) {
+      setStep(
+        current => (current - 1) as StepNumber,
+      );
+      return;
+    }
+
+    if (navigation.canGoBack()) {
+      navigation.goBack();
+    }
+  };
+
 
   /* =======================================================
      OTP SUCCESS
   ======================================================= */
 
-  const handleOtpSuccess = (
-    resultMessage: string,
-  ) => {
-    setRawResultMessage(
-      resultMessage,
-    );
-
-    setMobileNumber(cif);
-
+  const handleOtpSuccess = () => {
     next();
   };
 
@@ -227,7 +226,7 @@ const ForgotPasswordFlow = () => {
   ======================================================= */
 
   const handleResetSuccess = () => {
-    navigation.navigate('Login');
+    navigation.navigate('MFLogin');
   };
 
 
@@ -236,7 +235,7 @@ const ForgotPasswordFlow = () => {
   ======================================================= */
 
   return (
-    <View>
+    <PreLoginLayout onBack={handleBack}>
 
       <ScrollView
         style={styles.scroll}
@@ -262,7 +261,7 @@ const ForgotPasswordFlow = () => {
           <Text style={styles.title}>
             {t(
               'forgotPassword.title',
-              'Forgot MPIN ?',
+              'Forgot MPIN?',
             )}
           </Text>
 
@@ -373,26 +372,17 @@ const ForgotPasswordFlow = () => {
             )}
 
             {step === 3 && (
-              // <SecurityQuestions
-              //   onNext={next}
-              //   rawResultMessage={
-              //     rawResultMessage
-              //   }
-              //   mobileNumber={
-              //     mobileNumber
-              //   }
-              // />
-              <></>
+              <SecurityQuestions
+                onNext={next}
+              />
             )}
 
             {step === 4 && (
-              // <StepReset
-              //   cif={cif}
-              //   onSuccess={
-              //     handleResetSuccess
-              //   }
-              // />
-              <View></View>
+              <SetPinScreen
+                onSuccess={
+                  handleResetSuccess
+                }
+              />
             )}
 
           </View>
@@ -401,7 +391,7 @@ const ForgotPasswordFlow = () => {
 
       </ScrollView>
 
-    </View>
+    </PreLoginLayout>
   );
 };
 
@@ -646,9 +636,9 @@ const styles = StyleSheet.create({
   ======================================================= */
 
   title: {
-    fontSize: 20,
-    fontWeight: '600',
-    color: '#20242A',
+    fontSize: 26,
+    fontWeight: '700',
+    color: '#111827',
     textAlign: 'center',
     marginBottom: 20,
   },

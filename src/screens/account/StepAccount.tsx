@@ -113,7 +113,7 @@ const StepAccount: React.FC<StepAccountProps> = ({
    * User ID validation
    */
   const isValidUserId =
-    UserID.length >= 10 && UserID.length <= 12;
+    UserID.length >= 7 && UserID.length <= 15 && !/^0+$/.test(UserID);
 
   const hasValue = UserID.length > 0;
 
@@ -158,19 +158,29 @@ const StepAccount: React.FC<StepAccountProps> = ({
       setError(
         t(
           'validation.mblReq',
-          'Mobile Number is required',
+          'Mobile number is required',
         ),
       );
 
-      setUserID('');
       return false;
     }
 
-    if (trimmed.length < 7) {
+    if (trimmed.length < 7 || trimmed.length > 15) {
       setError(
         t(
           'validation.mblNum',
-          'Mobile number must be atleast 7 digits',
+          'Mobile number must be 7 to 15 digits',
+        ),
+      );
+
+      return false;
+    }
+
+    if (/^0+$/.test(trimmed)) {
+      setError(
+        t(
+          'validation.mobileNotZero',
+          'Mobile Number should not be 0',
         ),
       );
 
@@ -189,7 +199,7 @@ const StepAccount: React.FC<StepAccountProps> = ({
     if (!selectedCountry.code) {
       setCountryError(
         t(
-          'login.validation.countryCodeRequired',
+          'validation.selectCountry',
           'Please select a country code',
         ),
       );
@@ -237,8 +247,8 @@ const StepAccount: React.FC<StepAccountProps> = ({
 
       setCountryError(
         t(
-          'login.validation.loginCountryRequired',
-          'Country Code is required',
+          'validation.selectCountry',
+          'Please select a country code',
         ),
       );
     }
@@ -346,7 +356,7 @@ const StepAccount: React.FC<StepAccountProps> = ({
        * Remove this block when API is enabled.
        */
 
-      await new Promise(resolve =>
+      await new Promise<void>(resolve =>
         setTimeout(resolve, 500),
       );
 
@@ -567,7 +577,7 @@ const StepAccount: React.FC<StepAccountProps> = ({
             onBlur={handleUserIdBlur}
             editable={!isLoading}
             keyboardType="number-pad"
-            maxLength={12}
+            maxLength={15}
             autoCorrect={false}
             autoCapitalize="none"
             placeholder={t(
@@ -663,23 +673,16 @@ const StepAccount: React.FC<StepAccountProps> = ({
       <View style={styles.buttonContainer}>
 
         <Pressable
-          disabled={
-            isLoading ||
-            !isValidUserId ||
-            !selectedCountry.code
-          }
+          disabled={isLoading}
           onPress={handleSubmit}
           style={({ pressed }) => [
             styles.nextButton,
             {
-              backgroundColor:
-                isLoading ||
-                !isValidUserId ||
-                !selectedCountry.code
-                  ? '#9CA3AF'
-                  : pressed
-                    ? '#0F998F'
-                    : '#12A89F',
+              backgroundColor: isLoading
+                ? '#9CA3AF'
+                : pressed
+                  ? '#2BB5AC'
+                  : '#3EC6BC',
             },
           ]}
         >

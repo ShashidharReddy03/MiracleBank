@@ -31,10 +31,10 @@ const OtpInput = ({
 }: OtpInputProps) => {
   const inputs = useRef<Array<TextInput | null>>([]);
 
-  const [otp, setOtp] = useState('');
   const [otpDigits, setOtpDigits] = useState<string[]>(
     Array(length).fill(''),
   );
+  const [error, setError] = useState('');
 
   const languageContext = useContext(LanguageContext);
 
@@ -90,7 +90,7 @@ const OtpInput = ({
         Array(length).fill('');
 
       setOtpDigits(emptyDigits);
-      setOtp('');
+      setError('');
 
       setTimeout(() => {
         if (isRTL) {
@@ -110,11 +110,7 @@ const OtpInput = ({
   const updateOtpValueFromDigits = (
     digits: string[],
   ) => {
-    const otpValue = digits.join('');
-
-    setOtp(otpValue);
-
-    return otpValue;
+    return digits.join('');
   };
 
   /**
@@ -133,6 +129,7 @@ const OtpInput = ({
     newDigits[index] = digit;
 
     setOtpDigits(newDigits);
+    setError('');
 
     updateOtpValueFromDigits(newDigits);
 
@@ -229,16 +226,21 @@ const OtpInput = ({
       );
 
     if (
-      finalOtp.length === length &&
-      !otpDigits.includes('')
+      finalOtp.length !== length ||
+      otpDigits.includes('')
     ) {
-      onVerify(finalOtp);
+      setError(
+        t(
+          'otp.errMessage',
+          'Please enter a valid 5-digit OTP.',
+        ),
+      );
+      return;
     }
-  };
 
-  const isOtpComplete =
-    otp.length === length &&
-    !otpDigits.includes('');
+    setError('');
+    onVerify(finalOtp);
+  };
 
   return (
     <View
@@ -302,20 +304,22 @@ const OtpInput = ({
         ))}
       </View>
 
+      {error ? (
+        <Text style={styles.errorText}>
+          {error}
+        </Text>
+      ) : null}
+
       {/* Verify Button */}
       <TouchableOpacity
         onPress={
           handleVerifyClick
         }
-        disabled={
-          !isOtpComplete ||
-          isLoading
-        }
+        disabled={isLoading}
         activeOpacity={0.8}
         style={[
           styles.verifyButton,
-          (!isOtpComplete ||
-            isLoading) &&
+          isLoading &&
             styles.disabledButton,
         ]}
       >
@@ -379,16 +383,25 @@ const styles = StyleSheet.create({
     opacity: 0.5,
   },
 
+  errorText: {
+    width: '100%',
+    marginTop: -12,
+    marginBottom: 12,
+    color: '#EF4444',
+    fontSize: 12,
+    textAlign: 'center',
+  },
+
   verifyButton: {
     width: '100%',
-    height: 44,
+    height: 48,
 
     alignItems: 'center',
     justifyContent: 'center',
 
-    borderRadius: 6,
+    borderRadius: 8,
 
-    backgroundColor: '#1A3C6E',
+    backgroundColor: '#3EC6BC',
   },
 
   disabledButton: {

@@ -8,134 +8,152 @@ import {
   View,
 } from 'react-native';
 
-const SetPinScreen = () => {
+type SetPinScreenProps = {
+  onSuccess?: () => void;
+};
+
+const SetPinScreen = ({ onSuccess }: SetPinScreenProps) => {
   const [mpin, setMpin] = useState('');
   const [confirmMpin, setConfirmMpin] = useState('');
   const [showMpin, setShowMpin] = useState(false);
   const [showConfirmMpin, setShowConfirmMpin] = useState(false);
+  const [mpinError, setMpinError] = useState('');
+  const [confirmError, setConfirmError] = useState('');
+
+  const handleSubmit = () => {
+    const pin = mpin.trim();
+    const confirm = confirmMpin.trim();
+    let nextMpinError = '';
+    let nextConfirmError = '';
+
+    if (!pin) {
+      nextMpinError = 'MPIN is required';
+    } else if (!/^\d{5}$/.test(pin)) {
+      nextMpinError = 'Enter a 5-digit MPIN';
+    }
+
+    if (!confirm) {
+      nextConfirmError = 'Confirm MPIN is required';
+    } else if (pin && confirm !== pin) {
+      nextConfirmError = 'MPIN does not match';
+    }
+
+    setMpinError(nextMpinError);
+    setConfirmError(nextConfirmError);
+
+    if (nextMpinError || nextConfirmError) {
+      return;
+    }
+
+    onSuccess?.();
+  };
 
   return (
     <View style={styles.container}>
-      <View style={styles.card}>
-        {/* Title */}
-        <Text style={styles.title}>
-          Set MPIN
+      <Text style={styles.title}>
+        Set MPIN
+      </Text>
+
+      <View style={styles.fieldContainer}>
+        <Text style={styles.label}>
+          MPIN *
         </Text>
 
-        {/* MPIN */}
-        <View style={styles.fieldContainer}>
-          <Text style={styles.label}>
-            MPIN
-          </Text>
-
-          <View style={styles.inputContainer}>
-            <TextInput
-              value={mpin}
-              onChangeText={setMpin}
-              placeholder="Enter 5-digit MPIN"
-              placeholderTextColor="#999"
-              secureTextEntry={!showMpin}
-              keyboardType="number-pad"
-              maxLength={5}
-              style={styles.input}
-            />
-
-            <TouchableOpacity
-              onPress={() =>
-                setShowMpin(!showMpin)
-              }
-              style={styles.eyeButton}
-            >
-              <Text style={styles.eyeText}>
-                {showMpin ? 'Hide' : 'Show'}
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        {/* Confirm MPIN */}
-        <View style={styles.fieldContainer}>
-          <Text style={styles.label}>
-            Confirm MPIN
-          </Text>
-
-          <View style={styles.inputContainer}>
-            <TextInput
-              value={confirmMpin}
-              onChangeText={setConfirmMpin}
-              placeholder="Confirm 5-digit MPIN"
-              placeholderTextColor="#999"
-              secureTextEntry={!showConfirmMpin}
-              keyboardType="number-pad"
-              maxLength={5}
-              style={styles.input}
-            />
-
-            <TouchableOpacity
-              onPress={() =>
-                setShowConfirmMpin(
-                  !showConfirmMpin,
-                )
-              }
-              style={styles.eyeButton}
-            >
-              <Text style={styles.eyeText}>
-                {showConfirmMpin ? 'Hide' : 'Show'}
-              </Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-
-        {/* Submit */}
-        <TouchableOpacity
+        <View
           style={[
-            styles.submitButton,
-            {
-              opacity:
-                mpin.length === 5 &&
-                confirmMpin.length === 5
-                  ? 1
-                  : 0.5,
-            },
+            styles.inputContainer,
+            mpinError ? styles.inputError : null,
           ]}
-          disabled={
-            mpin.length !== 5 ||
-            confirmMpin.length !== 5
-          }
         >
-          <Text style={styles.submitText}>
-            Submit
-          </Text>
-        </TouchableOpacity>
+          <TextInput
+            value={mpin}
+            onChangeText={value => {
+              setMpin(value.replace(/\D/g, '').slice(0, 5));
+              if (mpinError) {
+                setMpinError('');
+              }
+            }}
+            placeholder="Enter 5-digit MPIN"
+            placeholderTextColor="#9CA3AF"
+            secureTextEntry={!showMpin}
+            keyboardType="number-pad"
+            maxLength={5}
+            style={styles.input}
+          />
+
+          <TouchableOpacity
+            onPress={() => setShowMpin(!showMpin)}
+            style={styles.eyeButton}
+          >
+            <Text style={styles.eyeText}>
+              {showMpin ? 'Hide' : 'Show'}
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        {mpinError ? (
+          <Text style={styles.errorText}>{mpinError}</Text>
+        ) : null}
       </View>
+
+      <View style={styles.fieldContainer}>
+        <Text style={styles.label}>
+          Confirm MPIN *
+        </Text>
+
+        <View
+          style={[
+            styles.inputContainer,
+            confirmError ? styles.inputError : null,
+          ]}
+        >
+          <TextInput
+            value={confirmMpin}
+            onChangeText={value => {
+              setConfirmMpin(value.replace(/\D/g, '').slice(0, 5));
+              if (confirmError) {
+                setConfirmError('');
+              }
+            }}
+            placeholder="Confirm 5-digit MPIN"
+            placeholderTextColor="#9CA3AF"
+            secureTextEntry={!showConfirmMpin}
+            keyboardType="number-pad"
+            maxLength={5}
+            style={styles.input}
+          />
+
+          <TouchableOpacity
+            onPress={() => setShowConfirmMpin(!showConfirmMpin)}
+            style={styles.eyeButton}
+          >
+            <Text style={styles.eyeText}>
+              {showConfirmMpin ? 'Hide' : 'Show'}
+            </Text>
+          </TouchableOpacity>
+        </View>
+
+        {confirmError ? (
+          <Text style={styles.errorText}>{confirmError}</Text>
+        ) : null}
+      </View>
+
+      <TouchableOpacity
+        style={styles.submitButton}
+        onPress={handleSubmit}
+        activeOpacity={0.8}
+      >
+        <Text style={styles.submitText}>
+          Submit
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingHorizontal: 20,
-    backgroundColor: '#F5F7FA',
-  },
-
-  card: {
     width: '100%',
-    maxWidth: 500,
-    padding: 20,
-    borderRadius: 12,
-    backgroundColor: '#FFFFFF',
-
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.08,
-    shadowRadius: 8,
-    elevation: 3,
   },
 
   title: {
@@ -158,13 +176,23 @@ const styles = StyleSheet.create({
   },
 
   inputContainer: {
-    height: 52,
+    height: 48,
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: '#D5D9DE',
+    borderColor: '#D1D5DB',
     borderRadius: 8,
     backgroundColor: '#FFFFFF',
+  },
+
+  inputError: {
+    borderColor: '#F87171',
+  },
+
+  errorText: {
+    marginTop: 4,
+    fontSize: 12,
+    color: '#EF4444',
   },
 
   input: {
@@ -186,12 +214,12 @@ const styles = StyleSheet.create({
   },
 
   submitButton: {
-    height: 52,
+    height: 48,
     borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 8,
-    backgroundColor: '#1D5D9B',
+    backgroundColor: '#3EC6BC',
   },
 
   submitText: {

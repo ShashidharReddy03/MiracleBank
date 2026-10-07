@@ -228,7 +228,7 @@ const StepOtp = ({
       //     'Request Error',
       //   ),
       //   message: t(
-      //     'otp.reqMessage',
+      //     'otp.reqMessage  ',
       //     'Failed to verify OTP. Please try again.',
       //   ),
       //   width: 400,
@@ -250,7 +250,7 @@ const StepOtp = ({
       <Text style={styles.description}>
         {t(
           'loginOTP.desc',
-          'Enter the 5-digit OTP sent to your registered email id.',
+          'Enter the 5-digit OTP sent to your registered email or mobile number.',
         )}
       </Text>
 
