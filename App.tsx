@@ -26,8 +26,9 @@ type AppState = 'loading' | 'ready';
 function AppContent() {
   const { isRTL } = useLanguage();
   return (
-    <View style={{ flex: 1,direction: isRTL ? 'rtl' : 'ltr', }}>
+    <View style={{ flex: 1, direction: isRTL ? 'rtl' : 'ltr' }}>
       <RootNavigator />
+      <GlobalAppLoader />
     </View>
   );
 }
@@ -92,7 +93,6 @@ export default function App() {
           <ThemeProvider theme={bankTheme}>
             <LanguageProvider>
               <AppContent />
-              <GlobalAppLoader />
             </LanguageProvider>
           </ThemeProvider>
         </QueryClientProvider>

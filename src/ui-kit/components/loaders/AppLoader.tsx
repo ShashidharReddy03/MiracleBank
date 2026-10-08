@@ -67,6 +67,7 @@ const AppLoader: React.FC<AppLoaderProps> = ({
           accessibilityLabel={t('appLoader.loadingAlt', 'Loading...')}
           style={imageSize}
           resizeMode="contain"
+          resizeMethod="resize"
           fadeDuration={0}
           onError={() => {
             console.error(`Failed to load loader image: ${gifName}`);

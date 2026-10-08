@@ -62,7 +62,10 @@ export function DashboardScreen() {
           >
             <Bell size={20} color="#ffffff" strokeWidth={2.2} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.actionIcon}>
+          <TouchableOpacity
+            style={styles.actionIcon}
+            onPress={() => navigation.navigate('Scan' as never)}
+          >
             <QrCode size={20} color="#ffffff" strokeWidth={2.2} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.actionIcon} onPress={() => confirmLogout(navigation)}>
@@ -121,7 +124,11 @@ export function DashboardScreen() {
             </View>
           </View>
 
-          <TouchableOpacity style={styles.addMoneyBtn} activeOpacity={0.9}>
+          <TouchableOpacity
+            style={styles.addMoneyBtn}
+            activeOpacity={0.9}
+            onPress={() => navigation.navigate('AddMoney' as never)}
+          >
             <Text style={styles.addMoneyText}>+ Add Money</Text>
           </TouchableOpacity>
         </View>
@@ -138,6 +145,8 @@ export function DashboardScreen() {
                 onPress={() => {
                   if (item.label === 'Payments' || item.label === 'Download Statement') {
                     navigation.navigate('Transfers' as never);
+                  } else if (item.label === 'Airtime Topup') {
+                    navigation.navigate('AirtimeTopup' as never);
                   } else if (item.label === 'My Rewards') {
                     navigation.navigate('Profile' as never);
                   }

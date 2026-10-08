@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../store/store';
 import AppLoader from './AppLoader';
@@ -12,14 +12,16 @@ export function GlobalAppLoader() {
   }
 
   return (
-    <Modal
-      visible
-      transparent
-      animationType="fade"
-      statusBarTranslucent
-      onRequestClose={() => undefined}
-    >
+    <View style={styles.overlay} pointerEvents="auto">
       <AppLoader fullscreen />
-    </Modal>
+    </View>
   );
 }
+
+const styles = StyleSheet.create({
+  overlay: {
+    ...StyleSheet.absoluteFill,
+    zIndex: 10000,
+    elevation: 10000,
+  },
+});

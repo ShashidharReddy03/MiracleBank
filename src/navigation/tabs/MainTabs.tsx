@@ -5,9 +5,11 @@ import { useNavigation, DrawerActions } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 import { Home, Wallet, ScanLine, Clock3, UserRound, Bell, Menu } from 'lucide-react-native';
 import { useTheme } from '../../ui-kit/theme/ThemeProvider';
-import { DashboardScreen } from '../../screens/dashboard/DashboardScreen';
 import { AccountsScreen } from '../../screens/accounts/AccountsScreen';
 import { ProfileScreen } from '../../screens/profile/ProfileScreen';
+import { HomeStack } from '../stacks/HomeStack';
+import { QrCodeScreen } from '../../screens/scan/QrCodeScreen';
+import { RecentTransactionsScreen } from '../../screens/history/RecentTransactionsScreen';
 import { RootState } from '../../store/store';
 
 export type AccountsTab = 'mini' | 'full' | 'details';
@@ -146,22 +148,6 @@ function buildScreenOptions(
   };
 }
 
-function ScanPlaceholderScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F4F7F9' }}>
-      <Text style={{ fontSize: 28, fontWeight: '700', color: '#0f172a' }}>Scan</Text>
-    </View>
-  );
-}
-
-function HistoryPlaceholderScreen() {
-  return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#F4F7F9' }}>
-      <Text style={{ fontSize: 28, fontWeight: '700', color: '#0f172a' }}>History</Text>
-    </View>
-  );
-}
-
 export function MainTabs() {
   return (
     <Tab.Navigator
@@ -181,10 +167,10 @@ export function MainTabs() {
         },
       }}
     >
-      <Tab.Screen name="Dashboard" component={DashboardScreen} options={buildScreenOptions('Dashboard', false)} />
+      <Tab.Screen name="Dashboard" component={HomeStack} options={buildScreenOptions('Dashboard', false)} />
       <Tab.Screen name="Transfers" component={AccountsScreen} options={buildScreenOptions('Transfers', false)} />
-      <Tab.Screen name="Scan" component={ScanPlaceholderScreen} options={buildScreenOptions('Scan', false)} />
-      <Tab.Screen name="History" component={HistoryPlaceholderScreen} options={buildScreenOptions('History', false)} />
+      <Tab.Screen name="Scan" component={QrCodeScreen} options={buildScreenOptions('Scan', false)} />
+      <Tab.Screen name="History" component={RecentTransactionsScreen} options={buildScreenOptions('History', false)} />
       <Tab.Screen name="Profile" component={ProfileScreen} options={buildScreenOptions('Profile', false)} />
     </Tab.Navigator>
   );

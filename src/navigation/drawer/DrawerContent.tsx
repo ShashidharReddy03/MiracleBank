@@ -38,6 +38,7 @@ type MenuItem = {
   iconBg: string;
   iconColor: string;
   tab?: string;
+  nestedScreen?: string;
   screen?: string;
 };
 
@@ -51,7 +52,7 @@ const SECTIONS: MenuSection[] = [
     title: 'QUICK SERVICES',
     items: [
       { label: 'Payments', icon: ArrowLeftRight, iconBg: '#D8F5F1', iconColor: PRIMARY, tab: 'Transfers' },
-      { label: 'Top up', icon: ArrowUpCircle, iconBg: '#FDE8C8', iconColor: '#F59E0B', tab: 'Transfers' },
+      { label: 'Top up', icon: ArrowUpCircle, iconBg: '#FDE8C8', iconColor: '#F59E0B', tab: 'Dashboard', nestedScreen: 'AirtimeTopup' },
       { label: 'Product & Services', icon: Briefcase, iconBg: '#EBE4FF', iconColor: '#7C6BCF', screen: 'About' },
       { label: 'Rewards', icon: Gift, iconBg: '#D9F5DE', iconColor: '#22A85A', tab: 'Dashboard' },
     ],
@@ -79,9 +80,12 @@ export function DrawerContent(props: DrawerContentComponentProps) {
   const user = useSelector((s: RootState) => s.auth.user);
   const displayName = user ? `${user.firstName} ${user.lastName}` : 'Shashidhar Reddy';
 
-  const navigateTab = (tab: string) => {
+  const navigateTab = (tab: string, nestedScreen?: string) => {
     props.navigation.closeDrawer();
-    props.navigation.navigate('MainTabs', { screen: tab } as never);
+    props.navigation.navigate('MainTabs', {
+      screen: tab,
+      params: nestedScreen ? { screen: nestedScreen } : undefined,
+    } as never);
   };
 
   const navigateScreen = (screen: string) => {
@@ -138,7 +142,7 @@ export function DrawerContent(props: DrawerContentComponentProps) {
                     style={styles.menuItem}
                     activeOpacity={0.75}
                     onPress={() => {
-                      if (item.tab) navigateTab(item.tab);
+                      if (item.tab) navigateTab(item.tab, item.nestedScreen);
                       else if (item.screen) navigateScreen(item.screen);
                     }}
                   >
