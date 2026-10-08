@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import {
+  ActivityIndicator,
   Image,
   StyleProp,
   StyleSheet,
@@ -58,12 +59,15 @@ const AppLoader: React.FC<AppLoaderProps> = ({
 
   const content = (
     <>
-      {!imageFailed && (
+      {imageFailed ? (
+        <ActivityIndicator size="large" color="#14B8A6" style={styles.fallback} />
+      ) : (
         <Image
           source={gifSrc}
           accessibilityLabel={t('appLoader.loadingAlt', 'Loading...')}
           style={imageSize}
           resizeMode="contain"
+          fadeDuration={0}
           onError={() => {
             console.error(`Failed to load loader image: ${gifName}`);
             setImageFailed(true);
@@ -87,11 +91,15 @@ const AppLoader: React.FC<AppLoaderProps> = ({
 
 const styles = StyleSheet.create({
   fullscreen: {
-    ...StyleSheet.absoluteFill,          // fixed inset-0
-    zIndex: 50,                                // z-50
-    backgroundColor: 'rgba(255,255,255,0.7)',  // bg-white bg-opacity-70
+    flex: 1,
+    zIndex: 9999,
+    elevation: 24,
+    backgroundColor: 'rgba(255,255,255,0.82)',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  fallback: {
+    marginBottom: 12,
   },
   inline: {
     alignItems: 'center',

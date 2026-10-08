@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import { runWithLoader } from '../../ui-kit/components/loaders/loaderService';
 
 type SetPinScreenProps = {
   onSuccess?: () => void;
@@ -45,7 +46,9 @@ const SetPinScreen = ({ onSuccess }: SetPinScreenProps) => {
       return;
     }
 
-    onSuccess?.();
+    void runWithLoader(() => {
+      onSuccess?.();
+    });
   };
 
   return (

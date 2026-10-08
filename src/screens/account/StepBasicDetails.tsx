@@ -24,6 +24,7 @@ import Svg, {
 } from 'react-native-svg';
 
 import { LanguageContext } from '../../localization/LanguageContext';
+// import BasicDetails from '../../assets/images/';
 import countryList from '../../assets/country-codes.json';
 
 export type BasicDetailsForm = {
@@ -305,9 +306,9 @@ const StepBasicDetails = ({
   };
 
   const handleCreate = () => {
-    if (!validateAll()) {
-      return;
-    }
+    // if (!validateAll()) {
+    //   return;
+    // }
 
     onCreate({
       firstName: firstName.trim(),

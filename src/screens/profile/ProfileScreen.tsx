@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -23,9 +23,12 @@ import {
   Mail,
   CircleCheck,
 } from 'lucide-react-native';
-import { useNavigation } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { RootState } from '../../store/store';
 import { confirmLogout } from '../../utils/logout';
+import type { MainTabParamList } from '../../navigation/tabs/MainTabs';
+import { SecurityQuestionsForm } from './SecurityQuestionsForm';
+import { runWithLoader } from '../../ui-kit/components/loaders/loaderService';
 
 const PRIMARY = '#14B8A6';
 const BG = '#EEF3F4';
@@ -35,10 +38,17 @@ type ProfileTab = 'edit' | 'security' | 'mpin';
 
 export function ProfileScreen() {
   const navigation = useNavigation();
+  const route = useRoute<RouteProp<MainTabParamList, 'Profile'>>();
   const insets = useSafeAreaInsets();
   const user = useSelector((s: RootState) => s.auth.user);
 
-  const [activeTab, setActiveTab] = useState<ProfileTab>('edit');
+  const [activeTab, setActiveTab] = useState<ProfileTab>(route.params?.tab ?? 'edit');
+
+  useEffect(() => {
+    if (route.params?.tab) {
+      setActiveTab(route.params.tab);
+    }
+  }, [route.params?.tab]);
   const [balanceVisible, setBalanceVisible] = useState(false);
   const [userName, setUserName] = useState(
     user ? `${user.firstName} ${user.lastName}` : 'Shashidhar Reddy',
@@ -129,7 +139,11 @@ export function ProfileScreen() {
         <View style={styles.actionTabs}>
           <TouchableOpacity
             style={[styles.actionTab, activeTab === 'edit' && styles.actionTabActive]}
-            onPress={() => setActiveTab('edit')}
+            onPress={() => {
+              if (activeTab !== 'edit') {
+                void runWithLoader(() => setActiveTab('edit'));
+              }
+            }}
           >
             <User
               size={20}
@@ -143,7 +157,11 @@ export function ProfileScreen() {
 
           <TouchableOpacity
             style={[styles.actionTab, activeTab === 'security' && styles.actionTabActive]}
-            onPress={() => setActiveTab('security')}
+            onPress={() => {
+              if (activeTab !== 'security') {
+                void runWithLoader(() => setActiveTab('security'));
+              }
+            }}
           >
             <Shield
               size={20}
@@ -162,7 +180,11 @@ export function ProfileScreen() {
 
           <TouchableOpacity
             style={[styles.actionTab, activeTab === 'mpin' && styles.actionTabActive]}
-            onPress={() => setActiveTab('mpin')}
+            onPress={() => {
+              if (activeTab !== 'mpin') {
+                void runWithLoader(() => setActiveTab('mpin'));
+              }
+            }}
           >
             <KeyRound
               size={20}
@@ -200,14 +222,7 @@ export function ProfileScreen() {
           </View>
         )}
 
-        {activeTab === 'security' && (
-          <View style={styles.formCard}>
-            <Text style={styles.placeholderTitle}>Security Questions</Text>
-            <Text style={styles.placeholderBody}>
-              Update your security questions to help recover your account securely.
-            </Text>
-          </View>
-        )}
+        {activeTab === 'security' && <SecurityQuestionsForm />}
 
         {activeTab === 'mpin' && (
           <View style={styles.formCard}>

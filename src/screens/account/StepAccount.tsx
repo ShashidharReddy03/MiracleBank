@@ -21,6 +21,7 @@ import Svg, {
 // import { useAppModal } from '../../context/AppModalContext';
 // import { forgotPassword } from '../../services/ReqServiceApi/ReqServiceApi';
 import { LanguageContext } from '../../localization/LanguageContext';
+import { runWithLoader } from '../../ui-kit/components/loaders/loaderService';
 import countryList from '../../assets/country-codes.json';
 
 interface StepAccountProps {
@@ -290,6 +291,7 @@ const StepAccount: React.FC<StepAccountProps> = ({
       return;
     }
 
+    await runWithLoader(async () => {
     setIsLoading(true);
     setError('');
 
@@ -387,6 +389,7 @@ const StepAccount: React.FC<StepAccountProps> = ({
     } finally {
       setIsLoading(false);
     }
+    });
   };
 
   /*

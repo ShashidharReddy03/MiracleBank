@@ -1,5 +1,5 @@
-import React from 'react';
-import { NavigationContainer, NavigationContainerRef } from '@react-navigation/native';
+import React, { useRef } from 'react';
+import { NavigationContainer, NavigationContainerRef, NavigationState } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useSelector } from 'react-redux';
 import { RootState }  from '../store/store';
@@ -8,6 +8,7 @@ import { AuthStack }             from './stacks/AuthStack';
 import { DrawerNavigator }       from './drawer/DrawerNavigator';
 import { LockScreen }            from '../screens/LockScreen';
 import { SecurityBlockedScreen } from '../screens/SecurityBlockedScreen';
+import { runWithLoader } from '../ui-kit/components/loaders/loaderService';
 
 
 export type RootStackParamList = {
@@ -19,6 +20,19 @@ export type RootStackParamList = {
 
 const Root = createNativeStackNavigator<RootStackParamList>();
 
+function getActiveRouteName(state: NavigationState | undefined): string | undefined {
+  if (!state) {
+    return undefined;
+  }
+
+  const route = state.routes[state.index ?? 0];
+  if (route?.state) {
+    return getActiveRouteName(route.state as NavigationState);
+  }
+
+  return route?.name;
+}
+
 interface RootNavigatorProps {}
 
 export const RootNavigator = React.forwardRef<
@@ -29,9 +43,31 @@ export const RootNavigator = React.forwardRef<
   const locked             = useSelector((s: RootState) => s.session.locked);
   const securityBlocked    = useSelector((s: RootState) => s.session.securityBlocked);
   const securityFailures   = useSelector((s: RootState) => s.session.securityFailures);
+  const navigationRef = useRef<NavigationContainerRef<RootStackParamList> | null>(null);
+  const routeNameRef = useRef<string | undefined>(undefined);
 
   return (
-    <NavigationContainer ref={ref}>
+    <NavigationContainer
+      ref={node => {
+        navigationRef.current = node;
+        if (typeof ref === 'function') {
+          ref(node);
+        } else if (ref) {
+          ref.current = node;
+        }
+      }}
+      onReady={() => {
+        routeNameRef.current = getActiveRouteName(navigationRef.current?.getRootState());
+      }}
+      onStateChange={() => {
+        const nextRoute = getActiveRouteName(navigationRef.current?.getRootState());
+        if (!nextRoute || nextRoute === routeNameRef.current) {
+          return;
+        }
+        routeNameRef.current = nextRoute;
+        void runWithLoader(() => undefined, 500);
+      }}
+    >
       <Root.Navigator screenOptions={{ headerShown: false, animation: 'fade' }}>
 
         {/* Priority 1 — Security blocked */}

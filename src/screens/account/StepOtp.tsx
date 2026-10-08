@@ -16,6 +16,7 @@ import OtpInput from './OtpInput';
 import {
   LanguageContext,
 } from '../../localization/LanguageContext';
+import { runWithLoader } from '../../ui-kit/components/loaders/loaderService';
 
 interface StepOtpProps {
   cif: string;
@@ -106,6 +107,7 @@ const StepOtp = ({
       return;
     }
 
+    await runWithLoader(async () => {
     setIsLoading(true);
 
     try {
@@ -242,6 +244,7 @@ const StepOtp = ({
     } finally {
       setIsLoading(false);
     }
+    });
   };
 
   return (

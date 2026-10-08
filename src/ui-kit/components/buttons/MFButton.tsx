@@ -4,13 +4,15 @@ import {
   ViewStyle, TextStyle,
 } from 'react-native';
 import { useTheme } from '../../theme/ThemeProvider';
+import { runWithLoader } from '../loaders/loaderService';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
 export type ButtonSize = 'sm' | 'md' | 'lg';
 
 interface MFButtonProps {
   label: string;
-  onPress: () => void;
+  onPress: () => void | Promise<void>;
+  showLoaderOnPress?: boolean;
   variant?: ButtonVariant;
   size?: ButtonSize;
   loading?: boolean;
@@ -29,6 +31,7 @@ export function MFButton({
   disabled = false,
   fullWidth = true,
   style, textStyle, testID,
+  showLoaderOnPress = true,
 }: MFButtonProps) {
   const t = useTheme();
 
@@ -43,7 +46,13 @@ export function MFButton({
   return (
     <TouchableOpacity
       testID={testID}
-      onPress={onPress}
+      onPress={() => {
+        if (showLoaderOnPress) {
+          void runWithLoader(() => onPress());
+          return;
+        }
+        void onPress();
+      }}
       disabled={isDisabled}
       activeOpacity={0.8}
       style={[{

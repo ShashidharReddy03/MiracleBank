@@ -17,6 +17,9 @@ export { MFCard, MFAccountCard } from './components/cards/MFCard';
 
 // ── Loaders ───────────────────────────────────────────────────────────────────
 export { MFLoader, MFSkeleton, MFSkeletonCard } from './components/loaders/MFLoader';
+export { default as AppLoader } from './components/loaders/AppLoader';
+export { GlobalAppLoader } from './components/loaders/GlobalAppLoader';
+export { runWithLoader, showAppLoader, hideAppLoader } from './components/loaders/loaderService';
 
 // ── Typography ────────────────────────────────────────────────────────────────
 export { MFText, MFHeading } from './components/typography/MFText';

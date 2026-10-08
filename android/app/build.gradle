@@ -124,6 +124,10 @@ dependencies {
     // The version of react-native is set by the React Native Gradle Plugin
     implementation("com.facebook.react:react-android")
 
+    // Android Image does not decode GIFs unless this Fresco module is present.
+    // Version must match react-native/gradle/libs.versions.toml (fresco = 3.6.0).
+    implementation("com.facebook.fresco:animated-gif:3.6.0")
+
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {

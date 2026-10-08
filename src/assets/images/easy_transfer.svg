@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="61" height="63" viewBox="0 0 61 63">
+  <g id="easy_transfer" data-name="easy transfer" transform="translate(-733 -836)">
+    <rect id="Rectangle_49" data-name="Rectangle 49" width="61" height="63" rx="17" transform="translate(733 836)" fill="#12a89f"/>
+    <path id="wallet-arrow_3_" data-name="wallet-arrow (3)" d="M18.5,14.5A1.5,1.5,0,1,1,17,16,1.5,1.5,0,0,1,18.5,14.5ZM22,8V22H3.5A1.5,1.5,0,0,1,2,20.5V9.816A2.966,2.966,0,0,0,3,10H16V8H3A1,1,0,0,1,3,6H13V4H3A2.891,2.891,0,0,0,0,7V20.5A3.5,3.5,0,0,0,3.5,24H24V8ZM18,2.941V10h2V2.973l1.764,1.764,1.414-1.414L20.471.615a2.108,2.108,0,0,0-2.974,0l-2.69,2.691L16.221,4.72,18,2.941Z" transform="translate(752 855.998)" fill="#fff"/>
+  </g>
+</svg>

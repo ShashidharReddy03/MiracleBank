@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -18,17 +18,20 @@ import {
   Info,
   LogOut,
 } from 'lucide-react-native';
-import { useNavigation } from '@react-navigation/native';
+import { RouteProp, useNavigation, useRoute } from '@react-navigation/native';
 import { confirmLogout } from '../../utils/logout';
+import type { AccountsTab, MainTabParamList } from '../../navigation/tabs/MainTabs';
+import { FullStatementPanel } from './FullStatementPanel';
+import { AccountDetailsPanel } from './AccountDetailsPanel';
+import { runWithLoader } from '../../ui-kit/components/loaders/loaderService';
 
 const PRIMARY = '#14B8A6';
 const BG = '#EEF3F4';
 const MINT = '#E8F7F4';
 
-type StatementTab = 'mini' | 'full' | 'details';
 type FilterChip = 'all' | 'income' | 'expenses';
 
-const STATEMENT_TABS: { key: StatementTab; label: string; icon: typeof FileText }[] = [
+const STATEMENT_TABS: { key: AccountsTab; label: string; icon: typeof FileText }[] = [
   { key: 'mini', label: 'Mini Statement', icon: FileText },
   { key: 'full', label: 'Full Statement', icon: Files },
   { key: 'details', label: 'Account Details', icon: Info },
@@ -42,9 +45,16 @@ const FILTERS: { key: FilterChip; label: string }[] = [
 
 export function AccountsScreen() {
   const navigation = useNavigation();
+  const route = useRoute<RouteProp<MainTabParamList, 'Transfers'>>();
   const insets = useSafeAreaInsets();
   const [balanceVisible, setBalanceVisible] = useState(false);
-  const [activeTab, setActiveTab] = useState<StatementTab>('mini');
+  const [activeTab, setActiveTab] = useState<AccountsTab>(route.params?.tab ?? 'mini');
+
+  useEffect(() => {
+    if (route.params?.tab) {
+      setActiveTab(route.params.tab);
+    }
+  }, [route.params?.tab]);
   const [filter, setFilter] = useState<FilterChip>('all');
 
   const accountNumber = '917981976686';
@@ -76,6 +86,7 @@ export function AccountsScreen() {
         contentContainerStyle={styles.content}
         showsVerticalScrollIndicator={false}
       >
+        {activeTab === 'mini' && (
         <View style={styles.summarySection}>
           <View style={styles.accountCard}>
             <View style={styles.accountTopRow}>
@@ -106,6 +117,7 @@ export function AccountsScreen() {
             <Text style={styles.branchText}>Branch: Branch Name</Text>
           </View>
         </View>
+        )}
 
         <ScrollView
           horizontal
@@ -119,7 +131,11 @@ export function AccountsScreen() {
               <TouchableOpacity
                 key={tab.key}
                 style={[styles.tabChip, active && styles.tabChipActive]}
-                onPress={() => setActiveTab(tab.key)}
+                onPress={() => {
+                  if (activeTab !== tab.key) {
+                    void runWithLoader(() => setActiveTab(tab.key));
+                  }
+                }}
                 activeOpacity={0.85}
               >
                 <Icon size={16} color={active ? '#fff' : '#6B7280'} strokeWidth={2.2} />
@@ -131,6 +147,10 @@ export function AccountsScreen() {
           })}
         </ScrollView>
 
+        {activeTab === 'full' && <FullStatementPanel />}
+        {activeTab === 'details' && <AccountDetailsPanel />}
+
+        {activeTab === 'mini' && (
         <View style={styles.filterCard}>
           <TouchableOpacity style={styles.accountSelector} activeOpacity={0.8}>
             <Text style={styles.selectorText}>{accountNumber}</Text>
@@ -154,7 +174,9 @@ export function AccountsScreen() {
             })}
           </View>
         </View>
+        )}
 
+        {activeTab === 'mini' && (
         <View style={styles.emptyState}>
           <View style={styles.emptyIconWrap}>
             <FileText size={40} color={PRIMARY} strokeWidth={1.8} />
@@ -163,6 +185,7 @@ export function AccountsScreen() {
             No transactions found for the selected criteria
           </Text>
         </View>
+        )}
       </ScrollView>
     </View>
   );

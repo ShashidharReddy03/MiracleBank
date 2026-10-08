@@ -11,7 +11,8 @@ import { RootNavigator } from './src/navigation/RootNavigator';
 import { bootstrap } from './src/bootstrap';
 import { bankTheme } from './src/theme/bankTheme';
 import { appConfig } from './src/config/appConfig';
-import { LanguageProvider, useLanguage } from './src/localization/LanguageContext'; 
+import { LanguageProvider, useLanguage } from './src/localization/LanguageContext';
+import { GlobalAppLoader } from './src/ui-kit/components/loaders/GlobalAppLoader'; 
 import { ScreenshotBlocker } from './src/security/screenshot/ScreenshotBlocker';
 import { logger } from './src/core/logging/MFLogger';
 
@@ -91,6 +92,7 @@ export default function App() {
           <ThemeProvider theme={bankTheme}>
             <LanguageProvider>
               <AppContent />
+              <GlobalAppLoader />
             </LanguageProvider>
           </ThemeProvider>
         </QueryClientProvider>

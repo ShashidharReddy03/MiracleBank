@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="130" viewBox="0 0 130 130">
+  <g id="basic_details" data-name="basic details" transform="translate(-665 -287)">
+    <circle id="Ellipse_2043" data-name="Ellipse 2043" cx="65" cy="65" r="65" transform="translate(665 287)" fill="#139d68"/>
+    <g id="Rectangle_19519" data-name="Rectangle 19519" transform="translate(689 327)" fill="#fff" stroke="#139d68" stroke-width="2">
+      <rect width="83" height="50" rx="6" stroke="none"/>
+      <rect x="1" y="1" width="81" height="48" rx="5" fill="none"/>
+    </g>
+    <g id="Group_43971" data-name="Group 43971" transform="translate(-1.23 1.254)">
+      <line id="Line_684" data-name="Line 684" x2="28" transform="translate(733.5 343)" fill="none" stroke="#12a89f" stroke-linecap="round" stroke-width="2"/>
+      <line id="Line_685" data-name="Line 685" x2="28" transform="translate(733.5 349)" fill="none" stroke="#12a89f" stroke-linecap="round" stroke-width="2"/>
+      <line id="Line_686" data-name="Line 686" x2="28" transform="translate(733.5 355)" fill="none" stroke="#12a89f" stroke-linecap="round" stroke-width="2"/>
+      <line id="Line_687" data-name="Line 687" x2="28" transform="translate(733.5 361)" fill="none" stroke="#12a89f" stroke-linecap="round" stroke-width="2"/>
+      <g id="user_31_" data-name="user (31)" transform="translate(670.23 338.746)">
+        <g id="Group_43631" data-name="Group 43631" transform="translate(35.308)">
+          <g id="Group_43630" data-name="Group 43630">
+            <path id="Path_47112" data-name="Path 47112" d="M127.462,0a6.462,6.462,0,1,0,6.462,6.462A6.469,6.469,0,0,0,127.462,0Z" transform="translate(-121)" fill="#12a89f"/>
+          </g>
+        </g>
+        <g id="Group_43633" data-name="Group 43633" transform="translate(31 14.36)">
+          <g id="Group_43632" data-name="Group 43632">
+            <path id="Path_47113" data-name="Path 47113" d="M49.81,302.786a9.212,9.212,0,0,0-6.6-2.786H40.334a9.212,9.212,0,0,0-6.6,2.786A9.417,9.417,0,0,0,31,309.43a.718.718,0,0,0,.718.718h20.1a.718.718,0,0,0,.718-.718A9.417,9.417,0,0,0,49.81,302.786Z" transform="translate(-31 -300)" fill="#12a89f"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

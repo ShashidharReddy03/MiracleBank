@@ -10,12 +10,15 @@ import { AccountsScreen } from '../../screens/accounts/AccountsScreen';
 import { ProfileScreen } from '../../screens/profile/ProfileScreen';
 import { RootState } from '../../store/store';
 
+export type AccountsTab = 'mini' | 'full' | 'details';
+export type ProfileTab = 'edit' | 'security' | 'mpin';
+
 export type MainTabParamList = {
   Dashboard: undefined;
-  Transfers: undefined;
+  Transfers: { tab?: AccountsTab } | undefined;
   Scan: undefined;
   History: undefined;
-  Profile: undefined;
+  Profile: { tab?: ProfileTab } | undefined;
 };
 
 type TabRouteName = keyof MainTabParamList;

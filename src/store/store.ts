@@ -5,6 +5,7 @@ import { transactionSlice }  from './slices/transactionSlice';
 import { notificationSlice } from './slices/notificationSlice';
 import { sessionSlice }      from './slices/sessionSlice'; // ← has securityBlocked
 import { sessionMiddleware }  from './middleware/sessionMiddleware';
+import loaderReducer         from '../slices/LoaderSlice';
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     transactions:  transactionSlice.reducer,
     notifications: notificationSlice.reducer,
     session:       sessionSlice.reducer,
+    loader:        loaderReducer,
   },
   middleware: (getDefault) =>
     getDefault({ serializableCheck: false }).concat(sessionMiddleware),

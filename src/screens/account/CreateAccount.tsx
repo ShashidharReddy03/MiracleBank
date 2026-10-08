@@ -22,7 +22,7 @@ import StepBasicDetails, {
 import StepOtp from './StepOtp';
 import StepSecurityQuestion from './StepSecurityQuestion';
 import SetPinScreen from './SetPin';
-import AppLoader from '../../ui-kit/components/loaders/AppLoader';
+import { runWithLoader } from '../../ui-kit/components/loaders/loaderService';
 
 type StepNumber = 1 | 2 | 3 | 4;
 
@@ -83,24 +83,26 @@ const CreateAccount = () => {
   };
 
   const handleCreate = async (form: BasicDetailsForm) => {
-    setIsCreating(true);
+    await runWithLoader(async () => {
+      setIsCreating(true);
 
-    try {
-      /*
-       * API will be wired later.
-       * Temporary success path for UI flow testing.
-       */
-      await new Promise<void>(resolve => setTimeout(resolve, 400));
+      try {
+        /*
+         * API will be wired later.
+         * Temporary success path for UI flow testing.
+         */
+        await new Promise<void>(resolve => setTimeout(resolve, 400));
 
-      const mergedMobile =
-        form.countryCode.replace(/[+\s]/g, '') + form.mobile;
+        const mergedMobile =
+          form.countryCode.replace(/[+\s]/g, '') + form.mobile;
 
-      setFormData(form);
-      setCif(mergedMobile);
-      next();
-    } finally {
-      setIsCreating(false);
-    }
+        setFormData(form);
+        setCif(mergedMobile);
+        next();
+      } finally {
+        setIsCreating(false);
+      }
+    });
   };
 
   const handleOtpSuccess = () => {

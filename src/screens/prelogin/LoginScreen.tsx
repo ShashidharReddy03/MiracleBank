@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { Alert } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Keychain from 'react-native-keychain';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { AuthStackParamList } from '../../navigation/stacks/AuthStack';
@@ -180,7 +183,31 @@ const MFLoginScreen = () => {
     navigation.navigate(item);
     closeMenuSheet();
   };
+  const handleClear = () => {
+  Alert.alert(
+    'Not You?',
+    'Are you sure it\'s not you? This will clear your login details.',
+    [
+      { text: 'Cancel', style: 'cancel' },
+      {
+        text: 'Yes',
+        style: 'destructive',
+        onPress: async () => {
+          try {
+            await AsyncStorage.clear();
+            await Keychain.resetGenericPassword();
+            // await authManager.clearTokens();
 
+          } catch (error) {
+            console.error('Logout failed:', error);
+            Alert.alert('Error', 'Unable to clear login details. Please try again.');
+          }
+        },
+      },
+    ],
+    { cancelable: true },
+  );
+  }
   const appearanceOptions = [
     { name: 'Light' as const, Icon: Sun, color: '#12B8AF' },
     { name: 'Dark' as const, Icon: Moon, color: '#00B8A9' },
@@ -563,7 +590,7 @@ const MFLoginScreen = () => {
               <View
                 style={styles.loginLinks}
               >
-                <Pressable>
+                <Pressable onPress={handleClear}>
                   <Text
                     style={styles.linkText}
                   >
@@ -631,7 +658,7 @@ const MFLoginScreen = () => {
           visible={showMenuSheet}
           transparent
           animationType="slide"
-            onRequestClose={closeMenuSheet}
+          onRequestClose={closeMenuSheet}
         >
           <View
             style={
@@ -687,56 +714,56 @@ const MFLoginScreen = () => {
                   </Pressable>
                 </View>
               ) : (
-              <View
-                style={styles.sheetHeader}
-              >
                 <View
-                  style={styles.sheetBrand}
+                  style={styles.sheetHeader}
                 >
                   <View
-                    style={styles.sheetLogo}
+                    style={styles.sheetBrand}
                   >
-                    <BankBuildingIcon
-                      width={27}
-                      height={27}
-                      color="#12B8AF"
+                    <View
+                      style={styles.sheetLogo}
+                    >
+                      <BankBuildingIcon
+                        width={27}
+                        height={27}
+                        color="#12B8AF"
+                      />
+                    </View>
+
+                    <View>
+                      <Text
+                        style={
+                          styles.sheetTitle
+                        }
+                      >
+                        Miracle Banking
+                      </Text>
+
+                      <Text
+                        style={
+                          styles.sheetVersion
+                        }
+                      >
+                        App Version 1.0.034567
+                      </Text>
+                    </View>
+                  </View>
+
+                  <Pressable
+                    style={
+                      styles.sheetCloseButton
+                    }
+                    onPress={() =>
+                      closeMenuSheet()
+                    }
+                  >
+                    <CloseIcon
+                      width={15}
+                      height={15}
+                      color="#7C8795"
                     />
-                  </View>
-
-                  <View>
-                    <Text
-                      style={
-                        styles.sheetTitle
-                      }
-                    >
-                      Miracle Banking
-                    </Text>
-
-                    <Text
-                      style={
-                        styles.sheetVersion
-                      }
-                    >
-                      App Version 1.0.034567
-                    </Text>
-                  </View>
+                  </Pressable>
                 </View>
-
-                <Pressable
-                  style={
-                    styles.sheetCloseButton
-                  }
-                  onPress={() =>
-                    closeMenuSheet()
-                  }
-                >
-                  <CloseIcon
-                    width={15}
-                    height={15}
-                    color="#7C8795"
-                  />
-                </Pressable>
-              </View>
               )}
 
               {/* =================================================
@@ -825,207 +852,207 @@ const MFLoginScreen = () => {
                   </View>
                 </ScrollView>
               ) : (
-              <ScrollView
-                showsVerticalScrollIndicator={
-                  false
-                }
-                contentContainerStyle={
-                  styles.sheetScrollContent
-                }
-              >
-                {/* EXPLORE */}
-
-                <Text
-                  style={
-                    styles.sheetSectionTitle
+                <ScrollView
+                  showsVerticalScrollIndicator={
+                    false
+                  }
+                  contentContainerStyle={
+                    styles.sheetScrollContent
                   }
                 >
-                  EXPLORE
-                </Text>
+                  {/* EXPLORE */}
 
-                <View
-                  style={
-                    styles.sheetMenuCard
-                  }
-                >
-                  <BottomSheetItem
-                    icon={
-                      <MapPinIcon
-                        width={19}
-                        height={19}
-                        color="#12B8AF"
-                      />
+                  <Text
+                    style={
+                      styles.sheetSectionTitle
                     }
-                    iconBackground="#E8F8F7"
-                    title="Locate Us"
-                    description="Find branches & ATMs nearby"
-                    onPress={() => openSettingsDestination('LocateUs')}
-                  />
+                  >
+                    EXPLORE
+                  </Text>
 
-                  <BottomSheetItem
-                    icon={
-                      <GiftIcon
-                        width={19}
-                        height={19}
-                        color="#F59E0B"
-                      />
+                  <View
+                    style={
+                      styles.sheetMenuCard
                     }
-                    iconBackground="#FFF5E6"
-                    title="Offers"
-                    description="Exclusive deals & promotions"
-                    onPress={() => openSettingsDestination('Offers')}
-                  />
+                  >
+                    <BottomSheetItem
+                      icon={
+                        <MapPinIcon
+                          width={19}
+                          height={19}
+                          color="#12B8AF"
+                        />
+                      }
+                      iconBackground="#E8F8F7"
+                      title="Locate Us"
+                      description="Find branches & ATMs nearby"
+                      onPress={() => openSettingsDestination('LocateUs')}
+                    />
 
-                  <BottomSheetItem
-                    icon={
-                      <UserPlusIcon
-                        width={19}
-                        height={19}
-                        color="#EC4899"
-                      />
+                    <BottomSheetItem
+                      icon={
+                        <GiftIcon
+                          width={19}
+                          height={19}
+                          color="#F59E0B"
+                        />
+                      }
+                      iconBackground="#FFF5E6"
+                      title="Offers"
+                      description="Exclusive deals & promotions"
+                      onPress={() => openSettingsDestination('Offers')}
+                    />
+
+                    <BottomSheetItem
+                      icon={
+                        <UserPlusIcon
+                          width={19}
+                          height={19}
+                          color="#EC4899"
+                        />
+                      }
+                      iconBackground="#FCECF5"
+                      title="App Code"
+                      description="Tap here to generate your secure App Code for activating the application"
+                      onPress={() => openSettingsDestination('AppCode')}
+                    />
+                  </View>
+
+                  {/* SUPPORT */}
+
+                  <Text
+                    style={
+                      styles.sheetSectionTitle
                     }
-                    iconBackground="#FCECF5"
-                    title="App Code"
-                    description="Tap here to generate your secure App Code for activating the application"
-                    onPress={() => openSettingsDestination('AppCode')}
-                  />
-                </View>
+                  >
+                    SUPPORT
+                  </Text>
 
-                {/* SUPPORT */}
-
-                <Text
-                  style={
-                    styles.sheetSectionTitle
-                  }
-                >
-                  SUPPORT
-                </Text>
-
-                <View
-                  style={
-                    styles.sheetMenuCard
-                  }
-                >
-                  <BottomSheetItem
-                    icon={
-                      <PhoneCallIcon
-                        width={19}
-                        height={19}
-                        color="#3B82F6"
-                      />
+                  <View
+                    style={
+                      styles.sheetMenuCard
                     }
-                    iconBackground="#EAF2FF"
-                    title="Contact Us"
-                    description="Get in touch with us"
-                    onPress={() => openSettingsDestination('ContactUs')}
-                  />
+                  >
+                    <BottomSheetItem
+                      icon={
+                        <PhoneCallIcon
+                          width={19}
+                          height={19}
+                          color="#3B82F6"
+                        />
+                      }
+                      iconBackground="#EAF2FF"
+                      title="Contact Us"
+                      description="Get in touch with us"
+                      onPress={() => openSettingsDestination('ContactUs')}
+                    />
 
-                  <BottomSheetItem
-                    icon={
-                      <HelpIcon
-                        width={19}
-                        height={19}
-                        color="#8B5CF6"
-                      />
+                    <BottomSheetItem
+                      icon={
+                        <HelpIcon
+                          width={19}
+                          height={19}
+                          color="#8B5CF6"
+                        />
+                      }
+                      iconBackground="#F1ECFF"
+                      title="Help"
+                      description="Guides & troubleshooting"
+                      onPress={() => openSettingsDestination('Help')}
+                    />
+
+                    <BottomSheetItem
+                      icon={
+                        <QuestionIcon
+                          width={19}
+                          height={19}
+                          color="#6366F1"
+                        />
+                      }
+                      iconBackground="#EEF0FF"
+                      title="FAQ"
+                      description="Frequently asked questions"
+                      onPress={() => openSettingsDestination('FAQ')}
+                    />
+                  </View>
+
+                  {/* SETTINGS */}
+
+                  <Text style={styles.sheetSectionTitle}>SETTINGS</Text>
+                  <View style={styles.sheetMenuCard}>
+                    <BottomSheetItem
+                      icon={<Palette width={19} height={19} color="#EC4899" />}
+                      iconBackground="#FCECF5"
+                      title="Appearance"
+                      description="Theme & language settings"
+                      onPress={() => setShowAppearance(true)}
+                    />
+                  </View>
+
+                  {/* MORE */}
+
+                  <Text
+                    style={
+                      styles.sheetSectionTitle
                     }
-                    iconBackground="#F1ECFF"
-                    title="Help"
-                    description="Guides & troubleshooting"
-                    onPress={() => openSettingsDestination('Help')}
-                  />
+                  >
+                    MORE
+                  </Text>
 
-                  <BottomSheetItem
-                    icon={
-                      <QuestionIcon
-                        width={19}
-                        height={19}
-                        color="#6366F1"
-                      />
+                  <View
+                    style={
+                      styles.sheetMenuCard
                     }
-                    iconBackground="#EEF0FF"
-                    title="FAQ"
-                    description="Frequently asked questions"
-                    onPress={() => openSettingsDestination('FAQ')}
-                  />
-                </View>
+                  >
+                    <BottomSheetItem
+                      icon={
+                        <ShareIcon
+                          width={19}
+                          height={19}
+                          color="#10B981"
+                        />
+                      }
+                      iconBackground="#EAFBF5"
+                      title="Refer a Friend"
+                      description="Share & earn rewards"
+                      onPress={() => openSettingsDestination('ReferAFriend')}
+                    />
 
-                {/* SETTINGS */}
+                    <BottomSheetItem
+                      icon={
+                        <StarIcon
+                          width={19}
+                          height={19}
+                          color="#F59E0B"
+                        />
+                      }
+                      iconBackground="#FFF7E7"
+                      title="Rate Us"
+                      description="Leave a review"
+                      onPress={() => openSettingsDestination('RateUs')}
+                    />
 
-                <Text style={styles.sheetSectionTitle}>SETTINGS</Text>
-                <View style={styles.sheetMenuCard}>
-                  <BottomSheetItem
-                    icon={<Palette width={19} height={19} color="#EC4899" />}
-                    iconBackground="#FCECF5"
-                    title="Appearance"
-                    description="Theme & language settings"
-                    onPress={() => setShowAppearance(true)}
-                  />
-                </View>
+                    <BottomSheetItem
+                      icon={
+                        <UserPlusIcon
+                          width={19}
+                          height={19}
+                          color="#EC4899"
+                        />
+                      }
+                      iconBackground="#FCECF5"
+                      title="Self Registration"
+                      description="Open a new account"
+                      onPress={openSelfRegistration}
+                    />
+                  </View>
 
-                {/* MORE */}
-
-                <Text
-                  style={
-                    styles.sheetSectionTitle
-                  }
-                >
-                  MORE
-                </Text>
-
-                <View
-                  style={
-                    styles.sheetMenuCard
-                  }
-                >
-                  <BottomSheetItem
-                    icon={
-                      <ShareIcon
-                        width={19}
-                        height={19}
-                        color="#10B981"
-                      />
+                  <View
+                    style={
+                      styles.sheetBottomSpace
                     }
-                    iconBackground="#EAFBF5"
-                    title="Refer a Friend"
-                    description="Share & earn rewards"
-                    onPress={() => openSettingsDestination('ReferAFriend')}
                   />
-
-                  <BottomSheetItem
-                    icon={
-                      <StarIcon
-                        width={19}
-                        height={19}
-                        color="#F59E0B"
-                      />
-                    }
-                    iconBackground="#FFF7E7"
-                    title="Rate Us"
-                    description="Leave a review"
-                    onPress={() => openSettingsDestination('RateUs')}
-                  />
-
-                  <BottomSheetItem
-                    icon={
-                      <UserPlusIcon
-                        width={19}
-                        height={19}
-                        color="#EC4899"
-                      />
-                    }
-                    iconBackground="#FCECF5"
-                    title="Self Registration"
-                    description="Open a new account"
-                    onPress={openSelfRegistration}
-                  />
-                </View>
-
-                <View
-                  style={
-                    styles.sheetBottomSpace
-                  }
-                />
-              </ScrollView>
+                </ScrollView>
               )}
             </View>
           </View>

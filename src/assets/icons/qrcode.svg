@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 19">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g id="Group_45163" data-name="Group 45163">
+      <g id="Group_45162" data-name="Group 45162">
+        <path id="Path_263051" data-name="Path 263051" class="cls-1" d="M12.35,0v6.65h6.65V0h-6.65ZM17.1,4.75h-2.85V1.9h2.85v2.85Z"/>
+        <rect id="Rectangle_22009" data-name="Rectangle 22009" class="cls-1" y="8.55" width="3.8" height="1.9"/>
+        <rect id="Rectangle_22010" data-name="Rectangle 22010" class="cls-1" x="5.7" y="8.55" width="2.85" height="1.9"/>
+        <rect id="Rectangle_22011" data-name="Rectangle 22011" class="cls-1" x="8.55" y="6.65" width="1.9" height="1.9"/>
+        <path id="Path_263052" data-name="Path 263052" class="cls-1" d="M6.65,3.8V0H0v6.65h8.55v-2.85h-1.9ZM4.75,4.75H1.9V1.9h2.85v2.85Z"/>
+        <rect id="Rectangle_22012" data-name="Rectangle 22012" class="cls-1" x="8.55" width="1.9" height="3.8"/>
+        <path id="Path_263053" data-name="Path 263053" class="cls-1" d="M13.3,10.45h1.9v2.85h1.9v-4.75h-6.65v1.9h.95v1.9h1.9v-1.9Z"/>
+        <rect id="Rectangle_22013" data-name="Rectangle 22013" class="cls-1" x="9.5" y="12.35" width="1.9" height="2.85"/>
+        <rect id="Rectangle_22014" data-name="Rectangle 22014" class="cls-1" x="17.1" y="13.3" width="1.9" height="1.9"/>
+        <path id="Path_263054" data-name="Path 263054" class="cls-1" d="M13.3,15.2h-1.9v1.9h-1.9v1.9h3.8v-1.9h1.9v1.9h2.85v-1.9h-.95v-1.9h-3.8Z"/>
+        <path id="Path_263055" data-name="Path 263055" class="cls-1" d="M6.65,15.2v-2.85H0v6.65h6.65v-1.9h2.85v-1.9h-2.85ZM4.75,17.1H1.9v-2.85h2.85v2.85Z"/>
+      </g>
+    </g>
+  </g>
+</svg>

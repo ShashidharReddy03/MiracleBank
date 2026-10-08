@@ -1,6 +1,6 @@
 import { SecurityManager } from './security/SecurityManager';
 import { sslPinningManager } from './security/certificatePinning/SSLPinningManager';
-import { createApiClient } from './networking/apiClient';
+// import { createApiClient } from './networking/apiClient';
 import { sessionManager } from './core/session/SessionManager';
 import { notificationManager } from './notifications/NotificationManager';
 import { logger } from './core/logging/MFLogger';
@@ -10,9 +10,9 @@ import { initI18n } from './core/localization/i18n';
 import { store } from './store/store';
 import { lockSession, blockSecurity } from './store/slices/sessionSlice';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {
-  triggerRTL,
-} from './localization/LanguageContext';
+// import {
+//   triggerRTL,
+// } from './localization/LanguageContext';
 
 const TAG = 'Bootstrap';
 const LANG_KEY = 'selected_language';
@@ -62,11 +62,11 @@ export async function bootstrap(): Promise<BootstrapResult> {
 
     // ── 4. API CLIENT ────────────────────────────────────────────────────
     try {
-      createApiClient({
-        baseURL: appConfig.apiBaseUrl,
-        apiVersion: appConfig.apiVersion,
-        bankCode: appConfig.bankCode,
-      });
+      // createApiClient({
+      //   baseURL: appConfig.apiBaseUrl,
+      //   apiVersion: appConfig.apiVersion,
+      //   bankCode: appConfig.bankCode,
+      // });
       logger.info(TAG, 'API client ready ✓');
     } catch (e) {
       logger.warn(TAG, 'API failed', { error: e });
@@ -123,11 +123,11 @@ export async function bootstrap(): Promise<BootstrapResult> {
       );
 
       // small delay → provider mounts
-      setTimeout(() => {
-        triggerRTL(
-          rtl
-        );
-      }, 0);
+      // setTimeout(() => {
+      //   triggerRTL(
+      //     rtl
+      //   );
+      // }, 0);
 
       logger.info(
         TAG,
@@ -146,11 +146,11 @@ export async function bootstrap(): Promise<BootstrapResult> {
       await initI18n(
         appConfig.defaultLanguage
       );
-      setTimeout(() => {
-        triggerRTL(
-          false
-        );
-      }, 0);
+      // setTimeout(() => {
+      //   triggerRTL(
+      //     false
+      //   );
+      // }, 0);
     }
 
     logger.info(TAG, `${appConfig.bankName} ready ✓`);
